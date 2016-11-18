@@ -21,7 +21,7 @@
 				<div class="login-grids">
 					<div class="col-md-6 log">
 						<h3>S'identifier</h3>
-						<p>Bienvenue, veuillez saisir vos informations de connexion
+						<p>Bienvenu, veuillez saisir vos informations de connexion
 							pour continuer</p>
 						<!-- <p>If you have previously Login with us, <a href="#">click here</a></p> -->
 						<form action="LoginServlet" method="POST"
