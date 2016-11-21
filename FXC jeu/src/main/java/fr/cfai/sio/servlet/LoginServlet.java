@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import fr.cfai.sio.business.Jeu;
+import fr.cfai.sio.business.Test;
 import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.service.JeuService;
+import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.UtilisateurService;
 import fr.cfai.sio.service.impl.JeuServiceImpl;
+import fr.cfai.sio.service.impl.TestServiceImpl;
 import fr.cfai.sio.service.impl.UtilisateurServiceImpl;
 
 /**
@@ -25,7 +28,8 @@ public class LoginServlet extends HttpServlet
 	public static final int COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 an
 	private UtilisateurService utilisateurServiceImpl;
 	private JeuService jeuServiceImpl;
-
+	private TestService testServiceImpl;
+	
 	/**
 	 * Default constructor.
 	 * @throws Exception 
@@ -35,6 +39,7 @@ public class LoginServlet extends HttpServlet
 		super();
 		this.utilisateurServiceImpl=new UtilisateurServiceImpl();
 		this.jeuServiceImpl=new JeuServiceImpl();
+		this.testServiceImpl = new TestServiceImpl();
 	}
 
 	/**
@@ -98,11 +103,17 @@ public class LoginServlet extends HttpServlet
 		if (existe == true)
 		{
 			session.setAttribute("CONTROLE_CONNEXION", "OK");
+			
+			//TODO : NE PAS INSTANCIER LES LISTES ICI : Il faut sinon obligatoirement passer par l'index pour y qu'elles se rechargent en mémoire.
 			List<Jeu> listeJeux = null;
 			listeJeux = jeuServiceImpl.recupererListeJeux();
-
 			request.setAttribute("LISTE_JEUX", listeJeux);
-			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+			
+			List<Test> listeTests = null;
+			listeTests = testServiceImpl.recupererListeTests();
+			request.setAttribute("LISTE_TESTS", listeTests);
+			
+			request.getRequestDispatcher("/listeTests.jsp").forward(request, response);
 
 		}
 		else

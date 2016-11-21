@@ -5,7 +5,7 @@ public class Note
 	/**
 	 * Déclaration des variables de Note
 	 */
-	private byte note;
+	private short note;
 	private Test test;
 
 	/**
@@ -14,7 +14,7 @@ public class Note
 	 * @param note
 	 * @param test
 	 */
-	public Note(byte note, Test test)
+	public Note(short note, Test test)
 	{
 		super();
 		this.note = note;
@@ -26,12 +26,12 @@ public class Note
 	 * 
 	 * @return
 	 */
-	public byte getNote()
+	public short getNote()
 	{
 		return note;
 	}
 
-	public void setNote(byte note)
+	public void setNote(short note)
 	{
 		this.note = note;
 	}

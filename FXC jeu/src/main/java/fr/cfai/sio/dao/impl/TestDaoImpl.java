@@ -4,19 +4,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import fr.cfai.sio.business.Classification;
-import fr.cfai.sio.business.Developpeur;
-import fr.cfai.sio.business.Editeur;
-import fr.cfai.sio.business.Genre;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.TestDao;
-import fr.cfai.sio.dao.requete.JeuRequete;
+import fr.cfai.sio.dao.requete.TestRequete;
 import java.sql.Connection;
 
 
@@ -41,19 +38,18 @@ public class TestDaoImpl implements TestDao {
 		int id_Test;
 		String titreTest;
 		Date dateTest;
-		byte noteJeu;
+		short noteJeu;
 		int nbCom;
 		String avantageJeu;
 		String inconvenientJeu;
+		String descriptionTest;
 		Jeu jeu;
 		Utilisateur user;
 		Test test = null;
 
 		try
 		{
-			// TODO VMELE : faire la requête
-
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(JeuRequete.FIND_TEST_BY_ID);
+			PreparedStatement resultatPrepa = objConnect.prepareStatement(TestRequete.FIND_TEST_BY_ID);
 			resultatPrepa.setInt(1, idTest);
 			ResultSet resultat = resultatPrepa.executeQuery();
 
@@ -64,16 +60,16 @@ public class TestDaoImpl implements TestDao {
 					id_Test = resultat.getInt(1);
 					titreTest = resultat.getString(2);
 					dateTest= resultat.getDate(3);
-					noteJeu = resultat.getByte(4);
-					nbCom = resultat.getInt(5);
-					avantageJeu = resultat.getString(6);
-					inconvenientJeu = resultat.getString(7);
-					classification = new Classification(resultat.getInt(10), resultat.getString(11));
-					developpeur = new Developpeur(resultat.getInt(12), resultat.getString(13));
-					editeur = new Editeur(resultat.getInt(14), resultat.getString(15));
-					genre = new Genre(resultat.getInt(16), resultat.getString(17));
+					nbCom = resultat.getInt(4);
+					avantageJeu = resultat.getString(5);
+					inconvenientJeu = resultat.getString(6);
+					descriptionTest = resultat.getString(7);
+					jeu = new Jeu(resultat.getInt(8));
+					user = new Utilisateur(resultat.getInt(9));
+					noteJeu = resultat.getShort(10);
 
-					jeu = new Jeu(id_Jeu, titre_Jeu, date_Sortie_Jeu, description, imgJeu, classification, editeur, genre, developpeur);
+					test = new Test( id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
+					System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL");
 				}
 			}
 			else
@@ -84,15 +80,63 @@ public class TestDaoImpl implements TestDao {
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("Erreur sql : " + e.getMessage());
 		}
 		return test;
 	}
 
 	@Override
 	public List<Test> findAllTest() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Test> listeTests = new ArrayList<Test>();
+		int id_Test;
+		String titreTest;
+		Date dateTest;
+		short noteJeu;
+		int nbCom;
+		String avantageJeu;
+		String inconvenientJeu;
+		String descriptionTest;
+		Jeu jeu;
+		Utilisateur user;
+		Test test = null;
+
+		try
+		{
+			ResultSet resultat = createObjReq.executeQuery(TestRequete.FIND_ALL_TESTS);
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					id_Test = resultat.getInt(1);
+					titreTest = resultat.getString(2);
+					dateTest= resultat.getDate(3);
+					nbCom = resultat.getInt(4);
+					avantageJeu = resultat.getString(5);
+					inconvenientJeu = resultat.getString(6);
+					descriptionTest = resultat.getString(7);
+					jeu = new Jeu(resultat.getInt(8));
+					user = new Utilisateur(resultat.getInt(9));
+					noteJeu = resultat.getShort(10);
+
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
+					listeTests.add(test);
+					
+				}
+			}
+			else
+			{
+				listeTests = null;
+				System.out.println("dzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		return listeTests;
 	}
 
 }

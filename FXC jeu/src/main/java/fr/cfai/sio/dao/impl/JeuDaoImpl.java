@@ -76,7 +76,7 @@ public class JeuDaoImpl implements JeuDao
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("Erreur sql : " + e.getMessage());
 		}
 		return jeu;
 	}

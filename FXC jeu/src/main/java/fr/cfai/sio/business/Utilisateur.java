@@ -53,6 +53,11 @@ public class Utilisateur
 		this.nbCom = nbCom;
 	}
 
+		// Test VMELE 
+	public Utilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
+
 	/**
 	 * Getters and Setters
 	 * 

@@ -11,10 +11,11 @@ public class Test
 	private int idTest;
 	private String titreTest;
 	private Date dateTest;
-	private byte noteJeu;
+	private short noteJeu;
 	private int nbCom;
 	private String avantageJeu;
 	private String inconvenientJeu;
+	private String descriptionTest;
 	private Jeu jeu;
 	private Utilisateur user;
 	private List<Image> listeImages;
@@ -37,8 +38,8 @@ public class Test
 	 * @param listeImages
 	 * @param listeNotes
 	 */
-	public Test(int idTest, String titreTest, Date dateTest, byte noteJeu, int nbCom, String avantageJeu, String inconvenientJeu, Jeu jeu,
-			Utilisateur user)
+	public Test(int idTest, String titreTest, Date dateTest, short noteJeu, int nbCom, String avantageJeu, String inconvenientJeu, 
+			String descriptionTest, Jeu jeu, Utilisateur user)
 	{
 		super();
 		this.idTest = idTest;
@@ -48,8 +49,17 @@ public class Test
 		this.nbCom = nbCom;
 		this.avantageJeu = avantageJeu;
 		this.inconvenientJeu = inconvenientJeu;
+		this.descriptionTest = descriptionTest;
 		this.jeu = jeu;
 		this.user = user;
+	}
+
+	public String getDescriptionTest() {
+		return descriptionTest;
+	}
+
+	public void setDescriptionTest(String descriptionTest) {
+		this.descriptionTest = descriptionTest;
 	}
 
 	/**
@@ -87,12 +97,12 @@ public class Test
 		this.dateTest = dateTest;
 	}
 
-	public byte getNoteJeu()
+	public short getNoteJeu()
 	{
 		return noteJeu;
 	}
 
-	public void setNoteJeu(byte noteJeu)
+	public void setNoteJeu(short noteJeu)
 	{
 		this.noteJeu = noteJeu;
 	}

@@ -35,6 +35,11 @@ public class Jeu
 		this.developpeur = developpeur;
 	}
 
+		// Test VMELE
+	public Jeu(int id_Jeu) {
+		this.idJeu = id_Jeu;
+	}
+
 	/**
 	 * Getters and Setters
 	 * 

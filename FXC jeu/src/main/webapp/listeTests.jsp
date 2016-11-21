@@ -55,7 +55,7 @@
 								<a href="single.html">League of Legends, un déclin proche ?</a>
 							</h3>
 							<p>
-								by <span>UserID</span> | June 29,2015 | <span>Sint</span>
+								by <span>AAAAAAAAA</span> | June 29,2015 | <span>Sint</span>
 							</p>
 
 						</div>
@@ -71,8 +71,8 @@
 						</div>
 						<p class="para">League of Legends, blablabla c'est de la
 							merde, il y a de moins en moins de monde blablabla, ça pue du
-							cul, etc. League of LegendsLeague of Legends, blablabla c'est de la
-							merde, il y a de moins en moins de monde blablabla, ça pue du
+							cul, etc. League of LegendsLeague of Legends, blablabla c'est de
+							la merde, il y a de moins en moins de monde blablabla, ça pue du
 							cul, etc. League of Legends, blablabla c'est de la merde, il y a
 							de moins en moins de monde blablabla, ça pue du cul, etc. League
 							of Legends, blablabla c'est de la merde, il y a de moins en moins
@@ -85,19 +85,26 @@
 					</div>
 				</div>
 
+				<p> PASSE PAR LA </p>
+				<c:forEach items="${LISTE_TESTS}" var="test">
+					<a href="TestServlet?idTest=${test.idTest}">a  ${test.jeu.getTitreJeu()}</a>
+
+					<br>
+				</c:forEach>
+
+
+
 			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
 </div>
 <%@ include file="footer.jsp"%>
-	<!-- <p>
-		<%
-			//String message = "Connexion réussi. Bienvenue "+ session.getAttribute("LOGIN");
-			//out.println(message);
-		%>
+<!-- <p>
+		<%//String message = "Connexion réussi. Bienvenue "+ session.getAttribute("LOGIN");
+			//out.println(message);%>
 	</p> -->
-	
-	
+
+
 </body>
 </html>
