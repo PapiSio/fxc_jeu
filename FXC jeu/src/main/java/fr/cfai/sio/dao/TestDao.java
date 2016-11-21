@@ -9,5 +9,9 @@ public interface TestDao {
 		public Test findTestById(int idTest);
 
 		public List<Test> findAllTest();
+		
+		//Test MM
+		public List<Test> findAllTestMM();
+		
 	
 }

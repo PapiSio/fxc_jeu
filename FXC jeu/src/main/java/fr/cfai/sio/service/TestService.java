@@ -11,4 +11,7 @@ public interface TestService {
 
 	public List<Test> recupererListeTests();
 	
+	//Test MM
+	public List<Test> recupererListeTestsMM();
+	
 }

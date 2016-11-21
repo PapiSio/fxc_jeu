@@ -36,4 +36,16 @@ public class TestServiceImpl implements TestService {
 		return listeTests;
 	}
 
+	
+	//Test MM
+	@Override
+	public List<Test> recupererListeTestsMM()
+	{
+		List<Test> listeTestsMM = new ArrayList<>();
+		
+		listeTestsMM = testDaoImpl.findAllTestMM();
+
+		return listeTestsMM;
+	}
+
 }

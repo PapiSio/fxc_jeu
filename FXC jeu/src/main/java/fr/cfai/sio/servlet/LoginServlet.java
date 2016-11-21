@@ -113,7 +113,16 @@ public class LoginServlet extends HttpServlet
 			listeTests = testServiceImpl.recupererListeTests();
 			request.setAttribute("LISTE_TESTS", listeTests);
 			
-			request.getRequestDispatcher("/listeTests.jsp").forward(request, response);
+			//Test MM
+			List<Test> listeTestsMM = null;
+			listeTestsMM = testServiceImpl.recupererListeTestsMM();
+			request.setAttribute("LISTE_TESTS", listeTestsMM);
+			
+			//request.getRequestDispatcher("/listeTests.jsp").forward(request, response);
+			
+			//Test MM
+			request.getRequestDispatcher("/listeTestsMM.jsp").forward(request, response);
+
 
 		}
 		else
