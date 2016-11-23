@@ -1,5 +1,11 @@
 package fr.cfai.sio.business;
 
+/**
+ * Commentaire OK
+ * 
+ * @author mathieu
+ *
+ */
 public class Support
 {
 
@@ -13,7 +19,9 @@ public class Support
 	 * Constructeur de Support
 	 * 
 	 * @param idSupport
+	 *            ID du support
 	 * @param libelleSupport
+	 *            libelle du support
 	 */
 	public Support(int idSupport, String libelleSupport)
 	{
@@ -23,28 +31,44 @@ public class Support
 	}
 
 	/**
-	 * Getters and Setters
+	 * Getteur ID du support
 	 * 
-	 * @return
+	 * @return ID du support
 	 */
 	public int getIdSupport()
 	{
 		return idSupport;
 	}
 
+	/**
+	 * Setteur ID du support
+	 * 
+	 * @param idSupport
+	 *            ID du support
+	 */
 	public void setIdSupport(int idSupport)
 	{
 		this.idSupport = idSupport;
 	}
 
+	/**
+	 * GetteurLibelle du support
+	 * 
+	 * @return Libelle du support
+	 */
 	public String getLibelleSupport()
 	{
 		return libelleSupport;
 	}
 
+	/**
+	 * Setteur Libelle du support
+	 * 
+	 * @param libelleSupport
+	 *            Libelle du support
+	 */
 	public void setLibelleSupport(String libelleSupport)
 	{
 		this.libelleSupport = libelleSupport;
 	}
-
 }

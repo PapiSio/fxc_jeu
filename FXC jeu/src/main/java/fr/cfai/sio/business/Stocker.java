@@ -1,5 +1,11 @@
 package fr.cfai.sio.business;
 
+/**
+ * Commentaire non OK
+ * 
+ * @author mathieu
+ *
+ */
 public class Stocker
 {
 

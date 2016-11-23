@@ -1,5 +1,10 @@
 package fr.cfai.sio.business;
 
+/**
+ * Commentaire Non OK
+ * @author mathieu
+ *
+ */
 public class Payer
 {
 

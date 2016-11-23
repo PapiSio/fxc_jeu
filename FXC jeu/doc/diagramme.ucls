@@ -308,30 +308,30 @@
   </association>  
   <association id="56">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="57" name="listeImages">        
+      <attribute id="57" name="genre">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="60" name="genre">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
+      <multiplicity id="58" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="62">    
+  <association id="59">    
     <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="60" name="listeJeux">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="61" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="15" navigable="false">      
       <attribute id="63" name="listeJeux">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
@@ -343,7 +343,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="65">    
-    <end type="SOURCE" refId="7" navigable="false">      
+    <end type="SOURCE" refId="9" navigable="false">      
       <attribute id="66" name="jeu">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
@@ -355,150 +355,126 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="68">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="69" name="listeJeux">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="70" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="71">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="72" name="jeu">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="73" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="74">    
     <bendpoint x="1049" y="1197"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="75" name="test">        
+      <attribute id="69" name="test">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="76" minimum="0" maximum="1">        
+      <multiplicity id="70" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="77">    
+  <association id="71">    
     <bendpoint x="1028" y="1197"/>    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="78" name="listeImages">        
+      <attribute id="72" name="listeImages">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="79" minimum="0" maximum="2147483647">        
+      <multiplicity id="73" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="80">    
+  <association id="74">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="81" name="jeu">        
+      <attribute id="75" name="jeu">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="78" name="jeu">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="79" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <bendpoint x="1308" y="1197"/>    
+    <bendpoint x="1308" y="1858"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="81" name="utilisateur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="82" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="83">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="84" name="jeu">        
+    <bendpoint x="1696" y="446"/>    
+    <bendpoint x="1696" y="1197"/>    
+    <bendpoint x="1696" y="1858"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="84" name="utilisateur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="85" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="86">    
-    <bendpoint x="1308" y="1197"/>    
-    <bendpoint x="1308" y="1858"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="87" name="user">        
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="87" name="plateforme">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="88" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="89">    
-    <bendpoint x="1696" y="446"/>    
-    <bendpoint x="1696" y="1197"/>    
-    <bendpoint x="1696" y="1858"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="90" name="utilisateur">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="91" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="92">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="93" name="plateforme">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="94" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="95">    
+  <association id="89">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="96" name="listeJeux">        
+      <attribute id="90" name="listeJeux">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="97" minimum="0" maximum="2147483647">        
+      <multiplicity id="91" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="98">    
+  <association id="92">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="99" name="developpeur">        
+      <attribute id="93" name="developpeur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="100" minimum="0" maximum="1">        
+      <multiplicity id="94" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="101">    
+  <association id="95">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="102" name="test">        
+      <attribute id="96" name="test">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="103" minimum="0" maximum="1">        
+      <multiplicity id="97" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    

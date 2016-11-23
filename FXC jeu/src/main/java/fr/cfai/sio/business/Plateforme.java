@@ -1,8 +1,13 @@
 package fr.cfai.sio.business;
 
+/**
+ * Commentaire OK
+ * 
+ * @author mathieu
+ *
+ */
 public class Plateforme
 {
-
 	/**
 	 * Déclaration des varaibles de Plateforme
 	 */
@@ -13,7 +18,9 @@ public class Plateforme
 	 * Constructeur de Plateforme
 	 * 
 	 * @param idPlateforme
+	 *            ID de la plateforme
 	 * @param libellePlateforme
+	 *            Libelle de la plateforme
 	 */
 	public Plateforme(int idPlateforme, String libellePlateforme)
 	{
@@ -23,25 +30,42 @@ public class Plateforme
 	}
 
 	/**
-	 * Getters and Setters
+	 * Getteur ID de la plateforme
 	 * 
-	 * @return
+	 * @return ID de la plateforme
 	 */
 	public int getIdPlateforme()
 	{
 		return idPlateforme;
 	}
 
+	/**
+	 * Setteur ID de la plateforme
+	 * 
+	 * @param idPlateforme
+	 *            ID de la plateforme
+	 */
 	public void setIdPlateforme(int idPlateforme)
 	{
 		this.idPlateforme = idPlateforme;
 	}
 
+	/**
+	 * Getteur Libelle de la plateforme
+	 * 
+	 * @return Libelle de la plateforme
+	 */
 	public String getLibellePlateforme()
 	{
 		return libellePlateforme;
 	}
 
+	/**
+	 * Setteur Libelle de la plateforme
+	 * 
+	 * @param libellePlateforme
+	 *            Libelle de la plateforme
+	 */
 	public void setLibellePlateforme(String libellePlateforme)
 	{
 		this.libellePlateforme = libellePlateforme;
