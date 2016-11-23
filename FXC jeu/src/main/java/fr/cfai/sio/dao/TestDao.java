@@ -10,6 +10,8 @@ public interface TestDao {
 
 		public List<Test> findAllTest();
 		
+		public Test addTest();
+		
 		//Test MM
 		public List<Test> findAllTestMM();
 		

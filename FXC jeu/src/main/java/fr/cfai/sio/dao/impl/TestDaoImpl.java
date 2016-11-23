@@ -72,7 +72,6 @@ public class TestDaoImpl implements TestDao
 					noteJeu = resultat.getShort(10);
 
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
-					System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL");
 				}
 			}
 			else
@@ -213,6 +212,12 @@ public class TestDaoImpl implements TestDao
 			System.out.println("Erreur sql MM" + e.getMessage());
 		}
 		return listeTestsMM;
+	}
+
+	@Override
+	public Test addTest() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

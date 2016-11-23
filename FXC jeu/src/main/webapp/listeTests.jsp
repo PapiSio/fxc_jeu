@@ -84,10 +84,12 @@
 							a de moins en moins de monde blablabla, ça pue du cul, etc.</p>
 					</div>
 				</div>
+				
+				<p> <a href="TestServlet?action=addTest">Ajouter un test.</a>'
 
 				<p> PASSE PAR LA </p>
 				<c:forEach items="${LISTE_TESTS}" var="test">
-					<a href="TestServlet?idTest=${test.idTest}">a  ${test.jeu.getTitreJeu()}</a>
+					<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a  ${test.jeu.getTitreJeu()}</a>
 
 					<br>
 				</c:forEach>

@@ -15,6 +15,7 @@ import fr.cfai.sio.service.impl.TestServiceImpl;
  */
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	private TestServiceImpl testServiceImpl;
        
@@ -31,15 +32,20 @@ public class TestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int idTest = Integer.parseInt(request.getParameter("idTest"));
-
-		Test test = testServiceImpl.recupereTestParID(idTest);
-
-		request.setAttribute("TEST", test);
-
-		request.getRequestDispatcher("/test.jsp").forward(request, response);
 		
+		if(request.getParameter("action").equals("displayTest")){
+			
+			int idTest = Integer.parseInt(request.getParameter("idTest"));
+			Test test = testServiceImpl.recupereTestParID(idTest);		
+			request.setAttribute("TEST", test);
+			request.getRequestDispatcher("/test.jsp").forward(request, response);		
+		}
+		else {
+			if(request.getParameter("action").equals("addTest")){
+				
+				request.getRequestDispatcher("/test.jsp").forward(request, response);		
+			}
+		}
 	}
 
 	/**
