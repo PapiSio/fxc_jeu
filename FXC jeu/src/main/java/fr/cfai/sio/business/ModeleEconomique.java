@@ -1,5 +1,11 @@
 package fr.cfai.sio.business;
 
+/**
+ * Commentaire OK
+ * 
+ * @author mathieu
+ *
+ */
 public class ModeleEconomique
 {
 	/**
@@ -13,7 +19,9 @@ public class ModeleEconomique
 	 * Constructeur de ModeleEconomique
 	 * 
 	 * @param idModeleEco
+	 *            ID du modèle économique
 	 * @param libelleModeleEco
+	 *            Libellé du modèle économique
 	 */
 	public ModeleEconomique(int idModeleEco, String libelleModeleEco)
 	{
@@ -23,25 +31,42 @@ public class ModeleEconomique
 	}
 
 	/**
-	 * Getters and Setters
+	 * Getteur ID du modèle économique
 	 * 
-	 * @return
+	 * @return ID du modèle économique
 	 */
 	public int getIdModeleEco()
 	{
 		return idModeleEco;
 	}
 
+	/**
+	 * Setteur ID du modèle économique
+	 * 
+	 * @param idModeleEco
+	 *            ID du modèle économique
+	 */
 	public void setIdModeleEco(int idModeleEco)
 	{
 		this.idModeleEco = idModeleEco;
 	}
 
+	/**
+	 * Getteur Libelle du modèle économique
+	 * 
+	 * @return Libelle du modèle économique
+	 */
 	public String getLibelleModeleEco()
 	{
 		return libelleModeleEco;
 	}
 
+	/**
+	 * Setteur Libelle du modèle économique
+	 * 
+	 * @param libelleModeleEco
+	 *            Libelle du modèle économique
+	 */
 	public void setLibelleModeleEco(String libelleModeleEco)
 	{
 		this.libelleModeleEco = libelleModeleEco;

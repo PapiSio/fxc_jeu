@@ -1,5 +1,9 @@
 package fr.cfai.sio.business;
-
+/**
+ * Commentaire Non OK
+ * @author mathieu
+ *
+ */
 public class Lire
 {
 	/**
@@ -12,7 +16,7 @@ public class Lire
 	/**
 	 * Constructeur de Lire
 	 * 
-	 * @param plateforme
+	 * @param plateforme 
 	 * @param jeu
 	 */
 	public Lire(Plateforme plateforme, Jeu jeu)

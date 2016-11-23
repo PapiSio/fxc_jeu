@@ -1,5 +1,11 @@
 package fr.cfai.sio.business;
 
+/**
+ * Commentaire OK
+ * 
+ * @author mathieu
+ *
+ */
 public class Image
 {
 	/**
@@ -7,108 +13,161 @@ public class Image
 	 */
 	private int idImage;
 	private String cheminImage;
-	private String descriptionImae;
+	private String descriptionImage;
 	private String titreImage;
 	private Test test;
-	private Jeu jeu;
-	private Utilisateur user;
+	private Utilisateur utilisateur;
 
 	/**
 	 * Constructeur d'Image
 	 * 
 	 * @param idImage
+	 *            ID de l'image
 	 * @param cheminImage
-	 * @param descriptionImae
+	 *            Chemin de l'image
+	 * @param descriptionImage
+	 *            Description de l'image de l'image
 	 * @param titreImage
+	 *            Titre de l'image
 	 * @param test
-	 * @param jeu
-	 * @param user
+	 *            Test de l'image
+	 * @param utilisateur
+	 *            Utilisteur de l'image
 	 */
-	public Image(int idImage, String cheminImage, String descriptionImae, String titreImage, Test test, Jeu jeu, Utilisateur user)
+	public Image(int idImage, String cheminImage, String descriptionImage, String titreImage, Test test, Utilisateur utilisateur)
 	{
 		super();
 		this.idImage = idImage;
 		this.cheminImage = cheminImage;
-		this.descriptionImae = descriptionImae;
+		this.descriptionImage = descriptionImage;
 		this.titreImage = titreImage;
 		this.test = test;
-		this.jeu = jeu;
-		this.user = user;
+		this.utilisateur = utilisateur;
 	}
 
 	/**
-	 * Getters and Setters
+	 * Getteur ID de l'image
 	 * 
-	 * @return
+	 * @return ID de l'image
 	 */
 	public int getIdImage()
 	{
 		return idImage;
 	}
 
+	/**
+	 * Setteur ID de l'image
+	 * 
+	 * @param idImage
+	 *            ID de l'image
+	 */
 	public void setIdImage(int idImage)
 	{
 		this.idImage = idImage;
 	}
 
+	/**
+	 * Getteur Chemin de l'image
+	 * 
+	 * @return Chemin de l'image
+	 */
 	public String getCheminImage()
 	{
 		return cheminImage;
 	}
 
+	/**
+	 * Setteur Chemin de l'image
+	 * 
+	 * @param cheminImage
+	 *            Chemin de l'image
+	 */
 	public void setCheminImage(String cheminImage)
 	{
 		this.cheminImage = cheminImage;
 	}
 
-	public String getDescriptionImae()
+	/**
+	 * Getteur Descripton de l'image
+	 * 
+	 * @return Description de l'image
+	 */
+	public String getDescriptionImage()
 	{
-		return descriptionImae;
+		return descriptionImage;
 	}
 
-	public void setDescriptionImae(String descriptionImae)
+	/**
+	 * Setteur Description de l'image
+	 * 
+	 * @param descriptionImage
+	 *            Description de l'image
+	 */
+	public void setDescriptionImage(String descriptionImage)
 	{
-		this.descriptionImae = descriptionImae;
+		this.descriptionImage = descriptionImage;
 	}
 
+	/**
+	 * Getteur Titre de l'image
+	 * 
+	 * @return Titre de l'image
+	 */
 	public String getTitreImage()
 	{
 		return titreImage;
 	}
 
+	/**
+	 * Setteur Titre de l'image
+	 * 
+	 * @param titreImage
+	 *            Titre de l'image
+	 */
 	public void setTitreImage(String titreImage)
 	{
 		this.titreImage = titreImage;
 	}
 
+	/**
+	 * Getteur Test de l'image
+	 * 
+	 * @return Test de l'image
+	 */
 	public Test getTest()
 	{
 		return test;
 	}
 
+	/**
+	 * Setteur Test de l'image
+	 * 
+	 * @param test
+	 *            Test de l'image
+	 */
 	public void setTest(Test test)
 	{
 		this.test = test;
 	}
 
-	public Jeu getJeu()
+	/**
+	 * Getteur Utilisateur de l'image
+	 * 
+	 * @return Utilisateur de l'image
+	 */
+	public Utilisateur getUtilisateur()
 	{
-		return jeu;
+		return utilisateur;
 	}
 
-	public void setJeu(Jeu jeu)
+	/**
+	 * Setteur Utilisateur de l'image
+	 * 
+	 * @param utilisateur
+	 *            Utilisateur de l'image
+	 */
+	public void setUtilisateur(Utilisateur utilisateur)
 	{
-		this.jeu = jeu;
+		this.utilisateur = utilisateur;
 	}
-
-	public Utilisateur getUser()
-	{
-		return user;
-	}
-
-	public void setUser(Utilisateur user)
-	{
-		this.user = user;
-	}
-
 }
