@@ -5,13 +5,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Commentaire OK
+ * 
+ * Renommage des constantes ==> En MAJUSCULE
+ * 
+ * @author mathieu
+ *
+ */
 public class ConnexionBDD
 {
 
-	private static final String url = "jdbc:postgresql://localhost:5432/app_jeu";
-	private static final String utilisateur = "postgres";
-	private static final String motDePasse = "postgres";
+	/**
+	 * Déclaration des constantes de ConnexionBDD
+	 */
+	private static final String URL = "jdbc:postgresql://localhost:5432/app_jeu";
+	private static final String UTILISATEUR = "postgres";
+	private static final String MOT_DE_PASSE = "postgres";
 
+	/**
+	 * Méthode qui initialise le 'statement' de la connexion
+	 * 
+	 * @return Statement
+	 */
 	public Statement getStatement()
 	{
 		Connection connexion = null;
@@ -20,18 +36,21 @@ public class ConnexionBDD
 		try
 		{
 			Class.forName("org.postgresql.Driver");
-			connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
+			connexion = DriverManager.getConnection(URL, UTILISATEUR, MOT_DE_PASSE);
 			statement = connexion.createStatement();
 		}
 		catch (SQLException | ClassNotFoundException e)
 		{
 			System.out.println("Erreur");
 		}
-
 		return statement;
-
 	}
 
+	/**
+	 * Méthode qui initialise la connexion
+	 * 
+	 * @return Connection
+	 */
 	public Connection getConnection()
 	{
 		Connection connexion = null;
@@ -39,14 +58,12 @@ public class ConnexionBDD
 		try
 		{
 			Class.forName("org.postgresql.Driver");
-			connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
+			connexion = DriverManager.getConnection(URL, UTILISATEUR, MOT_DE_PASSE);
 		}
 		catch (SQLException | ClassNotFoundException e)
 		{
 			System.out.println("Erreur");
 		}
-
 		return connexion;
-
 	}
 }
