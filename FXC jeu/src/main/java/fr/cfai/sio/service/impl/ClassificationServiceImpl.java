@@ -1,6 +1,5 @@
 package fr.cfai.sio.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import fr.cfai.sio.business.Classification;
 import fr.cfai.sio.dao.ClassificationDao;
@@ -11,6 +10,7 @@ public class ClassificationServiceImpl implements ClassificationService
 {
 
 	private ClassificationDao classificationDaoImpl;
+	private List<Classification> listeClassifications;
 
 	public ClassificationServiceImpl() throws Exception
 	{
@@ -18,15 +18,20 @@ public class ClassificationServiceImpl implements ClassificationService
 		this.classificationDaoImpl = new ClassificationDaoImpl();
 	}
 
-
 	@Override
 	public List<Classification> recupererListeClassifications()
 	{
 
-		List<Classification> listeClassifications = new ArrayList<Classification>();
-
-		listeClassifications = classificationDaoImpl.findAllClassifications();
-
-		return listeClassifications;
+		if (listeClassifications == null)
+		{
+			System.out.println("ServiceCLASSIFICATION : Passe par le if, liste null");
+			listeClassifications = classificationDaoImpl.findAllClassifications();
+			return listeClassifications;
+		}
+		else
+		{
+			System.out.println("ServiceCLASSIFICATION : Passe par le else, liste not null");
+			return listeClassifications;
+		}
 	}
 }

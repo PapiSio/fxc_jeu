@@ -1,6 +1,5 @@
 package fr.cfai.sio.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import fr.cfai.sio.business.Genre;
 import fr.cfai.sio.dao.GenreDao;
@@ -9,8 +8,8 @@ import fr.cfai.sio.service.GenreService;
 
 public class GenreServiceImpl implements GenreService
 {
-
 	private GenreDao genreDaoImpl;
+	private List<Genre> listeGenres;
 
 	public GenreServiceImpl() throws Exception
 	{
@@ -31,11 +30,16 @@ public class GenreServiceImpl implements GenreService
 	@Override
 	public List<Genre> recupererListeGenres()
 	{
-		List<Genre> listeGenres = new ArrayList<Genre>();
-
-		listeGenres = genreDaoImpl.findAllGenres();
-
-		return listeGenres;
+		if (listeGenres == null)
+		{
+			System.out.println("ServiceGENRE : Passe par le if, liste null");
+			listeGenres = genreDaoImpl.findAllGenres();
+			return listeGenres;
+		}
+		else
+		{
+			System.out.println("ServiceGENRE : Passe par le else, liste not null");
+			return listeGenres;
+		}
 	}
-
 }

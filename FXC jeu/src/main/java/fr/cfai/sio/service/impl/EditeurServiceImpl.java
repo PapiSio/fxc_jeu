@@ -1,6 +1,5 @@
 package fr.cfai.sio.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import fr.cfai.sio.business.Editeur;
 import fr.cfai.sio.dao.EditeurDao;
@@ -11,6 +10,7 @@ public class EditeurServiceImpl implements EditeurService
 {
 
 	private EditeurDao editeurDaoImpl;
+	private List<Editeur> listeEditeurs;
 
 	public EditeurServiceImpl() throws Exception
 	{
@@ -30,11 +30,16 @@ public class EditeurServiceImpl implements EditeurService
 
 	public List<Editeur> recupererListeEditeurs()
 	{
-		List<Editeur> listeEditeurs = new ArrayList<Editeur>();
-
-		listeEditeurs = editeurDaoImpl.findAllEditeurs();
-
-		return listeEditeurs;
+		if (listeEditeurs == null)
+		{
+			System.out.println("ServiceEDITEUR : Passe par le if, liste null");
+			listeEditeurs = editeurDaoImpl.findAllEditeurs();
+			return listeEditeurs;
+		}
+		else
+		{
+			System.out.println("ServiceEDITEUR : Passe par le else, liste not null");
+			return listeEditeurs;
+		}
 	}
-
 }

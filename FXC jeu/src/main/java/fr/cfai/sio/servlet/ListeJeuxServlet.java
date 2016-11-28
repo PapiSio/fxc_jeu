@@ -39,9 +39,15 @@ public class ListeJeuxServlet extends HttpServlet
 		{
 			System.out.println("Servlet : Passe par le if, liste null");
 			listeJeux = jeuServiceImpl.recupererListeJeux();
+			request.setAttribute("LISTE_JEUX", listeJeux);
+			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
 		}
-		request.setAttribute("LISTE_JEUX", listeJeux);
-		request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+		else
+		{
+			System.out.println("Servlet : Passe par le else, liste not null");
+			request.setAttribute("LISTE_JEUX", listeJeux);
+			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+		}
 	}
 
 	/**

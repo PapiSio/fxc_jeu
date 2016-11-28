@@ -81,8 +81,35 @@ public class JeuDaoImpl implements JeuDao
 		return jeu;
 	}
 
+	/*
+	 * @Override public List<Jeu> findAllJeux() { List<Jeu> listeJeux = new
+	 * ArrayList<Jeu>(); int id_Jeu; String titre_Jeu; Date date_Sortie_Jeu;
+	 * String description; String imgJeu; Classification classification; Editeur
+	 * editeur; Genre genre; Developpeur developpeur; Jeu jeu = null;
+	 * 
+	 * try { ResultSet resultat =
+	 * createObjReq.executeQuery(JeuRequete.FIND_ALL_JEUX);
+	 * 
+	 * if (resultat != null) { while (resultat.next()) { id_Jeu =
+	 * resultat.getInt(1); titre_Jeu = resultat.getString(2); date_Sortie_Jeu =
+	 * resultat.getDate(3); description = resultat.getString(4); imgJeu =
+	 * resultat.getString(9); classification = new
+	 * Classification(resultat.getInt(10), resultat.getString(11)); developpeur
+	 * = new Developpeur(resultat.getInt(12), resultat.getString(13)); editeur =
+	 * new Editeur(resultat.getInt(14), resultat.getString(15)); genre = new
+	 * Genre(resultat.getInt(16), resultat.getString(17));
+	 * 
+	 * jeu = new Jeu(id_Jeu, titre_Jeu, date_Sortie_Jeu, description, imgJeu,
+	 * classification, editeur, genre, developpeur); listeJeux.add(jeu); } }
+	 * else { listeJeux = null; }
+	 * 
+	 * } catch (SQLException e) { System.out.println("Erreur sql" +
+	 * e.getMessage()); } return listeJeux; }
+	 */
+
 	@Override
-	public List<Jeu> findAllJeux()
+	public List<Jeu> findAllJeux(List<Classification> listeClassifications, List<Developpeur> listeDeveloppeurs, List<Editeur> listeEditeurs,
+			List<Genre> listeGenres)
 	{
 		List<Jeu> listeJeux = new ArrayList<Jeu>();
 		int id_Jeu;
@@ -108,11 +135,11 @@ public class JeuDaoImpl implements JeuDao
 					titre_Jeu = resultat.getString(2);
 					date_Sortie_Jeu = resultat.getDate(3);
 					description = resultat.getString(4);
+					editeur = getEditeurByID(listeEditeurs, resultat.getInt(5));
+					genre = getGenreByID(listeGenres, resultat.getInt(6));
+					developpeur = getDeveloppeurByID(listeDeveloppeurs, resultat.getInt(7));
+					classification = getClassificationByID(listeClassifications, resultat.getInt(8));
 					imgJeu = resultat.getString(9);
-					classification = new Classification(resultat.getInt(10), resultat.getString(11));
-					developpeur = new Developpeur(resultat.getInt(12), resultat.getString(13));
-					editeur = new Editeur(resultat.getInt(14), resultat.getString(15));
-					genre = new Genre(resultat.getInt(16), resultat.getString(17));
 
 					jeu = new Jeu(id_Jeu, titre_Jeu, date_Sortie_Jeu, description, imgJeu, classification, editeur, genre, developpeur);
 					listeJeux.add(jeu);
@@ -129,5 +156,53 @@ public class JeuDaoImpl implements JeuDao
 			System.out.println("Erreur sql" + e.getMessage());
 		}
 		return listeJeux;
+	}
+
+	public Classification getClassificationByID(List<Classification> listeClassifications, int id)
+	{
+		for (Classification classification : listeClassifications)
+		{
+			if (classification.getIdClassification() == id)
+			{
+				return classification;
+			}
+		}
+		return null;
+	}
+
+	public Developpeur getDeveloppeurByID(List<Developpeur> listeDeveloppeurs, int id)
+	{
+		for (Developpeur developpeur : listeDeveloppeurs)
+		{
+			if (developpeur.getIdDeveloppeur() == id)
+			{
+				return developpeur;
+			}
+		}
+		return null;
+	}
+
+	public Genre getGenreByID(List<Genre> listeGenres, int id)
+	{
+		for (Genre genre : listeGenres)
+		{
+			if (genre.getIdGenre() == id)
+			{
+				return genre;
+			}
+		}
+		return null;
+	}
+
+	public Editeur getEditeurByID(List<Editeur> listeEditeurs, int id)
+	{
+		for (Editeur editeur : listeEditeurs)
+		{
+			if (editeur.getIdEditeur() == id)
+			{
+				return editeur;
+			}
+		}
+		return null;
 	}
 }
