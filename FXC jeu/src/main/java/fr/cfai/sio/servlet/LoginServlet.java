@@ -109,19 +109,19 @@ public class LoginServlet extends HttpServlet
 			listeJeux = jeuServiceImpl.recupererListeJeux();
 			request.setAttribute("LISTE_JEUX", listeJeux);
 			
-			List<Test> listeTests = null;
-			listeTests = testServiceImpl.recupererListeTests();
-			request.setAttribute("LISTE_TESTS", listeTests);
+			//List<Test> listeTests = null;
+		//	listeTests = testServiceImpl.recupererListeTests();
+		//	request.setAttribute("LISTE_TESTS", listeTests);
 			
 			//Test MM
-			List<Test> listeTestsMM = null;
-			listeTestsMM = testServiceImpl.recupererListeTestsMM();
-			request.setAttribute("LISTE_TESTS", listeTestsMM);
+		//	List<Test> listeTestsMM = null;
+		//	listeTestsMM = testServiceImpl.recupererListeTestsMM();
+		//	request.setAttribute("LISTE_TESTS", listeTestsMM);
 			
-			//request.getRequestDispatcher("/listeTests.jsp").forward(request, response);
+			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
 			
 			//Test MM
-			request.getRequestDispatcher("/listeTestsMM.jsp").forward(request, response);
+			//request.getRequestDispatcher("/listeTestsMM.jsp").forward(request, response);
 
 
 		}

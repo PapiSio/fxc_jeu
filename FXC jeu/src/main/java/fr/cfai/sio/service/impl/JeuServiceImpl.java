@@ -1,6 +1,5 @@
 package fr.cfai.sio.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.dao.JeuDao;
@@ -12,6 +11,8 @@ public class JeuServiceImpl implements JeuService
 
 	private JeuDao jeuDaoImpl;
 
+	private List<Jeu> listeJeux;
+
 	public JeuServiceImpl() throws Exception
 	{
 		super();
@@ -22,20 +23,26 @@ public class JeuServiceImpl implements JeuService
 	public Jeu recupereJeuParID(int idJeu)
 	{
 		Jeu jeu = null;
-		
-		jeu=jeuDaoImpl.findJeuById(idJeu);
-		
+
+		jeu = jeuDaoImpl.findJeuById(idJeu);
+
 		return jeu;
 	}
 
 	@Override
 	public List<Jeu> recupererListeJeux()
 	{
-		List<Jeu> listeJeux = new ArrayList<>();
-		
-		listeJeux = jeuDaoImpl.findAllJeux();
 
-		return listeJeux;
+		if (listeJeux == null)
+		{
+			System.out.println("Service : Passe par le if, liste null");
+			listeJeux = jeuDaoImpl.findAllJeux();
+			return listeJeux;
+		}
+		else
+		{
+			System.out.println("Service : Passe par le else, liste not null");
+			return listeJeux;
+		}
 	}
-
 }

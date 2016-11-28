@@ -19,7 +19,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="hvr-bounce-to-bottom active"><a href="listeTests.jsp">Les tests</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="listeJeux.jsp">Les jeux </a></li>
+					<li class="hvr-bounce-to-bottom"><a href="ListeJeuxServlet">Les jeux </a></li>
 					<!-- <li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
 					<li class="hvr-bounce-to-bottom"><a href="Portfolio.html">Portfolio</a></li>
 					<li class="hvr-bounce-to-bottom"><a href="contact.html">Contact
