@@ -1,5 +1,7 @@
 package fr.cfai.sio.business;
 
+import java.util.List;
+
 /**
  * Commentaire OK
  * 
@@ -14,6 +16,7 @@ public class Support
 	 */
 	private int idSupport;
 	private String libelleSupport;
+	private List<Jeu> listeJeux;
 
 	/**
 	 * Constructeur de Support
@@ -70,5 +73,16 @@ public class Support
 	public void setLibelleSupport(String libelleSupport)
 	{
 		this.libelleSupport = libelleSupport;
+	}
+
+	/**
+	 * Permet d'ajouter un objet Jeu à la liste de jeu
+	 * 
+	 * @param jeu
+	 *            un objet Jeu
+	 */
+	public void addJeu(Jeu jeu)
+	{
+		this.listeJeux.add(jeu);
 	}
 }

@@ -1,5 +1,7 @@
 package fr.cfai.sio.business;
 
+import java.util.List;
+
 /**
  * Commentaire OK
  * 
@@ -14,6 +16,7 @@ public class ModeleEconomique
 	 */
 	private int idModeleEco;
 	private String libelleModeleEco;
+	private List<Jeu> listeJeux;
 
 	/**
 	 * Constructeur de ModeleEconomique
@@ -70,5 +73,16 @@ public class ModeleEconomique
 	public void setLibelleModeleEco(String libelleModeleEco)
 	{
 		this.libelleModeleEco = libelleModeleEco;
+	}
+
+	/**
+	 * Permet d'ajouter un objet Jeu à la liste de jeu
+	 * 
+	 * @param jeu
+	 *            un objet Jeu
+	 */
+	public void addJeu(Jeu jeu)
+	{
+		this.listeJeux.add(jeu);
 	}
 }

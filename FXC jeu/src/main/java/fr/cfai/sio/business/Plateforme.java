@@ -1,5 +1,7 @@
 package fr.cfai.sio.business;
 
+import java.util.List;
+
 /**
  * Commentaire OK
  * 
@@ -13,6 +15,7 @@ public class Plateforme
 	 */
 	private int idPlateforme;
 	private String libellePlateforme;
+	private List<Jeu> listeJeux;
 
 	/**
 	 * Constructeur de Plateforme
@@ -69,6 +72,17 @@ public class Plateforme
 	public void setLibellePlateforme(String libellePlateforme)
 	{
 		this.libellePlateforme = libellePlateforme;
+	}
+
+	/**
+	 * Permet d'ajouter un objet Jeu à la liste de jeu
+	 * 
+	 * @param jeu
+	 *            un objet Jeu
+	 */
+	public void addJeu(Jeu jeu)
+	{
+		this.listeJeux.add(jeu);
 	}
 
 }

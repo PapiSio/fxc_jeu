@@ -1,5 +1,6 @@
 package fr.cfai.sio.business;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class Jeu
 	private Genre genre;
 	private Developpeur developpeur;
 	private List<Test> listeTests;
+	
+	private List<ModeleEconomique> listeModeleEconomiques;
+	private List<Plateforme> listePlateformes;
+	private List<Support> listeSupports;
 
 	/**
 	 * Constructeur de Jeu
@@ -59,6 +64,7 @@ public class Jeu
 		this.editeur = editeur;
 		this.genre = genre;
 		this.developpeur = developpeur;
+		this.listeSupports=new ArrayList<>();
 	}
 
 	// Test VMELE
@@ -277,6 +283,56 @@ public class Jeu
 		this.listeTests = listeTests;
 	}
 
+	
+	
+	/**
+	 * @return the listeModeleEconomiques
+	 */
+	public List<ModeleEconomique> getListeModeleEconomiques()
+	{
+		return listeModeleEconomiques;
+	}
+
+	/**
+	 * @param listeModeleEconomiques the listeModeleEconomiques to set
+	 */
+	public void setListeModeleEconomiques(List<ModeleEconomique> listeModeleEconomiques)
+	{
+		this.listeModeleEconomiques = listeModeleEconomiques;
+	}
+
+	/**
+	 * @return the listePlateformes
+	 */
+	public List<Plateforme> getListePlateformes()
+	{
+		return listePlateformes;
+	}
+
+	/**
+	 * @param listePlateformes the listePlateformes to set
+	 */
+	public void setListePlateformes(List<Plateforme> listePlateformes)
+	{
+		this.listePlateformes = listePlateformes;
+	}
+
+	/**
+	 * @return the listeSupports
+	 */
+	public List<Support> getListeSupports()
+	{
+		return listeSupports;
+	}
+
+	/**
+	 * @param listeSupports the listeSupports to set
+	 */
+	public void setListeSupports(List<Support> listeSupports)
+	{
+		this.listeSupports = listeSupports;
+	}
+
 	/**
 	 * Permet d'ajouter un objet Test à la liste des tests
 	 * 
@@ -286,5 +342,38 @@ public class Jeu
 	public void addTest(Test test)
 	{
 		this.listeTests.add(test);
+	}
+	
+	/**
+	 * Permet d'ajouter un objet ModeleEconomique à la liste des modèles économiques
+	 * 
+	 * @param modeleEconomique
+	 *            un objet modeleEconomique
+	 */
+	public void addModeleEco(ModeleEconomique modeleEconomique)
+	{
+		this.listeModeleEconomiques.add(modeleEconomique);
+	}
+	
+	/**
+	 * Permet d'ajouter un objet Plateforme à la liste des Plateformes
+	 * 
+	 * @param plateforme
+	 *            un objet Plateforme
+	 */
+	public void addPlateforme(Plateforme plateforme)
+	{
+		this.listePlateformes.add(plateforme);
+	}
+	
+	/**
+	 * Permet d'ajouter un objet Support à la liste des Support
+	 * 
+	 * @param support
+	 *            un objet Support
+	 */
+	public void addSupport(Support support)
+	{
+		this.listeSupports.add(support);
 	}
 }

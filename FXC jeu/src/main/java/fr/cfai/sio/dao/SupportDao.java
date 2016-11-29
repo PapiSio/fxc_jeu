@@ -26,4 +26,13 @@ public interface SupportDao
 	 * @return
 	 */
 	public List<Support> findAllSupports();
+
+	/**
+	 * Permet de récupérer la liste des supports en fonction d'un jeu
+	 * 
+	 * @param idJeu
+	 *            ID du jeu
+	 * @return La liste des supports du jeu
+	 */
+	public List<Support> findAllSupportsByJeu(int idJeu);
 }
