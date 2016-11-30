@@ -72,6 +72,7 @@ public class Jeu
 	public Jeu(int id_Jeu)
 	{
 		this.idJeu = id_Jeu;
+		
 	}
 
 	/**

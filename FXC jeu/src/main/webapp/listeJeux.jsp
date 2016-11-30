@@ -4,21 +4,12 @@
 		<!-- header -->
 		<%@ include file="entete.jsp"%>
 		<!-- //header -->
-		
+
 		<c:forEach items="${LISTE_JEUX}" var="jeu">
-		<a href="JeuServlet?idJeu=${jeu.idJeu}" ><img src="${jeu.imgJeu}"/></a>
-		<!-- <p>ID : ${jeu.idJeu}</p>
-		<p>Titre : ${jeu.titreJeu}</p>
-		<p>Date : ${jeu.dateSortieJeu}</p>
-		<p>Description : ${jeu.description}</p>
-		<p>Class : ${jeu.classification.getLibelleClassification()}</p>
-		<p>Image : ${jeu.imgJeu}</p>
-		<p>Editeur : ${jeu.editeur.getRaisonSociale()}</p>
-		<p>Genre : ${jeu.genre.getLibelleGenre()}</p>
-		<p>Dev : ${jeu.developpeur.getRaisonSociale()}</p> -->
-		<br>
+			<a href="JeuServlet?idJeu=${jeu.idJeu}"><img src="${jeu.imgJeu}" /></a>
+			<br>
 		</c:forEach>
-		
+
 		<!-- portfolio -->
 		<div class="portfolio">
 			<h3>Les jeux de TestiJeux</h3>
@@ -30,7 +21,9 @@
 								<div class="ch-info">
 									<div class="ch-info-front ch-img-1"></div>
 									<div class="ch-info-back">
-										<h3><a href="index.jsp">WoW</a></h3>
+										<h3>
+											<a href="index.jsp">WoW</a>
+										</h3>
 										<p>World of warcraft.</p>
 									</div>
 								</div>
@@ -43,7 +36,9 @@
 								<div class="ch-info">
 									<div class="ch-info-front ch-img-2"></div>
 									<div class="ch-info-back">
-										<h3><a href="index.jsp">WoW</a></h3>
+										<h3>
+											<a href="index.jsp">WoW</a>
+										</h3>
 										<p>World of warcraft.</p>
 									</div>
 								</div>
