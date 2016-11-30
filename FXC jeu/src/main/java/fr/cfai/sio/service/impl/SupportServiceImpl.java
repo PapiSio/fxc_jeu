@@ -1,5 +1,6 @@
 package fr.cfai.sio.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import fr.cfai.sio.business.Support;
 import fr.cfai.sio.dao.SupportDao;
@@ -39,6 +40,16 @@ public class SupportServiceImpl implements SupportService
 		support = supportDaoImpl.findSupportById(idSupport);
 
 		return support;
+	}
+
+	@Override
+	public List<Support> recupererListeSupportsParJeu(int idJeu)
+	{
+		List<Support> listeSupportsParID = new ArrayList<>();
+
+		listeSupportsParID = supportDaoImpl.findAllSupportsByJeu(idJeu);
+
+		return listeSupportsParID;
 	}
 
 }

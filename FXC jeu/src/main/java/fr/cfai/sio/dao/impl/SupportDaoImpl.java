@@ -117,5 +117,4 @@ public class SupportDaoImpl implements SupportDao
 		}
 		return listeSupports;
 	}
-
 }

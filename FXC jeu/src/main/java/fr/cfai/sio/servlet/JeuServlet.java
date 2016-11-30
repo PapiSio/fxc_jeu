@@ -1,14 +1,24 @@
 package fr.cfai.sio.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import fr.cfai.sio.business.Jeu;
+import fr.cfai.sio.business.ModeleEconomique;
+import fr.cfai.sio.business.Plateforme;
 import fr.cfai.sio.business.Support;
+import fr.cfai.sio.service.JeuService;
+import fr.cfai.sio.service.ModeleEconomiqueService;
+import fr.cfai.sio.service.PlateformeService;
+import fr.cfai.sio.service.SupportService;
 import fr.cfai.sio.service.impl.JeuServiceImpl;
+import fr.cfai.sio.service.impl.ModeleEconomiqueServiceImpl;
+import fr.cfai.sio.service.impl.PlateformeServiceImpl;
+import fr.cfai.sio.service.impl.SupportServiceImpl;
 
 /**
  * Servlet implementation class JeuServlet
@@ -16,7 +26,10 @@ import fr.cfai.sio.service.impl.JeuServiceImpl;
 public class JeuServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	private JeuServiceImpl jeuServiceImpl;
+	private JeuService jeuServiceImpl;
+	private SupportService supportServiceImpl;
+	private PlateformeService plateformeServiceImpl;
+	private ModeleEconomiqueService modeleEconomiqueServiceImpl;
 
 	/**
 	 * @throws Exception
@@ -26,6 +39,9 @@ public class JeuServlet extends HttpServlet
 	{
 		super();
 		this.jeuServiceImpl = new JeuServiceImpl();
+		this.supportServiceImpl = new SupportServiceImpl();
+		this.plateformeServiceImpl = new PlateformeServiceImpl();
+		this.modeleEconomiqueServiceImpl = new ModeleEconomiqueServiceImpl();
 	}
 
 	/**
@@ -34,41 +50,28 @@ public class JeuServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		System.out.println("jeuServlet : passe par DoGET");
-		int idJeu = Integer.parseInt(request.getParameter("idJeu"));
+		int idJeu;
+		Jeu jeu;
+		List<Support> listeSupports = new ArrayList<Support>();
+		List<Plateforme> listePlateformes = new ArrayList<Plateforme>();
+		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 
-		Jeu jeu = jeuServiceImpl.recupereJeuParID(idJeu);
+		idJeu = Integer.parseInt(request.getParameter("idJeu"));
+
+		jeu = jeuServiceImpl.recupereJeuParID(idJeu);
+
+		listeSupports = supportServiceImpl.recupererListeSupportsParJeu(idJeu);
+		listePlateformes = plateformeServiceImpl.recupererListePlateformesParJeu(idJeu);
+		listeModeleEconomiques = modeleEconomiqueServiceImpl.recupererListeModeleEconomiquesParJeu(idJeu);
+
+		jeu.setListeSupports(listeSupports);
+		jeu.setListePlateformes(listePlateformes);
+		jeu.setListeModeleEconomiques(listeModeleEconomiques);
 
 		request.setAttribute("JEU", jeu);
 
-		if (jeu.getListeSupports() == null)
-		{
-			System.out.println("Liste support null");
-		}
-		else
-		{
-			System.out.println("Liste support NON null");
-			System.out.println(jeu.getListeSupports());
-			
-			List<Support> ListeSupp = jeu.getListeSupports();
-
-			if (ListeSupp == null)
-			{
-				System.out.println("ListeSupp null");
-			}
-			else
-			{
-				System.out.println("ListeSupp NON null");
-				System.out.println(ListeSupp);
-				for (Support support : ListeSupp)
-				{
-					System.out.println("Passe ds foreach liste support");
-					System.out.println(support.getLibelleSupport() + " ; ");
-				}
-			}
-		}
-
 		request.getRequestDispatcher("/jeu.jsp").forward(request, response);
+
 	}
 
 	/**

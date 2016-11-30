@@ -25,7 +25,6 @@ public class Jeu
 	private Genre genre;
 	private Developpeur developpeur;
 	private List<Test> listeTests;
-	
 	private List<ModeleEconomique> listeModeleEconomiques;
 	private List<Plateforme> listePlateformes;
 	private List<Support> listeSupports;
@@ -64,7 +63,9 @@ public class Jeu
 		this.editeur = editeur;
 		this.genre = genre;
 		this.developpeur = developpeur;
-		this.listeSupports=new ArrayList<>();
+		this.listeSupports = new ArrayList<>();
+		this.listePlateformes = new ArrayList<>();
+		this.listeModeleEconomiques = new ArrayList<>();
 	}
 
 	// Test VMELE
@@ -283,8 +284,6 @@ public class Jeu
 		this.listeTests = listeTests;
 	}
 
-	
-	
 	/**
 	 * @return the listeModeleEconomiques
 	 */
@@ -294,7 +293,8 @@ public class Jeu
 	}
 
 	/**
-	 * @param listeModeleEconomiques the listeModeleEconomiques to set
+	 * @param listeModeleEconomiques
+	 *            the listeModeleEconomiques to set
 	 */
 	public void setListeModeleEconomiques(List<ModeleEconomique> listeModeleEconomiques)
 	{
@@ -310,7 +310,8 @@ public class Jeu
 	}
 
 	/**
-	 * @param listePlateformes the listePlateformes to set
+	 * @param listePlateformes
+	 *            the listePlateformes to set
 	 */
 	public void setListePlateformes(List<Plateforme> listePlateformes)
 	{
@@ -326,7 +327,8 @@ public class Jeu
 	}
 
 	/**
-	 * @param listeSupports the listeSupports to set
+	 * @param listeSupports
+	 *            the listeSupports to set
 	 */
 	public void setListeSupports(List<Support> listeSupports)
 	{
@@ -343,9 +345,10 @@ public class Jeu
 	{
 		this.listeTests.add(test);
 	}
-	
+
 	/**
-	 * Permet d'ajouter un objet ModeleEconomique à la liste des modèles économiques
+	 * Permet d'ajouter un objet ModeleEconomique à la liste des modèles
+	 * économiques
 	 * 
 	 * @param modeleEconomique
 	 *            un objet modeleEconomique
@@ -354,7 +357,7 @@ public class Jeu
 	{
 		this.listeModeleEconomiques.add(modeleEconomique);
 	}
-	
+
 	/**
 	 * Permet d'ajouter un objet Plateforme à la liste des Plateformes
 	 * 
@@ -365,7 +368,7 @@ public class Jeu
 	{
 		this.listePlateformes.add(plateforme);
 	}
-	
+
 	/**
 	 * Permet d'ajouter un objet Support à la liste des Support
 	 * 

@@ -7,11 +7,8 @@ import fr.cfai.sio.business.Developpeur;
 import fr.cfai.sio.business.Editeur;
 import fr.cfai.sio.business.Genre;
 import fr.cfai.sio.business.Jeu;
-import fr.cfai.sio.business.Support;
 import fr.cfai.sio.dao.JeuDao;
-import fr.cfai.sio.dao.SupportDao;
 import fr.cfai.sio.dao.impl.JeuDaoImpl;
-import fr.cfai.sio.dao.impl.SupportDaoImpl;
 import fr.cfai.sio.service.ClassificationService;
 import fr.cfai.sio.service.DeveloppeurService;
 import fr.cfai.sio.service.EditeurService;
@@ -26,7 +23,6 @@ public class JeuServiceImpl implements JeuService
 	private DeveloppeurService developpeurServiceImpl;
 	private EditeurService editeurServiceImpl;
 	private GenreService genreServiceImpl;
-	private SupportDao supportDaoImpl;
 
 	private List<Jeu> listeJeux;
 
@@ -38,7 +34,6 @@ public class JeuServiceImpl implements JeuService
 		this.developpeurServiceImpl = new DeveloppeurServiceImpl();
 		this.editeurServiceImpl = new EditeurServiceImpl();
 		this.genreServiceImpl = new GenreServiceImpl();
-		this.supportDaoImpl = new SupportDaoImpl();
 	}
 
 	@Override
@@ -71,8 +66,7 @@ public class JeuServiceImpl implements JeuService
 
 			System.out.println("ServiceJEU : Passe par le if, liste null");
 			listeJeux = jeuDaoImpl.findAllJeux(listeClassifications, listeDeveloppeurs, listeEditeurs, listeGenres);
-			List<Jeu> listeJeuxModif=ajoutSupport(listeJeux);
-			return listeJeuxModif;
+			return listeJeux;
 		}
 		else
 		{
@@ -80,27 +74,4 @@ public class JeuServiceImpl implements JeuService
 			return listeJeux;
 		}
 	}
-
-	public List<Jeu> ajoutSupport(List<Jeu> listeJeux)
-	{
-		System.out.println("ServiceJEU : Passe par ajoutSupport()");
-		
-		List<Jeu> listeJeuxModif=new ArrayList<>();
-		List<Support> listeSupports = new ArrayList<>();
-		for (Jeu jeu : listeJeux)
-		{
-			//listeJeux.remove(jeu);
-			listeSupports = supportDaoImpl.findAllSupportsByJeu(jeu.getIdJeu());
-			for (Support support : listeSupports)
-			{
-				//System.out.println(support.getLibelleSupport()+" ; ");
-				jeu.addSupport(support);
-			}
-			listeJeuxModif.add(jeu);
-		}
-		
-		return listeJeuxModif;
-	}
-	
-	
 }

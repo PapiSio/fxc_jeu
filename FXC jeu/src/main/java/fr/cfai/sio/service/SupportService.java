@@ -27,4 +27,13 @@ public interface SupportService
 	 * @return Liste des supports
 	 */
 	public List<Support> recupererListeSupports();
+
+	/**
+	 * Pertmet de récupérer une liste des supports en fonction de l'id d'un jeu
+	 * 
+	 * @param idJeu
+	 *            ID du jeu
+	 * @return Liste des support du jeu
+	 */
+	public List<Support> recupererListeSupportsParJeu(int idJeu);
 }
