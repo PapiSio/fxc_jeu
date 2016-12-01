@@ -8,7 +8,7 @@ import java.util.List;
 import fr.cfai.sio.business.Editeur;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.EditeurDao;
-import fr.cfai.sio.dao.requete.GenreRequete;
+import fr.cfai.sio.dao.requete.EditeurRequete;
 
 public class EditeurDaoImpl implements EditeurDao
 {
@@ -43,7 +43,7 @@ public class EditeurDaoImpl implements EditeurDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(GenreRequete.FIND_ALL_GENRES);
+			ResultSet resultat = createObjReq.executeQuery(EditeurRequete.FIND_ALL_EDITEURS);
 
 			if (resultat != null)
 			{

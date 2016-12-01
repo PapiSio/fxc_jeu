@@ -1,6 +1,7 @@
 package fr.cfai.sio.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,16 +17,18 @@ import fr.cfai.sio.service.impl.JeuServiceImpl;
 public class ListeJeuxServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
+
 	private JeuService jeuServiceImpl;
 	private List<Jeu> listeJeux;
 
 	/**
-	 * @throws Exception 
+	 * @throws Exception
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ListeJeuxServlet() throws Exception
 	{
-		this.jeuServiceImpl=new JeuServiceImpl();
+		this.jeuServiceImpl = new JeuServiceImpl();
+		this.listeJeux = new ArrayList<>();
 	}
 
 	/**
@@ -37,17 +40,12 @@ public class ListeJeuxServlet extends HttpServlet
 
 		if (listeJeux == null)
 		{
-			System.out.println("Servlet : Passe par le if, liste null");
+			// System.out.println("Servlet : Passe par le if, liste null");
 			listeJeux = jeuServiceImpl.recupererListeJeux();
-			request.setAttribute("LISTE_JEUX", listeJeux);
-			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
 		}
-		else
-		{
-			System.out.println("Servlet : Passe par le else, liste not null");
-			request.setAttribute("LISTE_JEUX", listeJeux);
-			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
-		}
+
+		request.setAttribute("LISTE_JEUX", listeJeux);
+		request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
 	}
 
 	/**
@@ -58,5 +56,4 @@ public class ListeJeuxServlet extends HttpServlet
 	{
 
 	}
-
 }

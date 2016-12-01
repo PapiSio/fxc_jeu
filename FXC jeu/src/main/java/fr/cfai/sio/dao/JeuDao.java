@@ -1,10 +1,6 @@
 package fr.cfai.sio.dao;
 
 import java.util.List;
-import fr.cfai.sio.business.Classification;
-import fr.cfai.sio.business.Developpeur;
-import fr.cfai.sio.business.Editeur;
-import fr.cfai.sio.business.Genre;
 import fr.cfai.sio.business.Jeu;
 
 /**
@@ -31,6 +27,5 @@ public interface JeuDao
 	 */
 	//public List<Jeu> findAllJeux();
 
-	public List<Jeu> findAllJeux(List<Classification> listeClassifications, List<Developpeur> listeDeveloppeurs, List<Editeur> listeEditeurs,
-			List<Genre> listeGenres);
+	public List<Jeu> findAllJeux();
 }

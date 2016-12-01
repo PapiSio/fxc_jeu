@@ -30,7 +30,7 @@ public class Jeu
 	private List<Support> listeSupports;
 
 	/**
-	 * Constructeur de Jeu
+	 * Constructeur Standard de Jeu
 	 * 
 	 * @param id_Jeu
 	 *            ID du jeu
@@ -72,7 +72,21 @@ public class Jeu
 	public Jeu(int id_Jeu)
 	{
 		this.idJeu = id_Jeu;
-		
+
+	}
+
+	/**
+	 * Constructeur pour la liste des jeux de la page listeJeux.jsp
+	 * 
+	 * @param id_Jeu
+	 *            Id du jeu
+	 * @param img_Jeu
+	 *            Image du jeu
+	 */
+	public Jeu(int id_Jeu, String img_Jeu)
+	{
+		this.idJeu = id_Jeu;
+		this.imgJeu = img_Jeu;
 	}
 
 	/**

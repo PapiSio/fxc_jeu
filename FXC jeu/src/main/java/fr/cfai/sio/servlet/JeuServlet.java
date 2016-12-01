@@ -26,6 +26,7 @@ import fr.cfai.sio.service.impl.SupportServiceImpl;
 public class JeuServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
+
 	private JeuService jeuServiceImpl;
 	private SupportService supportServiceImpl;
 	private PlateformeService plateformeServiceImpl;
@@ -51,7 +52,8 @@ public class JeuServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		int idJeu;
-		Jeu jeu;
+		Jeu jeu = null;
+
 		List<Support> listeSupports = new ArrayList<Support>();
 		List<Plateforme> listePlateformes = new ArrayList<Plateforme>();
 		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
