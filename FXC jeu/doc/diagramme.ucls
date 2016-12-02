@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="fr.cfai.sio.business.Jeu" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Jeu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="621" width="514" x="484" y="1197"/>    
+    <position height="801" width="379" x="362" y="1197"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,205 +12,191 @@
   </class>  
   <class id="2" language="java" name="fr.cfai.sio.business.Genre" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Genre.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="164" x="280" y="1858"/>    
+    <position height="243" width="164" x="41" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="fr.cfai.sio.business.Lire" project="FXC jeu" 
-    file="/FXC jeu/src/main/java/fr/cfai/sio/business/Lire.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="174" x="48" y="446"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="fr.cfai.sio.business.Classification" project="FXC jeu" 
+  <class id="3" language="java" name="fr.cfai.sio.business.Classification" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Classification.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="194" x="484" y="1858"/>    
+    <position height="243" width="194" x="245" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="fr.cfai.sio.business.Support" project="FXC jeu" 
+  <class id="4" language="java" name="fr.cfai.sio.business.Support" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Support.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="168" x="1498" y="1197"/>    
+    <position height="225" width="168" x="180" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="fr.cfai.sio.business.Utilisateur" project="FXC jeu" 
+  <class id="5" language="java" name="fr.cfai.sio.business.Utilisateur" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Utilisateur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="495" width="405" x="1320" y="2303"/>    
+    <position height="567" width="254" x="1062" y="2038"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="fr.cfai.sio.business.Image" project="FXC jeu" 
+  <class id="6" language="java" name="fr.cfai.sio.business.Image" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Image.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="405" width="259" x="1019" y="1858"/>    
+    <position height="369" width="239" x="781" y="1197"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="fr.cfai.sio.business.Plateforme" project="FXC jeu" 
+  <class id="7" language="java" name="fr.cfai.sio.business.Plateforme" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Plateforme.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="181" x="41" y="1197"/>    
+    <position height="225" width="181" x="885" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="fr.cfai.sio.business.Payer" project="FXC jeu" 
-    file="/FXC jeu/src/main/java/fr/cfai/sio/business/Payer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="256" x="262" y="446"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="fr.cfai.sio.business.Note" project="FXC jeu" 
+  <class id="8" language="java" name="fr.cfai.sio.business.Note" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Note.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="115" x="1080" y="1197"/>    
+    <position height="225" width="119" x="1102" y="1197"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="fr.cfai.sio.business.Commentaire" project="FXC jeu" 
+  <class id="9" language="java" name="fr.cfai.sio.business.Commentaire" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Commentaire.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="267" x="1687" y="37"/>    
+    <position height="369" width="267" x="1242" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="fr.cfai.sio.business.Test" project="FXC jeu" 
+  <class id="10" language="java" name="fr.cfai.sio.business.Test" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Test.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="711" width="459" x="1019" y="446"/>    
+    <position height="711" width="326" x="895" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="fr.cfai.sio.business.Developpeur" project="FXC jeu" 
+  <class id="11" language="java" name="fr.cfai.sio.business.Developpeur" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Developpeur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="186" x="558" y="446"/>    
+    <position height="243" width="168" x="687" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="fr.cfai.sio.business.Stocker" project="FXC jeu" 
-    file="/FXC jeu/src/main/java/fr/cfai/sio/business/Stocker.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="148" x="1518" y="446"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="fr.cfai.sio.business.Editeur" project="FXC jeu" 
+  <class id="12" language="java" name="fr.cfai.sio.business.Editeur" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/Editeur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="168" x="718" y="1858"/>    
+    <position height="243" width="168" x="479" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="fr.cfai.sio.business.ModeleEconomique" project="FXC jeu" 
+  <class id="13" language="java" name="fr.cfai.sio.business.ModeleEconomique" project="FXC jeu" 
     file="/FXC jeu/src/main/java/fr/cfai/sio/business/ModeleEconomique.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="182" x="262" y="1197"/>    
+    <position height="225" width="182" x="526" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="17">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="18" name="test">        
+  <association id="14">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="15" name="jeu">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="21" name="ListeImages">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="24" name="listeJeux">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="25" minimum="0" maximum="2147483647">        
+      <multiplicity id="16" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="17">    
+    <bendpoint x="1071" y="1197"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="18" name="ListeTests">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="21" name="genre">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="24" name="listeNotes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="26">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="27" name="support">        
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="27" name="developpeur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="28" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="29">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="30" name="editeur">        
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="30" name="test">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="31" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="32">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="33" name="jeu">        
+      <attribute id="33" name="listeJeux">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
+      <multiplicity id="34" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
@@ -218,64 +204,59 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="35">    
-    <bendpoint x="1329" y="1858"/>    
-    <bendpoint x="1329" y="1197"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="36" name="ListeTests">        
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="36" name="listeImages">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="37" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="38">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="39" name="utilisateur">        
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="39" name="classification">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="40" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="41">    
-    <bendpoint x="1717" y="1858"/>    
-    <bendpoint x="1717" y="1197"/>    
-    <bendpoint x="1717" y="446"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="42" name="ListeCommentaires">        
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="42" name="listeJeux">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="43" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="44">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="45" name="modeleEconomique">        
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="45" name="utilisateur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="46" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="47">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="48" name="listeNotes">        
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="48" name="test">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="49" minimum="0" maximum="2147483647">        
+      <multiplicity id="49" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
@@ -283,15 +264,17 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="50">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="51" name="classification">        
+    <bendpoint x="1251" y="446"/>    
+    <bendpoint x="1251" y="1197"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="51" name="utilisateur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="52" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="53">    
@@ -303,51 +286,53 @@
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="56">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="57" name="genre">        
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="57" name="ListeImages">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
+      <multiplicity id="58" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="59">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="60" name="listeJeux">        
+    <bendpoint x="1272" y="1197"/>    
+    <bendpoint x="1272" y="446"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="60" name="ListeCommentaires">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="61" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="62">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="63" name="listeJeux">        
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="63" name="editeur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="64" minimum="0" maximum="2147483647">        
+      <multiplicity id="64" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="65">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="66" name="jeu">        
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="66" name="listeJeux">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="67" minimum="0" maximum="1">        
+      <multiplicity id="67" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
@@ -355,130 +340,40 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="68">    
-    <bendpoint x="1049" y="1197"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="69" name="test">        
+    <bendpoint x="1050" y="1197"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="69" name="utilisateur">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="70" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="71">    
-    <bendpoint x="1028" y="1197"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="72" name="listeImages">        
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="72" name="test">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="73" minimum="0" maximum="2147483647">        
+      <multiplicity id="73" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="74">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="75" name="jeu">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="76" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="77">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="78" name="jeu">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="79" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="80">    
-    <bendpoint x="1308" y="1197"/>    
-    <bendpoint x="1308" y="1858"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="81" name="utilisateur">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="82" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="83">    
-    <bendpoint x="1696" y="446"/>    
-    <bendpoint x="1696" y="1197"/>    
-    <bendpoint x="1696" y="1858"/>    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="84" name="utilisateur">        
+      <attribute id="75" name="listeJeux">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="85" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="86">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="87" name="plateforme">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="88" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="89">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="90" name="listeJeux">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="91" minimum="0" maximum="2147483647">        
+      <multiplicity id="76" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="92">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="93" name="developpeur">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="94" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="95">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="96" name="test">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="97" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

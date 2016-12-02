@@ -6,27 +6,28 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fr.cfai.sio.business.Jeu;
-import fr.cfai.sio.service.JeuService;
-import fr.cfai.sio.service.impl.JeuServiceImpl;
+import fr.cfai.sio.business.Test;
+import fr.cfai.sio.service.TestService;
+import fr.cfai.sio.service.impl.TestServiceImpl;
 
 /**
- * Servlet implementation class ListeJeuxServlet
+ * Servlet implementation class ListeTestsServlet
  */
-public class ListeJeuxServlet extends HttpServlet
+public class ListeTestsServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-
-	private JeuService jeuServiceImpl;
-	private List<Jeu> listeJeux;
+	
+	private TestService testServiceImpl;
+	private List<Test> listeTests;
 
 	/**
-	 * @throws Exception
+	 * @throws Exception 
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListeJeuxServlet() throws Exception
+	public ListeTestsServlet() throws Exception
 	{
-		this.jeuServiceImpl = new JeuServiceImpl();
+		super();
+		this.testServiceImpl=new TestServiceImpl();
 	}
 
 	/**
@@ -35,15 +36,14 @@ public class ListeJeuxServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
-		if (listeJeux == null)
+		if (listeTests == null)
 		{
 			// System.out.println("Servlet : Passe par le if, liste null");
-			listeJeux = jeuServiceImpl.recupererListeJeux();
+			listeTests = testServiceImpl.recupererListeTests();
 		}
 
-		request.setAttribute("LISTE_JEUX", listeJeux);
-		request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+		request.setAttribute("LISTE_TESTS", listeTests);
+		request.getRequestDispatcher("/listeTests.jsp").forward(request, response);
 	}
 
 	/**
@@ -52,6 +52,8 @@ public class ListeJeuxServlet extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }

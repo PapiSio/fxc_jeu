@@ -27,7 +27,4 @@ public interface TestService
 	 * @return Liste de tests
 	 */
 	public List<Test> recupererListeTests();
-
-	// Test MM
-	public List<Test> recupererListeTestsMM();
 }

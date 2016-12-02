@@ -3,7 +3,7 @@
 	<div class="container">
 		<!-- header -->
 		<%@ include file="entete.jsp"%>
-		<a href="DeconnexionServlet">Se déconnecter</a>
+		<!-- <a href="DeconnexionServlet">Se déconnecter</a> -->
 		<!-- //header -->
 		<!-- ce qui gÃ¨re les icons des rÃ©seaux sociaux -->
 		<div class="header-bottom">
@@ -13,6 +13,7 @@
 			<div class="clearfix"></div>
 			<!-- banner -->
 			<div class="banner">
+
 				<!-- Partie qui gère le slider texte, une fois encore le script ici, bof. -->
 
 				<!--//End-slider-script -->
@@ -44,6 +45,16 @@
 					</ul>
 				</div>
 			</div>
+
+			<c:forEach items="${LISTE_TESTS}" var="test">
+				<p>
+					Titre du test : <a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
+				</p>
+				<p>Date du test : ${test.dateTest}</p>
+				<p>Description du test : ${test.descriptionTest}</p>
+				<br>
+				<br>
+			</c:forEach>
 			<!-- blog -->
 			<div class="blog">
 				<!-- Gros bloc de tests de jeux -->
@@ -84,12 +95,13 @@
 							a de moins en moins de monde blablabla, ça pue du cul, etc.</p>
 					</div>
 				</div>
-				
-				<p> <a href="TestServlet?action=addTest">Ajouter un test.</a>'
 
-				<p> PASSE PAR LA </p>
+				<p>
+					<a href="TestServlet?action=addTest">Ajouter un test.</a>'
+				<p>PASSE PAR LA</p>
 				<c:forEach items="${LISTE_TESTS}" var="test">
-					<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a  ${test.jeu.getTitreJeu()}</a>
+					<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
+						${test.jeu.getTitreJeu()}</a>
 
 					<br>
 				</c:forEach>

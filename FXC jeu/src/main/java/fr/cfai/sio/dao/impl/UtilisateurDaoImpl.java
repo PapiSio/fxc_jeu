@@ -65,7 +65,37 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 	@Override
 	public Utilisateur findUtilisateurById(int idUtilisateur)
 	{
-		return null;
+		String login;
+		String mdp;
+		Utilisateur utilisateur = null;
+
+		try
+		{
+			PreparedStatement resultatPrepa = objConnect.prepareStatement(UtilisateurRequete.FIND_UTILISATEUR_BY_ID);
+			resultatPrepa.setInt(1, idUtilisateur);
+			ResultSet resultat = resultatPrepa.executeQuery();
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					login = resultat.getString(1);
+					mdp = resultat.getString(2);
+
+					utilisateur = new Utilisateur(login, mdp);
+				}
+			}
+			else
+			{
+				utilisateur = null;
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql : " + e.getMessage());
+		}
+		return utilisateur;
 	}
 
 	@Override

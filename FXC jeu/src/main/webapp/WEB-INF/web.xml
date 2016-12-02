@@ -61,4 +61,13 @@
 		<servlet-name>ListeJeuxServlet</servlet-name>
 		<url-pattern>/ListeJeuxServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<display-name>ListeTestsServlet</display-name>
+		<servlet-name>ListeTestsServlet</servlet-name>
+		<servlet-class>fr.cfai.sio.servlet.ListeTestsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListeTestsServlet</servlet-name>
+		<url-pattern>/ListeTestsServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

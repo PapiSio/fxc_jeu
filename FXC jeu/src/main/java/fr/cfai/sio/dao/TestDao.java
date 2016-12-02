@@ -33,7 +33,4 @@ public interface TestDao
 	 * @return l'objet Test ajouté
 	 */
 	public Test addTest();
-
-	// Test MM
-	public List<Test> findAllTestMM();
 }

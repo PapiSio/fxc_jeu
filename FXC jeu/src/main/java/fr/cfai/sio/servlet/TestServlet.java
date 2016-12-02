@@ -6,52 +6,55 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import fr.cfai.sio.business.Test;
+import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.impl.TestServiceImpl;
 
 /**
  * Servlet implementation class TestServlet
  */
 @WebServlet("/TestServlet")
-public class TestServlet extends HttpServlet {
-	
+public class TestServlet extends HttpServlet
+{
+
 	private static final long serialVersionUID = 1L;
-	private TestServiceImpl testServiceImpl;
-       
-    /**
-     * @throws Exception 
-     * @see HttpServlet#HttpServlet()
-     */
-    public TestServlet() throws Exception {
-        super();
-		this.testServiceImpl = new TestServiceImpl();
-    }
+	private TestService testServiceImpl;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @throws Exception
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if(request.getParameter("action").equals("displayTest")){
-			
-			int idTest = Integer.parseInt(request.getParameter("idTest"));
-			Test test = testServiceImpl.recupereTestParID(idTest);		
-			request.setAttribute("TEST", test);
-			request.getRequestDispatcher("/test.jsp").forward(request, response);		
-		}
-		else {
-			if(request.getParameter("action").equals("addTest")){
-				
-				request.getRequestDispatcher("/test.jsp").forward(request, response);		
-			}
-		}
+	public TestServlet() throws Exception
+	{
+		super();
+		this.testServiceImpl = new TestServiceImpl();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+		int idTest;
+		Test test = null;
+
+		idTest = Integer.parseInt(request.getParameter("idTest"));
+
+		test = testServiceImpl.recupereTestParID(idTest);
+
+		request.setAttribute("TEST", test);
+
+		request.getRequestDispatcher("/test.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

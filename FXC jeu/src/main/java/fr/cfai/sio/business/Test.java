@@ -68,6 +68,26 @@ public class Test
 	}
 
 	/**
+	 * Constructeur pour la liste des tests dans la dao
+	 * 
+	 * @param id_Test
+	 *            ID du test
+	 * @param titre_Test
+	 *            Titre du test
+	 * @param date_Test
+	 *            Date du test
+	 * @param description_Test
+	 *            Description du test
+	 */
+	public Test(int id_Test, String titre_Test, Date date_Test, String description_Test)
+	{
+		this.idTest = id_Test;
+		this.titreTest = titre_Test;
+		this.dateTest = date_Test;
+		this.descriptionTest = description_Test;
+	}
+
+	/**
 	 * Getteur Description du test
 	 * 
 	 * @return Description du test

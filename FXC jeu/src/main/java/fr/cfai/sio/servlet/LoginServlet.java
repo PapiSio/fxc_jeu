@@ -112,7 +112,7 @@ public class LoginServlet extends HttpServlet
 		//	request.setAttribute("LISTE_TESTS", listeTests);
 			
 			
-			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+			request.getRequestDispatcher("/accueil.jsp").forward(request, response);
 
 		}
 		else

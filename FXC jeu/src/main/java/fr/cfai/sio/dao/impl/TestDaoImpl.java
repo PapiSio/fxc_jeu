@@ -8,15 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import fr.cfai.sio.business.Classification;
-import fr.cfai.sio.business.Developpeur;
-import fr.cfai.sio.business.Editeur;
-import fr.cfai.sio.business.Genre;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.ConnexionBDD;
+import fr.cfai.sio.dao.JeuDao;
 import fr.cfai.sio.dao.TestDao;
+import fr.cfai.sio.dao.UtilisateurDao;
 import fr.cfai.sio.dao.requete.TestRequete;
 
 public class TestDaoImpl implements TestDao
@@ -25,6 +23,10 @@ public class TestDaoImpl implements TestDao
 	private ConnexionBDD connexion;
 	private Statement createObjReq;
 	private Connection objConnect;
+	private List<Test> listeTests;
+
+	private JeuDao jeuDaoImpl;
+	private UtilisateurDao utilisateurDaoImpl;
 
 	public TestDaoImpl() throws Exception
 	{
@@ -32,6 +34,9 @@ public class TestDaoImpl implements TestDao
 		this.connexion = new ConnexionBDD();
 		this.createObjReq = connexion.getStatement();
 		this.objConnect = connexion.getConnection();
+		this.listeTests = new ArrayList<>();
+		this.jeuDaoImpl = new JeuDaoImpl();
+		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
 	}
 
 	@Override
@@ -67,8 +72,8 @@ public class TestDaoImpl implements TestDao
 					avantageJeu = resultat.getString(5);
 					inconvenientJeu = resultat.getString(6);
 					descriptionTest = resultat.getString(7);
-					jeu = new Jeu(resultat.getInt(8));
-					user = new Utilisateur(resultat.getInt(9));
+					jeu = getJeuByID(resultat.getInt(8));
+					user = getUtilisateurByID(resultat.getInt(9));
 					noteJeu = resultat.getShort(10);
 
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
@@ -91,17 +96,10 @@ public class TestDaoImpl implements TestDao
 	public List<Test> findAllTest()
 	{
 
-		List<Test> listeTests = new ArrayList<Test>();
 		int id_Test;
 		String titreTest;
 		Date dateTest;
-		short noteJeu;
-		int nbCom;
-		String avantageJeu;
-		String inconvenientJeu;
 		String descriptionTest;
-		Jeu jeu;
-		Utilisateur user;
 		Test test = null;
 
 		try
@@ -115,15 +113,9 @@ public class TestDaoImpl implements TestDao
 					id_Test = resultat.getInt(1);
 					titreTest = resultat.getString(2);
 					dateTest = resultat.getDate(3);
-					nbCom = resultat.getInt(4);
-					avantageJeu = resultat.getString(5);
-					inconvenientJeu = resultat.getString(6);
-					descriptionTest = resultat.getString(7);
-					jeu = new Jeu(resultat.getInt(8));
-					user = new Utilisateur(resultat.getInt(9));
-					noteJeu = resultat.getShort(10);
+					descriptionTest = resultat.getString(4);
 
-					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
+					test = new Test(id_Test, titreTest, dateTest, descriptionTest);
 					listeTests.add(test);
 
 				}
@@ -131,7 +123,6 @@ public class TestDaoImpl implements TestDao
 			else
 			{
 				listeTests = null;
-				System.out.println("dzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 			}
 
 		}
@@ -142,82 +133,29 @@ public class TestDaoImpl implements TestDao
 		return listeTests;
 	}
 
-	// Test MM
 	@Override
-	public List<Test> findAllTestMM()
+	public Test addTest()
 	{
-		List<Test> listeTestsMM = new ArrayList<Test>();
-		int id_Test;
-		String titreTest;
-		Date dateTest;
-		short noteJeu;
-		int nbCom;
-		String avantageJeu;
-		String inconvenientJeu;
-		String descriptionTest;
-		Jeu jeu;
-		Utilisateur user;
-		int id_Jeu;
-		String titre_Jeu;
-		Date date_Sortie_Jeu;
-		String description;
-		String imgJeu;
-		Classification classification;
-		Editeur editeur;
-		Genre genre;
-		Developpeur developpeur;
-		Test test = null;
-
-		try
-		{
-			ResultSet resultat = createObjReq.executeQuery(TestRequete.FIND_ALL_TESTS_MM);
-
-			if (resultat != null)
-			{
-				while (resultat.next())
-				{
-					id_Test = resultat.getInt(1);
-					titreTest = resultat.getString(2);
-					dateTest = resultat.getDate(3);
-					nbCom = resultat.getInt(4);
-					avantageJeu = resultat.getString(5);
-					inconvenientJeu = resultat.getString(6);
-					descriptionTest = resultat.getString(7);
-					noteJeu = resultat.getShort(10);
-					id_Jeu = resultat.getInt(11);
-					titre_Jeu = resultat.getString(12);
-					date_Sortie_Jeu = resultat.getDate(13);
-					description = resultat.getString(14);
-					imgJeu = resultat.getString(19);
-					classification = new Classification(resultat.getInt(20), resultat.getString(21));
-					developpeur = new Developpeur(resultat.getInt(22), resultat.getString(23));
-					editeur = new Editeur(resultat.getInt(24), resultat.getString(25));
-					genre = new Genre(resultat.getInt(26), resultat.getString(27));
-					jeu = new Jeu(id_Jeu, titre_Jeu, date_Sortie_Jeu, description, imgJeu, classification, editeur, genre, developpeur);
-					user = new Utilisateur(1);
-
-					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
-					listeTestsMM.add(test);
-
-				}
-			}
-			else
-			{
-				listeTestsMM = null;
-			}
-
-		}
-		catch (SQLException e)
-		{
-			System.out.println("Erreur sql MM" + e.getMessage());
-		}
-		return listeTestsMM;
-	}
-
-	@Override
-	public Test addTest() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Jeu getJeuByID(int id)
+	{
+		Jeu jeu = null;
+
+		jeu = jeuDaoImpl.findJeuById(id);
+
+		return jeu;
+	}
+
+	public Utilisateur getUtilisateurByID(int id)
+	{
+		Utilisateur utilisateur = null;
+
+		utilisateur = utilisateurDaoImpl.findUtilisateurById(id);
+
+		return utilisateur;
 	}
 
 }
