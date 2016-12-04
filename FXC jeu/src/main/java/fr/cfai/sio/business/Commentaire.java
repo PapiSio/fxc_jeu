@@ -47,6 +47,11 @@ public class Commentaire
 		this.utilisateur = utilisateur;
 	}
 
+	public Commentaire(int id_Commentaire) {
+		// TODO Auto-generated constructor stub
+		this.idCom = idCom;
+	}
+
 	/**
 	 * Getteur ID du commentaire
 	 * 
