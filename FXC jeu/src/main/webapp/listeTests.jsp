@@ -59,7 +59,7 @@
 							</h3>
 							<p>
 								by <span> ${test.utilisateur.getLogin()} </span> |
-								${test.dateTest} | <span>Sint</span>
+								${test.dateTest} | <span>Note du jeu : ${test.noteJeu} / 20</span>
 							</p>
 
 						</div>

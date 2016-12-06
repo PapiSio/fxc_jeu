@@ -78,13 +78,17 @@ public class Test
 	 *            Date du test
 	 * @param description_Test
 	 *            Description du test
+	 * @param utilisateur 
 	 */
-	public Test(int id_Test, String titre_Test, Date date_Test, String description_Test)
+	public Test(int id_Test, String titre_Test, Date date_Test, String description_Test, int nb_Com, short note_Jeu, Utilisateur utilisateur)
 	{
 		this.idTest = id_Test;
 		this.titreTest = titre_Test;
 		this.dateTest = date_Test;
 		this.descriptionTest = description_Test;
+		this.nbCom=nb_Com;
+		this.noteJeu=note_Jeu;
+		this.utilisateur=utilisateur;
 	}
 
 	/**

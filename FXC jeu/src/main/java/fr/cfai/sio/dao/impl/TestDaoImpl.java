@@ -52,7 +52,7 @@ public class TestDaoImpl implements TestDao
 		String inconvenientJeu;
 		String descriptionTest;
 		Jeu jeu;
-		Utilisateur user;
+		Utilisateur utilisateur;
 		Test test = null;
 
 		try
@@ -73,10 +73,10 @@ public class TestDaoImpl implements TestDao
 					inconvenientJeu = resultat.getString(6);
 					descriptionTest = resultat.getString(7);
 					jeu = getJeuByID(resultat.getInt(8));
-					user = getUtilisateurByID(resultat.getInt(9));
+					utilisateur = getUtilisateurByID(resultat.getInt(9));
 					noteJeu = resultat.getShort(10);
 
-					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, user);
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, utilisateur);
 				}
 			}
 			else
@@ -100,6 +100,9 @@ public class TestDaoImpl implements TestDao
 		String titreTest;
 		Date dateTest;
 		String descriptionTest;
+		int nb_Com;
+		short note_Jeu;
+		Utilisateur utilisateur;
 		Test test = null;
 
 		try
@@ -114,8 +117,13 @@ public class TestDaoImpl implements TestDao
 					titreTest = resultat.getString(2);
 					dateTest = resultat.getDate(3);
 					descriptionTest = resultat.getString(4);
+					nb_Com=resultat.getInt(5);
+					note_Jeu=resultat.getShort(6);
+					utilisateur = getUtilisateurByID(resultat.getInt(7));
+					
 
-					test = new Test(id_Test, titreTest, dateTest, descriptionTest);
+					test = new Test(id_Test, titreTest, dateTest, descriptionTest,nb_Com,note_Jeu,utilisateur);
+					
 					listeTests.add(test);
 
 				}
