@@ -15,6 +15,9 @@ public class ConnexionServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	public static final int COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 an
 
+	
+	
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
