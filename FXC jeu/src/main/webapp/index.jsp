@@ -6,7 +6,7 @@
 	<div class="banner-body logn">
 		<div class="container">
 			<!-- header -->
-			<%@ include file="entete.jsp"%>
+			 <%@ include file="entete.jsp"%> 
 			<!-- search-scripts -->
 			<script src="js/classie.js"></script>
 			<script src="js/uisearch.js"></script>
@@ -38,7 +38,6 @@
 							<input type="text" name="LOGIN" id="LOGIN" value="${LOGIN}">
 							<h5>Mot de passe :</h5>
 							<input type="password" name="PASSWORD" id="PASSWORD" value="${MDP}"> 
-							<input type="submit" name="submit" id="sumbit"> 
 							<br> 
 							<label for="MEMOIRE">Se souvenir de moi</label> 
 							<input type="checkbox" id="MEMOIRE" name="MEMOIRE"
@@ -46,16 +45,19 @@
 									checked
 								</c:if>
 								 />
-							<br />
+							<br>
+							<br>
+							<input type="submit" name="submit" id="sumbit" value="Se connecter"> 
+							<br>
 
 						</form>
-						<a href="#">Forgot Password ?</a>
+						<!-- <a href="#">Forgot Password ?</a> -->
 					</div>
 					<div class="col-md-6 login-right">
-						<h3>S'enregistrer</h3>
+						<!-- <h3>S'enregistrer</h3>
 						<p>By creating an account with our store, you will be able to
 							move through the checkout process faster, store multiple shipping
-							addresses, view and track your orders in your account and more.</p>
+							addresses, view and track your orders in your account and more.</p> -->
 						<a href="inscription.jsp" class="hvr-bounce-to-bottom button">Créer
 							un compte</a>
 					</div>
