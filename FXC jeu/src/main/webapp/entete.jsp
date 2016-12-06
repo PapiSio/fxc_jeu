@@ -42,13 +42,20 @@
 					</ul>
 				</c:if>
 				<div class="sign-in">
+					<c:choose>
+						<c:when test="${CONTROLE_CONNEXION eq'OK'}">
+							<ul>
+								<li><a href="DeconnexionServlet">Déconnexion</a></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul>
+								<li><a href="inscription.jsp"
+									class="hvr-bounce-to-bottom button">Créer un compte</a>
+							</ul>
+						</c:otherwise>
+					</c:choose>
 
-					<!--  A GARDER -->
-					<c:if test="${CONTROLE_CONNEXION eq'OK'}">
-						<ul>
-							<li><a href="DeconnexionServlet">Déconnexion</a></li>
-						</ul>
-					</c:if>
 				</div>
 			</div>
 			<!-- /.navbar-collapse -->
