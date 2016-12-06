@@ -30,7 +30,7 @@
 							<!--  A GARDER -->
 							<c:if test="${CONTROLE_CONNEXION eq'NOK'}">
 								<div class="alert alert-danger" role="alert">
-									<strong>Petit con</strong> N'essaie pas d'aller où tu peux pas.
+									<strong>Erreur</strong> La combinaison est incorrecte.
 								</div>
 							</c:if>
 							
