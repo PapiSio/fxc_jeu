@@ -12,14 +12,14 @@
 			</div>
 			<div class="clearfix"></div>
 			<!-- banner -->
-			<div class="banner">
+			<!-- 			<div class="banner">
 
-				<!-- Partie qui gère le slider texte, une fois encore le script ici, bof. -->
+				Partie qui gère le slider texte, une fois encore le script ici, bof.
 
-				<!--//End-slider-script -->
+				//End-slider-script
 				<div id="top" class="callbacks_container wow fadeInUp"
 					data-wow-delay="0.5s">
-					<!-- Slider qui dÃ©file -->
+					Slider qui dÃ©file
 					<ul class="rslides" id="slider3">
 						<li>
 							<div class="banner-inf">
@@ -44,81 +44,104 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 
-			<c:forEach items="${LISTE_TESTS}" var="test">
-				<p>
-					Titre du test : <a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
-				</p>
-				<p>Date du test : ${test.dateTest}</p>
-				<p>Description du test : ${test.descriptionTest}</p>
-				<br>
-				<br>
-			</c:forEach>
+
 			<!-- blog -->
 			<div class="blog">
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">
 
-					<div class="blog-left-grid">
+					<c:forEach items="${LISTE_TESTS}" var="test">
 						<div class="blog-left-grid-left">
 							<h3>
-								<a href="single.html">League of Legends, un déclin proche ?</a>
+								<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
 							</h3>
 							<p>
-								by <span>AAAAAAAAA</span> | June 29,2015 | <span>Sint</span>
+								by <span> ${test.utilisateur.getLogin()} </span> |
+								${test.dateTest} | <span>Sint</span>
 							</p>
 
 						</div>
 						<div class="blog-left-grid-right">
-							<a href="#" class="hvr-bounce-to-bottom non">20 Comments</a>
+							<a href="#" class="hvr-bounce-to-bottom non">${test.nbCom}
+								Commentaires</a>
 						</div>
 
 						<div class="clearfix"></div>
 
 						<div class="col-xs-12 col-sm-3">
-							<a href="single.html"><img src="images/4.jpg" alt=" "
+							<a href="TestServlet?idTest=${test.idTest}"><img
+								src="images/overwatch.jpg" alt=" "
 								class="img-responsive img-rounded" /></a>
 						</div>
-						<p class="para">League of Legends, blablabla c'est de la
-							merde, il y a de moins en moins de monde blablabla, ça pue du
-							cul, etc. League of LegendsLeague of Legends, blablabla c'est de
-							la merde, il y a de moins en moins de monde blablabla, ça pue du
-							cul, etc. League of Legends, blablabla c'est de la merde, il y a
-							de moins en moins de monde blablabla, ça pue du cul, etc. League
-							of Legends, blablabla c'est de la merde, il y a de moins en moins
-							de monde blablabla, ça pue du cul, etc. League of Legends,
-							blablabla c'est de la merde, il y a de moins en moins de monde
-							blablabla, ça pue du cul, etc. League of Legends, blablabla c'est
-							de la merde, il y a de moins en moins de monde blablabla, ça pue
-							du cul, etc. League of Legends, blablabla c'est de la merde, il y
-							a de moins en moins de monde blablabla, ça pue du cul, etc.</p>
+
+						<p class="para">${test.descriptionTest}</p>
+						<br> <br>
+
+					</c:forEach>
+
+
+					<div class="blog-left-grid-left">
+
+						<h3>
+							<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
+						</h3>
+						<p>
+							by <span>AAAAAAAAA</span> | June 29,2015 | <span>Sint</span>
+						</p>
+
 					</div>
+					<div class="blog-left-grid-right">
+						<a href="#" class="hvr-bounce-to-bottom non">20 Comments</a>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<div class="col-xs-12 col-sm-3">
+						<a href="single.html"><img src="images/4.jpg" alt=" "
+							class="img-responsive img-rounded" /></a>
+					</div>
+					<p class="para">League of Legends, blablabla c'est de la merde,
+						il y a de moins en moins de monde blablabla, ça pue du cul, etc.
+						League of LegendsLeague of Legends, blablabla c'est de la merde,
+						il y a de moins en moins de monde blablabla, ça pue du cul, etc.
+						League of Legends, blablabla c'est de la merde, il y a de moins en
+						moins de monde blablabla, ça pue du cul, etc. League of Legends,
+						blablabla c'est de la merde, il y a de moins en moins de monde
+						blablabla, ça pue du cul, etc. League of Legends, blablabla c'est
+						de la merde, il y a de moins en moins de monde blablabla, ça pue
+						du cul, etc. League of Legends, blablabla c'est de la merde, il y
+						a de moins en moins de monde blablabla, ça pue du cul, etc. League
+						of Legends, blablabla c'est de la merde, il y a de moins en moins
+						de monde blablabla, ça pue du cul, etc.</p>
 				</div>
-
-				<p>
-					<a href="TestServlet?action=addTest">Ajouter un test.</a>'
-				<p>PASSE PAR LA</p>
-				<c:forEach items="${LISTE_TESTS}" var="test">
-					<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
-						${test.jeu.getTitreJeu()}</a>
-
-					<br>
-				</c:forEach>
-
-
-
 			</div>
-			<div class="clearfix"></div>
+
+			<p>
+				<a href="TestServlet?action=addTest">Ajouter un test.</a>'
+
+
+
+				<p>PASSE PAR LA</p>
+			<c:forEach items="${LISTE_TESTS}" var="test">
+				<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
+					${test.jeu.getTitreJeu()}</a>
+
+				<br>
+			</c:forEach>
+
+
+
 		</div>
+		<div class="clearfix"></div>
 	</div>
+</div>
 </div>
 <%@ include file="footer.jsp"%>
 <!-- <p>
 		<%//String message = "Connexion réussi. Bienvenue "+ session.getAttribute("LOGIN");
 			//out.println(message);%>
 	</p> -->
-
-
 </body>
-</html>
+				</html>

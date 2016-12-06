@@ -11,25 +11,41 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp"><span>T</span>estiJeux</a>
+
+				<c:choose>
+					<c:when test="${CONTROLE_CONNEXION eq'OK'}">
+						<a class="navbar-brand" href="accueil.jsp"><span>T</span>estiJeux</a>
+					</c:when>
+					<c:otherwise>
+						<a class="navbar-brand" href="index.jsp"><span>T</span>estiJeux</a>
+					</c:otherwise>
+				</c:choose>
+
+
+
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse nav-wil"
 				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="hvr-bounce-to-bottom active"><a href="ListeTestsServlet">Les tests</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="ListeJeuxServlet">Les jeux </a></li>
-					<!-- <li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
+				<c:if test="${CONTROLE_CONNEXION eq'OK'}">
+					<ul class="nav navbar-nav">
+
+						<li class="hvr-bounce-to-bottom"><a href="ListeTestsServlet">Les
+								tests</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="ListeJeuxServlet">Les
+								jeux </a></li>
+						<!-- <li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
 					<li class="hvr-bounce-to-bottom"><a href="Portfolio.html">Portfolio</a></li>
 					<li class="hvr-bounce-to-bottom"><a href="contact.html">Contact
 							Us</a></li> -->
-				</ul>
+					</ul>
+				</c:if>
 				<div class="sign-in">
 
 					<!--  A GARDER -->
 					<c:if test="${CONTROLE_CONNEXION eq'OK'}">
-						<ul>						
+						<ul>
 							<li><a href="DeconnexionServlet">Déconnexion</a></li>
 						</ul>
 					</c:if>
