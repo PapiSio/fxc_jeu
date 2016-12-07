@@ -1,5 +1,6 @@
 package fr.cfai.sio.service;
 
+import java.util.Date;
 import java.util.List;
 import fr.cfai.sio.business.Test;
 
@@ -27,4 +28,7 @@ public interface TestService
 	 * @return Liste de tests
 	 */
 	public List<Test> recupererListeTests();
+
+	public Test ajouterTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur);
 }

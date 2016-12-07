@@ -21,7 +21,6 @@ public class Utilisateur
 	private int nbCom;
 	private String imgUtilisateur;
 	private List<Test> ListeTests;
-	private List<Image> ListeImages;
 	private List<Commentaire> ListeCommentaires;
 
 	/**
@@ -202,26 +201,6 @@ public class Utilisateur
 		ListeTests = listeTests;
 	}
 
-	/**
-	 * Getteur Liste des images de l'utilisateur
-	 * 
-	 * @return Liste des images de l'utilisateur
-	 */
-	public List<Image> getListeImages()
-	{
-		return ListeImages;
-	}
-
-	/**
-	 * Setteur Liste des images de l'utilisateur
-	 * 
-	 * @param listeImages
-	 *            Liste des images de l'utilisateur
-	 */
-	public void setListeImages(List<Image> listeImages)
-	{
-		ListeImages = listeImages;
-	}
 
 	/**
 	 * Getteur Liste des commentaires de l'utilisateur
@@ -255,17 +234,7 @@ public class Utilisateur
 		this.ListeTests.add(test);
 	}
 
-	/**
-	 * Permet d'ajouter un objet Image à la liste des images
-	 * 
-	 * @param image
-	 *            un objet Image
-	 */
-	public void addImage(Image image)
-	{
-		this.ListeImages.add(image);
-	}
-
+	
 	/**
 	 * Permet d'ajouter un objet Commentaire à la liste des commentaires
 	 * 

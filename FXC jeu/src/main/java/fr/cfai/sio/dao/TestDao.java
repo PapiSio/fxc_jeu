@@ -1,5 +1,6 @@
 package fr.cfai.sio.dao;
 
+import java.util.Date;
 import java.util.List;
 import fr.cfai.sio.business.Test;
 
@@ -32,5 +33,6 @@ public interface TestDao
 	 * 
 	 * @return l'objet Test ajouté
 	 */
-	public Test addTest();
+	public Test addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur);
 }

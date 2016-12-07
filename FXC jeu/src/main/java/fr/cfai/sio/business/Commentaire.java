@@ -49,7 +49,7 @@ public class Commentaire
 
 	public Commentaire(int id_Commentaire) {
 		// TODO Auto-generated constructor stub
-		this.idCom = idCom;
+		this.idCom = id_Commentaire;
 	}
 
 	/**

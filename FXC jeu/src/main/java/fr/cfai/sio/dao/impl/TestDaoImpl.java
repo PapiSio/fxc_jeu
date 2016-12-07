@@ -142,11 +142,13 @@ public class TestDaoImpl implements TestDao
 	}
 
 	@Override
-	public Test addTest()
+	public Test addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	public Jeu getJeuByID(int id)
 	{
@@ -165,5 +167,6 @@ public class TestDaoImpl implements TestDao
 
 		return utilisateur;
 	}
+
 
 }

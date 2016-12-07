@@ -13,12 +13,18 @@ import fr.cfai.sio.business.Developpeur;
 import fr.cfai.sio.business.Editeur;
 import fr.cfai.sio.business.Genre;
 import fr.cfai.sio.business.Jeu;
+import fr.cfai.sio.business.ModeleEconomique;
+import fr.cfai.sio.business.Plateforme;
+import fr.cfai.sio.business.Support;
 import fr.cfai.sio.dao.ClassificationDao;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.DeveloppeurDao;
 import fr.cfai.sio.dao.EditeurDao;
 import fr.cfai.sio.dao.GenreDao;
 import fr.cfai.sio.dao.JeuDao;
+import fr.cfai.sio.dao.ModeleEconomiqueDao;
+import fr.cfai.sio.dao.PlateformeDao;
+import fr.cfai.sio.dao.SupportDao;
 import fr.cfai.sio.dao.requete.JeuRequete;
 
 public class JeuDaoImpl implements JeuDao
@@ -40,6 +46,11 @@ public class JeuDaoImpl implements JeuDao
 	private EditeurDao editeurDaoImpl;
 	private List<Editeur> listeEditeurs;
 
+	private SupportDao supportDaoImpl;
+	private PlateformeDao plateformeDaoImpl;
+	private ModeleEconomiqueDao modeleEconomiqueDaoImpl;
+	
+	
 
 	public JeuDaoImpl() throws Exception
 	{
@@ -53,6 +64,10 @@ public class JeuDaoImpl implements JeuDao
 		this.developpeurDaoImpl = new DeveloppeurDaoImpl();
 		this.genreDaoImpl = new GenreDaoImpl();
 		this.editeurDaoImpl = new EditeurDaoImpl();
+
+		this.supportDaoImpl = new SupportDaoImpl();
+		this.plateformeDaoImpl = new PlateformeDaoImpl();
+		this.modeleEconomiqueDaoImpl = new ModeleEconomiqueDaoImpl();
 	}
 
 	@Override
@@ -68,6 +83,10 @@ public class JeuDaoImpl implements JeuDao
 		Genre genre = null;
 		Developpeur developpeur = null;
 		Jeu jeu = null;
+		
+		List<Support> listeSupports = new ArrayList<Support>();
+		List<Plateforme> listePlateformes = new ArrayList<Plateforme>();
+		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 
 		try
 		{
@@ -90,6 +109,14 @@ public class JeuDaoImpl implements JeuDao
 					classification = getClassificationByID(resultat.getInt(8));
 
 					jeu = new Jeu(id_Jeu, titre_Jeu, date_Sortie_Jeu, description, imgJeu, classification, editeur, genre, developpeur);
+				
+					listeSupports = supportDaoImpl.findAllSupportsByJeu(idJeu);
+					listePlateformes = plateformeDaoImpl.findAllPlateformesByJeu(idJeu);
+					listeModeleEconomiques = modeleEconomiqueDaoImpl.findAllModeleEconomiquesByJeu(idJeu);
+
+					jeu.setListeSupports(listeSupports);
+					jeu.setListePlateformes(listePlateformes);
+					jeu.setListeModeleEconomiques(listeModeleEconomiques);
 				}
 			}
 			else
