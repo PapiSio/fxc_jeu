@@ -1,8 +1,11 @@
 package fr.cfai.sio.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.cfai.sio.business.Commentaire;
+import fr.cfai.sio.business.Test;
+import fr.cfai.sio.business.Utilisateur;
 
 public interface CommentaireDao {
 	
@@ -18,8 +21,11 @@ public interface CommentaireDao {
 	 * @return
 	 */
 	
+	public int addCommentaire(int idCom,String titreCom,String description,Date dateCom,Test test,Utilisateur utilisateur);
+	
 	public List<Commentaire> findAllCommentaire();
 	
 	public Commentaire findCommentaireByTest(int idTest);
+	
 
 }

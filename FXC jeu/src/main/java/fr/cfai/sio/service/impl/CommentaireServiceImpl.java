@@ -1,8 +1,11 @@
 package fr.cfai.sio.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.cfai.sio.business.Commentaire;
+import fr.cfai.sio.business.Test;
+import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.impl.CommentaireDaoImpl;
 import fr.cfai.sio.service.CommentaireService;
@@ -54,6 +57,20 @@ public class CommentaireServiceImpl implements CommentaireService {
 		
 		commentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
 		
+		return commentaire;
+	}
+
+	@Override
+	public Commentaire ajouterCommentaire(int idCom, String titreCom, String description, Date dateCom, Test test,
+			Utilisateur utilisateur) {
+		Commentaire commentaire = null;
+
+		if (commentaireDaoImpl.addCommentaire(idCom, titreCom,description,dateCom,test,utilisateur) != 0)
+		{
+			System.out.println("GG");
+			commentaire = new Commentaire(idCom, titreCom,description,dateCom,test,utilisateur);
+		}
+
 		return commentaire;
 	}
 

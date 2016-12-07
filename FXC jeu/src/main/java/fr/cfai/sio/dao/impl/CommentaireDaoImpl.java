@@ -23,6 +23,7 @@ import fr.cfai.sio.dao.TestDao;
 import fr.cfai.sio.dao.UtilisateurDao;
 import fr.cfai.sio.dao.requete.CommentaireRequete;
 import fr.cfai.sio.dao.requete.JeuRequete;
+import fr.cfai.sio.dao.requete.UtilisateurRequete;
 
 public class CommentaireDaoImpl implements CommentaireDao {
 	
@@ -36,6 +37,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	private List<Test> listeTest;
 	private Commentaire commentaire;
 	private TestDao testDaoImpl;
+	private int statut = 0;
 
 	
 	public CommentaireDaoImpl() throws Exception {
@@ -211,6 +213,52 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		return commentaire;
 		
 	}
+
+
+
+	@Override
+	public int addCommentaire(int idCom, String titreCom, String description, Date dateCom, Test test,
+			Utilisateur utilisateur) {
+			int idMax = 0;
+
+			try
+			{
+				ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
+				if (resultat != null)
+				{
+					while (resultat.next())
+					{
+						idMax = resultat.getInt(1) + 1;
+					}
+				}
+				else
+				{
+					idMax = 1;
+				}
+
+				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
+				resultatAjout.setInt(1, idMax);
+				resultatAjout.setString(2, titreCom);
+				resultatAjout.setString(3, description);
+				resultatAjout.setDate(4,(java.sql.Date) dateCom );
+				resultatAjout.setInt(5,utilisateur.getIdUtilisateur());
+				resultatAjout.setInt(6, test.getIdTest());
+				statut = resultatAjout.executeUpdate();
+
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Erreur sql" + e.getMessage());
+			}
+			return statut;
+	}
+
+
+
+
+	
+
 	
 
 		
