@@ -1,5 +1,6 @@
 package fr.cfai.sio.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.dao.TestDao;
@@ -40,5 +41,16 @@ public class TestServiceImpl implements TestService
 		{
 			return listeTests;
 		}
+	}
+
+	@Override
+	public Test ajouterTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur)
+	{
+		Test test = null;
+
+		test = testDaoImpl.addTest(titre, date, nb_Com, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur);
+
+		return test;
 	}
 }

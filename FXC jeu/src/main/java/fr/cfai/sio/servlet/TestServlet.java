@@ -19,6 +19,7 @@ public class TestServlet extends HttpServlet
 
 	private static final long serialVersionUID = 1L;
 	private TestService testServiceImpl;
+	
 
 	/**
 	 * @throws Exception
@@ -43,6 +44,8 @@ public class TestServlet extends HttpServlet
 		idTest = Integer.parseInt(request.getParameter("idTest"));
 
 		test = testServiceImpl.recupereTestParID(idTest);
+		
+	
 
 		request.setAttribute("TEST", test);
 

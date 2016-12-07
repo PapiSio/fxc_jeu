@@ -19,6 +19,10 @@ Sa sert juste pour éviter de faire la liste des jeux ou test
 dans LoginServlet
 
  bla bla bla bla bla bla bla bla bla bla bla bla 
+ 
+ 			<div class="alert alert-danger" role="alert">
+				<strong>ESPECE</strong> DE GROS CONNARD
+			</div>
  </p>
 
 
