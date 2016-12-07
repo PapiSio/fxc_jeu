@@ -23,29 +23,53 @@
 			<div class="artical-content">
 				<h3>${TEST.titreTest}</h3>
 				<img class="img-responsive" src="images/banner.jpg" alt=" " />
+
+				<div class="artical-links">
+					<ul>
+						<c:forEach items="${TEST.jeu.listeSupports}" var="support">
+							<li><small> </small><span>${support.getLibelleSupport()}
+							</span></li>
+						</c:forEach>
+						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
+						</span></li>
+						<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
+						</span></li>
+						<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
+						</span></li>
+						<li><small> </small><span>${TEST.jeu.classification.getLibelleClassification()}
+						</span></li>
+
+
+						<%-- 						<li><small> </small><span>${TEST.jeu.support.getLibelleSupport()}
+						</span></li>
+						<li><small> </small><span>${TEST.jeu.plateforme.getLibellePlateforme()}
+						</span></li>
+						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
+						</span></li> --%>
+
+					</ul>
+				</div>
 				<p>${TEST.descriptionTest}</p>
 			</div>
 			<div class="artical-links">
 				<ul>
-					<li><small> </small><span>${TEST.dateTest}</span></li>
-					<li><a href="#"><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}</span></a></li>
-					<li><a href="#"><small class="no"> </small><span>${TEST.nbCom}
-								Commentaires</span></a></li>
-					<li><a href="#"><small class="posts"> </small><span>View
-								posts</span></a></li>
+					<li><small> </small><span>${TEST.dateTest} </span></li>
+					<li><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}
+					</span></li>
+					<li><small class="no"> </small><span>${TEST.nbCom}
+							Commentaires </span></li>
+					<li><small> </small><span>View posts</span></li>
 					<li><a href="#"><small class="link"> </small><span>permalink</span></a></li>
 				</ul>
 			</div>
+			<br>
 			<div class="alert alert-success" role="alert">
 				<strong>Avantages</strong> ${TEST.avantageJeu}
 			</div>
 
 			<div class="alert alert-danger" role="alert">
-				<strong>Oh snap!</strong> Change a few things up and try submitting
-				again.
+				<strong>Inconvénients</strong> ${TEST.inconvenientJeu}
 			</div>
-
-			<p>Inconvénient : ${TEST.inconvenientJeu}</p>
 
 			<%-- 			<c:forEach >
 				<div class="alert alert-success" role="alert">
@@ -122,7 +146,9 @@
 <!-- //footer -->
 <!-- for bootstrap working -->
 <%@ include file="footer.jsp"%>
-<script src="js/bootstrap.js"> </script>
+<script src="js/bootstrap.js">
+	
+</script>
 <!-- //for bootstrap working -->
 </body>
 </html>

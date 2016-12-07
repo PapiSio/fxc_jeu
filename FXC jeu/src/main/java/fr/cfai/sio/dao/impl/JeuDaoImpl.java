@@ -40,6 +40,7 @@ public class JeuDaoImpl implements JeuDao
 	private EditeurDao editeurDaoImpl;
 	private List<Editeur> listeEditeurs;
 
+
 	public JeuDaoImpl() throws Exception
 	{
 		super();
