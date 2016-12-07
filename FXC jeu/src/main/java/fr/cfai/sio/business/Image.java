@@ -15,7 +15,6 @@ public class Image
 	private String cheminImage;
 	private String titreImage;
 	private Test test;
-	private Utilisateur utilisateur;
 
 	/**
 	 * Constructeur d'Image
@@ -33,14 +32,13 @@ public class Image
 	 * @param utilisateur
 	 *            Utilisteur de l'image
 	 */
-	public Image(int idImage, String cheminImage, String titreImage, Test test, Utilisateur utilisateur)
+	public Image(int idImage, String cheminImage, String titreImage, Test test)
 	{
 		super();
 		this.idImage = idImage;
 		this.cheminImage = cheminImage;
 		this.titreImage = titreImage;
 		this.test = test;
-		this.utilisateur = utilisateur;
 	}
 
 	/**
@@ -125,26 +123,5 @@ public class Image
 	public void setTest(Test test)
 	{
 		this.test = test;
-	}
-
-	/**
-	 * Getteur Utilisateur de l'image
-	 * 
-	 * @return Utilisateur de l'image
-	 */
-	public Utilisateur getUtilisateur()
-	{
-		return utilisateur;
-	}
-
-	/**
-	 * Setteur Utilisateur de l'image
-	 * 
-	 * @param utilisateur
-	 *            Utilisateur de l'image
-	 */
-	public void setUtilisateur(Utilisateur utilisateur)
-	{
-		this.utilisateur = utilisateur;
 	}
 }
