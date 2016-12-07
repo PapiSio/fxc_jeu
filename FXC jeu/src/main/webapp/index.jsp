@@ -6,7 +6,7 @@
 	<div class="banner-body logn">
 		<div class="container">
 			<!-- header -->
-			 <%@ include file="entete.jsp"%> 
+			 <%@ include file="enteteIndex.jsp"%> 
 			<!-- search-scripts -->
 			<script src="js/classie.js"></script>
 			<script src="js/uisearch.js"></script>
