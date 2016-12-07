@@ -14,8 +14,7 @@ public class Commentaire
 	 * Déclaration des variables de Commentaire
 	 */
 	private int idCom;
-	private String titreCom;
-	private String description;
+	private String contenuCom;
 	private Date dateCom;
 	private Test test;
 	private Utilisateur utilisateur;
@@ -36,12 +35,11 @@ public class Commentaire
 	 * @param utilisateur
 	 *            Objet Utilisateur lié au commentaire
 	 */
-	public Commentaire(int idCom, String titreCom, String description, Date dateCom, Test test, Utilisateur utilisateur)
+	public Commentaire(int idCom, String contenuCom, Date dateCom, Test test, Utilisateur utilisateur)
 	{
 		super();
 		this.idCom = idCom;
-		this.titreCom = titreCom;
-		this.description = description;
+		this.contenuCom = contenuCom;
 		this.dateCom = dateCom;
 		this.test = test;
 		this.utilisateur = utilisateur;
@@ -74,34 +72,13 @@ public class Commentaire
 	}
 
 	/**
-	 * Getteur titre du commentaire
-	 * 
-	 * @return titre du commentaire
-	 */
-	public String getTitreCom()
-	{
-		return titreCom;
-	}
-
-	/**
-	 * Setteur Titre du commentaire
-	 * 
-	 * @param titreCom
-	 *            Titre du commentaire
-	 */
-	public void setTitreCom(String titreCom)
-	{
-		this.titreCom = titreCom;
-	}
-
-	/**
 	 * Getteur Description du commentaire
 	 * 
 	 * @return Description du commentaire
 	 */
-	public String getDescription()
+	public String getContenuCom()
 	{
-		return description;
+		return contenuCom;
 	}
 
 	/**
@@ -110,9 +87,9 @@ public class Commentaire
 	 * @param description
 	 *            Description du commentaire
 	 */
-	public void setDescription(String description)
+	public void setContenuCom(String description)
 	{
-		this.description = description;
+		this.contenuCom = description;
 	}
 
 	/**
