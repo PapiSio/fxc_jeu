@@ -9,5 +9,7 @@ public interface CommentaireService {
 	public List<Commentaire> recupererListeCommentaire();
 	
 	public Commentaire recupererCommentaireParId(int idcommentaire);
+	
+	public Commentaire recupererCommentaireParTest(int idTest);
 
 }

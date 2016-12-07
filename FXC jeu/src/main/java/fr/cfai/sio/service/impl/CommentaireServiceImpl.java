@@ -47,4 +47,16 @@ public class CommentaireServiceImpl implements CommentaireService {
 		return commentaire;
 	}
 
+	@Override
+	public Commentaire recupererCommentaireParTest(int idTest) {
+		// TODO Auto-generated method stub
+		Commentaire commentaire = null;
+		
+		commentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
+		
+		return commentaire;
+	}
+
+
+
 }

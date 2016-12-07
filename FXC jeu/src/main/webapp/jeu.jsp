@@ -24,6 +24,7 @@
 		${plateforme.getLibellePlateforme()},
 		</c:forEach>
 		</p>
+		
 		<p>
 			Modele Economique :
 			<c:forEach items="${JEU.listeModeleEconomiques}"
