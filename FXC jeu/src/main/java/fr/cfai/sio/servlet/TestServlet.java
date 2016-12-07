@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import fr.cfai.sio.business.Test;
+import fr.cfai.sio.service.ModeleEconomiqueService;
+import fr.cfai.sio.service.PlateformeService;
+import fr.cfai.sio.service.SupportService;
 import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.impl.TestServiceImpl;
 
@@ -19,6 +22,10 @@ public class TestServlet extends HttpServlet
 
 	private static final long serialVersionUID = 1L;
 	private TestService testServiceImpl;
+	
+	private SupportService supportServiceImpl;
+	private PlateformeService plateformeServiceImpl;
+	private ModeleEconomiqueService modeleEconomiqueServiceImpl;
 
 	/**
 	 * @throws Exception
@@ -43,6 +50,15 @@ public class TestServlet extends HttpServlet
 		idTest = Integer.parseInt(request.getParameter("idTest"));
 
 		test = testServiceImpl.recupereTestParID(idTest);
+		
+		listeSupports = supportServiceImpl.recupererListeSupportsParJeu(idJeu);
+		listePlateformes = plateformeServiceImpl.recupererListePlateformesParJeu(idJeu);
+		listeModeleEconomiques = modeleEconomiqueServiceImpl.recupererListeModeleEconomiquesParJeu(idJeu);
+
+		jeu.setListeSupports(listeSupports);
+		jeu.setListePlateformes(listePlateformes);
+		jeu.setListeModeleEconomiques(listeModeleEconomiques);
+
 
 		request.setAttribute("TEST", test);
 
