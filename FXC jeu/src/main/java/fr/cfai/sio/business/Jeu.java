@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class Jeu
 {
+	// Faire methode moyenen note
+	
 	/**
 	 * Déclaration des variables de Jeu
 	 */

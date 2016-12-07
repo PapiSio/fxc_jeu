@@ -12,14 +12,15 @@ import java.util.List;
  */
 public class Utilisateur
 {
+	
+	//FAIRE METHODE NB COM
+	
 	/**
 	 * Déclaration des variables de User
 	 */
 	private int idUtilisateur;
 	private String login;
 	private String password;
-	private int nbCom;
-	private String imgUtilisateur;
 	private List<Test> ListeTests;
 	private List<Commentaire> ListeCommentaires;
 
@@ -37,14 +38,12 @@ public class Utilisateur
 	 * @param imgUser
 	 *            Image de l'utilisateur
 	 */
-	public Utilisateur(int idUtilisateur, String login, String password, int nbCom, String imgUtilisateur)
+	public Utilisateur(int idUtilisateur, String login, String password)
 	{
 		super();
 		this.idUtilisateur = idUtilisateur;
 		this.login = login;
 		this.password = password;
-		this.nbCom = nbCom;
-		this.imgUtilisateur = imgUtilisateur;
 	}
 
 	/**
@@ -66,7 +65,6 @@ public class Utilisateur
 		this.idUtilisateur = idUtilisateur;
 		this.login = login;
 		this.password = mdp;
-		this.nbCom = nbCom;
 	}
 
 	// Test VMELE
@@ -138,47 +136,6 @@ public class Utilisateur
 		this.password = password;
 	}
 
-	/**
-	 * Getteur Nombre de commentaire de l'utilisateur
-	 * 
-	 * @return Nombre de commentaire de l'utilisateur
-	 */
-	public int getNbCom()
-	{
-		return nbCom;
-	}
-
-	/**
-	 * Setteur Nombre de commentaire de l'utilisateur
-	 * 
-	 * @param nbCom
-	 *            Nombre de commentaire de l'utilisateur
-	 */
-	public void setNbCom(int nbCom)
-	{
-		this.nbCom = nbCom;
-	}
-
-	/**
-	 * Getteur Image de l'utilisateur
-	 * 
-	 * @return Image de l'utilisateur
-	 */
-	public String getImgUtilisateur()
-	{
-		return imgUtilisateur;
-	}
-
-	/**
-	 * Setteur Image de l'utilisateur
-	 * 
-	 * @param imgUtilisateur
-	 *            Image de l'utilisateur
-	 */
-	public void setImgUtilisateur(String imgUtilisateur)
-	{
-		this.imgUtilisateur = imgUtilisateur;
-	}
 
 	/**
 	 * Getteur Liste des tests de l'utilisateur
