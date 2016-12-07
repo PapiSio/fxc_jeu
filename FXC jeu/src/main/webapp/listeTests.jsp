@@ -61,6 +61,8 @@
 								by <span> ${test.utilisateur.getLogin()} </span> |
 								${test.dateTest} | <span>Note du jeu : ${test.noteJeu} /
 									20</span>
+									
+								<span> testttt </span> ezfz
 							</p>
 
 						</div>
