@@ -26,10 +26,6 @@
 
 				<div class="artical-links">
 					<ul>
-						<c:forEach items="${TEST.jeu.listeSupports}" var="support">
-							<li><small> </small><span>${support.getLibelleSupport()}
-							</span></li>
-						</c:forEach>
 						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
 						</span></li>
 						<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
@@ -38,6 +34,10 @@
 						</span></li>
 						<li><small> </small><span>${TEST.jeu.classification.getLibelleClassification()}
 						</span></li>
+						<c:forEach items="${TEST.jeu.listeSupports}" var="support">
+							<li><small> </small><span>${support.getLibelleSupport()}
+							</span></li>
+						</c:forEach>
 
 
 						<%-- 						<li><small> </small><span>${TEST.jeu.support.getLibelleSupport()}
@@ -143,6 +143,11 @@
 		<!-- single -->
 	</div>
 </div>
+
+	<c:if test="${TEST.utilisateur.getId() eq session.getParameter}">
+		
+	
+	</c:if>
 <!-- //footer -->
 <!-- for bootstrap working -->
 <%@ include file="footer.jsp"%>
