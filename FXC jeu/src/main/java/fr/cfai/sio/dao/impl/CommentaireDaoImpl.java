@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import fr.cfai.sio.business.Classification;
 import fr.cfai.sio.business.Commentaire;
 import fr.cfai.sio.business.Developpeur;
 import fr.cfai.sio.business.Jeu;
@@ -60,6 +58,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
+		Commentaire commentaireFK=null;
+		
 		try
 		{
 			PreparedStatement resultatPrepa = objConnect.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_ID);
