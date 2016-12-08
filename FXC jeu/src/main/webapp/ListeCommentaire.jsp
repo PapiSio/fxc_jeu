@@ -5,8 +5,13 @@
 		<%@ include file="entete.jsp"%>
 		<!-- //header -->
 
+//CECI EST UNE JSP TEST POUR TESTER LAFFICHAGE DES COMMENTAIRES BONJOUR JE VOUS EMMERDE ! <3
+
+
+
 		<c:forEach items="${LISTE_COMMENTAIRE}" var="commentaire">
-			<a href="ListeCommentaireServlet?idCommentaire=${commentaire.idCommentaire}"></a>
+			<a href="ListeCommentaireServlet"></a>
+			<span> ${commentaire.getContenuCom()} </span>
 			<br>
 		</c:forEach>
 

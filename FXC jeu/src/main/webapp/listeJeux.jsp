@@ -8,7 +8,8 @@
 		<c:forEach items="${LISTE_JEUX}" var="jeu">
 			<a href="JeuServlet?idJeu=${jeu.idJeu}"><img src="${jeu.imgJeu}" /></a>
 			<br>
-		</c:forEach>
+		</c:forEach>>
+		
 
 		<!-- portfolio -->
 		<div class="portfolio">

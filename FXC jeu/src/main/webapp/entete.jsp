@@ -35,6 +35,8 @@
 								tests</a></li>
 						<li class="hvr-bounce-to-bottom"><a href="ListeJeuxServlet">Les
 								jeux </a></li>
+						<li class="hvr-bounce-to-bottom"><a href="ListeCommentaireServlet">Les
+								Commentaires</a></li>
 						<!-- <li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
 					<li class="hvr-bounce-to-bottom"><a href="Portfolio.html">Portfolio</a></li>
 					<li class="hvr-bounce-to-bottom"><a href="contact.html">Contact

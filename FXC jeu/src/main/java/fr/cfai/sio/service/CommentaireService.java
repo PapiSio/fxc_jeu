@@ -13,7 +13,7 @@ public interface CommentaireService {
 	
 	public Commentaire recupererCommentaireParId(int idcommentaire);
 	
-	public Commentaire recupererCommentaireParTest(int idTest);
+	public List<Commentaire> recupererCommentaireParTest(int idTest);
 	
 	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
 			Utilisateur utilisateur);

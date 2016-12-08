@@ -56,6 +56,7 @@
 						<div class="blog-left-grid-left">
 							<h3>
 								<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
+								<a href="ListeCommentaireServlet?idJeu=${test.idTest}"></a>
 							</h3>
 							<p>
 								by <span> ${test.utilisateur.getLogin()} </span> |
@@ -66,10 +67,10 @@
 							</p>
 
 						</div>
-						<div class="blog-left-grid-right">
+<%-- 						<div class="blog-left-grid-right">
 							<a href="#" class="hvr-bounce-to-bottom non">${test.nbCom}
 								Commentaires</a>
-						</div>
+						</div> --%>
 
 						<div class="clearfix"></div>
 

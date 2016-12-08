@@ -6,7 +6,7 @@ public class CommentaireRequete {
 	public static final String FIND_COMMENTAIRE_BY_ID = "SELECT * FROM commentaire WHERE id_com= ?";
 
 
-	public static final String FIND_ALL_COMMENTAIRE = "SELECT id_com FROM commentaire";
+	public static final String FIND_ALL_COMMENTAIRE = "SELECT * FROM commentaire";
 	
 	public static final String FIND_COMMENTAIRE_BY_TEST = "SELECT * FROM commentaire WHERE id_test = ?";
 	

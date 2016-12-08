@@ -96,7 +96,11 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	@Override
 	public List<Commentaire> findAllCommentaire() {
 		// TODO Auto-generated method stub
-		int id_Commentaire;
+		int idCom;
+		Date date_Commentaire;
+		String contenuCom;
+		Test test = null;
+		Utilisateur utilisateur = null;
 		Commentaire commentaire = null;
 
 		try
@@ -107,9 +111,13 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			{
 				while (resultat.next())
 				{
-					id_Commentaire = resultat.getInt(1);
+					idCom = resultat.getInt(1);
+					date_Commentaire = resultat.getDate(3);
+					contenuCom = resultat.getString(2);
+					test = getTestByID(resultat.getInt(4));
+					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
-					commentaire = new Commentaire(id_Commentaire);
+					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
 					listeCommentaire.add(commentaire);
 				}
 			}
@@ -170,7 +178,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 
 	@Override
-	public Commentaire findCommentaireByTest(int idTest) {
+	public List<Commentaire> findCommentaireByTest(int idTest) {
 		
 		int idCom;
 		Date date_Commentaire;
@@ -194,6 +202,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
+					listeCommentaire.add(commentaire);
 				}
 			}
 			else
@@ -206,7 +215,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
-		return commentaire;
+		return listeCommentaire;
 		
 	}
 

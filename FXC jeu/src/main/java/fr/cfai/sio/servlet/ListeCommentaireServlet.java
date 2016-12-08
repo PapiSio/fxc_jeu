@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.cfai.sio.business.Commentaire;
+import fr.cfai.sio.business.Test;
 import fr.cfai.sio.service.CommentaireService;
 import fr.cfai.sio.service.impl.CommentaireServiceImpl;
 
@@ -20,6 +21,7 @@ public class ListeCommentaireServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommentaireService commentaireServiceImpl;
 	private List<Commentaire> listeCommentaire;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,12 +39,15 @@ public class ListeCommentaireServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		if (listeCommentaire == null)
 		{
+			int idTest = 0;
+			//idTest = Integer.parseInt(request.getParameter("idTest"));
 			// System.out.println("Servlet : Passe par le if, liste null");
+			//listeCommentaire = commentaireServiceImpl.recupererCommentaireParTest(idTest);
 			listeCommentaire = commentaireServiceImpl.recupererListeCommentaire();
 		}
 
 		request.setAttribute("LISTE_COMMENTAIRE", listeCommentaire);
-		request.getRequestDispatcher("/listeCommentaire.jsp").forward(request, response);
+		request.getRequestDispatcher("/ListeCommentaire.jsp").forward(request, response);
 	}
 
 	/**

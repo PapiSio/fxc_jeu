@@ -25,7 +25,7 @@ public interface CommentaireDao {
 	
 	public List<Commentaire> findAllCommentaire();
 	
-	public Commentaire findCommentaireByTest(int idTest);
+	public List<Commentaire> findCommentaireByTest(int idTest);
 	
 
 }

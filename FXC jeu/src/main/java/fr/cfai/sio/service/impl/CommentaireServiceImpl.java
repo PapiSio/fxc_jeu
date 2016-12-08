@@ -51,13 +51,13 @@ public class CommentaireServiceImpl implements CommentaireService {
 	}
 
 	@Override
-	public Commentaire recupererCommentaireParTest(int idTest) {
+	public List<Commentaire> recupererCommentaireParTest(int idTest) {
 		// TODO Auto-generated method stub
-		Commentaire commentaire = null;
+		List<Commentaire> listeCommentaire = null;
 		
-		commentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
+		listeCommentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
 		
-		return commentaire;
+		return listeCommentaire;
 	}
 
 	@Override
