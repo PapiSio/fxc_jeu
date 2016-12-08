@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class Test
 {
+	// Faire methode nb com + moyenne note
+	
 	/**
 	 * Déclaration des variables de Test
 	 */
@@ -20,10 +22,11 @@ public class Test
 	private String titreTest;
 	private Date dateTest;
 	private short noteJeu;
-	private int nbCom;
 	private String avantageJeu;
 	private String inconvenientJeu;
 	private String descriptionTest;
+	private String contenuTest;
+	private String imgTest;
 	private Jeu jeu;
 	private Utilisateur utilisateur;
 	private List<Image> listeImages;
@@ -51,18 +54,19 @@ public class Test
 	 * @param utilisateur
 	 *            Utilisateur du test
 	 */
-	public Test(int idTest, String titreTest, Date dateTest, short noteJeu, int nbCom, String avantageJeu, String inconvenientJeu,
-			String descriptionTest, Jeu jeu, Utilisateur utilisateur)
+	public Test(int idTest, String titreTest, Date dateTest, short noteJeu, String avantageJeu, String inconvenientJeu,
+			String descriptionTest, String contenuTest, String imgTest, Jeu jeu, Utilisateur utilisateur)
 	{
 		super();
 		this.idTest = idTest;
 		this.titreTest = titreTest;
 		this.dateTest = dateTest;
 		this.noteJeu = noteJeu;
-		this.nbCom = nbCom;
 		this.avantageJeu = avantageJeu;
 		this.inconvenientJeu = inconvenientJeu;
 		this.descriptionTest = descriptionTest;
+		this.contenuTest=contenuTest;
+		this.imgTest=imgTest;
 		this.jeu = jeu;
 		this.utilisateur = utilisateur;
 	}
@@ -80,13 +84,12 @@ public class Test
 	 *            Description du test
 	 * @param utilisateur 
 	 */
-	public Test(int id_Test, String titre_Test, Date date_Test, String description_Test, int nb_Com, short note_Jeu, Utilisateur utilisateur)
+	public Test(int id_Test, String titre_Test, Date date_Test, String description_Test, short note_Jeu, Utilisateur utilisateur)
 	{
 		this.idTest = id_Test;
 		this.titreTest = titre_Test;
 		this.dateTest = date_Test;
 		this.descriptionTest = description_Test;
-		this.nbCom=nb_Com;
 		this.noteJeu=note_Jeu;
 		this.utilisateur=utilisateur;
 	}
@@ -196,27 +199,6 @@ public class Test
 	}
 
 	/**
-	 * Getteur Nombre de commentaire du test
-	 * 
-	 * @return Nombre de commentaire du test
-	 */
-	public int getNbCom()
-	{
-		return nbCom;
-	}
-
-	/**
-	 * Setteur Nombre de commentaire du test
-	 * 
-	 * @param nbCom
-	 *            Nombre de commentaire du test
-	 */
-	public void setNbCom(int nbCom)
-	{
-		this.nbCom = nbCom;
-	}
-
-	/**
 	 * Getteur Avantage du jeu du test
 	 * 
 	 * @return Avantage du jeu du test
@@ -256,6 +238,28 @@ public class Test
 	public void setInconvenientJeu(String inconvenientJeu)
 	{
 		this.inconvenientJeu = inconvenientJeu;
+	}
+
+	
+	
+	public String getContenuTest()
+	{
+		return contenuTest;
+	}
+
+	public void setContenuTest(String contenuTest)
+	{
+		this.contenuTest = contenuTest;
+	}
+
+	public String getImgTest()
+	{
+		return imgTest;
+	}
+
+	public void setImgTest(String imgTest)
+	{
+		this.imgTest = imgTest;
 	}
 
 	/**

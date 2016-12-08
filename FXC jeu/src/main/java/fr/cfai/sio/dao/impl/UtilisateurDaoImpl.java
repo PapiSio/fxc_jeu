@@ -106,7 +106,6 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 		int idUtilisateur;
 		String login;
 		String mdp;
-		int nbCom;
 		Utilisateur utilisateur = null;
 
 		try
@@ -120,8 +119,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 					idUtilisateur = resultat.getInt(1);
 					login = resultat.getString(2);
 					mdp = resultat.getString(3);
-					nbCom = resultat.getInt(5);
-					utilisateur = new Utilisateur(idUtilisateur, login, mdp, nbCom);
+					utilisateur = new Utilisateur(idUtilisateur, login, mdp);
 					listeUtilisateurs.add(utilisateur);
 				}
 			}
