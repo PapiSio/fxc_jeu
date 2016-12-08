@@ -2,11 +2,9 @@ package fr.cfai.sio.dao.requete;
 
 public class CommentaireRequete {
 	
-<<<<<<< HEAD
+
 	public static final String FIND_COMMENTAIRE_BY_ID = "SELECT * FROM commentaire WHERE id_com= ?";
-=======
-	public static final String FIND_COMMENTAIRE_BY_ID = "SELECT * FROM commentaire WHERE id_com = ?";
->>>>>>> branch 'master' of https://github.com/PapiSio/fxc_jeu
+
 
 	public static final String FIND_ALL_COMMENTAIRE = "SELECT id_com FROM commentaire";
 	
