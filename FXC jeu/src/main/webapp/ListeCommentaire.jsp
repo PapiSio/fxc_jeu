@@ -6,7 +6,7 @@
 		<!-- //header -->
 
 		<c:forEach items="${LISTE_COMMENTAIRE}" var="commentaire">
-			<a href="CommentaireServlet?idCommentaire=${commentaire.idCommentaire}"></a>
+			<a href="ListeCommentaireServlet?idCommentaire=${commentaire.idCommentaire}"></a>
 			<br>
 		</c:forEach>
 

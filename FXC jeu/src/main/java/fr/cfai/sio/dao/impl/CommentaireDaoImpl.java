@@ -55,10 +55,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	@Override
 	public Commentaire findCommentaireById(int idCommentaire) {
 		// TODO Auto-generated method stub
-		int id_Commentaire;
-		String titre_Com;
+		int idCom;
 		Date date_Commentaire;
-		String description;
+		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
 		try
@@ -71,14 +70,13 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			{
 				while (resultat.next())
 				{
-					id_Commentaire = resultat.getInt(1);
-					titre_Com = resultat.getString(2);
-					date_Commentaire = resultat.getDate(4);
-					description = resultat.getString(3);
-					test = getTestByID(resultat.getInt(5));
-					utilisateur = getUtilisateurByID(resultat.getInt(6));
+					idCom = resultat.getInt(1);
+					date_Commentaire = resultat.getDate(3);
+					contenuCom = resultat.getString(2);
+					test = getTestByID(resultat.getInt(4));
+					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
-					commentaire = new Commentaire(id_Commentaire, titre_Com,description,date_Commentaire, test, utilisateur);
+					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
 				}
 			}
 			else
@@ -174,10 +172,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	@Override
 	public Commentaire findCommentaireByTest(int idTest) {
 		
-		int id_Commentaire;
-		String titre_Com;
+		int idCom;
 		Date date_Commentaire;
-		String description;
+		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
 		try
@@ -190,14 +187,13 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			{
 				while (resultat.next())
 				{
-					id_Commentaire = resultat.getInt(1);
-					titre_Com = resultat.getString(2);
-					date_Commentaire = resultat.getDate(4);
-					description = resultat.getString(3);
-					test = getTestByID(resultat.getInt(5));
-					utilisateur = getUtilisateurByID(resultat.getInt(6));
+					idCom = resultat.getInt(1);
+					date_Commentaire = resultat.getDate(3);
+					contenuCom = resultat.getString(2);
+					test = getTestByID(resultat.getInt(4));
+					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
-					commentaire = new Commentaire(id_Commentaire, titre_Com,description,date_Commentaire, test, utilisateur);
+					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
 				}
 			}
 			else
@@ -217,7 +213,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 
 	@Override
-	public int addCommentaire(int idCom, String titreCom, String description, Date dateCom, Test test,
+	public int addCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
 			Utilisateur utilisateur) {
 			int idMax = 0;
 
@@ -239,11 +235,10 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
 				resultatAjout.setInt(1, idMax);
-				resultatAjout.setString(2, titreCom);
-				resultatAjout.setString(3, description);
-				resultatAjout.setDate(4,(java.sql.Date) dateCom );
-				resultatAjout.setInt(5,utilisateur.getIdUtilisateur());
-				resultatAjout.setInt(6, test.getIdTest());
+				resultatAjout.setString(2, contenuCom);
+				resultatAjout.setDate(3,(java.sql.Date) dateCom );
+				resultatAjout.setInt(4,utilisateur.getIdUtilisateur());
+				resultatAjout.setInt(5, test.getIdTest());
 				statut = resultatAjout.executeUpdate();
 
 			}

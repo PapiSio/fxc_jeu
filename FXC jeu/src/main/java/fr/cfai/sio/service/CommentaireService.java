@@ -15,7 +15,7 @@ public interface CommentaireService {
 	
 	public Commentaire recupererCommentaireParTest(int idTest);
 	
-	public Commentaire ajouterCommentaire(int idCom, String titreCom, String description, Date dateCom, Test test,
+	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
 			Utilisateur utilisateur);
 
 }

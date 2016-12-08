@@ -21,7 +21,7 @@ public interface CommentaireDao {
 	 * @return
 	 */
 	
-	public int addCommentaire(int idCom,String titreCom,String description,Date dateCom,Test test,Utilisateur utilisateur);
+	public int addCommentaire(int idCom,String contenuCom,Date dateCom,Test test,Utilisateur utilisateur);
 	
 	public List<Commentaire> findAllCommentaire();
 	
