@@ -8,21 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import fr.cfai.sio.business.Classification;
 import fr.cfai.sio.business.Commentaire;
-import fr.cfai.sio.business.Developpeur;
-import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Test;
-import fr.cfai.sio.business.Genre;
-import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.TestDao;
 import fr.cfai.sio.dao.UtilisateurDao;
 import fr.cfai.sio.dao.requete.CommentaireRequete;
-import fr.cfai.sio.dao.requete.JeuRequete;
 
 public class CommentaireDaoImpl implements CommentaireDao {
 	
@@ -54,11 +47,12 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	public Commentaire findCommentaireById(int idCommentaire) {
 		// TODO Auto-generated method stub
 		int id_Commentaire;
-		String titre_Com;
+		String contenu_Com;
 		Date date_Commentaire;
-		String description;
 		Test test = null;
 		Utilisateur utilisateur = null;
+		Commentaire commentaireFK=null;
+		
 		try
 		{
 			PreparedStatement resultatPrepa = objConnect.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_ID);
@@ -70,13 +64,12 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				while (resultat.next())
 				{
 					id_Commentaire = resultat.getInt(1);
-					titre_Com = resultat.getString(2);
+					contenu_Com = resultat.getString(2);
 					date_Commentaire = resultat.getDate(4);
-					description = resultat.getString(3);
 					test = getTestByID(resultat.getInt(5));
 					utilisateur = getUtilisateurByID(resultat.getInt(6));
 
-					commentaire = new Commentaire(id_Commentaire, titre_Com,description,date_Commentaire, test, utilisateur);
+					commentaire = new Commentaire(id_Commentaire, contenu_Com,date_Commentaire, test, utilisateur);
 				}
 			}
 			else
@@ -173,9 +166,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	public Commentaire findCommentaireByTest(int idTest) {
 		
 		int id_Commentaire;
-		String titre_Com;
+		String contenu_Com;
 		Date date_Commentaire;
-		String description;
 		Test test = null;
 		Utilisateur utilisateur = null;
 		try
@@ -189,13 +181,12 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				while (resultat.next())
 				{
 					id_Commentaire = resultat.getInt(1);
-					titre_Com = resultat.getString(2);
+					contenu_Com = resultat.getString(2);
 					date_Commentaire = resultat.getDate(4);
-					description = resultat.getString(3);
 					test = getTestByID(resultat.getInt(5));
 					utilisateur = getUtilisateurByID(resultat.getInt(6));
 
-					commentaire = new Commentaire(id_Commentaire, titre_Com,description,date_Commentaire, test, utilisateur);
+					commentaire = new Commentaire(id_Commentaire, contenu_Com,date_Commentaire, test, utilisateur);
 				}
 			}
 			else

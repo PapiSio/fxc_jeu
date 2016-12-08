@@ -18,6 +18,7 @@ public class Commentaire
 	private Date dateCom;
 	private Test test;
 	private Utilisateur utilisateur;
+	private Commentaire idFkCom;
 
 	/**
 	 * Constructeur de Commentaire
@@ -35,7 +36,7 @@ public class Commentaire
 	 * @param utilisateur
 	 *            Objet Utilisateur lié au commentaire
 	 */
-	public Commentaire(int idCom, String contenuCom, Date dateCom, Test test, Utilisateur utilisateur)
+	public Commentaire(int idCom, String contenuCom, Date dateCom, Test test, Utilisateur utilisateur,Commentaire idFkCom)
 	{
 		super();
 		this.idCom = idCom;
@@ -43,11 +44,21 @@ public class Commentaire
 		this.dateCom = dateCom;
 		this.test = test;
 		this.utilisateur = utilisateur;
+		this.idFkCom=idFkCom;
 	}
 
 	public Commentaire(int id_Commentaire) {
 		// TODO Auto-generated constructor stub
 		this.idCom = id_Commentaire;
+	}
+
+	public Commentaire(int id_Commentaire, String contenu_Com, Date date_Commentaire, Test test2, Utilisateur utilisateur2)
+	{
+		this.idCom = id_Commentaire;
+		this.contenuCom = contenu_Com;
+		this.dateCom = date_Commentaire;
+		this.test = test2;
+		this.utilisateur = utilisateur2;
 	}
 
 	/**
@@ -154,4 +165,16 @@ public class Commentaire
 	{
 		this.utilisateur = utilisateur;
 	}
+
+	public Commentaire getIdFkCom()
+	{
+		return idFkCom;
+	}
+
+	public void setIdFkCom(Commentaire idFkCom)
+	{
+		this.idFkCom = idFkCom;
+	}
+	
+	
 }

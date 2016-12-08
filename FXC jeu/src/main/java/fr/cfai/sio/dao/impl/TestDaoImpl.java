@@ -47,10 +47,11 @@ public class TestDaoImpl implements TestDao
 		String titreTest;
 		Date dateTest;
 		short noteJeu;
-		int nbCom;
 		String avantageJeu;
 		String inconvenientJeu;
 		String descriptionTest;
+		String contenuTest;
+		String imgTest;
 		Jeu jeu;
 		Utilisateur utilisateur;
 		Test test = null;
@@ -68,15 +69,16 @@ public class TestDaoImpl implements TestDao
 					id_Test = resultat.getInt(1);
 					titreTest = resultat.getString(2);
 					dateTest = resultat.getDate(3);
-					nbCom = resultat.getInt(4);
-					avantageJeu = resultat.getString(5);
-					inconvenientJeu = resultat.getString(6);
-					descriptionTest = resultat.getString(7);
-					jeu = getJeuByID(resultat.getInt(8));
-					utilisateur = getUtilisateurByID(resultat.getInt(9));
-					noteJeu = resultat.getShort(10);
+					avantageJeu = resultat.getString(4);
+					inconvenientJeu = resultat.getString(5);
+					descriptionTest = resultat.getString(6);
+					jeu = getJeuByID(resultat.getInt(7));
+					utilisateur = getUtilisateurByID(resultat.getInt(8));
+					noteJeu = resultat.getShort(9);
+					contenuTest= resultat.getString(10);
+					imgTest= resultat.getString(11);
 
-					test = new Test(id_Test, titreTest, dateTest, noteJeu, nbCom, avantageJeu, inconvenientJeu, descriptionTest, jeu, utilisateur);
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest,contenuTest,imgTest, jeu, utilisateur);
 				}
 			}
 			else
@@ -100,7 +102,6 @@ public class TestDaoImpl implements TestDao
 		String titreTest;
 		Date dateTest;
 		String descriptionTest;
-		int nb_Com;
 		short note_Jeu;
 		Utilisateur utilisateur;
 		Test test = null;
@@ -117,12 +118,11 @@ public class TestDaoImpl implements TestDao
 					titreTest = resultat.getString(2);
 					dateTest = resultat.getDate(3);
 					descriptionTest = resultat.getString(4);
-					nb_Com=resultat.getInt(5);
-					note_Jeu=resultat.getShort(6);
-					utilisateur = getUtilisateurByID(resultat.getInt(7));
+					note_Jeu=resultat.getShort(5);
+					utilisateur = getUtilisateurByID(resultat.getInt(6));
 					
 
-					test = new Test(id_Test, titreTest, dateTest, descriptionTest,nb_Com,note_Jeu,utilisateur);
+					test = new Test(id_Test, titreTest, dateTest, descriptionTest,note_Jeu,utilisateur);
 					
 					listeTests.add(test);
 
