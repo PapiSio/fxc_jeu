@@ -45,14 +45,15 @@ public class ListeTestsServlet extends HttpServlet
 		{
 			if (listeTests == null)
 			{
-				// System.out.println("Servlet : Passe par le if, liste null");
+				System.out.println("ServletTest : action=null Passe par le if, liste null");
 				listeTests = testServiceImpl.recupererListeTests();
 			}
-
+			System.out.println("ServletTest : action=null");
 			request.setAttribute("LISTE_TESTS", listeTests);
 		}
 		else
 		{
+			System.out.println("ServletTest : action=jeu");
 			idJeu = Integer.parseInt(request.getParameter("idJeu"));
 		
 			listeTestsParJeu = testServiceImpl.recupererListeTestsParJeu(idJeu);

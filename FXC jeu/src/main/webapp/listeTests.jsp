@@ -66,10 +66,10 @@
 							</p> -->
 
 						</div>
-						<%-- 						<div class="blog-left-grid-right">
-							<a href="#" class="hvr-bounce-to-bottom non">${test.nbCom}
+						<!--  < 						<div class="blog-left-grid-right">
+							<a href="#" class="hvr-bounce-to-bottom non">${test.listeCommentaires.size()}
 								Commentaires</a>
-						</div> --%>
+						</div> -->
 
 						<div class="clearfix"></div>
 
@@ -131,8 +131,7 @@
 
 			<p>
 				<a href="TestServlet?action=addTest">Ajouter un test.</a>'
-
-				<p>PASSE PAR LA</p>
+			<p>PASSE PAR LA</p>
 			<c:forEach items="${LISTE_TESTS}" var="test">
 				<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
 					${test.jeu.getTitreJeu()}</a>
@@ -146,11 +145,10 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
-</div>
 <%@ include file="footer.jsp"%>
 <!-- <p>
 		<%//String message = "Connexion réussi. Bienvenue "+ session.getAttribute("LOGIN");
 			//out.println(message);%>
 	</p> -->
 </body>
-				</html>
+</html>

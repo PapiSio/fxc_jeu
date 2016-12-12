@@ -31,6 +31,7 @@ public class Test
 	private Utilisateur utilisateur;
 	private List<Image> listeImages;
 	private List<Note> listeNotes;
+	private List<Commentaire> listeCommentaires;
 
 	/**
 	 * Constructeur de Test
@@ -366,5 +367,26 @@ public class Test
 	public void addNote(Note note)
 	{
 		this.listeNotes.add(note);
+	}
+	
+	
+	
+	public List<Commentaire> getListeCommentaires()
+	{
+		return listeCommentaires;
+	}
+
+	public void setListeCommentaires(List<Commentaire> listeCommentaires)
+	{
+		this.listeCommentaires = listeCommentaires;
+	}
+
+	public int getNbCom(int idTes)
+	{
+		int nbCom;
+		
+		nbCom=this.listeCommentaires.size();
+		
+		return nbCom;
 	}
 }

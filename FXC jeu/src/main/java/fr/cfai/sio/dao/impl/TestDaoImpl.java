@@ -27,6 +27,7 @@ public class TestDaoImpl implements TestDao
 
 	private JeuDao jeuDaoImpl;
 	private UtilisateurDao utilisateurDaoImpl;
+	// private CommentaireDao commentaireDaoImpl;
 
 	public TestDaoImpl() throws Exception
 	{
@@ -37,6 +38,7 @@ public class TestDaoImpl implements TestDao
 		this.listeTests = new ArrayList<>();
 		this.jeuDaoImpl = new JeuDaoImpl();
 		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
+		// this.commentaireDaoImpl = new CommentaireDaoImpl();
 	}
 
 	@Override
@@ -55,6 +57,7 @@ public class TestDaoImpl implements TestDao
 		Jeu jeu;
 		Utilisateur utilisateur;
 		Test test = null;
+		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -80,6 +83,12 @@ public class TestDaoImpl implements TestDao
 
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
+
+					// listeCommentaires =
+					// commentaireDaoImpl.findCommentaireByTest(idTest);
+
+					// test.setListeCommentaires(listeCommentaires);
+
 				}
 			}
 			else
@@ -111,6 +120,7 @@ public class TestDaoImpl implements TestDao
 		Jeu jeu;
 		Utilisateur utilisateur;
 		Test test = null;
+		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -134,6 +144,14 @@ public class TestDaoImpl implements TestDao
 
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
+					System.out.println("testDAO - findAllTest ==> appel ComDaoImpl");
+
+					// listeCommentaires =
+					// commentaireDaoImpl.findCommentaireByTest(id_Test);
+
+					System.out.println("testDAO - findAllTest ==> Ajout a la liste des coms");
+
+					// test.setListeCommentaires(listeCommentaires);
 
 					listeTests.add(test);
 
@@ -168,6 +186,7 @@ public class TestDaoImpl implements TestDao
 		Utilisateur utilisateur;
 		Test test = null;
 		List<Test> listeTests = new ArrayList<>();
+		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -193,6 +212,10 @@ public class TestDaoImpl implements TestDao
 
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
+
+					// listeCommentaires =
+					// commentaireDaoImpl.findCommentaireByTest(id_Test);
+					// test.setListeCommentaires(listeCommentaires);
 
 					listeTests.add(test);
 				}
