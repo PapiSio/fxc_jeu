@@ -75,10 +75,11 @@ public class TestDaoImpl implements TestDao
 					jeu = getJeuByID(resultat.getInt(7));
 					utilisateur = getUtilisateurByID(resultat.getInt(8));
 					noteJeu = resultat.getShort(9);
-					contenuTest= resultat.getString(10);
-					imgTest= resultat.getString(11);
+					contenuTest = resultat.getString(10);
+					imgTest = resultat.getString(11);
 
-					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest,contenuTest,imgTest, jeu, utilisateur);
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
+							utilisateur);
 				}
 			}
 			else
@@ -128,11 +129,12 @@ public class TestDaoImpl implements TestDao
 					jeu = getJeuByID(resultat.getInt(7));
 					utilisateur = getUtilisateurByID(resultat.getInt(8));
 					noteJeu = resultat.getShort(9);
-					contenuTest= resultat.getString(10);
-					imgTest= resultat.getString(11);
+					contenuTest = resultat.getString(10);
+					imgTest = resultat.getString(11);
 
-					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest,contenuTest,imgTest, jeu, utilisateur);
-					
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
+							utilisateur);
+
 					listeTests.add(test);
 
 				}
@@ -151,13 +153,70 @@ public class TestDaoImpl implements TestDao
 	}
 
 	@Override
+	public List<Test> findAllTestByJeu(int idJeu)
+	{
+		int id_Test;
+		String titreTest;
+		Date dateTest;
+		short noteJeu;
+		String avantageJeu;
+		String inconvenientJeu;
+		String descriptionTest;
+		String contenuTest;
+		String imgTest;
+		Jeu jeu;
+		Utilisateur utilisateur;
+		Test test = null;
+		List<Test> listeTests = new ArrayList<>();
+
+		try
+		{
+			PreparedStatement resultatPrepa = objConnect.prepareStatement(TestRequete.FIND_ALL_TESTS_BY_JEU);
+			resultatPrepa.setInt(1, idJeu);
+			ResultSet resultat = resultatPrepa.executeQuery();
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					id_Test = resultat.getInt(1);
+					titreTest = resultat.getString(2);
+					dateTest = resultat.getDate(3);
+					avantageJeu = resultat.getString(4);
+					inconvenientJeu = resultat.getString(5);
+					descriptionTest = resultat.getString(6);
+					jeu = getJeuByID(resultat.getInt(7));
+					utilisateur = getUtilisateurByID(resultat.getInt(8));
+					noteJeu = resultat.getShort(9);
+					contenuTest = resultat.getString(10);
+					imgTest = resultat.getString(11);
+
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
+							utilisateur);
+
+					listeTests.add(test);
+				}
+			}
+			else
+			{
+				listeTests = null;
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql : " + e.getMessage());
+		}
+		return listeTests;
+	}
+
+	@Override
 	public Test addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
 			int id_Utilisateur)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 	public Jeu getJeuByID(int id)
 	{
@@ -176,6 +235,5 @@ public class TestDaoImpl implements TestDao
 
 		return utilisateur;
 	}
-
 
 }

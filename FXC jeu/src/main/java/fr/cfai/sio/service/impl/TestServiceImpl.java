@@ -1,5 +1,6 @@
 package fr.cfai.sio.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import fr.cfai.sio.business.Test;
@@ -52,5 +53,15 @@ public class TestServiceImpl implements TestService
 		test = testDaoImpl.addTest(titre, date, nb_Com, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur);
 
 		return test;
+	}
+
+	@Override
+	public List<Test> recupererListeTestsParJeu(int idJeu)
+	{
+		List<Test> listeTestParJeu = new ArrayList<>();
+		
+		listeTestParJeu = testDaoImpl.findAllTestByJeu(idJeu);
+		
+		return listeTestParJeu;
 	}
 }

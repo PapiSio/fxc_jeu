@@ -82,11 +82,10 @@
 						<%-- 						<p class="para">${test.descriptionTest}</p>
  --%>
 						<p class="para">
-							Jeu : <span>${test.jeu.getTitreJeu()}</span> <br>
-								Auteur : <span> ${test.utilisateur.getLogin()} </span><br>
-								Date : <span>${test.dateTest} </span><br>
-								Note du jeu : <span>${test.noteJeu} / 20</span><br>
-								Description : <span>${test.descriptionTest}</span>
+							Jeu : <span>${test.jeu.getTitreJeu()}</span> <br> Auteur : <span>
+								${test.utilisateur.getLogin()} </span><br> Date : <span>${test.dateTest}
+							</span><br> Note du jeu : <span>${test.noteJeu} / 20</span><br>
+							Description : <span>${test.descriptionTest}</span>
 						</p>
 						<br>
 						<br>
@@ -132,7 +131,8 @@
 
 			<p>
 				<a href="TestServlet?action=addTest">Ajouter un test.</a>'
-			<p>PASSE PAR LA</p>
+
+				<p>PASSE PAR LA</p>
 			<c:forEach items="${LISTE_TESTS}" var="test">
 				<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
 					${test.jeu.getTitreJeu()}</a>
@@ -153,4 +153,4 @@
 			//out.println(message);%>
 	</p> -->
 </body>
-</html>
+				</html>

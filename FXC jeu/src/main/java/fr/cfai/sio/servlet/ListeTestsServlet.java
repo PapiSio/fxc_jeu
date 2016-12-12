@@ -1,6 +1,7 @@
 package fr.cfai.sio.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,18 +17,18 @@ import fr.cfai.sio.service.impl.TestServiceImpl;
 public class ListeTestsServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	
+
 	private TestService testServiceImpl;
 	private List<Test> listeTests;
 
 	/**
-	 * @throws Exception 
+	 * @throws Exception
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ListeTestsServlet() throws Exception
 	{
 		super();
-		this.testServiceImpl=new TestServiceImpl();
+		this.testServiceImpl = new TestServiceImpl();
 	}
 
 	/**
@@ -36,13 +37,29 @@ public class ListeTestsServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		if (listeTests == null)
+		int idJeu;
+		String action = request.getParameter("action");
+		List<Test> listeTestsParJeu=new ArrayList<>();
+
+		if (action == null)
 		{
-			// System.out.println("Servlet : Passe par le if, liste null");
-			listeTests = testServiceImpl.recupererListeTests();
+			if (listeTests == null)
+			{
+				// System.out.println("Servlet : Passe par le if, liste null");
+				listeTests = testServiceImpl.recupererListeTests();
+			}
+
+			request.setAttribute("LISTE_TESTS", listeTests);
+		}
+		else
+		{
+			idJeu = Integer.parseInt(request.getParameter("idJeu"));
+		
+			listeTestsParJeu = testServiceImpl.recupererListeTestsParJeu(idJeu);
+			
+			request.setAttribute("LISTE_TESTS", listeTestsParJeu);
 		}
 
-		request.setAttribute("LISTE_TESTS", listeTests);
 		request.getRequestDispatcher("/listeTests.jsp").forward(request, response);
 	}
 

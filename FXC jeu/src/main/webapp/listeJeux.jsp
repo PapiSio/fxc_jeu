@@ -7,6 +7,7 @@
 
 		<c:forEach items="${LISTE_JEUX}" var="jeu">
 			<a href="JeuServlet?idJeu=${jeu.idJeu}"><img src="${jeu.imgJeu}" /></a>
+			<a href="ListeTestsServlet?idJeu=${jeu.idJeu}&action=jeu">Voir les tests</a>
 			<br>
 		</c:forEach>>
 		

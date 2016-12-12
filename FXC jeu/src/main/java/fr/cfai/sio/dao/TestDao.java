@@ -27,6 +27,8 @@ public interface TestDao
 	 * @return Liste des tests
 	 */
 	public List<Test> findAllTest();
+	
+	public List<Test> findAllTestByJeu(int idJeu);
 
 	/**
 	 * Permet d'ajouter un objet Test en BDD
