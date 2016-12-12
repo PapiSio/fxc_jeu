@@ -101,8 +101,13 @@ public class TestDaoImpl implements TestDao
 		int id_Test;
 		String titreTest;
 		Date dateTest;
+		short noteJeu;
+		String avantageJeu;
+		String inconvenientJeu;
 		String descriptionTest;
-		short note_Jeu;
+		String contenuTest;
+		String imgTest;
+		Jeu jeu;
 		Utilisateur utilisateur;
 		Test test = null;
 
@@ -117,12 +122,16 @@ public class TestDaoImpl implements TestDao
 					id_Test = resultat.getInt(1);
 					titreTest = resultat.getString(2);
 					dateTest = resultat.getDate(3);
-					descriptionTest = resultat.getString(4);
-					note_Jeu=resultat.getShort(5);
-					utilisateur = getUtilisateurByID(resultat.getInt(6));
-					
+					avantageJeu = resultat.getString(4);
+					inconvenientJeu = resultat.getString(5);
+					descriptionTest = resultat.getString(6);
+					jeu = getJeuByID(resultat.getInt(7));
+					utilisateur = getUtilisateurByID(resultat.getInt(8));
+					noteJeu = resultat.getShort(9);
+					contenuTest= resultat.getString(10);
+					imgTest= resultat.getString(11);
 
-					test = new Test(id_Test, titreTest, dateTest, descriptionTest,note_Jeu,utilisateur);
+					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest,contenuTest,imgTest, jeu, utilisateur);
 					
 					listeTests.add(test);
 

@@ -56,18 +56,17 @@
 						<div class="blog-left-grid-left">
 							<h3>
 								<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
-								<a href="ListeCommentaireServlet?idJeu=${test.idTest}"></a>
 							</h3>
-							<p>
-								by <span> ${test.utilisateur.getLogin()} </span> |
-								${test.dateTest} | <span>Note du jeu : ${test.noteJeu} /
-									20</span>
-									
+							<!-- <p>
+								Jeu : <span>${test.jeu.getTitreJeu()}</span> 
+								Auteur : <span> ${test.utilisateur.getLogin()} </span>
+								Date : <span>${test.dateTest} | </span>
+								Note du jeu : <span>${test.noteJeu} / 20</span> 
 								<span> testttt </span> ezfz
-							</p>
+							</p> -->
 
 						</div>
-<%-- 						<div class="blog-left-grid-right">
+						<%-- 						<div class="blog-left-grid-right">
 							<a href="#" class="hvr-bounce-to-bottom non">${test.nbCom}
 								Commentaires</a>
 						</div> --%>
@@ -83,9 +82,11 @@
 						<%-- 						<p class="para">${test.descriptionTest}</p>
  --%>
 						<p class="para">
-							by <span> ${test.utilisateur.getLogin()} </span> <br> 
-							| ${test.dateTest} | <br>
-							<span>Note du jeu : ${test.noteJeu}/20</span>
+							Jeu : <span>${test.jeu.getTitreJeu()}</span> <br>
+								Auteur : <span> ${test.utilisateur.getLogin()} </span><br>
+								Date : <span>${test.dateTest} </span><br>
+								Note du jeu : <span>${test.noteJeu} / 20</span><br>
+								Description : <span>${test.descriptionTest}</span>
 						</p>
 						<br>
 						<br>
@@ -131,11 +132,7 @@
 
 			<p>
 				<a href="TestServlet?action=addTest">Ajouter un test.</a>'
-
-
-
-
-				<p>PASSE PAR LA</p>
+			<p>PASSE PAR LA</p>
 			<c:forEach items="${LISTE_TESTS}" var="test">
 				<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
 					${test.jeu.getTitreJeu()}</a>
@@ -156,4 +153,4 @@
 			//out.println(message);%>
 	</p> -->
 </body>
-				</html>
+</html>
