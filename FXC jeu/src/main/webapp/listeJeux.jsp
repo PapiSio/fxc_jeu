@@ -6,11 +6,37 @@
 		<!-- //header -->
 
 		<c:forEach items="${LISTE_JEUX}" var="jeu">
+			<section class="main">
+				<ul class="ch-grid">
+					<li>
+						<div class="ch-item ch-img-1">
+							<div class="ch-info-wrap">
+								<div class="ch-info">
+									<div class="ch-info-front ch-img-1"></div>
+									<div class="ch-info-back">
+										<h3>
+											<a href="JeuServlet?idJeu=${jeu.idJeu}">AAA</a>
+										</h3>
+										<p>World of warcraft.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</section>
+
+
 			<a href="JeuServlet?idJeu=${jeu.idJeu}"><img src="${jeu.imgJeu}" /></a>
-			<a href="ListeTestsServlet?idJeu=${jeu.idJeu}&action=jeu">Voir les tests</a>
+			<a href="ListeTestsServlet?idJeu=${jeu.idJeu}&action=jeu">Voir
+				les tests</a>
 			<br>
-		</c:forEach>>
-		
+		</c:forEach>
+		>
+
+
+		<!-- 	background-image: url(../images/18.jpg);
+ -->
 
 		<!-- portfolio -->
 		<div class="portfolio">

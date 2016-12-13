@@ -26,7 +26,8 @@
 				<div class="artical-links">
 					<ul>
 						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
-						</span></li><br>
+						</span></li>
+						<br>
 						<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
 						</span></li>
 						<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
@@ -41,8 +42,9 @@
 							<li><small> </small><span>${plateforme.getLibellePlateforme()}
 							</span></li>
 						</c:forEach>
-						
-						<c:forEach items="${TEST.jeu.listeModeleEconomiques}" var="modeleEco">
+
+						<c:forEach items="${TEST.jeu.listeModeleEconomiques}"
+							var="modeleEco">
 							<li><small> </small><span>${modeleEco.getLibelleModeleEco()}
 							</span></li>
 						</c:forEach>
@@ -63,9 +65,7 @@
 			<div class="artical-links">
 				<ul>
 					<li><small> </small><span>${TEST.dateTest} </span></li>
-					<li><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}
-							<li><small> </small><span>View posts</span></li>
-							<li><a href="#"><small class="link"> </small><span>permalink</span></a></li>
+					<li><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}</span></li>
 				</ul>
 			</div>
 			<br>
@@ -76,15 +76,6 @@
 			<div class="alert alert-danger" role="alert">
 				<strong>Inconvénients</strong> ${TEST.inconvenientJeu}
 			</div>
-
-			<%-- 			<c:forEach >
-				<div class="alert alert-success" role="alert">
-					<strong>Well done!</strong> You successfully read this important
-					alert message.
-				</div>
-
-			</c:forEach>
- --%>
 
 			<!-- Commentaires -->
 			<div class="comment-grid-top">
@@ -149,11 +140,6 @@
 		<!-- single -->
 	</div>
 </div>
-
-<c:if test="${TEST.utilisateur.getId() eq session.getParameter}">
-
-
-</c:if>
 <!-- //footer -->
 <!-- for bootstrap working -->
 <%@ include file="footer.jsp"%>
