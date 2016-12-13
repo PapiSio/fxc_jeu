@@ -92,55 +92,11 @@
 
 					</c:forEach>
 
-
-					<div class="blog-left-grid-left">
-
-						<h3>
-							<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
-						</h3>
-						<p>
-							by <span>AAAAAAAAA</span> | June 29,2015 | <span>Sint</span>
-						</p>
-
-					</div>
-					<div class="blog-left-grid-right">
-						<a href="#" class="hvr-bounce-to-bottom non">20 Comments</a>
-					</div>
-
-					<div class="clearfix"></div>
-
-					<div class="col-xs-12 col-sm-3">
-						<a href="single.html"><img src="images/4.jpg" alt=" "
-							class="img-responsive img-rounded" /></a>
-					</div>
-					<p class="para">League of Legends, blablabla c'est de la merde,
-						il y a de moins en moins de monde blablabla, ça pue du cul, etc.
-						League of LegendsLeague of Legends, blablabla c'est de la merde,
-						il y a de moins en moins de monde blablabla, ça pue du cul, etc.
-						League of Legends, blablabla c'est de la merde, il y a de moins en
-						moins de monde blablabla, ça pue du cul, etc. League of Legends,
-						blablabla c'est de la merde, il y a de moins en moins de monde
-						blablabla, ça pue du cul, etc. League of Legends, blablabla c'est
-						de la merde, il y a de moins en moins de monde blablabla, ça pue
-						du cul, etc. League of Legends, blablabla c'est de la merde, il y
-						a de moins en moins de monde blablabla, ça pue du cul, etc. League
-						of Legends, blablabla c'est de la merde, il y a de moins en moins
-						de monde blablabla, ça pue du cul, etc.</p>
 				</div>
 			</div>
 
 			<p>
 				<a href="TestServlet?action=addTest">Ajouter un test.</a>'
-			<p>PASSE PAR LA</p>
-			<c:forEach items="${LISTE_TESTS}" var="test">
-				<a href="TestServlet?action=displayTest&idTest=${test.idTest}">a
-					${test.jeu.getTitreJeu()}</a>
-
-				<br>
-			</c:forEach>
-
-
-
 		</div>
 		<div class="clearfix"></div>
 	</div>
