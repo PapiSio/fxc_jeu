@@ -174,6 +174,28 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		}
 		return null;
 	}
+	
+	
+	
+	public Commentaire getCommentaireByID(int id)
+	{
+		if (listeCommentaire == null)
+		{
+			listeCommentaire = findAllCommentaire();
+		}
+
+		for (Commentaire commentaire : listeCommentaire)
+		{
+			// System.out.println("JeuServlet - getEditeur : " +
+			// editeur.getRaisonSociale());
+
+			if (commentaire.getIdCom() == id)
+			{
+				return commentaire;
+			}
+		}
+		return null;
+	}
 
 
 
@@ -248,6 +270,44 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				resultatAjout.setDate(3,(java.sql.Date) dateCom );
 				resultatAjout.setInt(4,utilisateur.getIdUtilisateur());
 				resultatAjout.setInt(5, test.getIdTest());
+				statut = resultatAjout.executeUpdate();
+
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Erreur sql" + e.getMessage());
+			}
+			return statut;
+	}
+	
+	@Override
+	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
+			Utilisateur utilisateur, Commentaire commentaire) {
+			int idMax = 0;
+
+			try
+			{
+				ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
+				if (resultat != null)
+				{
+					while (resultat.next())
+					{
+						idMax = resultat.getInt(1) + 1;
+					}
+				}
+				else
+				{
+					idMax = 1;
+				}
+
+				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
+				resultatAjout.setInt(1, idMax);
+				resultatAjout.setString(2, contenuCom);
+				resultatAjout.setDate(3,(java.sql.Date) dateCom );
+				resultatAjout.setInt(4,utilisateur.getIdUtilisateur());
+				resultatAjout.setInt(5, test.getIdTest());
+				resultatAjout.setInt(6, commentaire.getIdCom());
 				statut = resultatAjout.executeUpdate();
 
 			}

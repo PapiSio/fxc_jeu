@@ -26,6 +26,10 @@ public interface CommentaireDao {
 	public List<Commentaire> findAllCommentaire();
 	
 	public List<Commentaire> findCommentaireByTest(int idTest);
+
+
+	int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test, Utilisateur utilisateur,
+			Commentaire commentaire);
 	
 
 }

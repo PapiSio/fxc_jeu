@@ -18,4 +18,7 @@ public interface CommentaireService {
 	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
 			Utilisateur utilisateur);
 
+	Commentaire ajouterReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
+			Utilisateur utilisateur, Commentaire commentaire);
+
 }
