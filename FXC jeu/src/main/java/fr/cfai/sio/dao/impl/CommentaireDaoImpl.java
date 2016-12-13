@@ -9,19 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import fr.cfai.sio.business.Commentaire;
-import fr.cfai.sio.business.Developpeur;
-import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Test;
-import fr.cfai.sio.business.Genre;
-import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.TestDao;
 import fr.cfai.sio.dao.UtilisateurDao;
 import fr.cfai.sio.dao.requete.CommentaireRequete;
-import fr.cfai.sio.dao.requete.JeuRequete;
-import fr.cfai.sio.dao.requete.UtilisateurRequete;
 
 public class CommentaireDaoImpl implements CommentaireDao {
 	
@@ -201,7 +195,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 	@Override
 	public List<Commentaire> findCommentaireByTest(int idTest) {
-		
+		System.out.println("CommenataireDAO - findCommentaireByTest ==> passe dedans");
+
 		int idCom;
 		Date date_Commentaire;
 		String contenuCom;
@@ -215,6 +210,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 			if (resultat != null)
 			{
+				System.out.println("CommenataireDAO - findCommentaireByTest ==> requete non null");
+
 				while (resultat.next())
 				{
 					idCom = resultat.getInt(1);
@@ -224,6 +221,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
+					
+					System.out.println("CommenataireDAO - findCommentaireByTest ==> ajout à la liste des coms");
+
 					listeCommentaire.add(commentaire);
 				}
 			}
@@ -237,6 +237,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
+		
+		System.out.println("CommenataireDAO - findCommentaireByTest ==> return liste des coms");
+
 		return listeCommentaire;
 		
 	}
