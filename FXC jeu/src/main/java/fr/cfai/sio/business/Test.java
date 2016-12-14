@@ -1,5 +1,8 @@
 package fr.cfai.sio.business;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +17,7 @@ import java.util.List;
 public class Test
 {
 	// Faire methode nb com + moyenne note
-	
+
 	/**
 	 * Déclaration des variables de Test
 	 */
@@ -55,8 +58,8 @@ public class Test
 	 * @param utilisateur
 	 *            Utilisateur du test
 	 */
-	public Test(int idTest, String titreTest, Date dateTest, short noteJeu, String avantageJeu, String inconvenientJeu,
-			String descriptionTest, String contenuTest, String imgTest, Jeu jeu, Utilisateur utilisateur)
+	public Test(int idTest, String titreTest, Date dateTest, short noteJeu, String avantageJeu, String inconvenientJeu, String descriptionTest,
+			String contenuTest, String imgTest, Jeu jeu, Utilisateur utilisateur)
 	{
 		super();
 		this.idTest = idTest;
@@ -66,10 +69,11 @@ public class Test
 		this.avantageJeu = avantageJeu;
 		this.inconvenientJeu = inconvenientJeu;
 		this.descriptionTest = descriptionTest;
-		this.contenuTest=contenuTest;
-		this.imgTest=imgTest;
+		this.contenuTest = contenuTest;
+		this.imgTest = imgTest;
 		this.jeu = jeu;
 		this.utilisateur = utilisateur;
+		this.listeNotes = new ArrayList<>();
 	}
 
 	/**
@@ -83,17 +87,15 @@ public class Test
 	 *            Date du test
 	 * @param description_Test
 	 *            Description du test
-	 * @param utilisateur 
+	 * @param utilisateur
 	 */
-	public Test(int id_Test, String titre_Test, Date date_Test, String description_Test, short note_Jeu, Utilisateur utilisateur)
-	{
-		this.idTest = id_Test;
-		this.titreTest = titre_Test;
-		this.dateTest = date_Test;
-		this.descriptionTest = description_Test;
-		this.noteJeu=note_Jeu;
-		this.utilisateur=utilisateur;
-	}
+	/*
+	 * public Test(int id_Test, String titre_Test, Date date_Test, String
+	 * description_Test, short note_Jeu, Utilisateur utilisateur) { this.idTest
+	 * = id_Test; this.titreTest = titre_Test; this.dateTest = date_Test;
+	 * this.descriptionTest = description_Test; this.noteJeu = note_Jeu;
+	 * this.utilisateur = utilisateur; }
+	 */
 
 	/**
 	 * Getteur Description du test
@@ -241,8 +243,6 @@ public class Test
 		this.inconvenientJeu = inconvenientJeu;
 	}
 
-	
-	
 	public String getContenuTest()
 	{
 		return contenuTest;
@@ -368,9 +368,7 @@ public class Test
 	{
 		this.listeNotes.add(note);
 	}
-	
-	
-	
+
 	public List<Commentaire> getListeCommentaires()
 	{
 		return listeCommentaires;
@@ -381,12 +379,39 @@ public class Test
 		this.listeCommentaires = listeCommentaires;
 	}
 
+	public String getMoyenne()
+	{
+		double tailleListe = listeNotes.size();
+		double cumul_Note = 0;
+		String chaineReturn;
+		
+		DecimalFormat format = new DecimalFormat("#.##");
+		format.setRoundingMode(RoundingMode.HALF_UP);
+
+		if (tailleListe != 0)
+		{
+			for (Note note : listeNotes)
+			{
+				cumul_Note += note.getNote();
+			}
+			
+			chaineReturn= format.format(cumul_Note/tailleListe)+" / 5";
+			
+		}
+		else
+		{
+			chaineReturn="Il n'y a pas de note";
+		}
+		
+		return chaineReturn;
+	}
+
 	public int getNbCom(int idTes)
 	{
 		int nbCom;
-		
-		nbCom=this.listeCommentaires.size();
-		
+
+		nbCom = this.listeCommentaires.size();
+
 		return nbCom;
 	}
 }
