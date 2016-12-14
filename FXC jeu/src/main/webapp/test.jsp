@@ -4,7 +4,6 @@
 		<!-- header -->
 		<%@ include file="entete.jsp"%>
 		<!-- //header -->
-
 		<p>ID : ${TEST.idTest}</p>
 		<p>Titre : ${TEST.titreTest}</p>
 		<p>Date : ${TEST.dateTest}</p>
@@ -85,48 +84,31 @@
 						<a href="#"><img class="img-responsive" src="images/co.png"
 							alt=""></a>
 					</div>
-					<div class="top-comment-right">
-						<ul>
-							<li><span class="left-at"><a href="#">Admin</a></span></li>
-							<li><span class="right-at">June 30, 2015 at 10.30am</span></li>
-							<li><a class="reply" href="#">REPLY</a></li>
-						</ul>
-						<p>It is a long established fact that a reader will be
-							distracted by the readable content of a page when looking at its
-							layout.The point of using Lorem Ipsum is that it has a
-							more-or-less</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="comments-top-top top-grid-comment">
-					<div class="top-comment-left">
-						<a href="#"><img class="img-responsive" src="images/co.png"
-							alt=""></a>
-					</div>
-					<div class="top-comment-right">
-						<ul>
-							<li><span class="left-at"><a href="#">Admin</a></li>
-							<li><span class="right-at">June 30, 2015 at 10.30am</span></li>
-							<li><a class="reply" href="#">REPLY</a></li>
-						</ul>
-						<p>It is a long established fact that a reader will be
-							distracted by the readable content of a page when looking at its
-							layout.The point of using Lorem Ipsum is that it has a
-							more-or-less</p>
-					</div>
+
+					<c:forEach items="${ListeCOM}" var="commentaire">
+						<div class="top-comment-right">
+							<ul>
+								<li><span class="left-at"><a href="#">Admin</a></span></li>
+								<li><span class="right-at">${commentaire.dateCom}</span></li>
+								<li><a class="reply" href="#">REPLY</a></li>
+							</ul>
+							<p>${commentaire.contenuCom}</p>
+						</div>
+					</c:forEach>
+
+
 					<div class="clearfix"></div>
 				</div>
 			</div>
 			<div class="artical-commentbox">
 				<h3>leave a comment</h3>
 				<div class="table-form">
-					<form name="CommentaireServlet" action="CommentaireServlet" method="POST">
+					<form name="CommentaireServlet" action="CommentaireServlet"
+						method="POST">
 						<input name="AuteurComm" type="text" class="textbox"
-							value="${TEST.utilisateur.getLogin()}" readOnly="readOnly">
-
-						<input type="hidden" name="Utilisateur"
-							value="${idUtilisateur}"> <input type='hidden'
-							name="Test" value="${TEST.idTest}">
+							value="${loginUtilisateur}" readOnly="readOnly"> <input
+							type="hidden" name="Utilisateur" value="${idUtilisateur}">
+						<input type='hidden' name="Test" value="${TEST.idTest}">
 						<textarea name="ContenuCom">Pose ton com le moche</textarea>
 						<input type="submit" value="Send">
 					</form>

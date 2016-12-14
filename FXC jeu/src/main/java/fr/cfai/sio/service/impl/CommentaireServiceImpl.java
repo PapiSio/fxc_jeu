@@ -1,5 +1,6 @@
 package fr.cfai.sio.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class CommentaireServiceImpl implements CommentaireService {
 	@Override
 	public List<Commentaire> recupererCommentaireParTest(int idTest) {
 		// TODO Auto-generated method stub
-		List<Commentaire> listeCommentaire = null;
+		List<Commentaire> listeCommentaire = new ArrayList<>();
 
 		listeCommentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
 

@@ -224,6 +224,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 	@Override
 	public List<Commentaire> findCommentaireByTest(int idTest) {
+		listeCommentaire.clear();
+		
 		System.out.println("CommenataireDAO - findCommentaireByTest ==> passe dedans");
 
 		int idCom;

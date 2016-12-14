@@ -1,6 +1,8 @@
 package fr.cfai.sio.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.cfai.sio.business.Commentaire;
 import fr.cfai.sio.business.Test;
+import fr.cfai.sio.service.CommentaireService;
 import fr.cfai.sio.service.TestService;
+import fr.cfai.sio.service.impl.CommentaireServiceImpl;
 import fr.cfai.sio.service.impl.TestServiceImpl;
 
 /**
@@ -22,6 +27,7 @@ public class TestServlet extends HttpServlet
 
 	private static final long serialVersionUID = 1L;
 	private TestService testServiceImpl;
+	private CommentaireService commentaireServiceImpl;
 	
 
 	/**
@@ -32,6 +38,7 @@ public class TestServlet extends HttpServlet
 	{
 		super();
 		this.testServiceImpl = new TestServiceImpl();
+		this.commentaireServiceImpl = new CommentaireServiceImpl();
 	}
 
 	/**
@@ -42,18 +49,21 @@ public class TestServlet extends HttpServlet
 	{
 		HttpSession session = request.getSession(true);
 		int idUtilisateur = (int) session.getAttribute("ID");
-
+		String loginUtilisateur = (String) session.getAttribute("LOGIN");
 		int idTest;
 		Test test = null;
+		List<Commentaire> listeCommentaire = new ArrayList<>();
+		listeCommentaire.clear();
 
 		idTest = Integer.parseInt(request.getParameter("idTest"));
 
 		test = testServiceImpl.recupereTestParID(idTest);
-		
+		listeCommentaire = commentaireServiceImpl.recupererCommentaireParTest(idTest);
 	
-
+		request.setAttribute("ListeCOM", listeCommentaire);
 		request.setAttribute("TEST", test);
 		request.setAttribute("idUtilisateur", idUtilisateur);
+		request.setAttribute("loginUtilisateur", loginUtilisateur);
 
 		request.getRequestDispatcher("/test.jsp").forward(request, response);
 	}
