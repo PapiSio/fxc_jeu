@@ -1,11 +1,14 @@
 package fr.cfai.sio.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.impl.TestServiceImpl;
@@ -37,6 +40,8 @@ public class TestServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		HttpSession session = request.getSession(true);
+		int idUtilisateur = (int) session.getAttribute("ID");
 
 		int idTest;
 		Test test = null;
@@ -48,6 +53,7 @@ public class TestServlet extends HttpServlet
 	
 
 		request.setAttribute("TEST", test);
+		request.setAttribute("idUtilisateur", idUtilisateur);
 
 		request.getRequestDispatcher("/test.jsp").forward(request, response);
 	}
