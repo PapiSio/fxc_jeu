@@ -62,6 +62,7 @@
     <display-name>ListeTestsServlet</display-name>
     <servlet-name>ListeTestsServlet</servlet-name>
     <servlet-class>fr.cfai.sio.servlet.ListeTestsServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>ListeTestsServlet</servlet-name>

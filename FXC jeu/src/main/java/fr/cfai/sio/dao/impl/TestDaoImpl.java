@@ -155,9 +155,9 @@ public class TestDaoImpl implements TestDao
 					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
 					test.setListeNotes(listeNotes);
 					
-					List<Commentaire> listeCommentaires = new ArrayList<>();
+				/*	List<Commentaire> listeCommentaires = new ArrayList<>();
 					listeCommentaires=commentaireDaoImpl.findCommentaireByTest(id_Test);
-					test.setListeCommentaires(listeCommentaires);
+					test.setListeCommentaires(listeCommentaires);*/
 
 					listeTests.add(test);
 

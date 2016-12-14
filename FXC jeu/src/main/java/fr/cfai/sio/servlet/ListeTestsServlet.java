@@ -40,7 +40,8 @@ public class ListeTestsServlet extends HttpServlet
 		int idJeu;
 		String action = request.getParameter("action");
 		List<Test> listeTestsParJeu=new ArrayList<>();
-
+		
+		System.out.println("ListeTestServlet - Passe par le doGET");
 		if (action == null)
 		{
 			if (listeTests == null)
