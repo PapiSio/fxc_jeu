@@ -125,10 +125,9 @@
 							value="${TEST.utilisateur.getLogin()}" readOnly="readOnly">
 
 						<input type="hidden" name="Utilisateur"
-							value="${TEST.utilisateur.getIdUtilisateur()}"> <input type='hidden'
+							value="${idUtilisateur}"> <input type='hidden'
 							name="Test" value="${TEST.idTest}">
-						<textarea value="Message:" onfocus="this.value = '';"
-							onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+						<textarea name="ContenuCom">Pose ton com le moche</textarea>
 						<input type="submit" value="Send">
 					</form>
 				</div>

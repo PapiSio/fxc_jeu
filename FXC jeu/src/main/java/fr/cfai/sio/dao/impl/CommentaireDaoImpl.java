@@ -258,7 +258,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			}
 			else
 			{
-				commentaire = null;
+				listeCommentaire = null;
 			}
 
 		}
@@ -304,7 +304,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				resultatAjout.setInt(4,idUtilisateur);
 				resultatAjout.setInt(5, idTest);
 				statut = resultatAjout.executeUpdate();
-				System.out.println("allo" +"COUCOU" + contenuCom + dateCom + idUtilisateur + idTest);
+
 
 			}
 			catch (SQLException e)

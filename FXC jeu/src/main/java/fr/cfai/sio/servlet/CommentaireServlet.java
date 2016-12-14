@@ -54,7 +54,7 @@ public class CommentaireServlet extends HttpServlet {
 		int idUtilisateur = Integer.parseInt(request.getParameter("Utilisateur"));
 		int idTest = Integer.parseInt(request.getParameter("Test"));
 		Date dateCom = new Date();
-		String contenuCom = request.getParameter("Message");
+		String contenuCom = request.getParameter("ContenuCom");
 		int idCom = commentaireServiceImpl.recupererIDMaxCommentaire();
 		commentaireServiceImpl.ajouterCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur);
 		request.getRequestDispatcher("/test.jsp").forward(request, response);
