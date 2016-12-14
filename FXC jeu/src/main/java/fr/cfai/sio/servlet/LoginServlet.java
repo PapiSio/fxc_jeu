@@ -89,6 +89,7 @@ public class LoginServlet extends HttpServlet
 				if (mdp.equals(mdpBase))
 				{
 					existe = true;
+					session.setAttribute("ID", utilisateur.getIdUtilisateur());
 					session.setAttribute("LOGIN", login);
 					session.setAttribute("PASSWORD", mdp);
 

@@ -258,7 +258,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			}
 			else
 			{
-				commentaire = null;
+				listeCommentaire = null;
 			}
 
 		}
