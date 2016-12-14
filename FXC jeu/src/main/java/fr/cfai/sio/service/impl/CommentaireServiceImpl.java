@@ -11,7 +11,7 @@ import fr.cfai.sio.dao.impl.CommentaireDaoImpl;
 import fr.cfai.sio.service.CommentaireService;
 
 public class CommentaireServiceImpl implements CommentaireService {
-	
+
 	private CommentaireDao commentaireDaoImpl;
 	private List<Commentaire> listeCommentaire;
 
@@ -24,71 +24,71 @@ public class CommentaireServiceImpl implements CommentaireService {
 	@Override
 	public List<Commentaire> recupererListeCommentaire() {
 		// TODO Auto-generated method stub
-		if (listeCommentaire == null)
-		{
+		if (listeCommentaire == null) {
 			// System.out.println("ServiceJEU : Passe par le if, liste null");
 			listeCommentaire = commentaireDaoImpl.findAllCommentaire();
 			return listeCommentaire;
 		}
-		
-		else
-		{
+
+		else {
 			// System.out.println("ServiceJEU : Passe par le else, liste not
 			// null");
 			return listeCommentaire;
 		}
-		
+
 	}
 
 	@Override
 	public Commentaire recupererCommentaireParId(int idcommentaire) {
 		// TODO Auto-generated method stub
 		Commentaire commentaire = null;
-		
+
 		commentaire = commentaireDaoImpl.findCommentaireById(idcommentaire);
-		
+
 		return commentaire;
+	}
+
+	public int recupererIDMaxCommentaire()
+	{
+		int idMax = 0;
+		
+		idMax = commentaireDaoImpl.getIDMaxCommentaire();
+		
+		return idMax;
 	}
 
 	@Override
 	public List<Commentaire> recupererCommentaireParTest(int idTest) {
 		// TODO Auto-generated method stub
 		List<Commentaire> listeCommentaire = null;
-		
+
 		listeCommentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
-		
+
 		return listeCommentaire;
 	}
 
 	@Override
-	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
-			Utilisateur utilisateur) {
+	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, int idTest,
+			int idUtilisateur) {
 		Commentaire commentaire = null;
-
-		if (commentaireDaoImpl.addCommentaire(idCom,contenuCom,dateCom,test,utilisateur) != 0)
-		{
+		if (commentaireDaoImpl.addCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur) != 0) {
 			System.out.println("GG");
-			commentaire = new Commentaire(idCom,contenuCom,dateCom,test,utilisateur);
+			//commentaire = new Commentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur);
 		}
 
 		return commentaire;
 	}
-	
-	
+
 	@Override
-	public Commentaire ajouterReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
-			Utilisateur utilisateur,Commentaire commentaire) {
-		
+	public Commentaire ajouterReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest,
+			int idUtilisateur, Commentaire commentaire) {
 
-		if (commentaireDaoImpl.addReponseCommentaire(idCom,contenuCom,dateCom,test,utilisateur,commentaire) != 0)
-		{
+		if (commentaireDaoImpl.addReponseCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur, commentaire) != 0) {
 			System.out.println("GG");
-			commentaire = new Commentaire(idCom,contenuCom,dateCom,test,utilisateur,commentaire);
+			//commentaire = new Commentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur, commentaire);
 		}
 
 		return commentaire;
 	}
-
-
 
 }

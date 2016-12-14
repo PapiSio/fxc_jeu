@@ -65,6 +65,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 	@Override
 	public Utilisateur findUtilisateurById(int idUtilisateur)
 	{
+		int id_Utilisateur;
 		String login;
 		String mdp;
 		Utilisateur utilisateur = null;
@@ -79,10 +80,11 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 			{
 				while (resultat.next())
 				{
-					login = resultat.getString(1);
-					mdp = resultat.getString(2);
+					id_Utilisateur = resultat.getInt(1);
+					login = resultat.getString(2);
+					mdp = resultat.getString(3);
 
-					utilisateur = new Utilisateur(login, mdp);
+					utilisateur = new Utilisateur(id_Utilisateur,login, mdp);
 				}
 			}
 			else

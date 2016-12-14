@@ -8,7 +8,6 @@
 		<p>ID : ${TEST.idTest}</p>
 		<p>Titre : ${TEST.titreTest}</p>
 		<p>Date : ${TEST.dateTest}</p>
-		<p>Nombre de com : ${TEST.nbCom}</p>
 		<p>Avantage : ${TEST.avantageJeu}</p>
 		<p>Inconvénient : ${TEST.inconvenientJeu}</p>
 		<p>Description : ${TEST.descriptionTest}</p>
@@ -28,6 +27,7 @@
 					<ul>
 						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
 						</span></li>
+						<br>
 						<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
 						</span></li>
 						<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
@@ -38,6 +38,17 @@
 							<li><small> </small><span>${support.getLibelleSupport()}
 							</span></li>
 						</c:forEach>
+						<c:forEach items="${TEST.jeu.listePlateformes}" var="plateforme">
+							<li><small> </small><span>${plateforme.getLibellePlateforme()}
+							</span></li>
+						</c:forEach>
+
+						<c:forEach items="${TEST.jeu.listeModeleEconomiques}"
+							var="modeleEco">
+							<li><small> </small><span>${modeleEco.getLibelleModeleEco()}
+							</span></li>
+						</c:forEach>
+
 
 
 						<%-- 						<li><small> </small><span>${TEST.jeu.support.getLibelleSupport()}
@@ -54,12 +65,7 @@
 			<div class="artical-links">
 				<ul>
 					<li><small> </small><span>${TEST.dateTest} </span></li>
-					<li><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}
-					</span></li>
-					<li><small class="no"> </small><span>${TEST.nbCom}
-							Commentaires </span></li>
-					<li><small> </small><span>View posts</span></li>
-					<li><a href="#"><small class="link"> </small><span>permalink</span></a></li>
+					<li><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}</span></li>
 				</ul>
 			</div>
 			<br>
@@ -70,15 +76,6 @@
 			<div class="alert alert-danger" role="alert">
 				<strong>Inconvénients</strong> ${TEST.inconvenientJeu}
 			</div>
-
-			<%-- 			<c:forEach >
-				<div class="alert alert-success" role="alert">
-					<strong>Well done!</strong> You successfully read this important
-					alert message.
-				</div>
-
-			</c:forEach>
- --%>
 
 			<!-- Commentaires -->
 			<div class="comment-grid-top">
@@ -123,16 +120,13 @@
 			<div class="artical-commentbox">
 				<h3>leave a comment</h3>
 				<div class="table-form">
-					<form>
-						<input type="text" class="textbox" value="Name"
-							onfocus="this.value = '';"
-							onblur="if (this.value == '') {this.value = 'Name';}"> <input
-							type="text" class="textbox" value="Email"
-							onfocus="this.value = '';"
-							onblur="if (this.value == '') {this.value = 'Email';}"> <input
-							type="text" class="textbox" value="Phone number"
-							onfocus="this.value = '';"
-							onblur="if (this.value == '') {this.value = 'Phone number';}">
+					<form name="CommentaireServlet" action="CommentaireServlet" method="POST">
+						<input name="AuteurComm" type="text" class="textbox"
+							value="${TEST.utilisateur.getLogin()}" readOnly="readOnly">
+
+						<input type="hidden" name="Utilisateur"
+							value="${TEST.utilisateur.getIdUtilisateur()}"> <input type='hidden'
+							name="Test" value="${TEST.idTest}">
 						<textarea value="Message:" onfocus="this.value = '';"
 							onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
 						<input type="submit" value="Send">
@@ -143,11 +137,6 @@
 		<!-- single -->
 	</div>
 </div>
-
-	<c:if test="${TEST.utilisateur.getId() eq session.getParameter}">
-		
-	
-	</c:if>
 <!-- //footer -->
 <!-- for bootstrap working -->
 <%@ include file="footer.jsp"%>

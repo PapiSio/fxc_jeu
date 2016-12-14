@@ -15,10 +15,12 @@ public interface CommentaireService {
 	
 	public List<Commentaire> recupererCommentaireParTest(int idTest);
 	
-	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
-			Utilisateur utilisateur);
+	
+	public int recupererIDMaxCommentaire();
 
-	Commentaire ajouterReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
-			Utilisateur utilisateur, Commentaire commentaire);
+	public Commentaire ajouterCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur);
+
+	public Commentaire ajouterReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur,
+			Commentaire commentaire);
 
 }

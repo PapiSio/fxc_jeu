@@ -47,7 +47,7 @@ public class ListeCommentaireServlet extends HttpServlet {
 		}
 
 		request.setAttribute("LISTE_COMMENTAIRE", listeCommentaire);
-		request.getRequestDispatcher("/ListeCommentaire.jsp").forward(request, response);
+		request.getRequestDispatcher("/test.jsp").forward(request, response);
 	}
 
 	/**

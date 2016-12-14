@@ -9,6 +9,6 @@ public class UtilisateurRequete
 
 	public static final String FIND_ALL_UTILISATEURS = "SELECT * from utilisateur";
 	
-	public static final String FIND_UTILISATEUR_BY_ID = "SELECT login,mdp from utilisateur WHERE id_utilisateur = ?";
+	public static final String FIND_UTILISATEUR_BY_ID = "SELECT * from utilisateur WHERE id_utilisateur = ?";
 
 }

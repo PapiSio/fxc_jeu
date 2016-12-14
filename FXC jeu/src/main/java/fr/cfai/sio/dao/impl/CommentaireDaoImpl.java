@@ -129,6 +129,35 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	}
 	
 	
+	public int getIDMaxCommentaire()
+	{
+		int idMax =0;
+		try{
+			ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+			
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					idMax = resultat.getInt(1);
+
+				}
+			}
+			else
+			{
+				idMax = 0;
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		
+		return idMax;
+	}
+	
+	
 	public Utilisateur getUtilisateurByID(int id)
 	{
 		if (listeUtilisateur == null)
@@ -247,9 +276,10 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 
 	@Override
-	public int addCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
-			Utilisateur utilisateur) {
+	public int addCommentaire(int idCom, String contenuCom, Date dateCom,int idTest,
+			int idUtilisateur) {
 			int idMax = 0;
+			java.sql.Date dateSql;
 
 			try
 			{
@@ -270,10 +300,11 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
 				resultatAjout.setInt(1, idMax);
 				resultatAjout.setString(2, contenuCom);
-				resultatAjout.setDate(3,(java.sql.Date) dateCom );
-				resultatAjout.setInt(4,utilisateur.getIdUtilisateur());
-				resultatAjout.setInt(5, test.getIdTest());
+				resultatAjout.setDate(3,dateSql = new java.sql.Date(dateCom.getTime()));
+				resultatAjout.setInt(4,idUtilisateur);
+				resultatAjout.setInt(5, idTest);
 				statut = resultatAjout.executeUpdate();
+				System.out.println("allo" +"COUCOU" + contenuCom + dateCom + idUtilisateur + idTest);
 
 			}
 			catch (SQLException e)
@@ -284,8 +315,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	}
 	
 	@Override
-	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test,
-			Utilisateur utilisateur, Commentaire commentaire) {
+	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest,
+			int idUtilisateur, Commentaire commentaire) {
 			int idMax = 0;
 
 			try
@@ -308,10 +339,11 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				resultatAjout.setInt(1, idMax);
 				resultatAjout.setString(2, contenuCom);
 				resultatAjout.setDate(3,(java.sql.Date) dateCom );
-				resultatAjout.setInt(4,utilisateur.getIdUtilisateur());
-				resultatAjout.setInt(5, test.getIdTest());
+				resultatAjout.setInt(4,idUtilisateur);
+				resultatAjout.setInt(5, idTest);
 				resultatAjout.setInt(6, commentaire.getIdCom());
 				statut = resultatAjout.executeUpdate();
+				
 
 			}
 			catch (SQLException e)

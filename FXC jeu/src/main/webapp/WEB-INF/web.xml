@@ -67,7 +67,7 @@
     <servlet-name>ListeTestsServlet</servlet-name>
     <url-pattern>/ListeTestsServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <display-name>ListeCommentaireServlet</display-name>
     <servlet-name>ListeCommentaireServlet</servlet-name>
     <servlet-class>fr.cfai.sio.servlet.ListeCommentaireServlet</servlet-class>

@@ -21,15 +21,21 @@ public interface CommentaireDao {
 	 * @return
 	 */
 	
-	public int addCommentaire(int idCom,String contenuCom,Date dateCom,Test test,Utilisateur utilisateur);
 	
 	public List<Commentaire> findAllCommentaire();
 	
 	public List<Commentaire> findCommentaireByTest(int idTest);
 
 
-	int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, Test test, Utilisateur utilisateur,
+	
+	public int getIDMaxCommentaire();
+
+
+	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur,
 			Commentaire commentaire);
+
+
+	public int addCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur);
 	
 
 }
