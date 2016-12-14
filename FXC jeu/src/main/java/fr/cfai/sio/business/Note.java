@@ -1,5 +1,8 @@
 package fr.cfai.sio.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Commentaire OK
  * 
@@ -13,7 +16,7 @@ public class Note
 	 */
 	private int idNote;
 	private short note;
-	private Test test;
+	private List<Test> listetests;
 
 	/**
 	 * Constructeur de Note
@@ -25,12 +28,12 @@ public class Note
 	 * @param test
 	 *            Test de la note
 	 */
-	public Note(int idNote, short note, Test test)
+	public Note(int idNote, short note)
 	{
 		super();
 		this.idNote = idNote;
 		this.note = note;
-		this.test = test;
+		this.listetests = new ArrayList<>();
 	}
 
 	/**
@@ -75,24 +78,14 @@ public class Note
 		this.note = note;
 	}
 
-	/**
-	 * Getteur Test de la note
-	 * 
-	 * @return Test de la note
-	 */
-	public Test getTest()
+	public List<Test> getListetests()
 	{
-		return test;
+		return listetests;
 	}
 
-	/**
-	 * Setteur Test de la note
-	 * 
-	 * @param test
-	 *            Test de la note
-	 */
-	public void setTest(Test test)
+	public void setListetests(List<Test> listetests)
 	{
-		this.test = test;
+		this.listetests = listetests;
 	}
+
 }

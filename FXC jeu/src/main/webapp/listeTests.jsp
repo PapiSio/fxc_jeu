@@ -85,6 +85,7 @@
 							Jeu : <span>${test.jeu.getTitreJeu()}</span> <br> Auteur : <span>
 								${test.utilisateur.getLogin()} </span><br> Date : <span>${test.dateTest}
 							</span><br> Note du jeu : <span>${test.noteJeu} / 20</span><br>
+							Moyenne du test : <span>${test.getMoyenne()} </span><br>
 							Description : <span>${test.descriptionTest}</span>
 						</p>
 						<br>
