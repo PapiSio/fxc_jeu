@@ -82,8 +82,6 @@
 				<h3>Responses</h3>
 				<div class="comments-top-top">
 					<div class="top-comment-left">
-						<a href="#"><img class="img-responsive" src="images/co.png"
-							alt=""></a>
 					</div>
 					<div class="top-comment-right">
 						<ul>
@@ -98,14 +96,18 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				<div class="comments-top-top top-grid-comment">
+				
+				
+				
+				
+<!-- 				<div class="comments-top-top top-grid-comment">
 					<div class="top-comment-left">
 						<a href="#"><img class="img-responsive" src="images/co.png"
 							alt=""></a>
 					</div>
 					<div class="top-comment-right">
 						<ul>
-							<li><span class="left-at"><a href="#">Admin</a></li>
+							<li><span class="left-at"><a href="#">Adminzzz</a></li>
 							<li><span class="right-at">June 30, 2015 at 10.30am</span></li>
 							<li><a class="reply" href="#">REPLY</a></li>
 						</ul>
@@ -115,7 +117,7 @@
 							more-or-less</p>
 					</div>
 					<div class="clearfix"></div>
-				</div>
+				</div> -->
 			</div>
 			<div class="artical-commentbox">
 				<h3>leave a comment</h3>
