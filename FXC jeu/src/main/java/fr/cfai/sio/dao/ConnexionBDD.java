@@ -2,6 +2,8 @@ package fr.cfai.sio.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -22,48 +24,113 @@ public class ConnexionBDD
 	private static final String URL = "jdbc:postgresql://localhost:5432/app_jeu";
 	private static final String UTILISATEUR = "postgres";
 	private static final String MOT_DE_PASSE = "postgres";
+	private static Connection connexion;
+	private static Statement statement;
 
-	/**
-	 * Méthode qui initialise le 'statement' de la connexion
-	 * 
-	 * @return Statement
-	 */
-	public Statement getStatement()
+	public static Connection getConnection()
 	{
-		Connection connexion = null;
-		Statement statement = null;
 
-		try
+		if (connexion == null)
 		{
-			Class.forName("org.postgresql.Driver");
-			connexion = DriverManager.getConnection(URL, UTILISATEUR, MOT_DE_PASSE);
-			statement = connexion.createStatement();
+
+			try
+			{
+				Class.forName("org.postgresql.Driver");
+			}
+			catch (ClassNotFoundException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			try
+			{
+				connexion = DriverManager.getConnection(URL, UTILISATEUR, MOT_DE_PASSE);
+
+			}
+			catch (SQLException e)
+			{
+
+				e.printStackTrace();
+
+			}
+
 		}
-		catch (SQLException | ClassNotFoundException e)
+
+		return connexion;
+
+	}
+
+	public static Statement getStatement()
+	{
+
+		if (connexion == null)
 		{
-			System.out.println("Erreur");
+			connexion = getConnection();
 		}
+		if (statement == null)
+		{
+			try
+			{
+				statement = connexion.createStatement();
+			}
+			catch (SQLException e)
+			{
+				System.out.println("ConnexionBDD - GetStatement - ERREUR:" + e.toString());
+			}
+		}
+
 		return statement;
 	}
 
-	/**
-	 * Méthode qui initialise la connexion
-	 * 
-	 * @return Connection
-	 */
-	public Connection getConnection()
+	public static void close_OLD(Connection connexion, Statement statement, PreparedStatement preparedStatement, ResultSet resultat)
 	{
-		Connection connexion = null;
+		if (resultat != null)
+		{
+			try
+			{
+				resultat.close();
+			}
+			catch (SQLException ignore)
+			{
 
-		try
-		{
-			Class.forName("org.postgresql.Driver");
-			connexion = DriverManager.getConnection(URL, UTILISATEUR, MOT_DE_PASSE);
+			}
 		}
-		catch (SQLException | ClassNotFoundException e)
+
+		if (preparedStatement != null)
 		{
-			System.out.println("Erreur");
+			try
+			{
+				preparedStatement.close();
+			}
+			catch (SQLException ignore)
+			{
+
+			}
 		}
-		return connexion;
+
+		if (statement != null)
+		{
+			try
+			{
+				statement.close();
+			}
+			catch (SQLException ignore)
+			{
+
+			}
+		}
+
+		if (connexion != null)
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch (SQLException ignore)
+			{
+
+			}
+		}
 	}
 }

@@ -26,6 +26,8 @@ public class JeuServlet extends HttpServlet
 	public JeuServlet() throws Exception
 	{
 		super();
+		System.out.println("Constructeur JeuServlet");
+
 		this.jeuServiceImpl = new JeuServiceImpl();
 		
 	}

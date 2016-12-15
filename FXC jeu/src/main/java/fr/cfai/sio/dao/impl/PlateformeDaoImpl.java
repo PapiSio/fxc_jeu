@@ -15,17 +15,12 @@ import fr.cfai.sio.dao.requete.PlateformeRequete;
 public class PlateformeDaoImpl implements PlateformeDao
 {
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
-	// private int statut = 0;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public PlateformeDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur PlateformeDaoImpl");
 	}
 
 	@Override
@@ -38,14 +33,15 @@ public class PlateformeDaoImpl implements PlateformeDao
 	@Override
 	public List<Plateforme> findAllPlateformes()
 	{
-		List<Plateforme> listePlateformes = new ArrayList<Plateforme>();
+		List<Plateforme> listePlateformes = new ArrayList<>();
 		int id_Plateforme;
 		String libelle_Plateforme;
 		Plateforme plateforme = null;
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(PlateformeRequete.FIND_ALL_PLATEFORMES);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(PlateformeRequete.FIND_ALL_PLATEFORMES);
 
 			if (resultat != null)
 			{
@@ -67,25 +63,26 @@ public class PlateformeDaoImpl implements PlateformeDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listePlateformes;
 	}
 
 	@Override
 	public List<Plateforme> findAllPlateformesByJeu(int idJeu)
 	{
-		List<Plateforme> listePlateformes = new ArrayList<Plateforme>();
+		List<Plateforme> listePlateformes = new ArrayList<>();
 		int id_Plateforme;
 		String libelle_Plateforme;
 		Plateforme plateforme = null;
 
 		try
 		{
-			PreparedStatement resultatPrepared = objConnect.prepareStatement(PlateformeRequete.FIND_ALL_PLATEFORMES_BY_JEU);
-			resultatPrepared.setInt(1, idJeu);
-			resultatPrepared.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(PlateformeRequete.FIND_ALL_PLATEFORMES_BY_JEU);
+			preparedStatement.setInt(1, idJeu);
+			preparedStatement.executeQuery();
 			try
 			{
-				ResultSet resultat = resultatPrepared.executeQuery();
+				ResultSet resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -113,6 +110,7 @@ public class PlateformeDaoImpl implements PlateformeDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listePlateformes;
 	}
 

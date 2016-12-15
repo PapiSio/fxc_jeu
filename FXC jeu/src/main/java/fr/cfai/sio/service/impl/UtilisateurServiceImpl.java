@@ -15,6 +15,8 @@ public class UtilisateurServiceImpl implements UtilisateurService
 	public UtilisateurServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur UtilisateurServiceImpl");
+
 		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
 	}
 

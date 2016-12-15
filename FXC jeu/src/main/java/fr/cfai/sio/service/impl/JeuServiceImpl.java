@@ -15,6 +15,8 @@ public class JeuServiceImpl implements JeuService
 	public JeuServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur JeuServiceImpl");
+
 		this.jeuDaoImpl = new JeuDaoImpl();
 	}
 

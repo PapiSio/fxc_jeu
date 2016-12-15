@@ -1,5 +1,6 @@
 package fr.cfai.sio.dao.impl;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,31 +13,27 @@ import fr.cfai.sio.dao.requete.GenreRequete;
 
 public class GenreDaoImpl implements GenreDao
 {
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	// private Connection objConnect;
-	// private int statut = 0;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public GenreDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		// this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur GenreDaoImpl");
 	}
 
 	@Override
 
 	public List<Genre> findAllGenres()
 	{
-		List<Genre> listeGenres = new ArrayList<Genre>();
+		List<Genre> listeGenres = new ArrayList<>();
 		int id_genre;
 		String libelle_genre;
 		Genre genre = null;
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(GenreRequete.FIND_ALL_GENRES);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(GenreRequete.FIND_ALL_GENRES);
 
 			if (resultat != null)
 			{
@@ -58,6 +55,7 @@ public class GenreDaoImpl implements GenreDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listeGenres;
 	}
 

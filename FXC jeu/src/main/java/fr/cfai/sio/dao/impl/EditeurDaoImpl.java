@@ -1,5 +1,6 @@
 package fr.cfai.sio.dao.impl;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,16 +14,11 @@ import fr.cfai.sio.dao.requete.EditeurRequete;
 public class EditeurDaoImpl implements EditeurDao
 {
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	// private Connection objConnect;
-	// private int statut = 0;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public EditeurDaoImpl()
 	{
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		// this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur EditeurDaoImpl");
 	}
 
 	@Override
@@ -43,7 +39,8 @@ public class EditeurDaoImpl implements EditeurDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(EditeurRequete.FIND_ALL_EDITEURS);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(EditeurRequete.FIND_ALL_EDITEURS);
 
 			if (resultat != null)
 			{
@@ -65,6 +62,7 @@ public class EditeurDaoImpl implements EditeurDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listeEditeurs;
 	}
 

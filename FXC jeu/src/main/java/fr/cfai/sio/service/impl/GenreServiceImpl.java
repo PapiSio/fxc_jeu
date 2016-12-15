@@ -14,6 +14,8 @@ public class GenreServiceImpl implements GenreService
 	public GenreServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur GenreServiceImpl");
+
 		this.genreDaoImpl = new GenreDaoImpl();
 	}
 

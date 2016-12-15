@@ -22,6 +22,8 @@ public class InscriptionServlet extends HttpServlet
 	public InscriptionServlet() throws Exception
 	{
 		super();
+		System.out.println("Constructeur InscriptionServlet");
+
 		this.utilisateurService=new UtilisateurServiceImpl();
 	}
 

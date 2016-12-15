@@ -15,6 +15,7 @@ public class ClassificationServiceImpl implements ClassificationService
 	public ClassificationServiceImpl() throws Exception
 	{
 		super();
+		//System.out.println("Constructeur ClassificationServiceImpl");
 		this.classificationDaoImpl = new ClassificationDaoImpl();
 	}
 

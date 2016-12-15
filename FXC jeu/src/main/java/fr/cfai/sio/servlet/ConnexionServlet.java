@@ -21,6 +21,8 @@ public class ConnexionServlet extends HttpServlet
 	public ConnexionServlet()
 	{
 		super();
+		System.out.println("Constructeur ConnexionServlet");
+
 		// TODO Auto-generated constructor stub
 	}
 

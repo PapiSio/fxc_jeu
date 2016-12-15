@@ -1,5 +1,6 @@
 package fr.cfai.sio.dao.impl;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,31 +14,29 @@ import fr.cfai.sio.dao.requete.DeveloppeurRequete;
 public class DeveloppeurDaoImpl implements DeveloppeurDao
 {
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	// private Connection objConnect;
-	// private int statut = 0;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public DeveloppeurDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		// this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur DevDaoImpl");
 	}
 
 	@Override
 
 	public List<Developpeur> findAllDeveloppeurs()
 	{
-		List<Developpeur> listeDeveloppeurs = new ArrayList<Developpeur>();
+
+		List<Developpeur> listeDeveloppeurs = new ArrayList<>();
+
 		int id_developpeur;
 		String libelle_developpeur;
 		Developpeur developpeur = null;
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(DeveloppeurRequete.FIND_ALL_DEVELOPPEURS);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(DeveloppeurRequete.FIND_ALL_DEVELOPPEURS);
 
 			if (resultat != null)
 			{
@@ -53,13 +52,14 @@ public class DeveloppeurDaoImpl implements DeveloppeurDao
 			{
 				listeDeveloppeurs = null;
 			}
-
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("DeveloppeurDaoImpl/findAllDeveloppeur - Erreur SQL : " + e.getMessage());
 		}
+
 		return listeDeveloppeurs;
+
 	}
 
 	public Developpeur findDeveloppeurById(int idDeveloppeur)

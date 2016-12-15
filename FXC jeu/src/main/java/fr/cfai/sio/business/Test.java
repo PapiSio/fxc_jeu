@@ -74,29 +74,10 @@ public class Test
 		this.jeu = jeu;
 		this.utilisateur = utilisateur;
 		this.listeNotes = new ArrayList<>();
+		this.listeCommentaires=new ArrayList<>();
 	}
 
-	/**
-	 * Constructeur pour la liste des tests dans la dao
-	 * 
-	 * @param id_Test
-	 *            ID du test
-	 * @param titre_Test
-	 *            Titre du test
-	 * @param date_Test
-	 *            Date du test
-	 * @param description_Test
-	 *            Description du test
-	 * @param utilisateur
-	 */
-	/*
-	 * public Test(int id_Test, String titre_Test, Date date_Test, String
-	 * description_Test, short note_Jeu, Utilisateur utilisateur) { this.idTest
-	 * = id_Test; this.titreTest = titre_Test; this.dateTest = date_Test;
-	 * this.descriptionTest = description_Test; this.noteJeu = note_Jeu;
-	 * this.utilisateur = utilisateur; }
-	 */
-
+	
 	/**
 	 * Getteur Description du test
 	 * 
@@ -406,12 +387,11 @@ public class Test
 		return chaineReturn;
 	}
 
-	public int getNbCom(int idTes)
+	public int getNbCom()
 	{
-		int nbCom;
+		
+		int tailleListe = listeCommentaires.size();
 
-		nbCom = this.listeCommentaires.size();
-
-		return nbCom;
+		return tailleListe;
 	}
 }

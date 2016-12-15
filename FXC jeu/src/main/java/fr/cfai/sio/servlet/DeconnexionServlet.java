@@ -20,6 +20,8 @@ public class DeconnexionServlet extends HttpServlet
 	public DeconnexionServlet()
 	{
 		super();
+		System.out.println("Constructeur DeconnexionServlet");
+
 		// TODO Auto-generated constructor stub
 	}
 

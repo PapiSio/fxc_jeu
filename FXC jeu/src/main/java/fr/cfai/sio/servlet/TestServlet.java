@@ -37,6 +37,8 @@ public class TestServlet extends HttpServlet
 	public TestServlet() throws Exception
 	{
 		super();
+		System.out.println("Constructeur TestServlet");
+
 		this.testServiceImpl = new TestServiceImpl();
 		this.commentaireServiceImpl = new CommentaireServiceImpl();
 	}

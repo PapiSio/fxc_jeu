@@ -28,6 +28,7 @@ public class ListeTestsServlet extends HttpServlet
 	public ListeTestsServlet() throws Exception
 	{
 		super();
+		System.out.println("Constructeur TestServlet");
 		this.testServiceImpl = new TestServiceImpl();
 	}
 
@@ -40,20 +41,17 @@ public class ListeTestsServlet extends HttpServlet
 		int idJeu;
 		String action = request.getParameter("action");
 		List<Test> listeTestsParJeu=new ArrayList<>();
-
+		
 		if (action == null)
 		{
 			if (listeTests == null)
 			{
-				System.out.println("ServletTest : action=null Passe par le if, liste null");
 				listeTests = testServiceImpl.recupererListeTests();
 			}
-			System.out.println("ServletTest : action=null");
 			request.setAttribute("LISTE_TESTS", listeTests);
 		}
 		else
 		{
-			System.out.println("ServletTest : action=jeu");
 			idJeu = Integer.parseInt(request.getParameter("idJeu"));
 		
 			listeTestsParJeu = testServiceImpl.recupererListeTestsParJeu(idJeu);

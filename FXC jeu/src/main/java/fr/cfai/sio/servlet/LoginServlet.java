@@ -9,11 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Utilisateur;
-import fr.cfai.sio.service.JeuService;
 import fr.cfai.sio.service.UtilisateurService;
-import fr.cfai.sio.service.impl.JeuServiceImpl;
 import fr.cfai.sio.service.impl.UtilisateurServiceImpl;
 
 /**
@@ -24,8 +21,6 @@ public class LoginServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	public static final int COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 an
 	private UtilisateurService utilisateurServiceImpl;
-	private JeuService jeuServiceImpl;
-	//private TestService testServiceImpl;
 	
 	
 	/**
@@ -35,9 +30,9 @@ public class LoginServlet extends HttpServlet
 	public LoginServlet() throws Exception
 	{
 		super();
+		System.out.println("Constructeur LoginServlet");
+
 		this.utilisateurServiceImpl=new UtilisateurServiceImpl();
-		this.jeuServiceImpl=new JeuServiceImpl();
-		//this.testServiceImpl = new TestServiceImpl();
 	}
 
 	/**
@@ -102,17 +97,6 @@ public class LoginServlet extends HttpServlet
 		if (existe == true)
 		{
 			session.setAttribute("CONTROLE_CONNEXION", "OK");
-			
-			//TODO : NE PAS INSTANCIER LES LISTES ICI : Il faut sinon obligatoirement passer par l'index pour y qu'elles se rechargent en mémoire.
-			List<Jeu> listeJeux = null;
-			listeJeux = jeuServiceImpl.recupererListeJeux();
-			request.setAttribute("LISTE_JEUX", listeJeux);
-			
-			//List<Test> listeTests = null;
-		//	listeTests = testServiceImpl.recupererListeTests();
-		//	request.setAttribute("LISTE_TESTS", listeTests);
-			
-			
 			request.getRequestDispatcher("/accueil.jsp").forward(request, response);
 
 		}
@@ -121,7 +105,6 @@ public class LoginServlet extends HttpServlet
 			session.setAttribute("CONTROLE_CONNEXION", "NOK");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
-
 	}
 
 	private static void setCookie(HttpServletResponse response, String login, String valeur, int maxAge)

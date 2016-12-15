@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import fr.cfai.sio.business.Commentaire;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Note;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.business.Utilisateur;
+import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.JeuDao;
 import fr.cfai.sio.dao.NoteDao;
@@ -30,7 +32,6 @@ public class TestDaoImpl implements TestDao
 	private JeuDao jeuDaoImpl;
 	private UtilisateurDao utilisateurDaoImpl;
 	private NoteDao noteDaoImpl;
-	// private CommentaireDao commentaireDaoImpl;
 
 	public TestDaoImpl() throws Exception
 	{
@@ -42,7 +43,6 @@ public class TestDaoImpl implements TestDao
 		this.jeuDaoImpl = new JeuDaoImpl();
 		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
 		this.noteDaoImpl = new NoteDaoImpl();
-		// this.commentaireDaoImpl = new CommentaireDaoImpl();
 	}
 
 	@Override
@@ -61,8 +61,6 @@ public class TestDaoImpl implements TestDao
 		Jeu jeu;
 		Utilisateur utilisateur;
 		Test test = null;
-		List<Note> listeNotes = new ArrayList<>();
-		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -89,6 +87,7 @@ public class TestDaoImpl implements TestDao
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
 
+					List<Note> listeNotes = new ArrayList<>();
 					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
 					test.setListeNotes(listeNotes);
 
@@ -124,7 +123,7 @@ public class TestDaoImpl implements TestDao
 		Utilisateur utilisateur;
 		Test test = null;
 
-		// List<Commentaire> listeCommentaires = new ArrayList<>();
+	
 
 		try
 		{
@@ -151,13 +150,7 @@ public class TestDaoImpl implements TestDao
 
 					List<Note> listeNotes = new ArrayList<>();
 					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
-
 					test.setListeNotes(listeNotes);
-					System.out.println("TestDaoImpl - Pour le test = " + id_Test);
-					for (Note note : test.getListeNotes())
-					{
-						System.out.println("Note = " + note.getNote());
-					}
 
 					listeTests.add(test);
 
@@ -192,8 +185,6 @@ public class TestDaoImpl implements TestDao
 		Utilisateur utilisateur;
 		Test test = null;
 		List<Test> listeTests = new ArrayList<>();
-		List<Note> listeNotes = new ArrayList<>();
-		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -220,12 +211,9 @@ public class TestDaoImpl implements TestDao
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
 
+					List<Note> listeNotes = new ArrayList<>();
 					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
 					test.setListeNotes(listeNotes);
-
-					// listeCommentaires =
-					// commentaireDaoImpl.findCommentaireByTest(id_Test);
-					// test.setListeCommentaires(listeCommentaires);
 
 					listeTests.add(test);
 				}
