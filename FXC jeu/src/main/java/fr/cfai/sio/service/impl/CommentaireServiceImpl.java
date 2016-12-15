@@ -82,9 +82,10 @@ public class CommentaireServiceImpl implements CommentaireService {
 
 	@Override
 	public Commentaire ajouterReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest,
-			int idUtilisateur, Commentaire commentaire) {
+			int idUtilisateur, int idCommentaire) {
+		Commentaire commentaire = null;
 
-		if (commentaireDaoImpl.addReponseCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur, commentaire) != 0) {
+		if (commentaireDaoImpl.addReponseCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur, idCommentaire) != 0) {
 			System.out.println("GG");
 			//commentaire = new Commentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur, commentaire);
 		}

@@ -90,6 +90,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	});
 </script>
+
+
 <script type="text/javascript" src="js/jquery.flexisel.js"></script>
 
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
@@ -109,6 +111,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	jQuery(function($) {
 		$(".swipebox").swipebox();
 	});
+</script>
+
+
+<script type="text/javascript">
+function toggle_div(bouton, id) { // On déclare la fonction toggle_div qui prend en param le bouton et un id
+  var div = document.getElementById(id); // On récupère le div ciblé grâce à l'id
+  if(div.style.display=="none") { // Si le div est masqué...
+    div.style.display = "block"; // ... on l'affiche...
+    bouton.innerHTML = "-"; // ... et on change le contenu du bouton.
+  } else { // S'il est visible...
+    div.style.display = "none"; // ... on le masque...
+    bouton.innerHTML = "+"; // ... et on change le contenu du bouton.
+  }
+}
 </script>
 
 <link rel="stylesheet" href="css/swipebox.css" type="text/css"

@@ -318,8 +318,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	
 	@Override
 	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest,
-			int idUtilisateur, Commentaire commentaire) {
+			int idUtilisateur, int idCommentaire) {
 			int idMax = 0;
+			java.sql.Date dateSql;
 
 			try
 			{
@@ -340,10 +341,10 @@ public class CommentaireDaoImpl implements CommentaireDao {
 				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
 				resultatAjout.setInt(1, idMax);
 				resultatAjout.setString(2, contenuCom);
-				resultatAjout.setDate(3,(java.sql.Date) dateCom );
+				resultatAjout.setDate(3,(dateSql = new java.sql.Date(dateCom.getTime())));
 				resultatAjout.setInt(4,idUtilisateur);
 				resultatAjout.setInt(5, idTest);
-				resultatAjout.setInt(6, commentaire.getIdCom());
+				resultatAjout.setInt(6, idCommentaire);
 				statut = resultatAjout.executeUpdate();
 				
 

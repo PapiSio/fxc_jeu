@@ -32,7 +32,7 @@ public interface CommentaireDao {
 
 
 	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur,
-			Commentaire commentaire);
+			int idCommentaire);
 
 
 	public int addCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur);
