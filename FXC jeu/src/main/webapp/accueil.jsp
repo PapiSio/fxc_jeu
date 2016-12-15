@@ -20,9 +20,7 @@ dans LoginServlet
 
  bla bla bla bla bla bla bla bla bla bla bla bla 
  
- 			<div class="alert alert-danger" role="alert">
-				<strong>ESPECE</strong> DE GROS CONNARD
-			</div>
+
  </p>
 
 

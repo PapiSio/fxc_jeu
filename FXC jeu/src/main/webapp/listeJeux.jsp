@@ -15,9 +15,13 @@
 									<div class="ch-info-front ch-img-1"></div>
 									<div class="ch-info-back">
 										<h3>
-											<a href="JeuServlet?idJeu=${jeu.idJeu}">AAA</a>
+											<a href="ListeTestsServlet?idJeu=${jeu.idJeu}&action=jeu">Voir
+												les tests</a></a>
 										</h3>
-										<p>World of warcraft.</p>
+										<p>
+											<a href="ListeTestsServlet?idJeu=${jeu.idJeu}&action=jeu">Voir
+												les tests</a>
+										</p>
 									</div>
 								</div>
 							</div>

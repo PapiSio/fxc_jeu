@@ -136,7 +136,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				allez être redirigé vers la page d'accueil dans quelques secondes
 				...
 			</h2>
-			<p>Espece de connard</p>
 		</div>
 	</div>
 </body>

@@ -32,7 +32,6 @@ public class TestDaoImpl implements TestDao
 	private JeuDao jeuDaoImpl;
 	private UtilisateurDao utilisateurDaoImpl;
 	private NoteDao noteDaoImpl;
-	private CommentaireDao commentaireDaoImpl;
 
 	public TestDaoImpl() throws Exception
 	{
@@ -44,7 +43,6 @@ public class TestDaoImpl implements TestDao
 		this.jeuDaoImpl = new JeuDaoImpl();
 		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
 		this.noteDaoImpl = new NoteDaoImpl();
-		this.commentaireDaoImpl = new CommentaireDaoImpl();
 	}
 
 	@Override
@@ -63,7 +61,6 @@ public class TestDaoImpl implements TestDao
 		Jeu jeu;
 		Utilisateur utilisateur;
 		Test test = null;
-		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -154,10 +151,6 @@ public class TestDaoImpl implements TestDao
 					List<Note> listeNotes = new ArrayList<>();
 					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
 					test.setListeNotes(listeNotes);
-					
-				/*	List<Commentaire> listeCommentaires = new ArrayList<>();
-					listeCommentaires=commentaireDaoImpl.findCommentaireByTest(id_Test);
-					test.setListeCommentaires(listeCommentaires);*/
 
 					listeTests.add(test);
 
@@ -192,7 +185,6 @@ public class TestDaoImpl implements TestDao
 		Utilisateur utilisateur;
 		Test test = null;
 		List<Test> listeTests = new ArrayList<>();
-		// List<Commentaire> listeCommentaires = new ArrayList<>();
 
 		try
 		{
@@ -222,10 +214,6 @@ public class TestDaoImpl implements TestDao
 					List<Note> listeNotes = new ArrayList<>();
 					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
 					test.setListeNotes(listeNotes);
-
-					// listeCommentaires =
-					// commentaireDaoImpl.findCommentaireByTest(id_Test);
-					// test.setListeCommentaires(listeCommentaires);
 
 					listeTests.add(test);
 				}
