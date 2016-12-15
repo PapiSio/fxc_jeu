@@ -15,6 +15,8 @@ public class ModeleEconomiqueServiceImpl implements ModeleEconomiqueService
 	public ModeleEconomiqueServiceImpl() throws Exception
 	{
 		super();
+		//System.out.println("Constructeur ModeleEcoServiceImpl");
+
 		this.modeleEconomiqueDaoImpl = new ModeleEconomiqueDaoImpl();
 	}
 

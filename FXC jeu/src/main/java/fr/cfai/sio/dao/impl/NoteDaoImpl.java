@@ -14,16 +14,12 @@ import fr.cfai.sio.dao.requete.NoteRequete;
 
 public class NoteDaoImpl implements NoteDao
 {
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public NoteDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur NoteDaoImpl");
 	}
 
 	@Override
@@ -37,7 +33,8 @@ public class NoteDaoImpl implements NoteDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(NoteRequete.FIND_ALL_NOTES);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(NoteRequete.FIND_ALL_NOTES);
 
 			if (resultat != null)
 			{
@@ -73,17 +70,15 @@ public class NoteDaoImpl implements NoteDao
 
 		try
 		{
-			PreparedStatement resultatPrepared = objConnect.prepareStatement(NoteRequete.FIND_ALL_NOTES_BY_TEST);
-			resultatPrepared.setInt(1, idTest);
-			resultatPrepared.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(NoteRequete.FIND_ALL_NOTES_BY_TEST);
+			preparedStatement.setInt(1, idTest);
 			try
 			{
-				ResultSet resultat = resultatPrepared.executeQuery();
+				ResultSet resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
-					System.out.println("NoteDaoImpl : Résultat NON null");
-					
+
 					while (resultat.next())
 					{
 						id_Note = resultat.getInt(1);
@@ -94,7 +89,6 @@ public class NoteDaoImpl implements NoteDao
 				}
 				else
 				{
-					System.out.println("NoteDaoImpl : Résultat null");
 					listeNotes = null;
 				}
 
@@ -109,6 +103,7 @@ public class NoteDaoImpl implements NoteDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listeNotes;
 	}
 

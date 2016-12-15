@@ -14,6 +14,8 @@ public class DeveloppeurServiceImpl implements DeveloppeurService
 	public DeveloppeurServiceImpl() throws Exception
 	{
 		super();
+		//System.out.println("Constructeur DevServiceImpl");
+
 		this.developpeurDaoImpl = new DeveloppeurDaoImpl();
 	}
 

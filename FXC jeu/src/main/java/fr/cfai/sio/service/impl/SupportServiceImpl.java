@@ -15,6 +15,8 @@ public class SupportServiceImpl implements SupportService
 	public SupportServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur SupportServiceImpl");
+
 		this.supportDaoImpl = new SupportDaoImpl();
 	}
 

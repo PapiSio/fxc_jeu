@@ -15,6 +15,8 @@ public class PlateformeServiceImpl implements PlateformeService
 	public PlateformeServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur PlateformeServiceImpl");
+
 		this.plateformeDaoImpl = new PlateformeDaoImpl();
 	}
 

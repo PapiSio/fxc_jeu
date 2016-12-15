@@ -29,45 +29,32 @@ import fr.cfai.sio.dao.requete.JeuRequete;
 
 public class JeuDaoImpl implements JeuDao
 {
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
+	private Connection connexion = ConnexionBDD.getConnection();
+
 	private List<Jeu> listeJeux;
 
-	private ClassificationDao classificationDaoImpl;
+	private ClassificationDao classificationDaoImpl = new ClassificationDaoImpl();
 	private List<Classification> listeClassifications;
 
-	private DeveloppeurDao developpeurDaoImpl;
+	private DeveloppeurDao developpeurDaoImpl = new DeveloppeurDaoImpl();
 	private List<Developpeur> listeDeveloppeurs;
 
-	private GenreDao genreDaoImpl;
+	private GenreDao genreDaoImpl = new GenreDaoImpl();
 	private List<Genre> listeGenres;
 
-	private EditeurDao editeurDaoImpl;
+	private EditeurDao editeurDaoImpl = new EditeurDaoImpl();
 	private List<Editeur> listeEditeurs;
 
-	private SupportDao supportDaoImpl;
-	private PlateformeDao plateformeDaoImpl;
-	private ModeleEconomiqueDao modeleEconomiqueDaoImpl;
-	
-	
+	private SupportDao supportDaoImpl = new SupportDaoImpl();
+	private PlateformeDao plateformeDaoImpl = new PlateformeDaoImpl();
+	private ModeleEconomiqueDao modeleEconomiqueDaoImpl = new ModeleEconomiqueDaoImpl();
 
 	public JeuDaoImpl() throws Exception
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
+		System.out.println("Constructeur JeuDaoImpl");
+
 		this.listeJeux = new ArrayList<>();
-
-		this.classificationDaoImpl = new ClassificationDaoImpl();
-		this.developpeurDaoImpl = new DeveloppeurDaoImpl();
-		this.genreDaoImpl = new GenreDaoImpl();
-		this.editeurDaoImpl = new EditeurDaoImpl();
-
-		this.supportDaoImpl = new SupportDaoImpl();
-		this.plateformeDaoImpl = new PlateformeDaoImpl();
-		this.modeleEconomiqueDaoImpl = new ModeleEconomiqueDaoImpl();
 	}
 
 	@Override
@@ -83,16 +70,16 @@ public class JeuDaoImpl implements JeuDao
 		Genre genre = null;
 		Developpeur developpeur = null;
 		Jeu jeu = null;
-		
+
 		List<Support> listeSupports = new ArrayList<Support>();
 		List<Plateforme> listePlateformes = new ArrayList<Plateforme>();
 		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 
 		try
 		{
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(JeuRequete.FIND_JEUX_BY_ID);
-			resultatPrepa.setInt(1, idJeu);
-			ResultSet resultat = resultatPrepa.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(JeuRequete.FIND_JEUX_BY_ID);
+			preparedStatement.setInt(1, idJeu);
+			ResultSet resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -109,7 +96,7 @@ public class JeuDaoImpl implements JeuDao
 					classification = getClassificationByID(resultat.getInt(8));
 
 					jeu = new Jeu(id_Jeu, titre_Jeu, date_Sortie_Jeu, description, imgJeu, classification, editeur, genre, developpeur);
-				
+
 					listeSupports = supportDaoImpl.findAllSupportsByJeu(idJeu);
 					listePlateformes = plateformeDaoImpl.findAllPlateformesByJeu(idJeu);
 					listeModeleEconomiques = modeleEconomiqueDaoImpl.findAllModeleEconomiquesByJeu(idJeu);
@@ -129,6 +116,7 @@ public class JeuDaoImpl implements JeuDao
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
+
 		return jeu;
 	}
 
@@ -141,7 +129,8 @@ public class JeuDaoImpl implements JeuDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(JeuRequete.FIND_ALL_JEUX);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(JeuRequete.FIND_ALL_JEUX);
 
 			if (resultat != null)
 			{
@@ -164,6 +153,7 @@ public class JeuDaoImpl implements JeuDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listeJeux;
 	}
 

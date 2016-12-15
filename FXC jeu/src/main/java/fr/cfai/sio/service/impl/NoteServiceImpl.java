@@ -17,6 +17,8 @@ public class NoteServiceImpl implements NoteService
 	public NoteServiceImpl()
 	{
 		super();
+	//	System.out.println("Constructeur NoteServiceImpl");
+
 		this.noteDaoImpl = new NoteDaoImpl();
 	}
 

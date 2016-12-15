@@ -14,33 +14,27 @@ import fr.cfai.sio.dao.requete.SupportRequete;
 
 public class SupportDaoImpl implements SupportDao
 {
-
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
-	// private int statut = 0;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public SupportDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur SupportDaoImpl");
 	}
 
 	@Override
 
 	public List<Support> findAllSupports()
 	{
-
-		List<Support> listeSupports = new ArrayList<Support>();
+		List<Support> listeSupports = new ArrayList<>();
 		int id_support;
 		String libelle_support;
 		Support support = null;
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(SupportRequete.FIND_ALL_SUPPORTS);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(SupportRequete.FIND_ALL_SUPPORTS);
 
 			if (resultat != null)
 			{
@@ -62,6 +56,7 @@ public class SupportDaoImpl implements SupportDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listeSupports;
 	}
 
@@ -82,12 +77,12 @@ public class SupportDaoImpl implements SupportDao
 
 		try
 		{
-			PreparedStatement resultatPrepared = objConnect.prepareStatement(SupportRequete.FIND_ALL_SUPPORTS_BY_JEU);
-			resultatPrepared.setInt(1, idJeu);
-			resultatPrepared.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(SupportRequete.FIND_ALL_SUPPORTS_BY_JEU);
+			preparedStatement.setInt(1, idJeu);
+			preparedStatement.executeQuery();
 			try
 			{
-				ResultSet resultat = resultatPrepared.executeQuery();
+				ResultSet resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -115,6 +110,7 @@ public class SupportDaoImpl implements SupportDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+
 		return listeSupports;
 	}
 }

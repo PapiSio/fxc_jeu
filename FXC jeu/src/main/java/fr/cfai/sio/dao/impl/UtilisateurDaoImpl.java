@@ -14,17 +14,14 @@ import fr.cfai.sio.dao.requete.UtilisateurRequete;
 
 public class UtilisateurDaoImpl implements UtilisateurDao
 {
-	private ConnexionBDD connexion;
+
 	private int statut = 0;
-	private Statement createObjReq;
-	private Connection objConnect;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public UtilisateurDaoImpl() throws Exception
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
+		System.out.println("Constructeur UtilisateurDaoImpl");
 	}
 
 	@Override
@@ -34,7 +31,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(UtilisateurRequete.ID_MAX_UTILISATEUR);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(UtilisateurRequete.ID_MAX_UTILISATEUR);
 
 			if (resultat != null)
 			{
@@ -48,17 +46,18 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 				idMax = 1;
 			}
 
-			PreparedStatement resultatAjout = objConnect.prepareStatement(UtilisateurRequete.AJOUT_UTILISATEUR);
-			resultatAjout.setInt(1, idMax);
-			resultatAjout.setString(2, login);
-			resultatAjout.setString(3, mdp);
-			statut = resultatAjout.executeUpdate();
+			PreparedStatement preparedStatement = connexion.prepareStatement(UtilisateurRequete.AJOUT_UTILISATEUR);
+			preparedStatement.setInt(1, idMax);
+			preparedStatement.setString(2, login);
+			preparedStatement.setString(3, mdp);
+			statut = preparedStatement.executeUpdate();
 
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("UtilisateurDaoImpl/addUtilisateur - Erreur SQL : " + e.getMessage());
 		}
+
 		return statut;
 	}
 
@@ -72,9 +71,9 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 
 		try
 		{
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(UtilisateurRequete.FIND_UTILISATEUR_BY_ID);
-			resultatPrepa.setInt(1, idUtilisateur);
-			ResultSet resultat = resultatPrepa.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(UtilisateurRequete.FIND_UTILISATEUR_BY_ID);
+			preparedStatement.setInt(1, idUtilisateur);
+			ResultSet resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -84,7 +83,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 					login = resultat.getString(2);
 					mdp = resultat.getString(3);
 
-					utilisateur = new Utilisateur(id_Utilisateur,login, mdp);
+					utilisateur = new Utilisateur(id_Utilisateur, login, mdp);
 				}
 			}
 			else
@@ -95,7 +94,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql : " + e.getMessage());
+			System.out.println("UtilisateurDaoImpl/findUtilisateurById - Erreur SQL : " + e.getMessage());
 		}
 		return utilisateur;
 	}
@@ -112,7 +111,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(UtilisateurRequete.FIND_ALL_UTILISATEURS);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(UtilisateurRequete.FIND_ALL_UTILISATEURS);
 
 			if (resultat != null)
 			{
@@ -133,8 +133,9 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("UtilisateurDaoImpl/findAllUtilisateurs - Erreur SQL : " + e.getMessage());
 		}
+
 		return listeUtilisateurs;
 	}
 }

@@ -15,17 +15,12 @@ import fr.cfai.sio.dao.requete.ModeleEconomiqueRequete;
 public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 {
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
-	// private int statut = 0;
-
+	private Connection connexion = ConnexionBDD.getConnection();
+	
 	public ModeleEconomiqueDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
+		// System.out.println("Constructeur ModeleEcoDaoImpl");
 	}
 
 	@Override
@@ -38,6 +33,7 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 	@Override
 	public List<ModeleEconomique> findAllModeleEconomiques()
 	{
+
 		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 		int id_ModeleEconomique;
 		String libelle_ModeleEconomique;
@@ -45,7 +41,8 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES);
 
 			if (resultat != null)
 			{
@@ -67,12 +64,14 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+	
 		return listeModeleEconomiques;
 	}
 
 	@Override
 	public List<ModeleEconomique> findAllModeleEconomiquesByJeu(int idJeu)
 	{
+
 		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 		int id_ModeleEconomique;
 		String libelle_ModeleEconomique;
@@ -80,12 +79,12 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 
 		try
 		{
-			PreparedStatement resultatPrepared = objConnect.prepareStatement(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES_BY_JEU);
-			resultatPrepared.setInt(1, idJeu);
-			// resultatPrepared.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES_BY_JEU);
+			preparedStatement.setInt(1, idJeu);
+
 			try
 			{
-				ResultSet resultat = resultatPrepared.executeQuery();
+				ResultSet resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -113,7 +112,7 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+		
 		return listeModeleEconomiques;
 	}
-
 }

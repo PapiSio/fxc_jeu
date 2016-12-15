@@ -15,6 +15,8 @@ public class EditeurServiceImpl implements EditeurService
 	public EditeurServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur EditeurServiceImpl");
+
 		this.editeurDaoImpl = new EditeurDaoImpl();
 	}
 

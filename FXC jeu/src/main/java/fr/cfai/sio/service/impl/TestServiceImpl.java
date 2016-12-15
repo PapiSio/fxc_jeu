@@ -17,6 +17,8 @@ public class TestServiceImpl implements TestService
 	public TestServiceImpl() throws Exception
 	{
 		super();
+	//	System.out.println("Constructeur TestServiceImpl");
+
 		this.testDaoImpl = new TestDaoImpl();
 	}
 

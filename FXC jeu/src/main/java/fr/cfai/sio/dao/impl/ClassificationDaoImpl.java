@@ -1,5 +1,6 @@
 package fr.cfai.sio.dao.impl;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,21 +14,18 @@ import fr.cfai.sio.dao.requete.ClassificationRequete;
 public class ClassificationDaoImpl implements ClassificationDao
 {
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
+	private Connection connexion = ConnexionBDD.getConnection();
 
 	public ClassificationDaoImpl()
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
+		// System.out.println("Constructeur ClassificationDaoImpl");
 	}
 
 	@Override
 	public List<Classification> findAllClassifications()
 	{
-
-		List<Classification> listeClassifications = new ArrayList<Classification>();
+		List<Classification> listeClassifications = new ArrayList<>();
 
 		int id_classification;
 		String libelle_classification;
@@ -35,7 +33,8 @@ public class ClassificationDaoImpl implements ClassificationDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(ClassificationRequete.FIND_ALL_CLASSIFICATIONS);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(ClassificationRequete.FIND_ALL_CLASSIFICATIONS);
 
 			if (resultat != null)
 			{
@@ -55,7 +54,7 @@ public class ClassificationDaoImpl implements ClassificationDao
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("ClassificationDaoImpl/finAllClassifications - Erreur " + e.getMessage());
 		}
 
 		return listeClassifications;
