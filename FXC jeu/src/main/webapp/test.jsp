@@ -82,7 +82,6 @@
 				<div class="comments-top-top">
 					<div class="top-comment-left">
 					</div>
-<<<<<<< HEAD
 
 					<c:forEach items="${ListeCOM}" var="commentaire">
 						<div class="top-comment-right">
@@ -109,20 +108,9 @@
 					</c:forEach>
 
 
-=======
-					<div class="top-comment-right">
-						<ul>
-							<li><span class="left-at"><a href="#">Admin</a></span></li>
-							<li><span class="right-at">June 30, 2015 at 10.30am</span></li>
-							<li><a class="reply" href="#">REPLY</a></li>
-						</ul>
-						<p>It is a long established fact that a reader will be
-							distracted by the readable content of a page when looking at its
-							layout.The point of using Lorem Ipsum is that it has a
-							more-or-less</p>
-					</div>
 					<div class="clearfix"></div>
 				</div>
+
 				
 				
 				
@@ -143,7 +131,6 @@
 							layout.The point of using Lorem Ipsum is that it has a
 							more-or-less</p>
 					</div>
->>>>>>> branch 'master' of https://github.com/PapiSio/fxc_jeu
 					<div class="clearfix"></div>
 				</div> -->
 			</div>
