@@ -3,10 +3,7 @@ package fr.cfai.sio.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import fr.cfai.sio.business.Commentaire;
-import fr.cfai.sio.business.Test;
-import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.impl.CommentaireDaoImpl;
 import fr.cfai.sio.service.CommentaireService;

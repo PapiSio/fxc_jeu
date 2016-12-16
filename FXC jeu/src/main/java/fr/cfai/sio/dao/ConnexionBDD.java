@@ -25,7 +25,7 @@ public class ConnexionBDD
 	private static final String UTILISATEUR = "postgres";
 	private static final String MOT_DE_PASSE = "postgres";
 	private static Connection connexion;
-	private static Statement statement;
+	/*private static Statement statement;*/
 
 	public static Connection getConnection()
 	{
@@ -61,7 +61,7 @@ public class ConnexionBDD
 
 	}
 
-	public static Statement getStatement()
+/*	public static Statement getStatement()
 	{
 
 		if (connexion == null)
@@ -132,5 +132,5 @@ public class ConnexionBDD
 
 			}
 		}
-	}
+	}*/
 }

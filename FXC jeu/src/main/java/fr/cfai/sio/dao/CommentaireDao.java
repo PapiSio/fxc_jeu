@@ -2,10 +2,7 @@ package fr.cfai.sio.dao;
 
 import java.util.Date;
 import java.util.List;
-
 import fr.cfai.sio.business.Commentaire;
-import fr.cfai.sio.business.Test;
-import fr.cfai.sio.business.Utilisateur;
 
 public interface CommentaireDao {
 	

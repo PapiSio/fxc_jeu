@@ -2,14 +2,11 @@ package fr.cfai.sio.servlet;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import fr.cfai.sio.business.Commentaire;
-import fr.cfai.sio.business.Test;
 import fr.cfai.sio.service.CommentaireService;
 import fr.cfai.sio.service.impl.CommentaireServiceImpl;
 
@@ -39,7 +36,7 @@ public class ListeCommentaireServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		if (listeCommentaire == null)
 		{
-			int idTest = 0;
+			//int idTest = 0;
 			//idTest = Integer.parseInt(request.getParameter("idTest"));
 			// System.out.println("Servlet : Passe par le if, liste null");
 			//listeCommentaire = commentaireServiceImpl.recupererCommentaireParTest(idTest);

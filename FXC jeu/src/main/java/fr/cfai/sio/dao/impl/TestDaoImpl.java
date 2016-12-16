@@ -8,12 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import fr.cfai.sio.business.Commentaire;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Note;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.business.Utilisateur;
-import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.JeuDao;
 import fr.cfai.sio.dao.NoteDao;
@@ -24,9 +22,7 @@ import fr.cfai.sio.dao.requete.TestRequete;
 public class TestDaoImpl implements TestDao
 {
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
+	private Connection connexion = ConnexionBDD.getConnection();
 	private List<Test> listeTests;
 
 	private JeuDao jeuDaoImpl;
@@ -36,9 +32,6 @@ public class TestDaoImpl implements TestDao
 	public TestDaoImpl() throws Exception
 	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
 		this.listeTests = new ArrayList<>();
 		this.jeuDaoImpl = new JeuDaoImpl();
 		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
@@ -64,9 +57,9 @@ public class TestDaoImpl implements TestDao
 
 		try
 		{
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(TestRequete.FIND_TEST_BY_ID);
-			resultatPrepa.setInt(1, idTest);
-			ResultSet resultat = resultatPrepa.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(TestRequete.FIND_TEST_BY_ID);
+			preparedStatement.setInt(1, idTest);
+			ResultSet resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -127,7 +120,8 @@ public class TestDaoImpl implements TestDao
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(TestRequete.FIND_ALL_TESTS);
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(TestRequete.FIND_ALL_TESTS);
 
 			if (resultat != null)
 			{
@@ -188,9 +182,9 @@ public class TestDaoImpl implements TestDao
 
 		try
 		{
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(TestRequete.FIND_ALL_TESTS_BY_JEU);
-			resultatPrepa.setInt(1, idJeu);
-			ResultSet resultat = resultatPrepa.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(TestRequete.FIND_ALL_TESTS_BY_JEU);
+			preparedStatement.setInt(1, idJeu);
+			ResultSet resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{

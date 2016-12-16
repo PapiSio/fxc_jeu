@@ -17,48 +17,43 @@ import fr.cfai.sio.dao.TestDao;
 import fr.cfai.sio.dao.UtilisateurDao;
 import fr.cfai.sio.dao.requete.CommentaireRequete;
 
-public class CommentaireDaoImpl implements CommentaireDao {
-	
+public class CommentaireDaoImpl implements CommentaireDao
+{
 
-	private ConnexionBDD connexion;
-	private Statement createObjReq;
-	private Connection objConnect;
-	private List<Commentaire> listeCommentaire;	
-	private UtilisateurDao utilisateurDaoImpl;
+	private Connection connexion = ConnexionBDD.getConnection();
+
+	private List<Commentaire> listeCommentaire;
 	private List<Utilisateur> listeUtilisateur;
 	private List<Test> listeTest;
+	private UtilisateurDao utilisateurDaoImpl;
 	private Commentaire commentaire;
 	private TestDao testDaoImpl;
 	private int statut = 0;
 
-	
-	public CommentaireDaoImpl() throws Exception {
+	public CommentaireDaoImpl() throws Exception
+	{
 		super();
-		this.connexion = new ConnexionBDD();
-		this.createObjReq = connexion.getStatement();
-		this.objConnect = connexion.getConnection();
 		this.listeCommentaire = new ArrayList<>();
 		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
 		this.testDaoImpl = new TestDaoImpl();
 	}
-	
-	
-	
+
 	@Override
-	public Commentaire findCommentaireById(int idCommentaire) {
+	public Commentaire findCommentaireById(int idCommentaire)
+	{
 		// TODO Auto-generated method stub
 		int idCom;
 		Date date_Commentaire;
 		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
-		Commentaire commentaireFK=null;
-		
+	//	Commentaire commentaireFK = null;
+
 		try
 		{
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_ID);
-			resultatPrepa.setInt(1, idCommentaire);
-			ResultSet resultat = resultatPrepa.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_ID);
+			preparedStatement.setInt(1, idCommentaire);
+			ResultSet resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -70,7 +65,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 					test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
-					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
+					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 				}
 			}
 			else
@@ -84,11 +79,12 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
 		return commentaire;
-		
+
 	}
 
 	@Override
-	public List<Commentaire> findAllCommentaire() {
+	public List<Commentaire> findAllCommentaire()
+	{
 		// TODO Auto-generated method stub
 		int idCom;
 		Date date_Commentaire;
@@ -99,7 +95,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 
 		try
 		{
-			ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.FIND_ALL_COMMENTAIRE);
+			Statement statement = connexion.createStatement();
+
+			ResultSet resultat = statement.executeQuery(CommentaireRequete.FIND_ALL_COMMENTAIRE);
 
 			if (resultat != null)
 			{
@@ -111,7 +109,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 					test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
-					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
+					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 					listeCommentaire.add(commentaire);
 				}
 			}
@@ -127,14 +125,15 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		}
 		return listeCommentaire;
 	}
-	
-	
+
 	public int getIDMaxCommentaire()
 	{
-		int idMax =0;
-		try{
-			ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
-			
+		int idMax = 0;
+		try
+		{
+			Statement statement = connexion.createStatement();
+			ResultSet resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
 			if (resultat != null)
 			{
 				while (resultat.next())
@@ -153,11 +152,10 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-		
+
 		return idMax;
 	}
-	
-	
+
 	public Utilisateur getUtilisateurByID(int id)
 	{
 		if (listeUtilisateur == null)
@@ -176,8 +174,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		}
 		return null;
 	}
-	
-	
+
 	public Test getTestByID(int id)
 	{
 		if (listeTest == null)
@@ -197,9 +194,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		}
 		return null;
 	}
-	
-	
-	
+
 	public Commentaire getCommentaireByID(int id)
 	{
 		if (listeCommentaire == null)
@@ -220,12 +215,11 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		return null;
 	}
 
-
-
 	@Override
-	public List<Commentaire> findCommentaireByTest(int idTest) {
+	public List<Commentaire> findCommentaireByTest(int idTest)
+	{
 		listeCommentaire.clear();
-		
+
 		System.out.println("CommenataireDAO - findCommentaireByTest ==> passe dedans");
 
 		int idCom;
@@ -235,9 +229,9 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		Utilisateur utilisateur = null;
 		try
 		{
-			PreparedStatement resultatPrepa = objConnect.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
-			resultatPrepa.setInt(1, idTest);
-			ResultSet resultat = resultatPrepa.executeQuery();
+			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
+			preparedStatement.setInt(1, idTest);
+			ResultSet resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -251,8 +245,8 @@ public class CommentaireDaoImpl implements CommentaireDao {
 					test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
-					commentaire = new Commentaire(idCom,contenuCom,date_Commentaire, test, utilisateur);
-					
+					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
+
 					System.out.println("CommenataireDAO - findCommentaireByTest ==> ajout à la liste des coms");
 
 					listeCommentaire.add(commentaire);
@@ -268,102 +262,91 @@ public class CommentaireDaoImpl implements CommentaireDao {
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
-		
+
 		System.out.println("CommenataireDAO - findCommentaireByTest ==> return liste des coms");
 
 		return listeCommentaire;
-		
+
 	}
-
-
 
 	@Override
-	public int addCommentaire(int idCom, String contenuCom, Date dateCom,int idTest,
-			int idUtilisateur) {
-			int idMax = 0;
-			java.sql.Date dateSql;
+	public int addCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur)
+	{
+		int idMax = 0;
+		java.sql.Date dateSql;
 
-			try
+		try
+		{
+			Statement statement = connexion.createStatement();
+
+			ResultSet resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
+			if (resultat != null)
 			{
-				ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
-
-				if (resultat != null)
+				while (resultat.next())
 				{
-					while (resultat.next())
-					{
-						idMax = resultat.getInt(1) + 1;
-					}
+					idMax = resultat.getInt(1) + 1;
 				}
-				else
-				{
-					idMax = 1;
-				}
-
-				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
-				resultatAjout.setInt(1, idMax);
-				resultatAjout.setString(2, contenuCom);
-				resultatAjout.setDate(3,dateSql = new java.sql.Date(dateCom.getTime()));
-				resultatAjout.setInt(4,idUtilisateur);
-				resultatAjout.setInt(5, idTest);
-				statut = resultatAjout.executeUpdate();
-
-
 			}
-			catch (SQLException e)
+			else
 			{
-				System.out.println("Erreur sql" + e.getMessage());
+				idMax = 1;
 			}
-			return statut;
+
+			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
+			preparedStatement.setInt(1, idMax);
+			preparedStatement.setString(2, contenuCom);
+			preparedStatement.setDate(3, dateSql = new java.sql.Date(dateCom.getTime()));
+			preparedStatement.setInt(4, idUtilisateur);
+			preparedStatement.setInt(5, idTest);
+			statut = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		return statut;
 	}
-	
+
 	@Override
-	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest,
-			int idUtilisateur, int idCommentaire) {
-			int idMax = 0;
-			java.sql.Date dateSql;
+	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur, int idCommentaire)
+	{
+		int idMax = 0;
+		java.sql.Date dateSql;
 
-			try
+		try
+		{
+			Statement statement = connexion.createStatement();
+
+			ResultSet resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
+			if (resultat != null)
 			{
-				ResultSet resultat = createObjReq.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
-
-				if (resultat != null)
+				while (resultat.next())
 				{
-					while (resultat.next())
-					{
-						idMax = resultat.getInt(1) + 1;
-					}
+					idMax = resultat.getInt(1) + 1;
 				}
-				else
-				{
-					idMax = 1;
-				}
-
-				PreparedStatement resultatAjout = objConnect.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
-				resultatAjout.setInt(1, idMax);
-				resultatAjout.setString(2, contenuCom);
-				resultatAjout.setDate(3,(dateSql = new java.sql.Date(dateCom.getTime())));
-				resultatAjout.setInt(4,idUtilisateur);
-				resultatAjout.setInt(5, idTest);
-				resultatAjout.setInt(6, idCommentaire);
-				statut = resultatAjout.executeUpdate();
-				
-
 			}
-			catch (SQLException e)
+			else
 			{
-				System.out.println("Erreur sql" + e.getMessage());
+				idMax = 1;
 			}
-			return statut;
+			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
+			preparedStatement.setInt(1, idMax);
+			preparedStatement.setString(2, contenuCom);
+			preparedStatement.setDate(3, (dateSql = new java.sql.Date(dateCom.getTime())));
+			preparedStatement.setInt(4, idUtilisateur);
+			preparedStatement.setInt(5, idTest);
+			preparedStatement.setInt(6, idCommentaire);
+			statut = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		return statut;
 	}
-
-
-
-
-	
-
-	
-
-		
-		
 
 }
