@@ -125,7 +125,9 @@ public class JeuDaoImpl implements JeuDao
 	{
 		int id_Jeu;
 		String imgJeu;
+		String titreJeu;
 		Jeu jeu = null;
+		
 
 		try
 		{
@@ -138,8 +140,9 @@ public class JeuDaoImpl implements JeuDao
 				{
 					id_Jeu = resultat.getInt(1);
 					imgJeu = resultat.getString(2);
+					titreJeu = resultat.getString(3);
 
-					jeu = new Jeu(id_Jeu, imgJeu);
+					jeu = new Jeu(id_Jeu, imgJeu, titreJeu);
 					listeJeux.add(jeu);
 				}
 			}

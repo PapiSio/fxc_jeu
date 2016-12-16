@@ -75,12 +75,11 @@
 
 						<div class="col-xs-12 col-sm-3">
 							<a href="TestServlet?idTest=${test.idTest}"><img
-								src="images/overwatch.jpg" alt=" "
+								src="${test.jeu.imgJeu}" alt=" "
 								class="img-responsive img-rounded" /></a>
 						</div>
 
-						<%-- 						<p class="para">${test.descriptionTest}</p>
- --%>
+
 						<p class="para">
 							Jeu : <span>${test.jeu.getTitreJeu()}</span> <br> Auteur : <span>
 								${test.utilisateur.getLogin()} </span><br> Date : <span>${test.dateTest}

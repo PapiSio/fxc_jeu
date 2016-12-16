@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,9 +115,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <script type="text/javascript">
-function toggle_div(bouton, id) { // On d√©clare la fonction toggle_div qui prend en param le bouton et un id
-  var div = document.getElementById(id); // On r√©cup√®re le div cibl√© gr√¢ce √† l'id
-  if(div.style.display=="none") { // Si le div est masqu√©...
+function toggle_div(bouton, id) { // On dÈclare la fonction toggle_div qui prend en param le bouton et un id
+  var div = document.getElementById(id); // On rÈcupËre le div ciblÈ gr‚ce ‡ l'id
+  if(div.style.display=="none") { // Si le div est masquÈ...
     div.style.display = "block"; // ... on l'affiche...
     bouton.innerHTML = "-"; // ... et on change le contenu du bouton.
   } else { // S'il est visible...

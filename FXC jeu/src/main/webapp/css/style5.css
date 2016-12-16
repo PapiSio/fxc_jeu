@@ -57,8 +57,48 @@
 	transition: all 0.4s ease-in-out 0.2s;
 }
 
+
+.jeu1 {
+	background-image: url(../images/witcher.jpg);
+}
+.jeu2 {
+	background-image: url(../images/ff10.jpg);
+}
+.jeu3 {
+	background-image: url(../images/hearthstone.jpg);
+}
+.jeu4 {
+	background-image: url(../images/pokemonred.jpg);
+}
+.jeu5 {
+	background-image: url(../images/zelgaoot.jpg);
+}
+.jeu6 {
+	background-image: url(../images/fireemblem.jpg);
+}
+.jeu7 {
+	background-image: url(../images/sims3.jpg);
+}
+.jeu8 {
+	background-image: url(../images/battlefield.jpg);
+}
+.jeu9 {
+	background-image: url(../images/overwatch.jpg);
+}
+.jeu10 {
+	background-image: url(../images/tombraider.jpg);
+}
+.jeu11 {
+	background-image: url(../images/darksoul.jpg);
+}
+.jeu12 {
+	background-image: url(../images/transcripted.jpg);
+}
+
+
+
 .ch-img-1 {
-	background-image: url(../images/18.jpg);
+	background-image: url(../images/battlefield.jpg);
 }
 
 .ch-img-2 {
