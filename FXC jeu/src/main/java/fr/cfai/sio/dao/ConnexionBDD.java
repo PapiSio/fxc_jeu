@@ -61,29 +61,9 @@ public class ConnexionBDD
 
 	}
 
-/*	public static Statement getStatement()
-	{
 
-		if (connexion == null)
-		{
-			connexion = getConnection();
-		}
-		if (statement == null)
-		{
-			try
-			{
-				statement = connexion.createStatement();
-			}
-			catch (SQLException e)
-			{
-				System.out.println("ConnexionBDD - GetStatement - ERREUR:" + e.toString());
-			}
-		}
 
-		return statement;
-	}
-
-	public static void close_OLD(Connection connexion, Statement statement, PreparedStatement preparedStatement, ResultSet resultat)
+	public static void close(Statement statement, PreparedStatement preparedStatement, ResultSet resultat)
 	{
 		if (resultat != null)
 		{
@@ -120,17 +100,34 @@ public class ConnexionBDD
 
 			}
 		}
+	}
 
-		if (connexion != null)
+
+
+	public static void close(PreparedStatement preparedStatement, ResultSet resultat)
+	{
+		if (resultat != null)
 		{
 			try
 			{
-				connexion.close();
+				resultat.close();
 			}
 			catch (SQLException ignore)
 			{
 
 			}
 		}
-	}*/
+
+		if (preparedStatement != null)
+		{
+			try
+			{
+				preparedStatement.close();
+			}
+			catch (SQLException ignore)
+			{
+
+			}
+		}
+	}
 }
