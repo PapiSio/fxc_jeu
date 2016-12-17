@@ -3,6 +3,7 @@ package fr.cfai.sio.dao;
 import java.util.Date;
 import java.util.List;
 import fr.cfai.sio.business.Commentaire;
+import fr.cfai.sio.business.Test;
 
 public interface CommentaireDao {
 	
@@ -21,9 +22,11 @@ public interface CommentaireDao {
 	
 	public List<Commentaire> findAllCommentaire();
 	
-	public List<Commentaire> findCommentaireByTest(int idTest);
+	public List<Commentaire> findAllCommentaireForTest();
+	
+	public List<Commentaire> findCommentaireByIDTest(int idTest);
 
-
+	public List<Commentaire>findCommentaireByTest(Test test);
 	
 	public int getIDMaxCommentaire();
 

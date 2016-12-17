@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import fr.cfai.sio.business.Commentaire;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Note;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.business.Utilisateur;
+import fr.cfai.sio.dao.CommentaireDao;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.JeuDao;
 import fr.cfai.sio.dao.NoteDao;
@@ -25,23 +27,18 @@ public class TestDaoImpl implements TestDao
 	private Connection connexion = ConnexionBDD.getConnection();
 	private List<Test> listeTests;
 
-	private JeuDao jeuDaoImpl;
-	private UtilisateurDao utilisateurDaoImpl;
-	private NoteDao noteDaoImpl;
-
 	public TestDaoImpl() throws Exception
 	{
 		super();
 		this.listeTests = new ArrayList<>();
-		this.jeuDaoImpl = new JeuDaoImpl();
-		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
-		this.noteDaoImpl = new NoteDaoImpl();
+		System.out.println("Constructeur TestDaoImpl");
 	}
 
 	@Override
 	public Test findTestById(int idTest)
 	{
-
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 		int id_Test;
 		String titreTest;
 		Date dateTest;
@@ -57,9 +54,9 @@ public class TestDaoImpl implements TestDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(TestRequete.FIND_TEST_BY_ID);
+			preparedStatement = connexion.prepareStatement(TestRequete.FIND_TEST_BY_ID);
 			preparedStatement.setInt(1, idTest);
-			ResultSet resultat = preparedStatement.executeQuery();
+			resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -80,9 +77,31 @@ public class TestDaoImpl implements TestDao
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
 
-					List<Note> listeNotes = new ArrayList<>();
-					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
-					test.setListeNotes(listeNotes);
+					try
+					{
+						NoteDao noteDaoImpl = new NoteDaoImpl();
+						List<Note> listeNotes = new ArrayList<>();
+						listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
+						test.setListeNotes(listeNotes);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					try
+					{
+						CommentaireDao commentaireDaoImpl = new CommentaireDaoImpl();
+						List<Commentaire> listeCommentaires = new ArrayList<>();
+						listeCommentaires = commentaireDaoImpl.findCommentaireByIDTest(id_Test);
+						test.setListeCommentaires(listeCommentaires);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				}
 			}
@@ -96,13 +115,18 @@ public class TestDaoImpl implements TestDao
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return test;
 	}
 
 	@Override
 	public List<Test> findAllTest()
 	{
-
+		Statement statement = null;
+		ResultSet resultat = null;
 		int id_Test;
 		String titreTest;
 		Date dateTest;
@@ -116,12 +140,11 @@ public class TestDaoImpl implements TestDao
 		Utilisateur utilisateur;
 		Test test = null;
 
-	
-
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(TestRequete.FIND_ALL_TESTS);
+			
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(TestRequete.FIND_ALL_TESTS);
 
 			if (resultat != null)
 			{
@@ -141,13 +164,34 @@ public class TestDaoImpl implements TestDao
 
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
+					
+					try
+					{
+						NoteDao noteDaoImpl = new NoteDaoImpl();
+						List<Note> listeNotes = new ArrayList<>();
+						listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
+						test.setListeNotes(listeNotes);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
-					List<Note> listeNotes = new ArrayList<>();
-					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
-					test.setListeNotes(listeNotes);
+					try
+					{
+						CommentaireDao commentaireDaoImpl = new CommentaireDaoImpl();
+						List<Commentaire> listeCommentaires = new ArrayList<>();
+						listeCommentaires = commentaireDaoImpl.findCommentaireByTest(test);
+						test.setListeCommentaires(listeCommentaires);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 					listeTests.add(test);
-
 				}
 			}
 			else
@@ -160,12 +204,19 @@ public class TestDaoImpl implements TestDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeTests;
 	}
 
 	@Override
 	public List<Test> findAllTestByJeu(int idJeu)
 	{
+
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 		int id_Test;
 		String titreTest;
 		Date dateTest;
@@ -182,9 +233,10 @@ public class TestDaoImpl implements TestDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(TestRequete.FIND_ALL_TESTS_BY_JEU);
+
+			preparedStatement = connexion.prepareStatement(TestRequete.FIND_ALL_TESTS_BY_JEU);
 			preparedStatement.setInt(1, idJeu);
-			ResultSet resultat = preparedStatement.executeQuery();
+			resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -205,9 +257,31 @@ public class TestDaoImpl implements TestDao
 					test = new Test(id_Test, titreTest, dateTest, noteJeu, avantageJeu, inconvenientJeu, descriptionTest, contenuTest, imgTest, jeu,
 							utilisateur);
 
-					List<Note> listeNotes = new ArrayList<>();
-					listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
-					test.setListeNotes(listeNotes);
+					try
+					{
+						NoteDao noteDaoImpl = new NoteDaoImpl();
+						List<Note> listeNotes = new ArrayList<>();
+						listeNotes = noteDaoImpl.findAllNotesByTest(id_Test);
+						test.setListeNotes(listeNotes);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					try
+					{
+						CommentaireDao commentaireDaoImpl = new CommentaireDaoImpl();
+						List<Commentaire> listeCommentaires = new ArrayList<>();
+						listeCommentaires = commentaireDaoImpl.findCommentaireByIDTest(id_Test);
+						test.setListeCommentaires(listeCommentaires);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 					listeTests.add(test);
 				}
@@ -222,6 +296,10 @@ public class TestDaoImpl implements TestDao
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return listeTests;
 	}
 
@@ -235,18 +313,39 @@ public class TestDaoImpl implements TestDao
 
 	public Jeu getJeuByID(int id)
 	{
+		JeuDao jeuDaoImpl;
 		Jeu jeu = null;
+		try
+		{
+			jeuDaoImpl = new JeuDaoImpl();
 
-		jeu = jeuDaoImpl.findJeuById(id);
+			jeu = jeuDaoImpl.findJeuById(id);
 
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return jeu;
+
 	}
 
 	public Utilisateur getUtilisateurByID(int id)
 	{
+		UtilisateurDao utilisateurDaoImpl;
 		Utilisateur utilisateur = null;
 
-		utilisateur = utilisateurDaoImpl.findUtilisateurById(id);
+		try
+		{
+			utilisateurDaoImpl = new UtilisateurDaoImpl();
+			utilisateur = utilisateurDaoImpl.findUtilisateurById(id);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return utilisateur;
 	}

@@ -66,10 +66,10 @@
 							</p> -->
 
 						</div>
-						<!--  < 						<div class="blog-left-grid-right">
-							<a href="#" class="hvr-bounce-to-bottom non">${test.listeCommentaires.size()}
-								Commentaires</a>
-						</div> -->
+												<div class="blog-left-grid-right">
+							<a href="#" class="hvr-bounce-to-bottom non">${test.getNbCom()}
+								</a>
+						</div> 
 
 						<div class="clearfix"></div>
 

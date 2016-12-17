@@ -26,6 +26,8 @@ public class SupportDaoImpl implements SupportDao
 
 	public List<Support> findAllSupports()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<Support> listeSupports = new ArrayList<>();
 		int id_support;
 		String libelle_support;
@@ -33,8 +35,8 @@ public class SupportDaoImpl implements SupportDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(SupportRequete.FIND_ALL_SUPPORTS);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(SupportRequete.FIND_ALL_SUPPORTS);
 
 			if (resultat != null)
 			{
@@ -56,7 +58,10 @@ public class SupportDaoImpl implements SupportDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeSupports;
 	}
 
@@ -70,6 +75,8 @@ public class SupportDaoImpl implements SupportDao
 	@Override
 	public List<Support> findAllSupportsByJeu(int idJeu)
 	{
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 		List<Support> listeSupports = new ArrayList<Support>();
 		int id_support;
 		String libelle_support;
@@ -77,12 +84,12 @@ public class SupportDaoImpl implements SupportDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(SupportRequete.FIND_ALL_SUPPORTS_BY_JEU);
+			preparedStatement = connexion.prepareStatement(SupportRequete.FIND_ALL_SUPPORTS_BY_JEU);
 			preparedStatement.setInt(1, idJeu);
 			preparedStatement.executeQuery();
 			try
 			{
-				ResultSet resultat = preparedStatement.executeQuery();
+				resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -110,7 +117,10 @@ public class SupportDaoImpl implements SupportDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return listeSupports;
 	}
 }

@@ -74,10 +74,14 @@ public class Test
 		this.jeu = jeu;
 		this.utilisateur = utilisateur;
 		this.listeNotes = new ArrayList<>();
-		this.listeCommentaires=new ArrayList<>();
+		this.listeCommentaires = new ArrayList<>();
 	}
 
-	
+	public Test(int id)
+	{
+		this.idTest = id;
+	}
+
 	/**
 	 * Getteur Description du test
 	 * 
@@ -365,7 +369,7 @@ public class Test
 		double tailleListe = listeNotes.size();
 		double cumul_Note = 0;
 		String chaineReturn;
-		
+
 		DecimalFormat format = new DecimalFormat("#.##");
 		format.setRoundingMode(RoundingMode.HALF_UP);
 
@@ -375,23 +379,31 @@ public class Test
 			{
 				cumul_Note += note.getNote();
 			}
-			
-			chaineReturn= format.format(cumul_Note/tailleListe)+" / 5";
-			
+
+			chaineReturn = format.format(cumul_Note / tailleListe) + " / 5";
+
 		}
 		else
 		{
-			chaineReturn="Il n'y a pas de note";
+			chaineReturn = "Il n'y a pas de note";
 		}
-		
+
 		return chaineReturn;
 	}
 
-	public int getNbCom()
+	public String getNbCom()
 	{
-		
+		String chaineReturn;
 		int tailleListe = listeCommentaires.size();
 
-		return tailleListe;
+		if (tailleListe != 0)
+		{
+			chaineReturn = tailleListe+" commentaire(s)";
+		}
+		else
+		{
+			chaineReturn = "Pas de commentaire";
+		}
+		return chaineReturn;
 	}
 }

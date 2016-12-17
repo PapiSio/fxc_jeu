@@ -25,6 +25,8 @@ public class GenreDaoImpl implements GenreDao
 
 	public List<Genre> findAllGenres()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<Genre> listeGenres = new ArrayList<>();
 		int id_genre;
 		String libelle_genre;
@@ -32,8 +34,8 @@ public class GenreDaoImpl implements GenreDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(GenreRequete.FIND_ALL_GENRES);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(GenreRequete.FIND_ALL_GENRES);
 
 			if (resultat != null)
 			{
@@ -55,7 +57,10 @@ public class GenreDaoImpl implements GenreDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeGenres;
 	}
 

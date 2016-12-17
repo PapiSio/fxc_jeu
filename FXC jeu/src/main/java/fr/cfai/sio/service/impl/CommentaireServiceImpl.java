@@ -60,7 +60,7 @@ public class CommentaireServiceImpl implements CommentaireService {
 		// TODO Auto-generated method stub
 		List<Commentaire> listeCommentaire = new ArrayList<>();
 
-		listeCommentaire = commentaireDaoImpl.findCommentaireByTest(idTest);
+		listeCommentaire = commentaireDaoImpl.findCommentaireByIDTest(idTest);
 
 		return listeCommentaire;
 	}

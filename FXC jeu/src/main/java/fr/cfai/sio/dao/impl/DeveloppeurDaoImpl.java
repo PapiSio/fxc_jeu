@@ -26,7 +26,8 @@ public class DeveloppeurDaoImpl implements DeveloppeurDao
 
 	public List<Developpeur> findAllDeveloppeurs()
 	{
-
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<Developpeur> listeDeveloppeurs = new ArrayList<>();
 
 		int id_developpeur;
@@ -35,8 +36,8 @@ public class DeveloppeurDaoImpl implements DeveloppeurDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(DeveloppeurRequete.FIND_ALL_DEVELOPPEURS);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(DeveloppeurRequete.FIND_ALL_DEVELOPPEURS);
 
 			if (resultat != null)
 			{
@@ -57,7 +58,10 @@ public class DeveloppeurDaoImpl implements DeveloppeurDao
 		{
 			System.out.println("DeveloppeurDaoImpl/findAllDeveloppeur - Erreur SQL : " + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeDeveloppeurs;
 
 	}
