@@ -97,7 +97,7 @@
 			</div>
 
 			<p>
-				<a href="TestServlet?action=addTest">Ajouter un test.</a>'
+				<a href="/ajoutTest.jsp">Ajouter un test</a>
 		</div>
 		<div class="clearfix"></div>
 	</div>

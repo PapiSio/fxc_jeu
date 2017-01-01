@@ -22,20 +22,17 @@ import fr.cfai.sio.service.impl.TestServiceImpl;
  * Servlet implementation class TestServlet
  */
 @WebServlet("/TestServlet")
-public class TestServlet extends HttpServlet
-{
+public class TestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private TestService testServiceImpl;
 	private CommentaireService commentaireServiceImpl;
-	
 
 	/**
 	 * @throws Exception
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TestServlet() throws Exception
-	{
+	public TestServlet() throws Exception {
 		super();
 		System.out.println("Constructeur TestServlet");
 
@@ -49,9 +46,16 @@ public class TestServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		
+		if(request.getParameter("action") != null && request.getParameter("action")=="addTest"){
+			response.sendRedirect("/ajoutTest.jsp");
+			//request.getRequestDispatcher("/ajoutTest.jsp").forward(request, response);
+			}
+
 		HttpSession session = request.getSession(true);
 		int idUtilisateur = (int) session.getAttribute("ID");
 		String loginUtilisateur = (String) session.getAttribute("LOGIN");
+
 		int idTest;
 		Test test = null;
 		List<Commentaire> listeCommentaire = new ArrayList<>();
@@ -67,15 +71,22 @@ public class TestServlet extends HttpServlet
 		request.setAttribute("idUtilisateur", idUtilisateur);
 		request.setAttribute("loginUtilisateur", loginUtilisateur);
 
-		request.getRequestDispatcher("/test.jsp").forward(request, response);
+
+	
+			request.getRequestDispatcher("/test.jsp").forward(request, response);
+		
+		
+		
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
