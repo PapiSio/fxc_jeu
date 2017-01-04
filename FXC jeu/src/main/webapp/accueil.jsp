@@ -27,6 +27,6 @@ dans LoginServlet
 	</div>
 </div>
 
-
+<%@ include file="footer.jsp"%>
 </body>
 </html>

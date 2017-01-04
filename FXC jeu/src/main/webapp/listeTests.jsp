@@ -48,6 +48,11 @@
 
 
 			<!-- blog -->
+			
+							   <div class="alert alert-info" role="alert">
+					<strong><a href="ListeJeuxServlet?action=ajout">Ajouter un test</a></strong> 
+				   </div>
+				   
 			<div class="blog">
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">

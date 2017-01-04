@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>SVP G PER</title>
+<title>TestiJeux - Déconnexion</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -131,12 +131,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 	<div class="banner-body logn">
 		<div class="container">
-			<h2>
-				Merci de votre visite sur notre site !!! <br> <br> Vous
-				allez être redirigé vers la page d'accueil dans quelques secondes
-				...
-			</h2>
+			<div class="alert alert-info " role="alert">
+				<strong>Merci de votre visite !</strong> 
+				<br> 				
+				Redirection vers la page d'accueil dans quelques secondes. Veuillez patienter.
+			
+			</div>
 		</div>
 	</div>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
