@@ -30,7 +30,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 	{
 		super();
 		this.listeCommentaire = new ArrayList<>();
-		//System.out.println("Constructeur CommentaireDaoImpl");
+		System.out.println("Constructeur CommentaireDaoImpl");
 	}
 
 	@Override
@@ -194,7 +194,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 					idCom = resultat.getInt(1);
 					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
-					test = getTestByID(resultat.getInt(4));
+					//test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
@@ -253,9 +253,9 @@ public class CommentaireDaoImpl implements CommentaireDao
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, contenuCom);
-			preparedStatement.setDate(3, dateSql);
-			preparedStatement.setInt(4, idUtilisateur);
-			preparedStatement.setInt(5, idTest);
+		//	preparedStatement.setDate(3, dateSql);
+			preparedStatement.setInt(3, idUtilisateur);
+			preparedStatement.setInt(4, idTest);
 			statut = preparedStatement.executeUpdate();
 
 		}
@@ -300,10 +300,10 @@ public class CommentaireDaoImpl implements CommentaireDao
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, contenuCom);
-			preparedStatement.setDate(3, dateSql);
-			preparedStatement.setInt(4, idUtilisateur);
-			preparedStatement.setInt(5, idTest);
-			preparedStatement.setInt(6, idCommentaire);
+		//	preparedStatement.setDate(3, dateSql);
+			preparedStatement.setInt(3, idUtilisateur);
+			preparedStatement.setInt(4, idTest);
+			preparedStatement.setInt(5, idCommentaire);
 			statut = preparedStatement.executeUpdate();
 
 		}
