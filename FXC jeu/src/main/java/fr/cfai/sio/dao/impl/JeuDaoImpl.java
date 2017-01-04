@@ -132,6 +132,7 @@ public class JeuDaoImpl implements JeuDao
 		Statement statement = null;
 		ResultSet resultat = null;
 		int id_Jeu;
+		String titreJeu;
 		String imgJeu;
 		Jeu jeu = null;
 
@@ -145,9 +146,10 @@ public class JeuDaoImpl implements JeuDao
 				while (resultat.next())
 				{
 					id_Jeu = resultat.getInt(1);
-					imgJeu = resultat.getString(2);
+					titreJeu = resultat.getString(2);
+					imgJeu = resultat.getString(3);
 
-					jeu = new Jeu(id_Jeu, imgJeu);
+					jeu = new Jeu(id_Jeu, titreJeu, imgJeu);
 					listeJeux.add(jeu);
 				}
 			}

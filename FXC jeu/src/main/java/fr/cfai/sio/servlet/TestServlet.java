@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.cfai.sio.business.Commentaire;
+import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.business.Test;
 import fr.cfai.sio.service.CommentaireService;
+import fr.cfai.sio.service.JeuService;
 import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.impl.CommentaireServiceImpl;
+import fr.cfai.sio.service.impl.JeuServiceImpl;
 import fr.cfai.sio.service.impl.TestServiceImpl;
 
 /**
@@ -27,6 +30,7 @@ public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private TestService testServiceImpl;
 	private CommentaireService commentaireServiceImpl;
+	private JeuService jeuServiceImpl;
 
 	/**
 	 * @throws Exception
@@ -38,26 +42,21 @@ public class TestServlet extends HttpServlet {
 
 		this.testServiceImpl = new TestServiceImpl();
 		this.commentaireServiceImpl = new CommentaireServiceImpl();
+		this.jeuServiceImpl = new JeuServiceImpl();
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		
-		if(request.getParameter("action") != null && request.getParameter("action")=="addTest"){
-			response.sendRedirect("/ajoutTest.jsp");
-			//request.getRequestDispatcher("/ajoutTest.jsp").forward(request, response);
-			}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-		int idUtilisateur = (int) session.getAttribute("ID");
-		String loginUtilisateur = (String) session.getAttribute("LOGIN");
-
 		int idTest;
 		Test test = null;
+		int idUtilisateur = (int) session.getAttribute("ID");
+		String loginUtilisateur = (String) session.getAttribute("LOGIN");
 		List<Commentaire> listeCommentaire = new ArrayList<>();
 		listeCommentaire.clear();
 
@@ -65,20 +64,14 @@ public class TestServlet extends HttpServlet {
 
 		test = testServiceImpl.recupereTestParID(idTest);
 		listeCommentaire = commentaireServiceImpl.recupererCommentaireParTest(idTest);
-	
+
 		request.setAttribute("ListeCOM", listeCommentaire);
 		request.setAttribute("TEST", test);
 		request.setAttribute("idUtilisateur", idUtilisateur);
 		request.setAttribute("loginUtilisateur", loginUtilisateur);
 
+		request.getRequestDispatcher("/test.jsp").forward(request, response);
 
-	
-			request.getRequestDispatcher("/test.jsp").forward(request, response);
-		
-		
-		
-		
-		
 	}
 
 	/**

@@ -82,12 +82,14 @@ public class Jeu
 	 * 
 	 * @param id_Jeu
 	 *            Id du jeu
+	 * @param imgJeu 
 	 * @param img_Jeu
 	 *            Image du jeu
 	 */
-	public Jeu(int id_Jeu, String img_Jeu)
+	public Jeu(int id_Jeu, String titre_Jeu, String img_Jeu)
 	{
 		this.idJeu = id_Jeu;
+		this.titreJeu = titre_Jeu;
 		this.imgJeu = img_Jeu;
 	}
 
