@@ -14,7 +14,10 @@
 		<p>Utilisateur : ${TEST.utilisateur.getLogin()}</p>
 		<BR> <a href="javascript:history.go(-1)">Retour</a>
 
-
+		<c:set var="auteur" scope="session" value="${idUtilisateur}"/>
+		<c:out value="${auteur}"/>
+		<c:set var="auteur1" scope="session" value="${TEST.utilisateur.getIdUtilisateur()}"/>
+		<c:out value="${auteur1}"/>
 		<!-- //header -->
 		<!-- single -->
 		<div class="single-page-artical">
@@ -131,10 +134,13 @@
 							layout.The point of using Lorem Ipsum is that it has a
 							more-or-less</p>
 					</div>
-					<div class="clearfix"></div>
+			<div class="clearfix"></div>
 				</div> -->
 			</div>
 			<div class="artical-commentbox">
+			
+			<c:if test="${auteur != auteur1}">
+						
 				<h3>leave a comment</h3>
 				<div class="table-form">
 					<form name="CommentaireServlet" action="CommentaireServlet"
@@ -147,6 +153,7 @@
 						<input type="submit" value="Send">
 					</form>
 				</div>
+				</c:if>	
 			</div>
 		</div>
 		<!-- single -->

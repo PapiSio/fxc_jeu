@@ -52,51 +52,18 @@
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">
 
-					<c:forEach items="${LISTE_TESTS}" var="test">
-						<div class="blog-left-grid-left">
-							<h3>
-								<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
-							</h3>
-							<!-- <p>
-								Jeu : <span>${test.jeu.getTitreJeu()}</span> 
-								Auteur : <span> ${test.utilisateur.getLogin()} </span>
-								Date : <span>${test.dateTest} | </span>
-								Note du jeu : <span>${test.noteJeu} / 20</span> 
-								<span> testttt </span> ezfz
-							</p> -->
-
-						</div>
-												<div class="blog-left-grid-right">
-							<a href="#" class="hvr-bounce-to-bottom non">${test.getNbCom()}
-								</a>
-						</div> 
-
-						<div class="clearfix"></div>
-
-						<div class="col-xs-12 col-sm-3">
-							<a href="TestServlet?idTest=${test.idTest}"><img
-								src="${test.jeu.imgJeu}" alt=" "
-								class="img-responsive img-rounded" /></a>
-						</div>
-
-
-						<p class="para">
-							Jeu : <span>${test.jeu.getTitreJeu()}</span> <br> Auteur : <span>
-								${test.utilisateur.getLogin()} </span><br> Date : <span>${test.dateTest}
-							</span><br> Note du jeu : <span>${test.noteJeu} / 20</span><br>
-							Moyenne du test : <span>${test.getMoyenne()} </span><br>
-							Description : <span>${test.descriptionTest}</span>
-						</p>
-						<br>
-						<br>
-
-					</c:forEach>
+					<form>
+						<select name="jeux">
+							<c:forEach var="item" items="${dept}">
+								<option value="${item.key}">${item.value}</option>
+							</c:forEach>
+						</select>
+					</form>
 
 				</div>
 			</div>
 
-			<p>
-				<a href="/ajoutTest.jsp">Ajouter un test</a>
+
 		</div>
 		<div class="clearfix"></div>
 	</div>

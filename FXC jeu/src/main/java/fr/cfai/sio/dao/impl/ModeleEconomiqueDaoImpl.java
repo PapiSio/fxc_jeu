@@ -33,7 +33,8 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 	@Override
 	public List<ModeleEconomique> findAllModeleEconomiques()
 	{
-
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 		int id_ModeleEconomique;
 		String libelle_ModeleEconomique;
@@ -41,8 +42,8 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES);
 
 			if (resultat != null)
 			{
@@ -64,14 +65,18 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-	
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeModeleEconomiques;
 	}
 
 	@Override
 	public List<ModeleEconomique> findAllModeleEconomiquesByJeu(int idJeu)
 	{
-
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 		List<ModeleEconomique> listeModeleEconomiques = new ArrayList<ModeleEconomique>();
 		int id_ModeleEconomique;
 		String libelle_ModeleEconomique;
@@ -79,12 +84,12 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES_BY_JEU);
+			preparedStatement = connexion.prepareStatement(ModeleEconomiqueRequete.FIND_ALL_MODELE_ECONOMIQUES_BY_JEU);
 			preparedStatement.setInt(1, idJeu);
 
 			try
 			{
-				ResultSet resultat = preparedStatement.executeQuery();
+				resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -112,7 +117,10 @@ public class ModeleEconomiqueDaoImpl implements ModeleEconomiqueDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-		
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return listeModeleEconomiques;
 	}
 }

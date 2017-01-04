@@ -32,6 +32,8 @@ public class EditeurDaoImpl implements EditeurDao
 	@Override
 	public List<Editeur> findAllEditeurs()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<Editeur> listeEditeurs = new ArrayList<Editeur>();
 		int id_editeur;
 		String libelle_editeur;
@@ -39,8 +41,8 @@ public class EditeurDaoImpl implements EditeurDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(EditeurRequete.FIND_ALL_EDITEURS);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(EditeurRequete.FIND_ALL_EDITEURS);
 
 			if (resultat != null)
 			{
@@ -62,7 +64,10 @@ public class EditeurDaoImpl implements EditeurDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeEditeurs;
 	}
 

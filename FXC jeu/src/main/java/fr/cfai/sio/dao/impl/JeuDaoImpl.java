@@ -60,6 +60,9 @@ public class JeuDaoImpl implements JeuDao
 	@Override
 	public Jeu findJeuById(int idJeu)
 	{
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+		
 		int id_Jeu;
 		String titre_Jeu;
 		Date date_Sortie_Jeu;
@@ -77,9 +80,9 @@ public class JeuDaoImpl implements JeuDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(JeuRequete.FIND_JEUX_BY_ID);
+			preparedStatement = connexion.prepareStatement(JeuRequete.FIND_JEUX_BY_ID);
 			preparedStatement.setInt(1, idJeu);
-			ResultSet resultat = preparedStatement.executeQuery();
+			resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -116,13 +119,18 @@ public class JeuDaoImpl implements JeuDao
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return jeu;
 	}
 
 	@Override
 	public List<Jeu> findAllJeux()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
 		int id_Jeu;
 		String imgJeu;
 		String titreJeu;
@@ -131,8 +139,8 @@ public class JeuDaoImpl implements JeuDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(JeuRequete.FIND_ALL_JEUX);
+			 statement = connexion.createStatement();
+			 resultat = statement.executeQuery(JeuRequete.FIND_ALL_JEUX);
 
 			if (resultat != null)
 			{
@@ -156,7 +164,10 @@ public class JeuDaoImpl implements JeuDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeJeux;
 	}
 

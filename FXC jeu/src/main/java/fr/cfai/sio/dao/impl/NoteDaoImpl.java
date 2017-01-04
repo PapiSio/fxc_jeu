@@ -25,6 +25,8 @@ public class NoteDaoImpl implements NoteDao
 	@Override
 	public List<Note> findAllNotes()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<Note> listeNotes = new ArrayList<>();
 
 		int id_Note;
@@ -33,8 +35,8 @@ public class NoteDaoImpl implements NoteDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(NoteRequete.FIND_ALL_NOTES);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(NoteRequete.FIND_ALL_NOTES);
 
 			if (resultat != null)
 			{
@@ -56,13 +58,18 @@ public class NoteDaoImpl implements NoteDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeNotes;
 	}
 
 	@Override
 	public List<Note> findAllNotesByTest(int idTest)
 	{
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 		List<Note> listeNotes = new ArrayList<>();
 		int id_Note;
 		short value_Note;
@@ -70,11 +77,11 @@ public class NoteDaoImpl implements NoteDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(NoteRequete.FIND_ALL_NOTES_BY_TEST);
+			 preparedStatement = connexion.prepareStatement(NoteRequete.FIND_ALL_NOTES_BY_TEST);
 			preparedStatement.setInt(1, idTest);
 			try
 			{
-				ResultSet resultat = preparedStatement.executeQuery();
+				 resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -103,7 +110,10 @@ public class NoteDaoImpl implements NoteDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return listeNotes;
 	}
 

@@ -33,6 +33,8 @@ public class PlateformeDaoImpl implements PlateformeDao
 	@Override
 	public List<Plateforme> findAllPlateformes()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
 		List<Plateforme> listePlateformes = new ArrayList<>();
 		int id_Plateforme;
 		String libelle_Plateforme;
@@ -40,8 +42,8 @@ public class PlateformeDaoImpl implements PlateformeDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(PlateformeRequete.FIND_ALL_PLATEFORMES);
+			 statement = connexion.createStatement();
+			 resultat = statement.executeQuery(PlateformeRequete.FIND_ALL_PLATEFORMES);
 
 			if (resultat != null)
 			{
@@ -63,13 +65,18 @@ public class PlateformeDaoImpl implements PlateformeDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listePlateformes;
 	}
 
 	@Override
 	public List<Plateforme> findAllPlateformesByJeu(int idJeu)
 	{
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 		List<Plateforme> listePlateformes = new ArrayList<>();
 		int id_Plateforme;
 		String libelle_Plateforme;
@@ -77,12 +84,12 @@ public class PlateformeDaoImpl implements PlateformeDao
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(PlateformeRequete.FIND_ALL_PLATEFORMES_BY_JEU);
+			preparedStatement = connexion.prepareStatement(PlateformeRequete.FIND_ALL_PLATEFORMES_BY_JEU);
 			preparedStatement.setInt(1, idJeu);
 			preparedStatement.executeQuery();
 			try
 			{
-				ResultSet resultat = preparedStatement.executeQuery();
+				resultat = preparedStatement.executeQuery();
 
 				if (resultat != null)
 				{
@@ -110,7 +117,10 @@ public class PlateformeDaoImpl implements PlateformeDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return listePlateformes;
 	}
 

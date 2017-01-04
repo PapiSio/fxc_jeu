@@ -19,23 +19,19 @@ import fr.cfai.sio.dao.requete.CommentaireRequete;
 
 public class CommentaireDaoImpl implements CommentaireDao
 {
-
 	private Connection connexion = ConnexionBDD.getConnection();
 
 	private List<Commentaire> listeCommentaire;
 	private List<Utilisateur> listeUtilisateur;
 	private List<Test> listeTest;
-	private UtilisateurDao utilisateurDaoImpl;
 	private Commentaire commentaire;
-	private TestDao testDaoImpl;
 	private int statut = 0;
 
 	public CommentaireDaoImpl() throws Exception
 	{
 		super();
 		this.listeCommentaire = new ArrayList<>();
-		this.utilisateurDaoImpl = new UtilisateurDaoImpl();
-		this.testDaoImpl = new TestDaoImpl();
+		System.out.println("Constructeur CommentaireDaoImpl");
 	}
 
 	@Override
@@ -47,13 +43,14 @@ public class CommentaireDaoImpl implements CommentaireDao
 		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
-	//	Commentaire commentaireFK = null;
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
 
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_ID);
+			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_ID);
 			preparedStatement.setInt(1, idCommentaire);
-			ResultSet resultat = preparedStatement.executeQuery();
+			resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
@@ -78,6 +75,10 @@ public class CommentaireDaoImpl implements CommentaireDao
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 		return commentaire;
 
 	}
@@ -85,7 +86,8 @@ public class CommentaireDaoImpl implements CommentaireDao
 	@Override
 	public List<Commentaire> findAllCommentaire()
 	{
-		// TODO Auto-generated method stub
+		Statement statement = null;
+		ResultSet resultat = null;
 		int idCom;
 		Date date_Commentaire;
 		String contenuCom;
@@ -95,9 +97,9 @@ public class CommentaireDaoImpl implements CommentaireDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
+			statement = connexion.createStatement();
 
-			ResultSet resultat = statement.executeQuery(CommentaireRequete.FIND_ALL_COMMENTAIRE);
+			resultat = statement.executeQuery(CommentaireRequete.FIND_ALL_COMMENTAIRE);
 
 			if (resultat != null)
 			{
@@ -123,16 +125,23 @@ public class CommentaireDaoImpl implements CommentaireDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeCommentaire;
 	}
 
 	public int getIDMaxCommentaire()
 	{
+		Statement statement = null;
+		ResultSet resultat = null;
+
 		int idMax = 0;
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
 
 			if (resultat != null)
 			{
@@ -152,47 +161,158 @@ public class CommentaireDaoImpl implements CommentaireDao
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return idMax;
 	}
 
-	public Utilisateur getUtilisateurByID(int id)
+	@Override
+	public List<Commentaire> findCommentaireByIDTest(int idTest)
 	{
-		if (listeUtilisateur == null)
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+
+		listeCommentaire.clear();
+
+		int idCom;
+		Date date_Commentaire;
+		String contenuCom;
+		Test test = null;
+		Utilisateur utilisateur = null;
+		try
 		{
-			listeUtilisateur = utilisateurDaoImpl.findAllUtilisateurs();
+			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
+			preparedStatement.setInt(1, idTest);
+			resultat = preparedStatement.executeQuery();
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					idCom = resultat.getInt(1);
+					date_Commentaire = resultat.getDate(3);
+					contenuCom = resultat.getString(2);
+					test = getTestByID(resultat.getInt(4));
+					utilisateur = getUtilisateurByID(resultat.getInt(5));
+
+					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
+
+					listeCommentaire.add(commentaire);
+				}
+			}
+			else
+			{
+				listeCommentaire = null;
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql : " + e.getMessage());
+		}
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
 		}
 
-		for (Utilisateur utilisateur : listeUtilisateur)
-		{
-			// System.out.println("JeuServlet - getGenre : " +
-			// genre.getLibelleGenre());
-			if (utilisateur.getIdUtilisateur() == id)
-			{
-				return utilisateur;
-			}
-		}
-		return null;
+		return listeCommentaire;
+
 	}
 
-	public Test getTestByID(int id)
+	@Override
+	public int addCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur)
 	{
-		if (listeTest == null)
-		{
-			listeTest = testDaoImpl.findAllTest();
-		}
+		Statement statement = null;
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+		int idMax = 0;
+		java.sql.Date dateSql;
 
-		for (Test test : listeTest)
+		try
 		{
-			// System.out.println("JeuServlet - getEditeur : " +
-			// editeur.getRaisonSociale());
+			statement = connexion.createStatement();
 
-			if (test.getIdTest() == id)
+			resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
+			if (resultat != null)
 			{
-				return test;
+				while (resultat.next())
+				{
+					idMax = resultat.getInt(1) + 1;
+				}
 			}
+			else
+			{
+				idMax = 1;
+			}
+
+			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
+			preparedStatement.setInt(1, idMax);
+			preparedStatement.setString(2, contenuCom);
+			preparedStatement.setDate(3, dateSql = new java.sql.Date(dateCom.getTime()));
+			preparedStatement.setInt(4, idUtilisateur);
+			preparedStatement.setInt(5, idTest);
+			statut = preparedStatement.executeUpdate();
+
 		}
-		return null;
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		finally
+		{
+			ConnexionBDD.close(statement, preparedStatement, resultat);
+		}
+		return statut;
+	}
+
+	@Override
+	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur, int idCommentaire)
+	{
+		Statement statement = null;
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+		int idMax = 0;
+		java.sql.Date dateSql;
+
+		try
+		{
+			statement = connexion.createStatement();
+
+			resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					idMax = resultat.getInt(1) + 1;
+				}
+			}
+			else
+			{
+				idMax = 1;
+			}
+			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
+			preparedStatement.setInt(1, idMax);
+			preparedStatement.setString(2, contenuCom);
+			preparedStatement.setDate(3, (dateSql = new java.sql.Date(dateCom.getTime())));
+			preparedStatement.setInt(4, idUtilisateur);
+			preparedStatement.setInt(5, idTest);
+			preparedStatement.setInt(6, idCommentaire);
+			statut = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		finally
+		{
+			ConnexionBDD.close(statement, preparedStatement, resultat);
+		}
+		return statut;
 	}
 
 	public Commentaire getCommentaireByID(int id)
@@ -215,39 +335,99 @@ public class CommentaireDaoImpl implements CommentaireDao
 		return null;
 	}
 
-	@Override
-	public List<Commentaire> findCommentaireByTest(int idTest)
+	public Utilisateur getUtilisateurByID(int id)
 	{
-		listeCommentaire.clear();
+		UtilisateurDao utilisateurDaoImpl;
+		Utilisateur utilisateur = null;
+		try
+		{
+			utilisateurDaoImpl = new UtilisateurDaoImpl();
 
-		System.out.println("CommenataireDAO - findCommentaireByTest ==> passe dedans");
+			if (listeUtilisateur == null)
+			{
+				listeUtilisateur = utilisateurDaoImpl.findAllUtilisateurs();
+			}
+
+			for (Utilisateur utilisateurListe : listeUtilisateur)
+			{
+				// System.out.println("JeuServlet - getGenre : " +
+				// genre.getLibelleGenre());
+				if (utilisateurListe.getIdUtilisateur() == id)
+				{
+					utilisateur = utilisateurListe;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return utilisateur;
+	}
+
+	public Test getTestByID(int id)
+	{
+
+		Test test = null;
+		TestDao testDaoImpl;
+		try
+		{
+			testDaoImpl = new TestDaoImpl();
+			if (listeTest == null)
+			{
+				listeTest = testDaoImpl.findAllTest();
+			}
+
+			for (Test testListe : listeTest)
+			{
+				// System.out.println("JeuServlet - getEditeur : " +
+				// editeur.getRaisonSociale());
+
+				if (testListe.getIdTest() == id)
+				{
+					test = testListe;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return test;
+	}
+
+	@Override
+	public List<Commentaire> findCommentaireByTest(Test test)
+	{
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+
+		listeCommentaire.clear();
 
 		int idCom;
 		Date date_Commentaire;
 		String contenuCom;
-		Test test = null;
 		Utilisateur utilisateur = null;
 		try
 		{
-			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
-			preparedStatement.setInt(1, idTest);
-			ResultSet resultat = preparedStatement.executeQuery();
+			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
+			preparedStatement.setInt(1, test.getIdTest());
+			resultat = preparedStatement.executeQuery();
 
 			if (resultat != null)
 			{
-				System.out.println("CommenataireDAO - findCommentaireByTest ==> requete non null");
-
 				while (resultat.next())
 				{
 					idCom = resultat.getInt(1);
 					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
-					test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
-
-					System.out.println("CommenataireDAO - findCommentaireByTest ==> ajout à la liste des coms");
 
 					listeCommentaire.add(commentaire);
 				}
@@ -262,91 +442,61 @@ public class CommentaireDaoImpl implements CommentaireDao
 		{
 			System.out.println("Erreur sql : " + e.getMessage());
 		}
-
-		System.out.println("CommenataireDAO - findCommentaireByTest ==> return liste des coms");
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
 
 		return listeCommentaire;
 
 	}
 
 	@Override
-	public int addCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur)
+	public List<Commentaire> findAllCommentaireForTest()
 	{
-		int idMax = 0;
-		java.sql.Date dateSql;
+		Statement statement = null;
+		ResultSet resultat = null;
+		int idCom;
+		Date date_Commentaire;
+		String contenuCom;
+		Test test = null;
+		Utilisateur utilisateur = null;
+		Commentaire commentaire = null;
 
 		try
 		{
-			Statement statement = connexion.createStatement();
+			statement = connexion.createStatement();
 
-			ResultSet resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
+			resultat = statement.executeQuery(CommentaireRequete.FIND_ALL_COMMENTAIRE);
 
 			if (resultat != null)
 			{
 				while (resultat.next())
 				{
-					idMax = resultat.getInt(1) + 1;
+					idCom = resultat.getInt(1);
+					date_Commentaire = resultat.getDate(3);
+					contenuCom = resultat.getString(2);
+					test = new Test(resultat.getInt(4));
+					utilisateur = getUtilisateurByID(resultat.getInt(5));
+
+					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
+					listeCommentaire.add(commentaire);
 				}
 			}
 			else
 			{
-				idMax = 1;
+				listeCommentaire = null;
 			}
-
-			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
-			preparedStatement.setInt(1, idMax);
-			preparedStatement.setString(2, contenuCom);
-			preparedStatement.setDate(3, dateSql = new java.sql.Date(dateCom.getTime()));
-			preparedStatement.setInt(4, idUtilisateur);
-			preparedStatement.setInt(5, idTest);
-			statut = preparedStatement.executeUpdate();
 
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur sql" + e.getMessage());
 		}
-		return statut;
-	}
-
-	@Override
-	public int addReponseCommentaire(int idCom, String contenuCom, Date dateCom, int idTest, int idUtilisateur, int idCommentaire)
-	{
-		int idMax = 0;
-		java.sql.Date dateSql;
-
-		try
+		finally
 		{
-			Statement statement = connexion.createStatement();
-
-			ResultSet resultat = statement.executeQuery(CommentaireRequete.ID_MAX_COMMENTAIRE);
-
-			if (resultat != null)
-			{
-				while (resultat.next())
-				{
-					idMax = resultat.getInt(1) + 1;
-				}
-			}
-			else
-			{
-				idMax = 1;
-			}
-			PreparedStatement preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
-			preparedStatement.setInt(1, idMax);
-			preparedStatement.setString(2, contenuCom);
-			preparedStatement.setDate(3, (dateSql = new java.sql.Date(dateCom.getTime())));
-			preparedStatement.setInt(4, idUtilisateur);
-			preparedStatement.setInt(5, idTest);
-			preparedStatement.setInt(6, idCommentaire);
-			statut = preparedStatement.executeUpdate();
-
+			ConnexionBDD.close(statement, null, resultat);
 		}
-		catch (SQLException e)
-		{
-			System.out.println("Erreur sql" + e.getMessage());
-		}
-		return statut;
+		return listeCommentaire;
 	}
-
 }

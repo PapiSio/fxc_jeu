@@ -25,6 +25,10 @@ public class ClassificationDaoImpl implements ClassificationDao
 	@Override
 	public List<Classification> findAllClassifications()
 	{
+
+		Statement statement = null;
+		ResultSet resultat = null;
+
 		List<Classification> listeClassifications = new ArrayList<>();
 
 		int id_classification;
@@ -33,8 +37,8 @@ public class ClassificationDaoImpl implements ClassificationDao
 
 		try
 		{
-			Statement statement = connexion.createStatement();
-			ResultSet resultat = statement.executeQuery(ClassificationRequete.FIND_ALL_CLASSIFICATIONS);
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(ClassificationRequete.FIND_ALL_CLASSIFICATIONS);
 
 			if (resultat != null)
 			{
@@ -56,9 +60,10 @@ public class ClassificationDaoImpl implements ClassificationDao
 		{
 			System.out.println("ClassificationDaoImpl/finAllClassifications - Erreur " + e.getMessage());
 		}
-
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
 		return listeClassifications;
-
 	}
-
 }

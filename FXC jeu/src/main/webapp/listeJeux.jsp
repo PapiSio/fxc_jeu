@@ -17,7 +17,7 @@
 									<div class="ch-info-back">
 										<h3>
 											<a href="ListeTestsServlet?idJeu=${jeu.idJeu}&action=jeu">Voir
-												les tests du jeu</a></a>
+												les tests du jeu</a>
 										</h3>
 										<p>
 											<a href="JeuServlet?idJeu=${jeu.idJeu}">${jeu.titreJeu}</a>
