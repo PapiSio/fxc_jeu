@@ -25,6 +25,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 	private Commentaire commentaire;
 	private int statut = 0;
 
+	
 	public CommentaireDaoImpl() throws Exception
 	{
 		super();
