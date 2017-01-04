@@ -12,11 +12,11 @@ public class CommentaireRequete {
 	
 	public static final String ID_MAX_COMMENTAIRE = "SELECT MAX (id_com) FROM commentaire";
 	
-	public static final String AJOUT_COMMENTAIRE= "INSERT INTO commentaire (id_com,contenu_com,date_com,id_utilisateur,id_test) VALUES(?,?,?,?,?)";
+	public static final String AJOUT_COMMENTAIRE= "INSERT INTO commentaire (id_com,contenu_com,date_com,id_utilisateur,id_test) VALUES(?,?,now(),?,?)";
 	
 	public static final String SUPPRESSION_COMMENTAIRE= "DELETE FROM commentaire WHERE id_com=?";
 	
 	public static final String MAX_ID_COMMENTAIRE= "SELECT MAX(id_com) FROM commentaire";
 
-	public static final String AJOUT_COMMENTAIRE_PAR_COMMENTAIRE= "INSERT INTO commentaire (id_com,contenu_com,date_com,id_utilisateur,id_test,id_fk_com) VALUES(?,?,?,?,?,?)";
+	public static final String AJOUT_COMMENTAIRE_PAR_COMMENTAIRE= "INSERT INTO commentaire (id_com,contenu_com,date_com,id_utilisateur,id_test,id_fk_com) VALUES(?,?,now(),?,?,?)";
 }

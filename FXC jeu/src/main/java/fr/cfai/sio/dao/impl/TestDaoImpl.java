@@ -31,7 +31,7 @@ public class TestDaoImpl implements TestDao
 	{
 		super();
 		this.listeTests = new ArrayList<>();
-		//System.out.println("Constructeur TestDaoImpl");
+		System.out.println("Constructeur TestDaoImpl");
 	}
 
 	@Override

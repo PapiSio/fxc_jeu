@@ -77,34 +77,26 @@ public class NoteDaoImpl implements NoteDao
 
 		try
 		{
-			 preparedStatement = connexion.prepareStatement(NoteRequete.FIND_ALL_NOTES_BY_TEST);
+			preparedStatement = connexion.prepareStatement(NoteRequete.FIND_ALL_NOTES_BY_TEST);
 			preparedStatement.setInt(1, idTest);
-			try
+
+			resultat = preparedStatement.executeQuery();
+
+			if (resultat != null)
 			{
-				 resultat = preparedStatement.executeQuery();
 
-				if (resultat != null)
+				while (resultat.next())
 				{
-
-					while (resultat.next())
-					{
-						id_Note = resultat.getInt(1);
-						value_Note = resultat.getShort(2);
-						note = new Note(id_Note, value_Note);
-						listeNotes.add(note);
-					}
+					id_Note = resultat.getInt(1);
+					value_Note = resultat.getShort(2);
+					note = new Note(id_Note, value_Note);
+					listeNotes.add(note);
 				}
-				else
-				{
-					listeNotes = null;
-				}
-
 			}
-			catch (SQLException e)
+			else
 			{
-				System.out.println("Erreur sql" + e.getMessage());
+				listeNotes = null;
 			}
-
 		}
 		catch (SQLException e)
 		{
