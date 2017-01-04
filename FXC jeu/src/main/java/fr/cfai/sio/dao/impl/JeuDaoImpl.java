@@ -147,10 +147,10 @@ public class JeuDaoImpl implements JeuDao
 				while (resultat.next())
 				{
 					id_Jeu = resultat.getInt(1);
-					imgJeu = resultat.getString(2);
-					titreJeu = resultat.getString(3);
+					titreJeu = resultat.getString(2);
+					imgJeu = resultat.getString(3);
 
-					jeu = new Jeu(id_Jeu, imgJeu, titreJeu);
+					jeu = new Jeu(id_Jeu, titreJeu, imgJeu);
 					listeJeux.add(jeu);
 				}
 			}

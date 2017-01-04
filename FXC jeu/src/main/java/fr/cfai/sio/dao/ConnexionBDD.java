@@ -61,8 +61,6 @@ public class ConnexionBDD
 
 	}
 
-
-
 	public static void close(Statement statement, PreparedStatement preparedStatement, ResultSet resultat)
 	{
 		if (resultat != null)
@@ -104,7 +102,7 @@ public class ConnexionBDD
 
 
 
-	public static void close(PreparedStatement preparedStatement, ResultSet resultat)
+	/*public static void close(PreparedStatement preparedStatement, ResultSet resultat)
 	{
 		if (resultat != null)
 		{
@@ -129,5 +127,5 @@ public class ConnexionBDD
 
 			}
 		}
-	}
+	}*/
 }

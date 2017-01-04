@@ -14,37 +14,7 @@
 			<!-- banner -->
 			<!-- 			<div class="banner">
 
-				Partie qui gère le slider texte, une fois encore le script ici, bof.
 
-				//End-slider-script
-				<div id="top" class="callbacks_container wow fadeInUp"
-					data-wow-delay="0.5s">
-					Slider qui dÃ©file
-					<ul class="rslides" id="slider3">
-						<li>
-							<div class="banner-inf">
-								<h3>Test jeu 1</h3>
-								<p>League of Legends</p>
-								<a href="single.html">See More</a>
-							</div>
-						</li>
-						<li>
-							<div class="banner-inf">
-								<h3>Test jeu 2</h3>
-								<p>World of Warcraft</p>
-								<a href="single.html">See More</a>
-							</div>
-						</li>
-						<li>
-							<div class="banner-inf">
-								<h3>Test jeu 3</h3>
-								<p>Minecraft</p>
-								<a href="single.html">See More</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div> -->
 
 
 			<!-- blog -->
@@ -54,11 +24,25 @@
 
 					<form>
 						<select name="jeux">
-							<c:forEach var="item" items="${dept}">
-								<option value="${item.key}">${item.value}</option>
+							<c:forEach var="JEU" items="${ListeJeu}">
+								<option value="${JEU.idJeu}">${JEU.titreJeu}</option>
 							</c:forEach>
-						</select>
+
+						</select><br> <label>Titre :</label><input type="text" name="titre"><br>
+						<label>Contenu :</label>
+						<textarea rows="8" cols="50"></textarea>
+						<br> <label>Les plus :</label>
+						<textarea rows="4" cols="50"></textarea>
+						<br> <label>Les moins :</label>
+						<textarea rows="4" cols="50"></textarea>
+						<br> 
+						Note :<select name="note"><c:forEach begin="0" end="20" var="i">
+								<option value="${i}">${i}</option>
+								<br>
+							</c:forEach></select>	
+						
 					</form>
+
 
 				</div>
 			</div>

@@ -96,7 +96,7 @@
 			</div>
 
 			<p>
-				<a href="/ajoutTest.jsp">Ajouter un test</a>
+				<a href="ListeJeuxServlet?action=ajout">Ajouter un test</a>
 		</div>
 		<div class="clearfix"></div>
 	</div>
