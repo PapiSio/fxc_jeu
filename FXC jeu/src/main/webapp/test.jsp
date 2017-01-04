@@ -14,6 +14,7 @@
 		<p>Utilisateur : ${TEST.utilisateur.getLogin()}</p>
 		<BR> <a href="javascript:history.go(-1)">Retour</a>
 
+
 		<c:set var="auteur" scope="session" value="${idUtilisateur}"/>
 		<c:out value="${auteur}"/>
 		<c:set var="auteur1" scope="session" value="${TEST.utilisateur.getIdUtilisateur()}"/>
