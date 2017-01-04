@@ -60,9 +60,9 @@ public class TestServlet extends HttpServlet {
 		idTest = Integer.parseInt(request.getParameter("idTest"));
 
 		test = testServiceImpl.recupereTestParID(idTest);
-		listeCommentaire = commentaireServiceImpl.recupererCommentaireParTest(idTest);
+		//listeCommentaire = commentaireServiceImpl.recupererCommentaireParTest(idTest);
 
-		request.setAttribute("ListeCOM", listeCommentaire);
+		//request.setAttribute("ListeCOM", listeCommentaire);
 		request.setAttribute("TEST", test);
 		request.setAttribute("idUtilisateur", idUtilisateur);
 		request.setAttribute("loginUtilisateur", loginUtilisateur);

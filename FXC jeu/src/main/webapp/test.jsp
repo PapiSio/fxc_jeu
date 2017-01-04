@@ -87,7 +87,7 @@
 					<div class="top-comment-left">
 					</div>
 
-					<c:forEach items="${ListeCOM}" var="commentaire">
+					<c:forEach items="${TEST.getListeCommentaires()}" var="commentaire">
 						<div class="top-comment-right">
 							<ul>
 								<li><span class="left-at"><a href="#">${TEST.utilisateur.getLogin()}</a></span></li>
