@@ -22,8 +22,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 	private Connection connexion = ConnexionBDD.getConnection();
 
 	private List<Commentaire> listeCommentaire;
-	private List<Utilisateur> listeUtilisateur;
-	private List<Test> listeTest;
 	private Commentaire commentaire;
 	private int statut = 0;
 
@@ -31,7 +29,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 	{
 		super();
 		this.listeCommentaire = new ArrayList<>();
-		System.out.println("Constructeur CommentaireDaoImpl");
+		//System.out.println("Constructeur CommentaireDaoImpl");
 	}
 
 	@Override
@@ -168,6 +166,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 		return idMax;
 	}
 
+		
 	@Override
 	public List<Commentaire> findCommentaireByIDTest(int idTest)
 	{
@@ -228,8 +227,10 @@ public class CommentaireDaoImpl implements CommentaireDao
 		ResultSet resultat = null;
 		PreparedStatement preparedStatement = null;
 		int idMax = 0;
+		
 		java.sql.Date dateSql;
-
+		dateSql=(java.sql.Date) dateCom;
+		
 		try
 		{
 			statement = connexion.createStatement();
@@ -251,7 +252,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, contenuCom);
-			preparedStatement.setDate(3, dateSql = new java.sql.Date(dateCom.getTime()));
+			preparedStatement.setDate(3, dateSql);
 			preparedStatement.setInt(4, idUtilisateur);
 			preparedStatement.setInt(5, idTest);
 			statut = preparedStatement.executeUpdate();
@@ -276,6 +277,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 		PreparedStatement preparedStatement = null;
 		int idMax = 0;
 		java.sql.Date dateSql;
+		dateSql=(java.sql.Date) dateCom;
 
 		try
 		{
@@ -297,7 +299,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, contenuCom);
-			preparedStatement.setDate(3, (dateSql = new java.sql.Date(dateCom.getTime())));
+			preparedStatement.setDate(3, dateSql);
 			preparedStatement.setInt(4, idUtilisateur);
 			preparedStatement.setInt(5, idTest);
 			preparedStatement.setInt(6, idCommentaire);
@@ -335,70 +337,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 		return null;
 	}
 
-	public Utilisateur getUtilisateurByID(int id)
-	{
-		UtilisateurDao utilisateurDaoImpl;
-		Utilisateur utilisateur = null;
-		try
-		{
-			utilisateurDaoImpl = new UtilisateurDaoImpl();
-
-			if (listeUtilisateur == null)
-			{
-				listeUtilisateur = utilisateurDaoImpl.findAllUtilisateurs();
-			}
-
-			for (Utilisateur utilisateurListe : listeUtilisateur)
-			{
-				// System.out.println("JeuServlet - getGenre : " +
-				// genre.getLibelleGenre());
-				if (utilisateurListe.getIdUtilisateur() == id)
-				{
-					utilisateur = utilisateurListe;
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return utilisateur;
-	}
-
-	public Test getTestByID(int id)
-	{
-
-		Test test = null;
-		TestDao testDaoImpl;
-		try
-		{
-			testDaoImpl = new TestDaoImpl();
-			if (listeTest == null)
-			{
-				listeTest = testDaoImpl.findAllTest();
-			}
-
-			for (Test testListe : listeTest)
-			{
-				// System.out.println("JeuServlet - getEditeur : " +
-				// editeur.getRaisonSociale());
-
-				if (testListe.getIdTest() == id)
-				{
-					test = testListe;
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return test;
-	}
+	
 
 	@Override
 	public List<Commentaire> findCommentaireByTest(Test test)
@@ -498,5 +437,43 @@ public class CommentaireDaoImpl implements CommentaireDao
 			ConnexionBDD.close(statement, null, resultat);
 		}
 		return listeCommentaire;
+	}
+	
+	public Utilisateur getUtilisateurByID(int id)
+	{
+		UtilisateurDao utilisateurDaoImpl;
+		Utilisateur utilisateur = null;
+
+		try
+		{
+			utilisateurDaoImpl = new UtilisateurDaoImpl();
+			utilisateur = utilisateurDaoImpl.findUtilisateurById(id);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return utilisateur;
+	}
+
+	public Test getTestByID(int id)
+	{
+		Test test = null;
+		TestDao testDaoImpl;
+		
+		try
+		{
+			testDaoImpl = new TestDaoImpl();
+				test = testDaoImpl.findTestById(id);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return test;
 	}
 }

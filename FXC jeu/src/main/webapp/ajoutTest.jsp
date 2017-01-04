@@ -36,7 +36,7 @@
 						<br> <label>Les moins :</label>
 						<textarea rows="4" cols="50"></textarea>
 						<br> 
-						<select name="note"><c:forEach begin="0" end="20" var="i">
+						Note :<select name="note"><c:forEach begin="0" end="20" var="i">
 								<option value="${i}">${i}</option>
 								<br>
 							</c:forEach></select>	
