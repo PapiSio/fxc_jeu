@@ -1,7 +1,7 @@
 <%@ include file="headerIndex.jsp"%>
 
 <body>
-
+<a href="image.jsp">Ajouter une image</a>
 	<!-- banner-body -->
 	<div class="banner-body logn">
 		<div class="container">

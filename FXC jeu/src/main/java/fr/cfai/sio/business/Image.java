@@ -13,7 +13,6 @@ public class Image
 	 */
 	private int idImage;
 	private String cheminImage;
-	private String titreImage;
 	private Test test;
 
 	/**
@@ -32,13 +31,18 @@ public class Image
 	 * @param utilisateur
 	 *            Utilisteur de l'image
 	 */
-	public Image(int idImage, String cheminImage, String titreImage, Test test)
+	public Image(int idImage, String cheminImage, Test test)
 	{
 		super();
 		this.idImage = idImage;
 		this.cheminImage = cheminImage;
-		this.titreImage = titreImage;
 		this.test = test;
+	}
+
+	public Image(String chemin)
+	{
+		super();
+		this.cheminImage=chemin;
 	}
 
 	/**
@@ -81,27 +85,6 @@ public class Image
 	public void setCheminImage(String cheminImage)
 	{
 		this.cheminImage = cheminImage;
-	}
-
-	/**
-	 * Getteur Titre de l'image
-	 * 
-	 * @return Titre de l'image
-	 */
-	public String getTitreImage()
-	{
-		return titreImage;
-	}
-
-	/**
-	 * Setteur Titre de l'image
-	 * 
-	 * @param titreImage
-	 *            Titre de l'image
-	 */
-	public void setTitreImage(String titreImage)
-	{
-		this.titreImage = titreImage;
 	}
 
 	/**

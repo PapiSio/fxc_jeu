@@ -102,30 +102,8 @@ public class ConnexionBDD
 
 
 
-	/*public static void close(PreparedStatement preparedStatement, ResultSet resultat)
+	public static void close(PreparedStatement preparedStatement, ResultSet resultat)
 	{
-		if (resultat != null)
-		{
-			try
-			{
-				resultat.close();
-			}
-			catch (SQLException ignore)
-			{
-
-			}
-		}
-
-		if (preparedStatement != null)
-		{
-			try
-			{
-				preparedStatement.close();
-			}
-			catch (SQLException ignore)
-			{
-
-			}
-		}
-	}*/
+		close(null, preparedStatement, resultat);
+	}
 }

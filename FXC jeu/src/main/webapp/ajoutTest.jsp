@@ -22,7 +22,7 @@
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">
 
-					<form>
+					<form action=""  enctype="multipart/form-data" method="POST" name="formulaireAjoutTest">
 						<select name="jeux">
 							<c:forEach var="JEU" items="${ListeJeu}">
 								<option value="${JEU.idJeu}">${JEU.titreJeu}</option>
@@ -35,15 +35,15 @@
 						<textarea rows="4" cols="50"></textarea>
 						<br> <label>Les moins :</label>
 						<textarea rows="4" cols="50"></textarea>
-						<br> 
-						Note :<select name="note"><c:forEach begin="0" end="20" var="i">
+						<br> Note :<select name="note"><c:forEach begin="0"
+								end="20" var="i">
 								<option value="${i}">${i}</option>
 								<br>
-							</c:forEach></select>	
-						
+							</c:forEach></select>
+							<br>
+							<label>Ajouter des images :</label>
+							<input type="file" name="NOM_IMAGE" multiple>
 					</form>
-
-
 				</div>
 			</div>
 

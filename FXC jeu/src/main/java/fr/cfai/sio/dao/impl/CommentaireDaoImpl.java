@@ -229,8 +229,8 @@ public class CommentaireDaoImpl implements CommentaireDao
 		PreparedStatement preparedStatement = null;
 		int idMax = 0;
 		
-		java.sql.Date dateSql;
-		dateSql=(java.sql.Date) dateCom;
+	//	java.sql.Date dateSql;
+		//dateSql=(java.sql.Date) dateCom;
 		
 		try
 		{
@@ -277,8 +277,8 @@ public class CommentaireDaoImpl implements CommentaireDao
 		ResultSet resultat = null;
 		PreparedStatement preparedStatement = null;
 		int idMax = 0;
-		java.sql.Date dateSql;
-		dateSql=(java.sql.Date) dateCom;
+	//	java.sql.Date dateSql;
+		//dateSql=(java.sql.Date) dateCom;
 
 		try
 		{

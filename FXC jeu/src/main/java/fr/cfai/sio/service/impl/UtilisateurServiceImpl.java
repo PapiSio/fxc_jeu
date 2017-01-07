@@ -27,7 +27,7 @@ public class UtilisateurServiceImpl implements UtilisateurService
 
 		if (utilisateurDaoImpl.addUtilisateur(login, mdp) != 0)
 		{
-			System.out.println("GG");
+		//	System.out.println("GG");
 			utilisateur = new Utilisateur(login, mdp);
 		}
 
