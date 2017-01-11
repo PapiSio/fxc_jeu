@@ -4,21 +4,15 @@
 		<!-- header -->
 		<%@ include file="entete.jsp"%>
 		<!-- //header -->
-		<p>ID : ${TEST.idTest}</p>
-		<p>Titre : ${TEST.titreTest}</p>
-		<p>Date : ${TEST.dateTest}</p>
-		<p>Avantage : ${TEST.avantageJeu}</p>
-		<p>Inconvénient : ${TEST.inconvenientJeu}</p>
-		<p>Description : ${TEST.descriptionTest}</p>
-		<p>Jeu : ${TEST.jeu.getTitreJeu()}</p>
-		<p>Utilisateur : ${TEST.utilisateur.getLogin()}</p>
+
 		<BR> <a href="javascript:history.go(-1)">Retour</a>
 
 
-		<c:set var="auteur" scope="session" value="${idUtilisateur}"/>
-		<c:out value="${auteur}"/>
-		<c:set var="auteur1" scope="session" value="${TEST.utilisateur.getIdUtilisateur()}"/>
-		<c:out value="${auteur1}"/>
+		<c:set var="auteur" scope="session" value="${idUtilisateur}" />
+		<c:out value="${auteur}" />
+		<c:set var="auteur1" scope="session"
+			value="${TEST.utilisateur.getIdUtilisateur()}" />
+		<c:out value="${auteur1}" />
 		<!-- //header -->
 		<!-- single -->
 		<div class="single-page-artical">
@@ -30,7 +24,6 @@
 					<ul>
 						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
 						</span></li>
-						<br>
 						<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
 						</span></li>
 						<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
@@ -51,16 +44,6 @@
 							<li><small> </small><span>${modeleEco.getLibelleModeleEco()}
 							</span></li>
 						</c:forEach>
-
-
-
-						<%-- 						<li><small> </small><span>${TEST.jeu.support.getLibelleSupport()}
-						</span></li>
-						<li><small> </small><span>${TEST.jeu.plateforme.getLibellePlateforme()}
-						</span></li>
-						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
-						</span></li> --%>
-
 					</ul>
 				</div>
 				<p>${TEST.descriptionTest}</p>
@@ -68,6 +51,7 @@
 			<div class="artical-links">
 				<ul>
 					<li><small> </small><span>${TEST.dateTest} </span></li>
+
 					<li><small class="admin"> </small><span>${TEST.utilisateur.getLogin()}</span></li>
 				</ul>
 			</div>
@@ -80,17 +64,27 @@
 				<strong>Inconvénients</strong> ${TEST.inconvenientJeu}
 			</div>
 
+			<!-- Permet d'ajouter des images seulement si on est l'auteur du test -->
+			<span>Ajouter une image : </span>
+
+			
+			<form action="TeleversementServlet" enctype="multipart/form-data" method="POST" name="formulaireTeleversement">
+				<input	type="hidden" name="ID_TEST" value="${TEST.idTest}">
+				<input type="file" name="NOM_IMAGE" multiple> <br>
+				<input type="submit" name="submit" id="sumbit" value="Envoyer">
+			</form>
+
+
 			<!-- Commentaires -->
 			<div class="comment-grid-top">
 				<h3>Responses</h3>
 				<div class="comments-top-top">
-					<div class="top-comment-left">
-					</div>
+					<div class="top-comment-left"></div>
 
 					<c:forEach items="${TEST.getListeCommentaires()}" var="commentaire">
 						<div class="top-comment-right">
 							<ul>
-								<li><span class="left-at"><a href="#">${TEST.utilisateur.getLogin()}</a></span></li>
+								<li><span class="left-at"><a href="#">${commentaire.utilisateur.getLogin()}</a></span></li>
 								<li><span class="right-at">${commentaire.dateCom}</span></li>
 								<li><button class="reply" type="button"
 										onclick="toggle_div(this,'id_du_div');">Reply</button></li>
@@ -99,8 +93,8 @@
 										action="CommentaireServlet" method="POST">
 										<input type="hidden" name="Utilisateur"
 											value="${idUtilisateur}"> <input type='hidden'
-											name="Test" value="${TEST.idTest}">
-											<input type="hidden" name="Commentaire"
+											name="Test" value="${TEST.idTest}"> <input
+											type="hidden" name="Commentaire"
 											value="${commentaire.idCom }">
 										<textarea rows="3" cols="50" name="ContenuReponse"></textarea>
 										<input type="submit" value="Send">
@@ -115,11 +109,11 @@
 					<div class="clearfix"></div>
 				</div>
 
-				
-				
-				
-				
-<!-- 				<div class="comments-top-top top-grid-comment">
+
+
+
+
+				<!-- 				<div class="comments-top-top top-grid-comment">
 					<div class="top-comment-left">
 						<a href="#"><img class="img-responsive" src="images/co.png"
 							alt=""></a>
@@ -139,22 +133,22 @@
 				</div> -->
 			</div>
 			<div class="artical-commentbox">
-			
-			<c:if test="${auteur != auteur1}">
-						
-				<h3>leave a comment</h3>
-				<div class="table-form">
-					<form name="CommentaireServlet" action="CommentaireServlet"
-						method="POST">
-						<input name="AuteurComm" type="text" class="textbox"
-							value="${loginUtilisateur}" readOnly="readOnly"> <input
-							type="hidden" name="Utilisateur" value="${idUtilisateur}">
-						<input type='hidden' name="Test" value="${TEST.idTest}">
-						<textarea name="ContenuCom">Pose ton com le moche</textarea>
-						<input type="submit" value="Send">
-					</form>
-				</div>
-				</c:if>	
+
+				<c:if test="${auteur != auteur1}">
+
+					<h3>leave a comment</h3>
+					<div class="table-form">
+						<form name="CommentaireServlet" action="CommentaireServlet"
+							method="POST">
+							<input name="AuteurComm" type="text" class="textbox"
+								value="${loginUtilisateur}" readOnly="readOnly"> <input
+								type="hidden" name="Utilisateur" value="${idUtilisateur}">
+							<input type='hidden' name="Test" value="${TEST.idTest}">
+							<textarea name="ContenuCom">Pose ton com le moche</textarea>
+							<input type="submit" value="Send">
+						</form>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<!-- single -->

@@ -22,7 +22,8 @@
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">
 
-					<form action=""  enctype="multipart/form-data" method="POST" name="formulaireAjoutTest">
+<!-- <form action=""  enctype="multipart/form-data" method="POST" name="formulaireAjoutTest">-->
+					<form action="" method="POST" name="formulaireAjoutTest">
 						<select name="jeux">
 							<c:forEach var="JEU" items="${ListeJeu}">
 								<option value="${JEU.idJeu}">${JEU.titreJeu}</option>
@@ -40,9 +41,9 @@
 								<option value="${i}">${i}</option>
 								<br>
 							</c:forEach></select>
-							<br>
+							<!--  <br>
 							<label>Ajouter des images :</label>
-							<input type="file" name="NOM_IMAGE" multiple>
+							<input type="file" name="NOM_IMAGE" multiple>-->
 					</form>
 				</div>
 			</div>
