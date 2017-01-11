@@ -2,7 +2,6 @@ package fr.cfai.sio.service.impl;
 
 import java.util.List;
 import fr.cfai.sio.business.Image;
-import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.dao.ImageDao;
 import fr.cfai.sio.dao.impl.ImageDaoImpl;
 import fr.cfai.sio.service.ImageService;
