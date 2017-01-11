@@ -1,16 +1,13 @@
 <%@ include file="header.jsp"%>
 <div class="banner-body">
 	<div class="container">
-		<!-- header -->
 		<%@ include file="entete.jsp"%>
-		<!-- //header -->
-
 		<c:forEach items="${LISTE_JEUX}" var="jeu">
 			<section class="main">
 				<ul class="ch-grid">
 					<li>
 						<div class="ch-item jeu${jeu.idJeu}">
-							</style> -->
+							<!-- </style> --> -->
 							<div class="ch-info-wrap">
 								<div class="ch-info">
 									<div class="ch-info-front jeu${jeu.idJeu}"></div>

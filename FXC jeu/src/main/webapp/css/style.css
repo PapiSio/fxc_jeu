@@ -438,23 +438,31 @@ a.navbar-brand:hover {
 }
 
 #slider3-pager
+
  
+
 li
 ,
 #slider4-pager
+
  
+
 li
 ,
 #slider2-pager
+
  
+
 li
 ,
 {
 display
+
+
 :inline-block
+
+
 ;
-
-
 }
 .rslides {
 	position: relative;

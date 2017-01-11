@@ -133,6 +133,7 @@ function toggle_div(bouton, id) { // On déclare la fonction toggle_div qui prend
 	media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style5.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/formulaire.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="css/common.css" />
 
 

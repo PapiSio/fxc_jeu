@@ -3,46 +3,68 @@
 	<div class="container">
 		<!-- header -->
 		<%@ include file="entete.jsp"%>
-		<!-- <a href="DeconnexionServlet">Se déconnecter</a> -->
-		<!-- //header -->
-		<!-- ce qui gÃ¨re les icons des rÃ©seaux sociaux -->
 		<div class="header-bottom">
 			<div class="header-bottom-top">
 				<br>
 			</div>
 			<div class="clearfix"></div>
-			<!-- banner -->
-			<!-- 			<div class="banner">
-
-
-
-
-			<!-- blog -->
 			<div class="blog">
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">
+					<h1> Création d'un test</h1>
+					<form action="" enctype="multipart/form-data" method="POST"
+						name="formulaireAjoutTest" class="form-style-7">
+						<ul>
+							<li>
+								<label>Jeu</label> 
+								<select name="jeux">
+										<c:forEach var="JEU" items="${ListeJeu}">
+											<option value="${JEU.idJeu}">${JEU.titreJeu}</option>
+										</c:forEach>
+								</select> 
+								<span>Sélectionnez le jeu testé.</span>
+							</li>
 
-					<form action=""  enctype="multipart/form-data" method="POST" name="formulaireAjoutTest">
-						<select name="jeux">
-							<c:forEach var="JEU" items="${ListeJeu}">
-								<option value="${JEU.idJeu}">${JEU.titreJeu}</option>
-							</c:forEach>
+							<li>
+								<label>Titre</label> 
+								<input type="text" name="titre">
+								<span>Entrez ici le titre du jeu.</span>
+							</li>
+							
+							<li>
+								<label>Contenu</label> 
+								<textarea rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
+								<span>Entrez ici le contenu du test.</span>
+							</li>
+							
+							<li>
+							<label>Avantage</label> 
+							<input type="text" name="titre">
+							<span>Entrez ici le principal avantage du jeu.</span>
+							</li>
+							
+							<li>
+								<label>Inconvénient</label> 
+								<input type="text" name="titre"> 
+								<span>Entrez ici le principal inconvénient du jeu.</span>
+							</li>
 
-						</select><br> <label>Titre :</label><input type="text" name="titre"><br>
-						<label>Contenu :</label>
-						<textarea rows="8" cols="50"></textarea>
-						<br> <label>Les plus :</label>
-						<textarea rows="4" cols="50"></textarea>
-						<br> <label>Les moins :</label>
-						<textarea rows="4" cols="50"></textarea>
-						<br> Note :<select name="note"><c:forEach begin="0"
-								end="20" var="i">
-								<option value="${i}">${i}</option>
-								<br>
-							</c:forEach></select>
-							<br>
+							<li>
+							<label>Note</label> 
+								<select name="note">
+									<c:forEach begin="0" end="20" var="i">
+										<option value="${i}">${i}</option>
+									</c:forEach>
+								</select> 
+								<span>Selectionnez la note du jeu.</span>
+							</li>
+
 							<label>Ajouter des images :</label>
 							<input type="file" name="NOM_IMAGE" multiple>
+
+							<li><input type="submit" value="Envoyer"></li>
+						</ul>
+
 					</form>
 				</div>
 			</div>

@@ -97,7 +97,7 @@ public class LoginServlet extends HttpServlet
 		if (existe == true)
 		{
 			session.setAttribute("CONTROLE_CONNEXION", "OK");
-			request.getRequestDispatcher("/accueil.jsp").forward(request, response);
+			request.getRequestDispatcher("/timerConnexion.jsp").forward(request, response);
 
 		}
 		else
