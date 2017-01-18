@@ -31,6 +31,6 @@ public interface TestService
 	
 	public List<Test> recupererListeTestsParJeu(int idJeu);
 
-	public Test ajouterTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
+	public int ajouterTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
 			int id_Utilisateur);
 }

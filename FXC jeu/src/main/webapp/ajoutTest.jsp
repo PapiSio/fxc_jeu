@@ -12,7 +12,7 @@
 				<!-- Gros bloc de tests de jeux -->
 				<div class="blog-left">
 					<h1> Création d'un test</h1>
-					<form action="" enctype="multipart/form-data" method="POST"
+					<form action="AjoutTestServlet"  method="POST"
 						name="formulaireAjoutTest" class="form-style-7">
 						<ul>
 							<li>
@@ -33,32 +33,33 @@
 							
 							<li>
 								<label>Contenu</label> 
-								<textarea rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
+								<textarea name="contenu" rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
 								<span>Entrez ici le contenu du test.</span>
 							</li>
 							
 							<li>
 							<label>Avantage</label> 
-							<input type="text" name="titre">
+							<input type="text" name="avantage">
 							<span>Entrez ici le principal avantage du jeu.</span>
 							</li>
 							
 							<li>
 								<label>Inconvénient</label> 
-								<input type="text" name="titre"> 
+								<input type="text" name="inconvenient"> 
 								<span>Entrez ici le principal inconvénient du jeu.</span>
 							</li>
 
 							<li>
 							<label>Note</label> 
-								<select name="note">
+								<select name="notes">
 									<c:forEach begin="0" end="20" var="i">
-										<option value="${i}">${i}</option>
+										<option  value="${i}">${i}</option>
 									</c:forEach>
 								</select> 
 								<span>Selectionnez la note du jeu.</span>
 							</li>
-
+							
+							
 							<label>Ajouter des images :</label>
 							<input type="file" name="NOM_IMAGE" multiple>
 

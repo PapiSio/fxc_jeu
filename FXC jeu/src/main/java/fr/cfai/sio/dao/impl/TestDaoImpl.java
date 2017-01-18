@@ -19,6 +19,7 @@ import fr.cfai.sio.dao.JeuDao;
 import fr.cfai.sio.dao.NoteDao;
 import fr.cfai.sio.dao.TestDao;
 import fr.cfai.sio.dao.UtilisateurDao;
+import fr.cfai.sio.dao.requete.CommentaireRequete;
 import fr.cfai.sio.dao.requete.TestRequete;
 
 public class TestDaoImpl implements TestDao
@@ -26,6 +27,7 @@ public class TestDaoImpl implements TestDao
 
 	private Connection connexion = ConnexionBDD.getConnection();
 	private List<Test> listeTests;
+	private int statut =0;
 
 	public TestDaoImpl() throws Exception
 	{
@@ -304,11 +306,62 @@ public class TestDaoImpl implements TestDao
 	}
 
 	@Override
-	public Test addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
+	public int addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
 			int id_Utilisateur)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Statement statement = null;
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+		int idMax = 0;
+	
+		
+	//	java.sql.Date dateSql;
+		//dateSql=(java.sql.Date) dateCom;
+		
+		try
+		{
+			statement = connexion.createStatement();
+
+			resultat = statement.executeQuery(TestRequete.ID_MAX_TEST);
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					idMax = resultat.getInt(1) + 1;
+				}
+			}
+			else
+			{
+				idMax = 1;
+			}
+
+			preparedStatement = connexion.prepareStatement(TestRequete.ADD_TEST);
+			preparedStatement.setInt(1, idMax);
+			preparedStatement.setString(2, titre);
+			preparedStatement.setDate(3, (java.sql.Date) date);
+			preparedStatement.setInt(4, nb_Com);
+			preparedStatement.setString(5, avantage);
+			preparedStatement.setString(6, inconvenient);
+			preparedStatement.setString(7, description);
+			preparedStatement.setShort(8, note);
+			preparedStatement.setInt(9, id_Jeu);
+			preparedStatement.setInt(10, id_Utilisateur);
+			
+			
+			
+			statut = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql" + e.getMessage());
+		}
+		finally
+		{
+			ConnexionBDD.close(statement, preparedStatement, resultat);
+		}
+		return statut;
 	}
 
 	public Jeu getJeuByID(int id)
