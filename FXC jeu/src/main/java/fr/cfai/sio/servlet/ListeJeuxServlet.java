@@ -57,11 +57,16 @@ public class ListeJeuxServlet extends HttpServlet {
 		else{
 			
 		}
+		
+		
 
 		if (listeJeux == null) {
 			// System.out.println("Servlet : Passe par le if, liste null");
 			listeJeux = jeuServiceImpl.recupererListeJeux();
 			request.setAttribute("LISTE_JEUX", listeJeux);
+			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+		}
+		else{
 			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
 		}
 

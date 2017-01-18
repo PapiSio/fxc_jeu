@@ -48,7 +48,7 @@ public class AjoutTestServlet extends HttpServlet {
 		String avantage = request.getParameter("avantage");
 		String inconvenient = request.getParameter("inconvenient");
 		String description = request.getParameter("contenu");
-		short note = Short.parseShort(request.getParameter("notes"));
+		short note = 0;
 		int id_Jeu = Integer.parseInt((request.getParameter("jeux")));
 		int id_Utilisateur = Integer.parseInt((request.getParameter("auteur")));
 	
