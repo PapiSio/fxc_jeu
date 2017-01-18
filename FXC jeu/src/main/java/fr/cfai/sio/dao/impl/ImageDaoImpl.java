@@ -5,11 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import fr.cfai.sio.business.Image;
+import fr.cfai.sio.business.Test;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.ImageDao;
 import fr.cfai.sio.dao.requete.ImageRequete;
+import fr.cfai.sio.dao.requete.UtilisateurRequete;
 
 public class ImageDaoImpl implements ImageDao
 {
@@ -59,7 +62,7 @@ public class ImageDaoImpl implements ImageDao
 		}
 		catch (SQLException e)
 		{
-			System.out.println("ImageDaoImpl/addUtilisateur - Erreur SQL : " + e.getMessage());
+			//System.out.println("ImageDaoImpl/addUtilisateur - Erreur SQL : " + e.getMessage());
 		}
 		finally
 		{
@@ -72,8 +75,46 @@ public class ImageDaoImpl implements ImageDao
 	@Override
 	public List<Image> findAllImages()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Statement statement = null;
+		ResultSet resultat = null;
+
+		List<Image> listeImages = new ArrayList<>();
+
+		int idImage;
+		String chemin;
+		Image image = null;
+
+		try
+		{
+			statement = connexion.createStatement();
+			resultat = statement.executeQuery(ImageRequete.FIND_ALL_IMAGES);
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					idImage = resultat.getInt(1);
+					chemin = resultat.getString(2);
+					image = new Image(idImage, chemin, new Test(1));
+					listeImages.add(image);
+				}
+			}
+			else
+			{
+				listeImages = null;
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("UtilisateurDaoImpl/findAllUtilisateurs - Erreur SQL : " + e.getMessage());
+		}
+		finally
+		{
+			ConnexionBDD.close(statement, null, resultat);
+		}
+
+		return listeImages;
 	}
 
 }

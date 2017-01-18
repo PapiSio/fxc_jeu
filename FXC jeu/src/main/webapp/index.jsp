@@ -2,6 +2,7 @@
 
 <body>
 <a href="image.jsp">Ajouter une image</a>
+<a href="TeleversementServlet">Voir les images</a>
 	<!-- banner-body -->
 	<div class="banner-body logn">
 		<div class="container">
