@@ -41,7 +41,11 @@ public class AjoutTestServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		short note;
+		int id_Jeu;
+		int id_Utilisateur;
+		
 		String titre = request.getParameter("titre");
 		Date date = new Date();
 		int nb_Com = 0;
@@ -52,6 +56,10 @@ public class AjoutTestServlet extends HttpServlet {
 		int id_Jeu = Integer.parseInt((request.getParameter("jeux")));
 		int id_Utilisateur = Integer.parseInt((request.getParameter("auteur")));
 	
+		 note = Short.parseShort(request.getParameter("notes"));
+		 id_Jeu = Integer.parseInt(request.getParameter("jeux"));
+		id_Utilisateur = Integer.parseInt(request.getParameter("auteur"));
+
 		
 			
 			testServiceImpl.ajouterTest(titre, date, nb_Com, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur);

@@ -2,6 +2,7 @@ package fr.cfai.sio.servlet;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +15,9 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import fr.cfai.sio.business.Image;
+import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.service.ImageService;
+import fr.cfai.sio.service.UtilisateurService;
 import fr.cfai.sio.service.impl.ImageServiceImpl;
 
 /**
@@ -43,8 +46,10 @@ public class TeleversementServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List<Image> listeImages = new ArrayList<>();
+		listeImages=imageServiceImpl.recupererListeImages();
+		request.setAttribute("LISTE_IMAGE", listeImages);
+		request.getRequestDispatcher("/listeImage.jsp").forward(request, response);
 	}
 
 	/**
@@ -58,8 +63,15 @@ public class TeleversementServlet extends HttpServlet
 		Image image = null;
 		int idTest = 0;
 		String nomImage = "Img_";
-		String cheminImages = "D:\\Cours\\GIT JAVA\\FXC jeu\\src\\main\\webapp\\images\\";
+	//	String cheminImages = "D:\\Cours\\GIT JAVA\\FXC jeu\\src\\main\\webapp\\images\\";
 
+		String cheminImages = System.getProperty("catalina.base");
+		String separateur = System.getProperty("file.separator");
+		
+//		D:\Cours\Info - COTE Francois-Xavier\Eclipse Neon\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\webapps
+	//
+		System.out.println("TeleversementServlet - catalina.base = "+System.getProperty("catalina.base")+" SEPARATEUR = "+System.getProperty("file.separator"));
+		
 		// Création du format de la date pour le fichier, il sera donc renomer
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss_");
 		String dateImg = dateFormat.format(new Date());
@@ -114,14 +126,17 @@ public class TeleversementServlet extends HttpServlet
 				{
 					i++;
 					System.out.println("TeleversementServlet - else item.isFormField");
-					String nomCompletImage = cheminImages + nomImage + dateImg + i + ".jpg";
-					String nomCompletPourBDD = "images\\" + nomImage + dateImg + i + ".jpg";
+					String nomCompletImage = cheminImages + separateur+"webapps"+separateur+ nomImage + dateImg + i + ".jpg";
+					System.out.println("TeleversementServlet - nomCompletImage : " + nomCompletImage);
+					
+					//String nomCompletPourBDD = "images\\" + nomImage + dateImg + i + ".jpg";
 					java.io.File fichierATeleverser = new java.io.File(nomCompletImage);
 
 					try
 					{
 						item.write(fichierATeleverser);
-						image = imageServiceImpl.ajouterImage(nomCompletPourBDD, idTest);
+						//image = imageServiceImpl.ajouterImage(nomCompletImage, idTest);
+						image = imageServiceImpl.ajouterImage(nomCompletImage, 1);
 
 					}
 					catch (Exception e)
