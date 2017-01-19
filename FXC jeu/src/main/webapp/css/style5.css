@@ -96,6 +96,43 @@
 }
 
 
+.jeuTest1 {
+	background-image: url(../images/imgTests/witcher.jpg);
+}
+.jeuTest2 {
+	background-image: url(../images/imgTests/ff10.jpg);
+}
+.jeuTest3 {
+	background-image: url(../images/imgTests/hearthstone.jpg);
+}
+.jeuTest4 {
+	background-image: url(../images/imgTests/pokemonred.jpg);
+}
+.jeuTest5 {
+	background-image: url(../images/imgTests/zeldaoot.jpg);
+}
+.jeuTest6 {
+	background-image: url(../images/imgTests/fireemblem.jpg);
+}
+.jeuTest7 {
+	background-image: url(../images/imgTests/sims3.jpg);
+}
+.jeuTest8 {
+	background-image: url(../images/imgTests/battlefield.jpg);
+}
+.jeuTest9 {
+	background-image: url(../images/imgTests/overwatch.jpg);
+}
+.jeuTest10 {
+	background-image: url(../images/imgTests/tombraider.jpg);
+}
+.jeuTest11 {
+	background-image: url(../images/imgTests/darksoul.jpg);
+}
+.jeuTest12 {
+	background-image: url(../images/imgTests/transcripted.jpg);
+}
+
 
 .ch-img-1 {
 	background-image: url(../images/battlefield.jpg);

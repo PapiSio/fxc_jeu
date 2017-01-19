@@ -17,7 +17,7 @@ public class TestServiceImpl implements TestService
 	public TestServiceImpl() throws Exception
 	{
 		super();
-	//	System.out.println("Constructeur TestServiceImpl");
+		// System.out.println("Constructeur TestServiceImpl");
 
 		this.testDaoImpl = new TestDaoImpl();
 	}
@@ -54,6 +54,7 @@ public class TestServiceImpl implements TestService
 
 		if( testDaoImpl.addTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur, contenu)!= 0){
 			statut =1;
+		
 		}
 
 		return statut;
@@ -63,9 +64,9 @@ public class TestServiceImpl implements TestService
 	public List<Test> recupererListeTestsParJeu(int idJeu)
 	{
 		List<Test> listeTestParJeu = new ArrayList<>();
-		
+
 		listeTestParJeu = testDaoImpl.findAllTestByJeu(idJeu);
-		
+
 		return listeTestParJeu;
 	}
 }

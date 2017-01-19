@@ -1394,6 +1394,13 @@ img {
 	width: 250px;
 }
 
+.img-responsiveTest, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img,
+	.carousel-inner>.item>a>img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .img-rounded {
 	border-radius: 6px;
 }
@@ -5376,6 +5383,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 	color: #3c763d;
 	background-color: #dff0d8;
 	border-color: #d6e9c6;
+		text-align : center;
 }
 
 .alert-success hr {

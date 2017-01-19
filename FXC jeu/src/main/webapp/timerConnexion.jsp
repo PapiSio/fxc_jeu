@@ -13,17 +13,21 @@
 </head>
 
 
+<div class="banner-body">
+	<div class="container">
 
-<body>
-	<div class="banner-body logn">
-		<div class="container">
-			<div class="alert alert-info " role="alert">
-				<strong>Bienvenue sur TestiJeux !</strong> <br> Redirection vers
-				la page d'accueil dans quelques secondes. Veuillez patienter.
+		<div class="banner-body logn">
+			<div class="container">
+				<div class="alert alert-info " role="alert">
+					<strong>Bienvenue sur TestiJeux !</strong> <br> Redirection
+					vers la page d'accueil dans quelques secondes. Veuillez patienter.
 
+				</div>
 			</div>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+</div>
+
+<%@ include file="footer.jsp"%>
 </body>
 </html>

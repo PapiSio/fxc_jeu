@@ -1,53 +1,50 @@
 <%@ include file="header.jsp"%>
 <div class="banner-body">
 	<div class="container">
-		<!-- header -->
 		<%@ include file="entete.jsp"%>
-		<!-- //header -->
-
-		<BR> <a href="javascript:history.go(-1)">Retour</a>
 
 
 		<c:set var="auteur" scope="session" value="${idUtilisateur}" />
-		<c:out value="${auteur}" />
+		<%-- 		<c:out value="${auteur}" /> --%>
 		<c:set var="auteur1" scope="session"
 			value="${TEST.utilisateur.getIdUtilisateur()}" />
-		<c:out value="${auteur1}" />
-		<!-- //header -->
-		<!-- single -->
+		<%-- 		<c:out value="${auteur1}" /> --%>
+
+
 		<div class="single-page-artical">
 			<div class="artical-content">
+			
 				<h3>${TEST.titreTest}</h3>
-				<img class="img-responsive" src="images/banner.jpg" alt=" " />
+				<img class="img-responsiveTest" src="images/imgTests/${TEST.jeu.idJeu}.jpg" alt=" " />
 
-				<div class="artical-links">
-					<ul>
-						<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
-						</span></li>
-						<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
-						</span></li>
-						<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
-						</span></li>
-						<li><small> </small><span>${TEST.jeu.classification.getLibelleClassification()}
-						</span></li>
-						<c:forEach items="${TEST.jeu.listeSupports}" var="support">
-							<li><small> </small><span>${support.getLibelleSupport()}
-							</span></li>
-						</c:forEach>
-						<c:forEach items="${TEST.jeu.listePlateformes}" var="plateforme">
-							<li><small> </small><span>${plateforme.getLibellePlateforme()}
-							</span></li>
-						</c:forEach>
-
-						<c:forEach items="${TEST.jeu.listeModeleEconomiques}"
-							var="modeleEco">
-							<li><small> </small><span>${modeleEco.getLibelleModeleEco()}
-							</span></li>
-						</c:forEach>
-					</ul>
-				</div>
-				<p>${TEST.descriptionTest}</p>
 			</div>
+			<div class="artical-links">
+				<ul>
+					<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
+					</span></li>
+					<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
+					</span></li>
+					<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
+					</span></li>
+					<li><small> </small><span>${TEST.jeu.classification.getLibelleClassification()}
+					</span></li>
+					<c:forEach items="${TEST.jeu.listeSupports}" var="support">
+						<li><small> </small><span>${support.getLibelleSupport()}
+						</span></li>
+					</c:forEach>
+					<c:forEach items="${TEST.jeu.listePlateformes}" var="plateforme">
+						<li><small> </small><span>${plateforme.getLibellePlateforme()}
+						</span></li>
+					</c:forEach>
+
+					<c:forEach items="${TEST.jeu.listeModeleEconomiques}"
+						var="modeleEco">
+						<li><small> </small><span>${modeleEco.getLibelleModeleEco()}
+						</span></li>
+					</c:forEach>
+				</ul>
+			</div>
+			<p>${TEST.descriptionTest}</p>
 			<div class="artical-links">
 				<ul>
 					<li><small> </small><span>${TEST.dateTest} </span></li>
@@ -67,11 +64,12 @@
 			<!-- Permet d'ajouter des images seulement si on est l'auteur du test -->
 			<span>Ajouter une image : </span>
 
-			
-			<form action="TeleversementServlet" enctype="multipart/form-data" method="POST" name="formulaireTeleversement">
-				<input	type="hidden" name="ID_TEST" value="${TEST.idTest}">
-				<input type="file" name="NOM_IMAGE" multiple> <br>
-				<input type="submit" name="submit" id="sumbit" value="Envoyer">
+
+			<form action="TeleversementServlet" enctype="multipart/form-data"
+				method="POST" name="formulaireTeleversement">
+				<input type="hidden" name="ID_TEST" value="${TEST.idTest}">
+				<input type="file" name="NOM_IMAGE" multiple> <br> <input
+					type="submit" name="submit" id="sumbit" value="Envoyer">
 			</form>
 
 
@@ -108,35 +106,12 @@
 
 					<div class="clearfix"></div>
 				</div>
-
-
-
-
-
-				<!-- 				<div class="comments-top-top top-grid-comment">
-					<div class="top-comment-left">
-						<a href="#"><img class="img-responsive" src="images/co.png"
-							alt=""></a>
-					</div>
-					<div class="top-comment-right">
-						<ul>
-							<li><span class="left-at"><a href="#">Adminzzz</a></li>
-							<li><span class="right-at">June 30, 2015 at 10.30am</span></li>
-							<li><a class="reply" href="#">REPLY</a></li>
-						</ul>
-						<p>It is a long established fact that a reader will be
-							distracted by the readable content of a page when looking at its
-							layout.The point of using Lorem Ipsum is that it has a
-							more-or-less</p>
-					</div>
-			<div class="clearfix"></div>
-				</div> -->
 			</div>
 			<div class="artical-commentbox">
 
 				<c:if test="${auteur != auteur1}">
 
-					<h3>leave a comment</h3>
+					<h3>Laisser un commentaire</h3>
 					<div class="table-form">
 						<form name="CommentaireServlet" action="CommentaireServlet"
 							method="POST">
@@ -144,7 +119,7 @@
 								value="${loginUtilisateur}" readOnly="readOnly"> <input
 								type="hidden" name="Utilisateur" value="${idUtilisateur}">
 							<input type='hidden' name="Test" value="${TEST.idTest}">
-							<textarea name="ContenuCom">Pose ton com le moche</textarea>
+							<textarea name="ContenuCom">Saisissez ici votre commentaire.</textarea>
 							<input type="submit" value="Send">
 						</form>
 					</div>
