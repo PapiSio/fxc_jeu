@@ -36,6 +36,6 @@ public interface TestDao
 	 * 
 	 * @return l'objet Test ajouté
 	 */
-	public int addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
-			int id_Utilisateur);
+	public int addTest(String titre, Date date, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur, String contenu);
 }

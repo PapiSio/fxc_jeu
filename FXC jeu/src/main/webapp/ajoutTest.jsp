@@ -32,6 +32,13 @@
 							</li>
 							
 							<li>
+								<label>Description</label> 
+								<textarea name="description" rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
+								<span>Entrez ici la description du test.</span>
+							</li>
+							
+							
+							<li>
 								<label>Contenu</label> 
 								<textarea name="contenu" rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
 								<span>Entrez ici le contenu du test.</span>
@@ -59,6 +66,7 @@
 								<span>Selectionnez la note du jeu.</span>
 							</li>
 							
+							<input type="hidden" name="auteur" value="${idUtilisateur}">
 							
 							<label>Ajouter des images :</label>
 							<input type="file" name="NOM_IMAGE" multiple>

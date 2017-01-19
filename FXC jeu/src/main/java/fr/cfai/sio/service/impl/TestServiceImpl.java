@@ -47,12 +47,12 @@ public class TestServiceImpl implements TestService
 	}
 
 	@Override
-	public int ajouterTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
-			int id_Utilisateur)
+	public int ajouterTest(String titre, Date date, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur, String contenu)
 	{
 		int statut = 0;
 
-		if( testDaoImpl.addTest(titre, date, nb_Com, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur)!= 0){
+		if( testDaoImpl.addTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur, contenu)!= 0){
 			statut =1;
 		}
 

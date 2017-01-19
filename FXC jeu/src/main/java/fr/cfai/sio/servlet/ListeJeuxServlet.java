@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.service.JeuService;
@@ -46,8 +47,9 @@ public class ListeJeuxServlet extends HttpServlet {
 		
 		if (request.getParameter("action") != null) {
 			
-			
-
+			HttpSession session = request.getSession(true);
+			int idUtilisateur = (int) session.getAttribute("ID");
+			request.setAttribute("idUtilisateur", idUtilisateur);
 			listeJeux = jeuServiceImpl.recupererListeJeux();
 			request.setAttribute("ListeJeu", listeJeux);
 			request.getRequestDispatcher("/ajoutTest.jsp").forward(request, response);

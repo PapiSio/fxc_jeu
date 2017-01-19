@@ -306,8 +306,8 @@ public class TestDaoImpl implements TestDao
 	}
 
 	@Override
-	public int addTest(String titre, Date date, int nb_Com, String avantage, String inconvenient, String description, short note, int id_Jeu,
-			int id_Utilisateur)
+	public int addTest(String titre, Date date, String avantage, String inconvenient, String description, short note, int id_Jeu,
+			int id_Utilisateur, String contenu)
 	{
 		Statement statement = null;
 		ResultSet resultat = null;
@@ -339,14 +339,14 @@ public class TestDaoImpl implements TestDao
 			preparedStatement = connexion.prepareStatement(TestRequete.ADD_TEST);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, titre);
-			preparedStatement.setDate(3, (java.sql.Date) date);
-			preparedStatement.setInt(4, nb_Com);
-			preparedStatement.setString(5, avantage);
-			preparedStatement.setString(6, inconvenient);
-			preparedStatement.setString(7, description);
+			//preparedStatement.setDate(3, (java.sql.Date) date);
+			preparedStatement.setString(3, avantage);
+			preparedStatement.setString(4, inconvenient);
+			preparedStatement.setString(5, description);
 			preparedStatement.setShort(8, note);
-			preparedStatement.setInt(9, id_Jeu);
-			preparedStatement.setInt(10, id_Utilisateur);
+			preparedStatement.setInt(6, id_Jeu);
+			preparedStatement.setInt(7, id_Utilisateur);
+			preparedStatement.setString(9, contenu);
 			
 			
 			
