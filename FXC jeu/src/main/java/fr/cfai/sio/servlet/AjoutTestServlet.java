@@ -2,13 +2,12 @@ package fr.cfai.sio.servlet;
 
 import java.io.IOException;
 import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import fr.cfai.sio.business.Test;
 import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.impl.TestServiceImpl;
 
@@ -49,22 +48,26 @@ public class AjoutTestServlet extends HttpServlet {
 		String titre = request.getParameter("titre");
 		Date date = new Date();
 		int nb_Com = 0;
+		
 		String avantage = request.getParameter("avantage");
 		String inconvenient = request.getParameter("inconvenient");
 		String description = request.getParameter("contenu");
-		short note = 0;
-		int id_Jeu = Integer.parseInt((request.getParameter("jeux")));
-		int id_Utilisateur = Integer.parseInt((request.getParameter("auteur")));
-	
-		 note = Short.parseShort(request.getParameter("notes"));
-		 id_Jeu = Integer.parseInt(request.getParameter("jeux"));
+		
+		note = Short.parseShort(request.getParameter("notes"));
+		id_Jeu = Integer.parseInt(request.getParameter("jeux"));
 		id_Utilisateur = Integer.parseInt(request.getParameter("auteur"));
 
+		testServiceImpl.ajouterTest(titre, date, nb_Com, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur);
+			
+		Test test = new Test(100000);
 		
-			
-			testServiceImpl.ajouterTest(titre, date, nb_Com, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur);
-			
-			response.sendRedirect("ListeTestsServlet");
+		request.setAttribute("TEST", test);
+	
+
+		request.getRequestDispatcher("/ajoutTestValidation.jsp").forward(request, response);
+		
+		//response.sendRedirect("ListeTestsServlet");
+
 	}
 
 }
