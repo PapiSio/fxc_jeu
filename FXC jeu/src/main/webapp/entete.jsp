@@ -37,10 +37,6 @@
 								jeux </a></li>
 						<li class="hvr-bounce-to-bottom"><a href="ListeCommentaireServlet">Les
 								Commentaires</a></li>
-						<!-- <li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="Portfolio.html">Portfolio</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="contact.html">Contact
-							Us</a></li> -->
 					</ul>
 				</c:if>
 				<div class="sign-in">
@@ -60,7 +56,6 @@
 
 				</div>
 			</div>
-			<!-- /.navbar-collapse -->
 		</nav>
 	</div>
 	<!-- search-scripts -->
@@ -69,5 +64,4 @@
 	<script>
 		new UISearch(document.getElementById('sb-search'));
 	</script>
-	<!-- //search-scripts -->
 </div>

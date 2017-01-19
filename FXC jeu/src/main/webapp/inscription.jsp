@@ -21,12 +21,11 @@
 
 		<div class="sign-up-form">
 			<h3>S'enregistrer</h3>
-			<p>Having hands on experience in creating innovative designs,I do
-				offer design solutions which harness</p>
+			<p>TestiJeux sera votre moyen de faire découvrir aux autres la beauté des jeux récents ... ou pas !</p>
 			<div class="sign-up">
 				<form action="InscriptionServlet" method="POST"
 					name="inscriptionForm">
-					<h5>Personal Information</h5>
+					<h5>Informations de connexion</h5>
 					<div class="sign-u">
 						<div class="sign-up1">
 							<h4 class="a">Pseudo* :</h4>
@@ -35,10 +34,6 @@
 							<input type="text" placeholder=" " required name="LOGIN"
 								value="<%out.print(login_on_use);%>" />
 						</div>
-						<div class="clearfix"></div>
-					</div>
-					<h6>Login Information</h6>
-					<div class="sign-u">
 						<div class="sign-up1">
 							<h4 class="d">Password* :</h4>
 						</div>
@@ -48,7 +43,7 @@
 						<div class="clearfix"></div>
 					</div>
 
-					<input type="submit" value="Submit">
+					<input type="submit" value="S'inscrire">
 				</form>
 			</div>
 			<div class="clearfix"></div>
@@ -62,13 +57,6 @@
 <!-- for bootstrap working -->
 <script src="js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
-<form name="inscriptionConnexion" action="InscriptionServlet"
-	method="POST">
-	<input type="text" name="LOGIN" id="LOGIN"> <input
-		type="password" name="PASSWORD" id="PASSWORD"> <input
-		type="submit" name="submit" id="submit">
-</form>
-
 
 </body>
 </html>

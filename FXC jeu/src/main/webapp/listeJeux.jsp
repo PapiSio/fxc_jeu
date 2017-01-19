@@ -7,7 +7,7 @@
 				<ul class="ch-grid">
 					<li>
 						<div class="ch-item jeu${jeu.idJeu}">
-							<!-- </style> --> -->
+							<!-- </style> -->
 							<div class="ch-info-wrap">
 								<div class="ch-info">
 									<div class="ch-info-front jeu${jeu.idJeu}"></div>
@@ -29,7 +29,6 @@
 		</c:forEach>
 	</div>
 </div>
-
-
+<%@ include file="footer.jsp"%>
 </body>
 </html>
