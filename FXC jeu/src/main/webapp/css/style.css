@@ -439,19 +439,25 @@ a.navbar-brand:hover {
 
 #slider3-pager
 
+
  
+
 
 li
 ,
 #slider4-pager
 
+
  
+
 
 li
 ,
 #slider2-pager
 
+
  
+
 
 li
 ,
@@ -459,7 +465,11 @@ li
 display
 
 
+
+
 :inline-block
+
+
 
 
 ;
@@ -1130,7 +1140,11 @@ h3.ghj {
 	color: #2198c3;
 	font-family: Roboto-Regular;
 	font-size: 25px;
-	margin: 0 0 1em;
+	margin: 0 0 0em;
+}
+
+.test-align-center {
+	text-align: center;
 }
 
 .headdings, .Buttons, .progress-bars, .alerts, .bread-crumbs, .pagenatin,
