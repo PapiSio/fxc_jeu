@@ -12,7 +12,6 @@ public class TestServiceImpl implements TestService
 {
 
 	private TestDao testDaoImpl;
-	private List<Test> listeTests;
 
 	public TestServiceImpl() throws Exception
 	{
@@ -35,15 +34,12 @@ public class TestServiceImpl implements TestService
 	@Override
 	public List<Test> recupererListeTests()
 	{
-		if (listeTests == null)
-		{
-			listeTests = testDaoImpl.findAllTest();
-			return listeTests;
-		}
-		else
-		{
-			return listeTests;
-		}
+		List<Test> listeTests = new ArrayList<>();
+
+		listeTests = testDaoImpl.findAllTest();
+
+		return listeTests;
+
 	}
 
 	@Override
@@ -52,10 +48,11 @@ public class TestServiceImpl implements TestService
 	{
 		int statut = 0;
 
-		if( testDaoImpl.addTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur, contenu)!= 0){
-			
-			statut =1;
-		
+		if (testDaoImpl.addTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur, contenu) != 0)
+		{
+
+			statut = 1;
+
 		}
 
 		return statut;

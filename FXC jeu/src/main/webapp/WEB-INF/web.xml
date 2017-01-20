@@ -85,6 +85,15 @@
     <servlet-name>TeleversementServlet</servlet-name>
     <url-pattern>/TeleversementServlet</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <display-name>AjoutTestServlet</display-name>
+    <servlet-name>AjoutTestServlet</servlet-name>
+    <servlet-class>fr.cfai.sio.servlet.AjoutTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjoutTestServlet</servlet-name>
+    <url-pattern>/AjoutTestServlet</url-pattern>
+  </servlet-mapping>
   <error-page>  
    <error-code>500</error-code>  
    <location>/pageErreur.jsp</location>  

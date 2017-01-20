@@ -19,7 +19,6 @@ import fr.cfai.sio.dao.JeuDao;
 import fr.cfai.sio.dao.NoteDao;
 import fr.cfai.sio.dao.TestDao;
 import fr.cfai.sio.dao.UtilisateurDao;
-import fr.cfai.sio.dao.requete.CommentaireRequete;
 import fr.cfai.sio.dao.requete.TestRequete;
 
 public class TestDaoImpl implements TestDao

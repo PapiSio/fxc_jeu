@@ -28,7 +28,7 @@ public class ListeTestsServlet extends HttpServlet
 	public ListeTestsServlet() throws Exception
 	{
 		super();
-		System.out.println("Constructeur TestServlet");
+		// System.out.println("Constructeur TestServlet");
 		this.testServiceImpl = new TestServiceImpl();
 	}
 
@@ -40,26 +40,38 @@ public class ListeTestsServlet extends HttpServlet
 	{
 		int idJeu;
 		String action = request.getParameter("action");
-		List<Test> listeTestsParJeu=new ArrayList<>();
-		
-		
-		
+		List<Test> listeTestsParJeu = new ArrayList<>();
+		List<Test> listeTestsApresMaj = new ArrayList<>();
+
+		// System.out.println("TestServlet - actionVal = "+action);
+
 		if (action == null)
 		{
-			
+			// System.out.println("TestServlet - action = null");
 			if (listeTests == null)
 			{
+				// System.out.println("TestServlet - action = null - liste =
+				// null");
 				listeTests = testServiceImpl.recupererListeTests();
 			}
 			request.setAttribute("LISTE_TESTS", listeTests);
 		}
 		else
 		{
-			idJeu = Integer.parseInt(request.getParameter("idJeu"));
-		
-			listeTestsParJeu = testServiceImpl.recupererListeTestsParJeu(idJeu);
-			
-			request.setAttribute("LISTE_TESTS", listeTestsParJeu);
+			// System.out.println("TestServlet - action <> null");
+			if (action.equals("maj"))
+			{
+				// System.out.println("TestServlet - action = maj");
+				listeTestsApresMaj = testServiceImpl.recupererListeTests();
+				request.setAttribute("LISTE_TESTS", listeTestsApresMaj);
+			}
+			else
+			{
+				// System.out.println("TestServlet - action <> maj");
+				idJeu = Integer.parseInt(request.getParameter("idJeu"));
+				listeTestsParJeu = testServiceImpl.recupererListeTestsParJeu(idJeu);
+				request.setAttribute("LISTE_TESTS", listeTestsParJeu);
+			}
 		}
 
 		request.getRequestDispatcher("/listeTests.jsp").forward(request, response);

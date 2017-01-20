@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.service.JeuService;
-import fr.cfai.sio.service.TestService;
 import fr.cfai.sio.service.impl.JeuServiceImpl;
-import fr.cfai.sio.service.impl.TestServiceImpl;
 
 /**
  * Servlet implementation class ListeJeuxServlet
@@ -22,7 +20,6 @@ public class ListeJeuxServlet extends HttpServlet
 
 	private JeuService jeuServiceImpl;
 	private List<Jeu> listeJeux;
-	private TestService testServiceImpl;
 
 	/**
 	 * @throws Exception
@@ -33,7 +30,6 @@ public class ListeJeuxServlet extends HttpServlet
 		System.out.println("Constructeur ListeJeuxServlet");
 
 		this.jeuServiceImpl = new JeuServiceImpl();
-		this.testServiceImpl = new TestServiceImpl();
 	}
 
 	/**

@@ -12,7 +12,6 @@ import fr.cfai.sio.business.Test;
 import fr.cfai.sio.dao.ConnexionBDD;
 import fr.cfai.sio.dao.ImageDao;
 import fr.cfai.sio.dao.requete.ImageRequete;
-import fr.cfai.sio.dao.requete.UtilisateurRequete;
 
 public class ImageDaoImpl implements ImageDao
 {

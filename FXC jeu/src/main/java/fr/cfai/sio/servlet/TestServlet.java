@@ -11,11 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import fr.cfai.sio.business.Commentaire;
 import fr.cfai.sio.business.Test;
-import fr.cfai.sio.service.CommentaireService;
-import fr.cfai.sio.service.JeuService;
 import fr.cfai.sio.service.TestService;
-import fr.cfai.sio.service.impl.CommentaireServiceImpl;
-import fr.cfai.sio.service.impl.JeuServiceImpl;
 import fr.cfai.sio.service.impl.TestServiceImpl;
 
 /**
@@ -26,8 +22,6 @@ public class TestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private TestService testServiceImpl;
-	private CommentaireService commentaireServiceImpl;
-	private JeuService jeuServiceImpl;
 
 	/**
 	 * @throws Exception
@@ -38,8 +32,6 @@ public class TestServlet extends HttpServlet {
 		System.out.println("Constructeur TestServlet");
 
 		this.testServiceImpl = new TestServiceImpl();
-		this.commentaireServiceImpl = new CommentaireServiceImpl();
-		this.jeuServiceImpl = new JeuServiceImpl();
 	}
 
 	/**
