@@ -2,7 +2,6 @@ package fr.cfai.sio.service.impl;
 
 import java.util.List;
 import fr.cfai.sio.business.Image;
-import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.dao.ImageDao;
 import fr.cfai.sio.dao.impl.ImageDaoImpl;
 import fr.cfai.sio.service.ImageService;
@@ -35,15 +34,10 @@ private List<Image> listeImages;
 	@Override
 	public List<Image> recupererListeImages()
 	{
-		if (listeImages == null)
-		{
+		
 			listeImages = imageDaoImpl.findAllImages();
 			return listeImages;
-		}
-		else
-		{
-			return listeImages;
-		}
+		
 	}
 
 }

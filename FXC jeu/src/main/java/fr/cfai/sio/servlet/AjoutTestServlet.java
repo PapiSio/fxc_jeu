@@ -55,10 +55,6 @@ public class AjoutTestServlet extends HttpServlet {
 		 id_Jeu = Integer.parseInt(request.getParameter("jeux"));
 		id_Utilisateur = Integer.parseInt(request.getParameter("auteur"));
 
-		
-			
-			
-			
 			//response.sendRedirect("ListeTestsServlet");
 			if(testServiceImpl.ajouterTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur,contenu)==0){
 				request.getRequestDispatcher("/pageErreur.jsp").forward(request, response);

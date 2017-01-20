@@ -15,9 +15,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import fr.cfai.sio.business.Image;
-import fr.cfai.sio.business.Utilisateur;
 import fr.cfai.sio.service.ImageService;
-import fr.cfai.sio.service.UtilisateurService;
 import fr.cfai.sio.service.impl.ImageServiceImpl;
 
 /**
@@ -48,7 +46,19 @@ public class TeleversementServlet extends HttpServlet
 	{
 		List<Image> listeImages = new ArrayList<>();
 		listeImages=imageServiceImpl.recupererListeImages();
+		
+		String cheminImages = System.getProperty("catalina.base");
+		String separateur = System.getProperty("file.separator");
+		String nomCompletImage = cheminImages + separateur+"webapps"+separateur;
+		
+		
+		System.out.println("Constructeur nomCompletImage = "+nomCompletImage);
+		
 		request.setAttribute("LISTE_IMAGE", listeImages);
+		request.setAttribute("CHEMIN", nomCompletImage);
+		
+		
+		
 		request.getRequestDispatcher("/listeImage.jsp").forward(request, response);
 	}
 
@@ -129,14 +139,14 @@ public class TeleversementServlet extends HttpServlet
 					String nomCompletImage = cheminImages + separateur+"webapps"+separateur+ nomImage + dateImg + i + ".jpg";
 					System.out.println("TeleversementServlet - nomCompletImage : " + nomCompletImage);
 					
-					//String nomCompletPourBDD = "images\\" + nomImage + dateImg + i + ".jpg";
+					String nomCompletPourBDD = nomImage + dateImg + i + ".jpg";
 					java.io.File fichierATeleverser = new java.io.File(nomCompletImage);
 
 					try
 					{
 						item.write(fichierATeleverser);
-						//image = imageServiceImpl.ajouterImage(nomCompletImage, idTest);
-						image = imageServiceImpl.ajouterImage(nomCompletImage, 1);
+						image = imageServiceImpl.ajouterImage(nomCompletPourBDD, 1);
+						//image = imageServiceImpl.ajouterImage(nomCompletImage, 1);
 
 					}
 					catch (Exception e)
