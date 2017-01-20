@@ -59,6 +59,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 		catch (SQLException e)
 		{
 			System.out.println("UtilisateurDaoImpl/addUtilisateur - Erreur SQL : " + e.getMessage());
+			return statut;
 		}
 		finally
 		{

@@ -74,7 +74,7 @@ public class InscriptionServlet extends HttpServlet
 			}
 			else
 			{
-				System.out.println("PAS GG");
+				request.getRequestDispatcher("/pageErreur.jsp").forward(request, response);
 			}
 		}
 		else

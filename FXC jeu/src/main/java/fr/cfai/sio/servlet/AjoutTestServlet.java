@@ -57,10 +57,16 @@ public class AjoutTestServlet extends HttpServlet {
 
 		
 			
-			testServiceImpl.ajouterTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur,contenu);
-			request.setAttribute("ajout", 1);
+			
+			
 			//response.sendRedirect("ListeTestsServlet");
-			request.getRequestDispatcher("ListeTestsServlet").forward(request, response);
+			if(testServiceImpl.ajouterTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur,contenu)==0){
+				request.getRequestDispatcher("/pageErreur.jsp").forward(request, response);
+			}
+			else{
+				request.getRequestDispatcher("ListeTestsServlet").forward(request, response);
+			}
+			
 	}
 
 }

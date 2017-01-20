@@ -17,54 +17,66 @@ import fr.cfai.sio.service.impl.CommentaireServiceImpl;
 public class CommentaireServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommentaireService commentaireServiceImpl;
-	//private Commentaire commentaire;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CommentaireServlet() throws Exception {
-        super();
-        // TODO Auto-generated constructor stub
-        this.commentaireServiceImpl = new CommentaireServiceImpl();
-    }
+	// private Commentaire commentaire;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// TODO Auto-generated method stub
-		
-		
-		
-		
+	public CommentaireServlet() throws Exception {
+		super();
+		// TODO Auto-generated constructor stub
+		this.commentaireServiceImpl = new CommentaireServiceImpl();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
 		int idUtilisateur = Integer.parseInt(request.getParameter("Utilisateur"));
 		int idTest = Integer.parseInt(request.getParameter("Test"));
 		Date dateCom = new Date();
 		String contenuCom = request.getParameter("ContenuCom");
 		String contenuReponse = request.getParameter("ContenuReponse");
 		int idCom = commentaireServiceImpl.recupererIDMaxCommentaire();
-	
-		
-		if (request.getParameter("Commentaire") != null)
-		{
+
+		if (request.getParameter("Commentaire") != null) {
 			int idCommentaire = Integer.parseInt(request.getParameter("Commentaire"));
-			commentaireServiceImpl.ajouterReponseCommentaire(idCom, contenuReponse, dateCom, idTest, idUtilisateur, idCommentaire);
+			if (commentaireServiceImpl.ajouterReponseCommentaire(idCom, contenuReponse, dateCom, idTest, idUtilisateur,
+					idCommentaire) == null) {
+				request.getRequestDispatcher("pageErreur.jsp").forward(request, response);
+			}
+
+			else {
+				response.sendRedirect("TestServlet?idTest=" + idTest);
+			}
 		}
-		else
-		{
-			commentaireServiceImpl.ajouterCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur);
+
+		else {
+
+			if (commentaireServiceImpl.ajouterCommentaire(idCom, contenuCom, dateCom, idTest, idUtilisateur) == 0) {
+
+				request.getRequestDispatcher("pageErreur.jsp").forward(request, response);
+			} else {
+				response.sendRedirect("TestServlet?idTest=" + idTest);
+			}
+
 		}
-		
-		response.sendRedirect("TestServlet?idTest="+ idTest);
+
 	}
 
 }

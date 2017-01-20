@@ -41,7 +41,7 @@ public class ListeTestsServlet extends HttpServlet
 		int idJeu;
 		String action = request.getParameter("action");
 		List<Test> listeTestsParJeu=new ArrayList<>();
-		String ajout = request.getParameter("ajout");
+		
 		
 		
 		if (action == null)

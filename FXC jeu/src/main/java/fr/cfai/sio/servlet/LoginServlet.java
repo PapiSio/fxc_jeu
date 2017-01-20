@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet
 		HttpSession session = request.getSession(true);
 
 		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
+		
 		listeUtilisateurs=utilisateurServiceImpl.recupererListeUtilisateurs();
 
 		Boolean existe = false;

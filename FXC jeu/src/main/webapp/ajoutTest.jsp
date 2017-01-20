@@ -27,32 +27,32 @@
 
 							<li>
 								<label>Titre</label> 
-								<input type="text" name="titre">
+								<input type="text" name="titre" required="obligatoire">
 								<span>Entrez ici le titre du jeu.</span>
 							</li>
 							
 							<li>
 								<label>Description</label> 
-								<textarea name="description" rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
+								<textarea name="description" rows="8" cols="50" onkeyup="adjust_textarea(this)" required="obligatoire"></textarea> 
 								<span>Entrez ici la description du test.</span>
 							</li>
 							
 							
 							<li>
 								<label>Contenu</label> 
-								<textarea name="contenu" rows="8" cols="50" onkeyup="adjust_textarea(this)"></textarea> 
+								<textarea name="contenu" rows="8" cols="50" onkeyup="adjust_textarea(this)" required="obligatoire"></textarea> 
 								<span>Entrez ici le contenu du test.</span>
 							</li>
 							
 							<li>
 							<label>Avantage</label> 
-							<input type="text" name="avantage">
+							<input type="text" name="avantage" required="obligatoire">
 							<span>Entrez ici le principal avantage du jeu.</span>
 							</li>
 							
 							<li>
 								<label>Inconvénient</label> 
-								<input type="text" name="inconvenient"> 
+								<input type="text" name="inconvenient" required="obligatoire"> 
 								<span>Entrez ici le principal inconvénient du jeu.</span>
 							</li>
 

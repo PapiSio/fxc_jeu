@@ -355,7 +355,7 @@ public class TestDaoImpl implements TestDao
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Erreur sql" + e.getMessage());
+			System.out.println("Erreur sql " + e.getMessage());
 		}
 		finally
 		{

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
-
 import fr.cfai.sio.business.Jeu;
 import fr.cfai.sio.service.JeuService;
 import fr.cfai.sio.service.TestService;
@@ -19,8 +18,7 @@ import fr.cfai.sio.service.impl.TestServiceImpl;
 /**
  * Servlet implementation class ListeJeuxServlet
  */
-public class ListeJeuxServlet extends HttpServlet
-{
+public class ListeJeuxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private JeuService jeuServiceImpl;
@@ -31,8 +29,7 @@ public class ListeJeuxServlet extends HttpServlet
 	 * @throws Exception
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListeJeuxServlet() throws Exception
-	{
+	public ListeJeuxServlet() throws Exception {
 		System.out.println("Constructeur ListeJeuxServlet");
 
 		this.jeuServiceImpl = new JeuServiceImpl();
@@ -44,15 +41,12 @@ public class ListeJeuxServlet extends HttpServlet
 	 *      response)
 	 */
 
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		System.out.println("ListeJeuxServlet - Passe par le doGet");
 
-		if (request.getParameter("action") != null)
-		{
+		if (request.getParameter("action") != null) {
 			HttpSession session = request.getSession(true);
 			int idUtilisateur = (int) session.getAttribute("ID");
 			request.setAttribute("idUtilisateur", idUtilisateur);
@@ -60,23 +54,16 @@ public class ListeJeuxServlet extends HttpServlet
 			request.setAttribute("ListeJeu", listeJeux);
 			request.getRequestDispatcher("/ajoutTest.jsp").forward(request, response);
 
-		}
+		} else {
 
-		else
-		{
-
-		}
-
-		if (listeJeux == null)
-		{
-			// System.out.println("Servlet : Passe par le if, liste null");
-			listeJeux = jeuServiceImpl.recupererListeJeux();
-			request.setAttribute("LISTE_JEUX", listeJeux);
-			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
-		}
-		else
-		{
-			request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+			if (listeJeux == null) {
+				// System.out.println("Servlet : Passe par le if, liste null");
+				listeJeux = jeuServiceImpl.recupererListeJeux();
+				request.setAttribute("LISTE_JEUX", listeJeux);
+				request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("/listeJeux.jsp").forward(request, response);
+			}
 		}
 
 	}
@@ -85,8 +72,8 @@ public class ListeJeuxServlet extends HttpServlet
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		System.out.println("ListeJeuxServlet - Passe par le doPost");
 
