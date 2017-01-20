@@ -53,6 +53,7 @@ public class TestServiceImpl implements TestService
 		int statut = 0;
 
 		if( testDaoImpl.addTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur, contenu)!= 0){
+			
 			statut =1;
 		
 		}

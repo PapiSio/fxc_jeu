@@ -58,8 +58,9 @@ public class AjoutTestServlet extends HttpServlet {
 		
 			
 			testServiceImpl.ajouterTest(titre, date, avantage, inconvenient, description, note, id_Jeu, id_Utilisateur,contenu);
-			
-			response.sendRedirect("ListeTestsServlet");
+			request.setAttribute("ajout", 1);
+			//response.sendRedirect("ListeTestsServlet");
+			request.getRequestDispatcher("ListeTestsServlet").forward(request, response);
 	}
 
 }
