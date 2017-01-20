@@ -5199,6 +5199,14 @@ a.label:hover, a.label:focus {
 	background-color: #449d44;
 }
 
+.label-new {
+	background-color: #8080ff;
+}
+
+.label-new[href]:hover, .label-new[href]:focus {
+	background-color: #6c6cff;
+}
+
 .label-info {
 	background-color: #5bc0de;
 }

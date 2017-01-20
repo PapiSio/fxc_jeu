@@ -13,38 +13,44 @@
 
 		<div class="single-page-artical">
 			<div class="artical-content">
-			
+
 				<h3>${TEST.titreTest}</h3>
-				<img class="img-responsiveTest" src="images/imgTests/${TEST.jeu.idJeu}.jpg" alt=" " />
+				<img class="img-responsiveTest"
+					src="images/imgTests/${TEST.jeu.idJeu}.jpg" alt=" " />
 
 			</div>
-			<div class="artical-links">
-				<ul>
-					<li><small> </small><span>${TEST.jeu.editeur.getRaisonSociale()}
-					</span></li>
-					<li><small> </small><span>${TEST.jeu.developpeur.getRaisonSociale()}
-					</span></li>
-					<li><small> </small><span>${TEST.jeu.genre.getLibelleGenre()}
-					</span></li>
-					<li><small> </small><span>${TEST.jeu.classification.getLibelleClassification()}
-					</span></li>
-					<c:forEach items="${TEST.jeu.listeSupports}" var="support">
-						<li><small> </small><span>${support.getLibelleSupport()}
-						</span></li>
-					</c:forEach>
-					<c:forEach items="${TEST.jeu.listePlateformes}" var="plateforme">
-						<li><small> </small><span>${plateforme.getLibellePlateforme()}
-						</span></li>
-					</c:forEach>
 
+
+
+			<div class="Buttons test-align-center">
+				<h3 class="ghj">Caractéristiques du jeu</h3>
+				<h3>
+					<span class="label label-default">${TEST.jeu.editeur.getRaisonSociale()}</span>
+					<span class="label label-primary">${TEST.jeu.developpeur.getRaisonSociale()}</span>
+					<span class="label label-success">${TEST.jeu.genre.getLibelleGenre()}</span>
+					<span class="label label-info">${TEST.jeu.classification.getLibelleClassification()}</span>
+				</h3>
+
+				<h3>
+					<c:forEach items="${TEST.jeu.listeSupports}" var="support">
+						<span class="label label-warning">${support.getLibelleSupport()}</span>
+					</c:forEach>
 					<c:forEach items="${TEST.jeu.listeModeleEconomiques}"
 						var="modeleEco">
-						<li><small> </small><span>${modeleEco.getLibelleModeleEco()}
-						</span></li>
+						<span class="label label-new">${modeleEco.getLibelleModeleEco()}</span>
 					</c:forEach>
-				</ul>
+				</h3>
+
+				<h3>
+					<c:forEach items="${TEST.jeu.listePlateformes}" var="plateforme">
+						<span class="label label-danger">${plateforme.getLibellePlateforme()}</span>
+					</c:forEach>
+				</h3>
 			</div>
-			<p>${TEST.descriptionTest}</p>
+
+				<p>${TEST.descriptionTest}</p>
+				
+				
 			<div class="artical-links">
 				<ul>
 					<li><small> </small><span>${TEST.dateTest} </span></li>
@@ -82,7 +88,7 @@
 					<c:forEach items="${TEST.getListeCommentaires()}" var="commentaire">
 						<div class="top-comment-right">
 							<ul>
-								<li><span class="left-at"><a href="#">${commentaire.utilisateur.getLogin()}</a></span></li>
+								<li><span class="left-at"><a href="#">${commentaire.utilisateur.login}</a></span></li>
 								<li><span class="right-at">${commentaire.dateCom}</span></li>
 								<li><button class="reply" type="button"
 										onclick="toggle_div(this,'id_du_div');">Reply</button></li>
@@ -125,11 +131,11 @@
 					</div>
 				</c:if>
 			</div>
+
+			<!-- single -->
 		</div>
-		<!-- single -->
 	</div>
-</div>
-<%@ include file="footer.jsp"%>
-<script src="js/bootstrap.js"></script>
-</body>
-</html>
+	<%@ include file="footer.jsp"%>
+	<script src="js/bootstrap.js"></script>
+	</body>
+	</html>
