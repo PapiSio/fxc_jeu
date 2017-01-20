@@ -25,7 +25,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 	private Commentaire commentaire;
 	private int statut = 0;
 
-	
 	public CommentaireDaoImpl() throws Exception
 	{
 		super();
@@ -58,8 +57,8 @@ public class CommentaireDaoImpl implements CommentaireDao
 					idCom = resultat.getInt(1);
 					contenuCom = resultat.getString(2);
 					date_Commentaire = resultat.getDate(3);
-					test = getTestByID(resultat.getInt(4));
-					utilisateur = getUtilisateurByID(resultat.getInt(5));
+					utilisateur = getUtilisateurByID(resultat.getInt(4));
+					test = getTestByID(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 				}
@@ -105,10 +104,10 @@ public class CommentaireDaoImpl implements CommentaireDao
 				while (resultat.next())
 				{
 					idCom = resultat.getInt(1);
-					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
-					test = getTestByID(resultat.getInt(4));
-					utilisateur = getUtilisateurByID(resultat.getInt(5));
+					date_Commentaire = resultat.getDate(3);
+					utilisateur = getUtilisateurByID(resultat.getInt(4));
+					test = getTestByID(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 					listeCommentaire.add(commentaire);
@@ -167,21 +166,20 @@ public class CommentaireDaoImpl implements CommentaireDao
 		return idMax;
 	}
 
-		
 	@Override
 	public List<Commentaire> findCommentaireByIDTest(int idTest)
 	{
 		ResultSet resultat = null;
 		PreparedStatement preparedStatement = null;
 
-		List<Commentaire> listeCommentaireByIDTest=new ArrayList<>();
+		List<Commentaire> listeCommentaireByIDTest = new ArrayList<>();
 
 		int idCom;
 		Date date_Commentaire;
 		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
-		Commentaire commentaireByIDTest=null;
+		Commentaire commentaireByIDTest = null;
 		try
 		{
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
@@ -195,15 +193,11 @@ public class CommentaireDaoImpl implements CommentaireDao
 					idCom = resultat.getInt(1);
 					contenuCom = resultat.getString(2);
 					date_Commentaire = resultat.getDate(3);
-					//test = getTestByID(resultat.getInt(4));
+					// test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(4));
-					
-					System.out.println("findCommentaireByIDTest - utilisateur = "+utilisateur.getLogin());
 
 					commentaireByIDTest = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 
-					System.out.println("findCommentaireByIDTest - commentaire.utilisateur = "+commentaireByIDTest.getUtilisateur().getLogin());
-					
 					listeCommentaireByIDTest.add(commentaireByIDTest);
 				}
 			}
@@ -233,10 +227,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 		ResultSet resultat = null;
 		PreparedStatement preparedStatement = null;
 		int idMax = 0;
-		
-	//	java.sql.Date dateSql;
-		//dateSql=(java.sql.Date) dateCom;
-		
+
 		try
 		{
 			statement = connexion.createStatement();
@@ -258,7 +249,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, contenuCom);
-		//	preparedStatement.setDate(3, dateSql);
 			preparedStatement.setInt(3, idUtilisateur);
 			preparedStatement.setInt(4, idTest);
 			statut = preparedStatement.executeUpdate();
@@ -282,8 +272,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 		ResultSet resultat = null;
 		PreparedStatement preparedStatement = null;
 		int idMax = 0;
-	//	java.sql.Date dateSql;
-		//dateSql=(java.sql.Date) dateCom;
 
 		try
 		{
@@ -305,7 +293,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.AJOUT_COMMENTAIRE_PAR_COMMENTAIRE);
 			preparedStatement.setInt(1, idMax);
 			preparedStatement.setString(2, contenuCom);
-		//	preparedStatement.setDate(3, dateSql);
 			preparedStatement.setInt(3, idUtilisateur);
 			preparedStatement.setInt(4, idTest);
 			preparedStatement.setInt(5, idCommentaire);
@@ -332,8 +319,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 
 		for (Commentaire commentaire : listeCommentaire)
 		{
-			// System.out.println("JeuServlet - getEditeur : " +
-			// editeur.getRaisonSociale());
 
 			if (commentaire.getIdCom() == id)
 			{
@@ -342,8 +327,6 @@ public class CommentaireDaoImpl implements CommentaireDao
 		}
 		return null;
 	}
-
-	
 
 	@Override
 	public List<Commentaire> findCommentaireByTest(Test test)
@@ -370,7 +353,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 					idCom = resultat.getInt(1);
 					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
-					utilisateur = getUtilisateurByID(resultat.getInt(5));
+					utilisateur = getUtilisateurByID(resultat.getInt(4));
 
 					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 
@@ -419,10 +402,10 @@ public class CommentaireDaoImpl implements CommentaireDao
 				while (resultat.next())
 				{
 					idCom = resultat.getInt(1);
-					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
-					test = new Test(resultat.getInt(4));
-					utilisateur = getUtilisateurByID(resultat.getInt(5));
+					date_Commentaire = resultat.getDate(3);
+					utilisateur = getUtilisateurByID(resultat.getInt(4));
+					test = new Test(resultat.getInt(5));
 
 					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 					listeCommentaire.add(commentaire);
@@ -444,7 +427,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 		}
 		return listeCommentaire;
 	}
-	
+
 	public Utilisateur getUtilisateurByID(int id)
 	{
 		UtilisateurDao utilisateurDaoImpl;
@@ -468,11 +451,11 @@ public class CommentaireDaoImpl implements CommentaireDao
 	{
 		Test test = null;
 		TestDao testDaoImpl;
-		
+
 		try
 		{
 			testDaoImpl = new TestDaoImpl();
-				test = testDaoImpl.findTestById(id);
+			test = testDaoImpl.findTestById(id);
 		}
 		catch (Exception e)
 		{
