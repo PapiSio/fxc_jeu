@@ -53,8 +53,9 @@ public class ListeJeuxServlet extends HttpServlet
 
 		if (request.getParameter("action") != null)
 		{
-
-
+			HttpSession session = request.getSession(true);
+			int idUtilisateur = (int) session.getAttribute("ID");
+			request.setAttribute("idUtilisateur", idUtilisateur);
 			listeJeux = jeuServiceImpl.recupererListeJeux();
 			request.setAttribute("ListeJeu", listeJeux);
 			request.getRequestDispatcher("/ajoutTest.jsp").forward(request, response);
