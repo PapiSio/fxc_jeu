@@ -21,14 +21,6 @@
 							<h3>
 								<a href="TestServlet?idTest=${test.idTest}">${test.titreTest}</a>
 							</h3>
-							<!-- <p>
-								Jeu : <span>${test.jeu.getTitreJeu()}</span> 
-								Auteur : <span> ${test.utilisateur.getLogin()} </span>
-								Date : <span>${test.dateTest} | </span>
-								Note du jeu : <span>${test.noteJeu} / 20</span> 
-								<span> testttt </span> ezfz
-							</p> -->
-
 						</div>
 												<div class="blog-left-grid-right">
 							<a href="#" class="hvr-bounce-to-bottom non">${test.getNbCom()}

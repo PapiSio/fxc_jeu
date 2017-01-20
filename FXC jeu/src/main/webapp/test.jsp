@@ -48,9 +48,9 @@
 				</h3>
 			</div>
 
-				<p>${TEST.descriptionTest}</p>
-				
-				
+			<p>${TEST.descriptionTest}</p>
+
+
 			<div class="artical-links">
 				<ul>
 					<li><small> </small><span>${TEST.dateTest} </span></li>
@@ -88,18 +88,16 @@
 					<c:forEach items="${TEST.getListeCommentaires()}" var="commentaire">
 						<div class="top-comment-right">
 							<ul>
-								<li><span class="left-at"><a href="#">${commentaire.utilisateur.login}</a></span></li>
+								<li><span class="left-at">${commentaire.utilisateur.login}</span></li>
 								<li><span class="right-at">${commentaire.dateCom}</span></li>
 								<li><button class="reply" type="button"
 										onclick="toggle_div(this,'id_du_div');">Reply</button></li>
 								<div id="id_du_div" style="display: none;">
 									<form name="ReponseCommentaireServlet"
 										action="CommentaireServlet" method="POST">
-										<input type="hidden" name="Utilisateur"
-											value="${idUtilisateur}"> <input type='hidden'
-											name="Test" value="${TEST.idTest}"> <input
-											type="hidden" name="Commentaire"
-											value="${commentaire.idCom }">
+										<input type="hidden" name="Utilisateur" value="${idUtilisateur}"> 
+										<input type='hidden' name="Test" value="${TEST.idTest}"> 
+										<input type="hidden" name="Commentaire"	value="${commentaire.idCom }">
 										<textarea rows="3" cols="50" name="ContenuReponse"></textarea>
 										<input type="submit" value="Send">
 									</form>
@@ -135,7 +133,8 @@
 			<!-- single -->
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
-	<script src="js/bootstrap.js"></script>
-	</body>
-	</html>
+</div>
+<%@ include file="footer.jsp"%>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

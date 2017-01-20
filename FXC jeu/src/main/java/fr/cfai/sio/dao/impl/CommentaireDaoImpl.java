@@ -56,8 +56,8 @@ public class CommentaireDaoImpl implements CommentaireDao
 				while (resultat.next())
 				{
 					idCom = resultat.getInt(1);
-					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
+					date_Commentaire = resultat.getDate(3);
 					test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(5));
 
@@ -174,13 +174,14 @@ public class CommentaireDaoImpl implements CommentaireDao
 		ResultSet resultat = null;
 		PreparedStatement preparedStatement = null;
 
-		listeCommentaire.clear();
+		List<Commentaire> listeCommentaireByIDTest=new ArrayList<>();
 
 		int idCom;
 		Date date_Commentaire;
 		String contenuCom;
 		Test test = null;
 		Utilisateur utilisateur = null;
+		Commentaire commentaireByIDTest=null;
 		try
 		{
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
@@ -192,19 +193,23 @@ public class CommentaireDaoImpl implements CommentaireDao
 				while (resultat.next())
 				{
 					idCom = resultat.getInt(1);
-					date_Commentaire = resultat.getDate(3);
 					contenuCom = resultat.getString(2);
+					date_Commentaire = resultat.getDate(3);
 					//test = getTestByID(resultat.getInt(4));
-					utilisateur = getUtilisateurByID(resultat.getInt(5));
+					utilisateur = getUtilisateurByID(resultat.getInt(4));
+					
+					System.out.println("findCommentaireByIDTest - utilisateur = "+utilisateur.getLogin());
 
-					commentaire = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
+					commentaireByIDTest = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
 
-					listeCommentaire.add(commentaire);
+					System.out.println("findCommentaireByIDTest - commentaire.utilisateur = "+commentaireByIDTest.getUtilisateur().getLogin());
+					
+					listeCommentaireByIDTest.add(commentaireByIDTest);
 				}
 			}
 			else
 			{
-				listeCommentaire = null;
+				listeCommentaireByIDTest = null;
 			}
 
 		}
@@ -217,7 +222,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 			ConnexionBDD.close(null, preparedStatement, resultat);
 		}
 
-		return listeCommentaire;
+		return listeCommentaireByIDTest;
 
 	}
 
