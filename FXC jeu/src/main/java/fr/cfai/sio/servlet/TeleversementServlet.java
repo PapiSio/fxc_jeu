@@ -70,6 +70,7 @@ public class TeleversementServlet extends HttpServlet
 	{
 		System.out.println("TeleversementServlet - DoPost");
 
+		
 		Image image = null;
 		int idTest = 0;
 		String nomImage = "Img_";
