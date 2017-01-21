@@ -180,6 +180,7 @@ public class CommentaireDaoImpl implements CommentaireDao
 		Test test = null;
 		Utilisateur utilisateur = null;
 		Commentaire commentaireByIDTest = null;
+		Commentaire commentaireReponse = null;
 		try
 		{
 			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_COMMENTAIRE_BY_TEST);
@@ -196,7 +197,19 @@ public class CommentaireDaoImpl implements CommentaireDao
 					// test = getTestByID(resultat.getInt(4));
 					utilisateur = getUtilisateurByID(resultat.getInt(4));
 
-					commentaireByIDTest = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
+					commentaireByIDTest = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur, commentaireReponse);
+
+					try
+					{
+						List<Commentaire> listeCommentairesReponses = new ArrayList<>();
+						listeCommentairesReponses = findAllCommentaireByIDCom(idCom);
+						commentaireByIDTest.setListeCommentairesReponses(listeCommentairesReponses);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 					listeCommentaireByIDTest.add(commentaireByIDTest);
 				}
@@ -426,6 +439,58 @@ public class CommentaireDaoImpl implements CommentaireDao
 			ConnexionBDD.close(statement, null, resultat);
 		}
 		return listeCommentaire;
+	}
+
+	@Override
+	public List<Commentaire> findAllCommentaireByIDCom(int idFKCom)
+	{
+		ResultSet resultat = null;
+		PreparedStatement preparedStatement = null;
+
+		List<Commentaire> listeCommentaireByIDCom = new ArrayList<>();
+
+		int idCom;
+		Date date_Commentaire;
+		String contenuCom;
+		Test test = null;
+		Utilisateur utilisateur = null;
+		Commentaire commentaireByIDCom = null;
+		try
+		{
+			preparedStatement = connexion.prepareStatement(CommentaireRequete.FIND_ALL_COMMENTAIRE_BY_IDCOM);
+			preparedStatement.setInt(1, idFKCom);
+			resultat = preparedStatement.executeQuery();
+
+			if (resultat != null)
+			{
+				while (resultat.next())
+				{
+					idCom = resultat.getInt(1);
+					contenuCom = resultat.getString(2);
+					date_Commentaire = resultat.getDate(3);
+					utilisateur = getUtilisateurByID(resultat.getInt(4));
+
+					commentaireByIDCom = new Commentaire(idCom, contenuCom, date_Commentaire, test, utilisateur);
+
+					listeCommentaireByIDCom.add(commentaireByIDCom);
+				}
+			}
+			else
+			{
+				listeCommentaireByIDCom = null;
+			}
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Erreur sql : " + e.getMessage());
+		}
+		finally
+		{
+			ConnexionBDD.close(null, preparedStatement, resultat);
+		}
+
+		return listeCommentaireByIDCom;
 	}
 
 	public Utilisateur getUtilisateurByID(int id)

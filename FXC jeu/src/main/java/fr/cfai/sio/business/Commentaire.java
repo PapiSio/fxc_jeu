@@ -1,6 +1,7 @@
 package fr.cfai.sio.business;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Commentaire OK
@@ -19,6 +20,7 @@ public class Commentaire
 	private Test test;
 	private Utilisateur utilisateur;
 	private Commentaire idFkCom;
+	private List<Commentaire> listeCommentairesReponses;
 
 	/**
 	 * Constructeur de Commentaire
@@ -175,6 +177,18 @@ public class Commentaire
 	{
 		this.idFkCom = idFkCom;
 	}
+
+	public List<Commentaire> getListeCommentairesReponses()
+	{
+		return listeCommentairesReponses;
+	}
+
+	public void setListeCommentairesReponses(List<Commentaire> listeCommentairesReponses)
+	{
+		this.listeCommentairesReponses = listeCommentairesReponses;
+	}
+	
+	
 	
 	
 }

@@ -21,7 +21,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao
 	public UtilisateurDaoImpl() throws Exception
 	{
 		super();
-		System.out.println("Constructeur UtilisateurDaoImpl");
+//		System.out.println("Constructeur UtilisateurDaoImpl");
 	}
 
 	@Override

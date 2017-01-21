@@ -28,6 +28,8 @@ public interface CommentaireDao {
 
 	public List<Commentaire>findCommentaireByTest(Test test);
 	
+	public List<Commentaire>findAllCommentaireByIDCom(int idFKCom);
+	
 	public int getIDMaxCommentaire();
 
 
