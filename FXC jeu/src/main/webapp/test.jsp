@@ -109,11 +109,13 @@
 						</div>
 						<c:forEach items="${commentaire.getListeCommentairesReponses()}"
 							var="commentaireReponse">
+							<div class="top-comment-right">
 							<ul>
 								<li><span class="left-at">${commentaireReponse.utilisateur.login}</span></li>
 								<li><span class="right-at">${commentaireReponse.dateCom}</span></li>
 							</ul>
 							<p>${commentaireReponse.contenuCom}</p>
+							</div>
 						</c:forEach>
 					</c:forEach>
 
